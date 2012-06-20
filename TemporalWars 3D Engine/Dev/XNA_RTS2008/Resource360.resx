@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chat_able" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\textures\chat_able.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chat_mute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\textures\chat_mute.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chat_ready" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\textures\chat_ready.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chat_talking" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\textures\chat_talking.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="EnergyOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\energyoff.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FlagMarker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\flagmarker.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileBlueOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtileblueoff.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileBlueOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtileblueon.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileBlueRdy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtilebluerdy.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileGC_Airplanes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtilegc_airplanes.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileGC_Buildings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtilegc_buildings.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileGC_People" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtilegc_people.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileGC_Selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtilegc_selected.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileGC_Shields" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtilegc_shields.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileGC_Vehicles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtilegc_vehicles.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileGreyOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtilegreyoff.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IFDTileMinimapWrap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\ifdtileminimapwrap.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MenuBackgroundImage1a" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\textures\menubackgroundimage1a.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MenuBackgroundImage1b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\textures\menubackgroundimage1b.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NetworkBusyIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\networkbusyicon.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RoundMeterClock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\roundmeterclock.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RoundMeterClock_75" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\roundmeterclock_75.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_AAGun01_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\defenses\scifi_aagun01_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_AAGun02_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\defenses\scifi_aagun02_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_AAGun04_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\defenses\scifi_aagun04_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_AAGun05_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\defenses\scifi_aagun05_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Artilery01_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_artilery01_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld01_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld01_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld02_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld02_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld03_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld03_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld04_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld04_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld05_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld05_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld06_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld06_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld07_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld07_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld08_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld08_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld09_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld09_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld10_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld10_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bld11_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set1\scifi_bld11_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB01_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb01_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB02_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb02_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB03_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb03_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB04_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb04_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB05_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb05_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB06_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb06_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB07_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb07_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB08_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb08_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB09_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb09_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB10_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb10_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB11_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb11_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB12_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb12_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB13_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb13_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB14_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb14_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bomber01_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\aircrafts\scifi_bomber01_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bomber06_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\aircrafts\scifi_bomber06_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Bomber07_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\aircrafts\scifi_bomber07_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Gunship02_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\aircrafts\scifi_gunship02_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Heli01_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\aircrafts\scifi_heli01_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Heli02_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\aircrafts\scifi_heli02_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Jeep01_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_jeep01_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Jeep03_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_jeep03_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank01_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank01_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank02_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank02_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank03_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank03_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank04_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank04_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank05_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank05_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank06_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank06_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank07_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank07_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank08_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank08_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank09_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank09_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank10_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank10_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_Tank11_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\vehicles\scifi_tank11_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="statusBarContainer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\statusbarcontainer.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="statusBarGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\statusbargreen.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="statusBarOrange" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\statusbarorange.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="statusBarRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\statusbarred.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="statusBarYellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\statusbaryellow.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tmpFactorTileOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\tmpfactortileon.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tmpWindMillTile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\tmpwindmilltile.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tmpWindMillTileOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\tmpwindmilltileon.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SciFi_BldB15_Pic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\interfacetiles\buildings\set2\scifi_bldb15_pic.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MenuBackgroundSpaceEclipse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\xbox 360\textures\menubackgroundspaceeclipse.xnb;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ContentMaps" xml:space="preserve">
+    <value>ContentMaps</value>
+  </data>
+  <data name="ContentAudio" xml:space="preserve">
+    <value>1ContentAudio\Xbox360</value>
+  </data>
+  <data name="ContentTextures" xml:space="preserve">
+    <value>1ContentTextures\Xbox360</value>
+  </data>
+  <data name="ContentMisc" xml:space="preserve">
+    <value>1ContentMisc\Xbox360</value>
+  </data>
+  <data name="ContentPlayable" xml:space="preserve">
+    <value>1ContentArtwork\Xbox360</value>
+    <comment>3/23/2011 - Add since Zip does not work in XNA 4.0 - Ben Scharbach</comment>
+  </data>
+  <data name="ContentScenary" xml:space="preserve">
+    <value>1ContentArtwork\Xbox360</value>
+    <comment>3/23/2011 - Add since Zip does not work in XNA 4.0 - Ben Scharbach</comment>
+  </data>
+  <data name="ContentGroundTextures" xml:space="preserve">
+    <value>1ContentGroundTextures\Xbox360</value>
+    <comment>3/23/2011 - Add since Zip does not work in XNA 4.0 - Ben Scharbach</comment>
+  </data>
+</root>
