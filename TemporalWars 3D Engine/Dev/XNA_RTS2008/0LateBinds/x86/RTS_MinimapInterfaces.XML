@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RTS_MinimapInterfaces</name>
+    </assembly>
+    <members>
+        <member name="T:TWEngine.IMinimapSceneItem">
+            <summary>
+            The <see cref="T:TWEngine.IMinimapSceneItem"/> is the base class, which provides the primary funtions
+            for any <see cref="T:TWEngine.IMinimapSceneItem"/>.  This includes updating the transforms for position data, 
+            updating attributes, like current health, etc.
+            This class inherts from a collection of <see cref="T:TWEngine.IMinimapSceneItem"/>, allowing a single item to have
+            multiple child <see cref="T:TWEngine.IMinimapSceneItem"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapSceneItem.ShapeItem">
+            <summary>
+            Returns the <see cref="T:TWEngine.IMinimapShapeItem"/> instance.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapSceneItem.Position">
+            <summary>
+            Returns the <see cref="T:TWEngine.IMinimapShapeItem"/> instance.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapSceneItem.IsAlive">
+            <summary>
+            Is this <see cref="T:TWEngine.IMinimapShapeItem"/> alive?
+            </summary>
+        </member>
+        <member name="T:TWEngine.NamespaceDoc">
+            <summary>
+            The <see cref="N:TWEngine"/> namespace contains the classes
+            which make up the entire <see cref="T:TWEngine.IMinimap"/>.
+            </summary>
+        </member>
+        <member name="T:TWEngine.IMinimap">
+            <summary>
+            The <see cref="T:TWEngine.IMinimap"/> is designed to show unit movement, structures
+            placed in the game world and to take direct mouse-click orders (Windows Platform). 
+            The <see cref="T:TWEngine.IMinimap"/> XNA component will also communicate with the <see cref="T:TWEngine.IFogOfWar"/> XNA component,
+            directly showing the influences of the <see cref="T:TWEngine.IFogOfWar"/> in real time.
+            </summary>
+        </member>
+        <member name="M:TWEngine.IMinimap.InitSettings">
+            <summary>
+            Call to set the interface references for the <see cref="T:TWEngine.IMinimapTerrainShape"/>,
+            <see cref="T:TWEngine.IMinimapTerrainData"/>, <see cref="T:TWEngine.ICamera"/> and <see cref="T:TWEngine.IMinimapInterfaceDisplay"/>.
+            </summary>
+        </member>
+        <member name="M:TWEngine.IMinimap.SaveMiniMapTexture(System.String)">
+            <summary>
+            Saves the <see cref="T:TWEngine.IMinimap"/> texture using the given name; use the console
+            to call this method.
+            </summary>
+            <remarks>The name given will be saved with '_MMP' and the .BMP extension.</remarks>
+            <param name="name">The name you want to save the <see cref="T:TWEngine.IMinimap"/> texture as.</param>
+        </member>
+        <member name="M:TWEngine.IMinimap.UpdateWrapperTexture(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+             Updates the default wrapper texture to the given <paramref name="wrapperTexture"/>.
+            </summary>
+            <param name="wrapperTexture">Instance of <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>.</param>
+        </member>
+        <member name="M:TWEngine.IMinimap.UseDefaultWrapperTexture">
+            <summary>
+            Uses the built-in default texture called 'IFDTileMinimapWrap'.
+            </summary>
+        </member>
+        <member name="M:TWEngine.IMinimap.RenderLandscapeForMiniMap">
+            <summary>
+            Renders the landscape, using orthogonal projection, onto
+            the _landScapeRt <see cref="!:RenderTarget"/>.
+            </summary>     
+        </member>
+        <member name="M:TWEngine.IMinimap.UpdateMiniMapPosition_EventHandler(System.Object,System.EventArgs)">
+            <summary>
+            <see cref="T:System.EventHandler"/> to force the <see cref="T:TWEngine.IMinimap"/> internal <see cref="T:TWEngine.IFogOfWarShapeItem"/> positions to update. 
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="P:TWEngine.IMinimap.MMWidth">
+            <summary>
+            <see cref="T:TWEngine.IMinimap"/> width
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimap.MMHeight">
+            <summary> 
+            <see cref="T:TWEngine.IMinimap"/> height
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimap.DoUpdateMiniMap">
+            <summary>
+            Set to tell <see cref="T:TWEngine.IMinimap"/> to update for unit positions.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimap.DoInitMiniMap">
+            <summary>
+            Set to render landscape for <see cref="T:TWEngine.IMinimap"/> 
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimap.MiniMapContainsCursor">
+            <summary>
+            Tracks if <see cref="T:TWEngine.IMinimap"/> contains the cursor. 
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimap.MiniMapDestination">
+            <summary>
+            <see cref="P:TWEngine.IMinimap.MiniMapDestination"/> destination <see cref="T:Microsoft.Xna.Framework.Rectangle"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimap.IsVisible">
+            <summary>
+            Controls <see cref="T:TWEngine.IMinimap"/> display.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimap.ShowTextureWrapper">
+            <summary>
+            Controls the displaying of the <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/> wrapper
+            around the <see cref="T:TWEngine.IMinimap"/>.
+            </summary>
+        </member>
+        <member name="T:TWEngine.IMinimapTerrainData">
+            <summary>
+             The <see cref="T:TWEngine.IMinimapTerrainData"/> class is used to hold the important meta-data for the Terrain class; for example,
+             the HeightData collection, VertexMultitextured_Stream1 collection, and the terrain Normals collection
+             to name a few.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapTerrainData.MapWidthToScale">
+            <summary>
+            Height of heightmap, multiplied by scale value.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapTerrainData.MapHeightToScale">
+            <summary>
+            Width of heightmap, multiplied by scale value.
+            </summary>
+        </member>
+        <member name="T:TWEngine.IMinimapEngineRef">
+            <summary>
+            Required reference to game engine.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapEngineRef.ContentMiscLoc">
+            <summary>
+            Content Misc project folder location.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapEngineRef.PathNodeSize">
+            <summary>
+            Stores the A* path node size, or number of nodes in
+            the given graph; for example, 57 is 57x57.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapEngineRef.ThisPlayer">
+            <summary>
+            Get or set the SPlayers collection index value, used
+            to retrieve the current 'Players'.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapEngineRef.PathNodeStride">
+            <summary>
+            Stores the A* Graph's path node stride, or distance between
+            a tile node.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapEngineRef.MaxAllowablePlayers">
+            <summary>
+            Max allowed players in game engine.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapEngineRef.Players">
+            <summary>
+            Collection of <see cref="T:TWEngine.IFOWPlayer"/> items.
+            </summary>
+        </member>
+        <member name="T:TWEngine.IMinimapTerrainShape">
+            <summary>
+             The <see cref="T:TWEngine.IMinimapTerrainShape"/> class is a manager, which uses the other terrain classes to create and manage
+             the Terrain.  For example, the drawing of the terrain is initialized in this class, but the actual drawing is
+             done in the TerrainQuadTree class.  Furthermore, the class also loads the <see cref="T:TWEngine.IMinimapSceneItem"/> into memory at the
+             beginning of a level load, while communicating with the TerrainAlphaMaps, TerrainPickingRoutines, and
+             the TerrainEditRoutines classes.
+            </summary>
+        </member>
+        <member name="M:TWEngine.IMinimapTerrainShape.DrawMiniMap">
+            <summary>
+            Draws the <see cref="T:TWEngine.IMinimapTerrainShape"/> landscape, using a top-down-view, 
+            for the <see cref="T:TWEngine.IMinimap"/> component.
+            </summary>
+        </member>
+        <member name="E:TWEngine.IMinimapTerrainShape.TerrainShapeCreated">
+            <summary>
+             Occurs when the <see cref="T:TWEngine.IMinimapTerrainShape"/> is first created.
+            </summary>
+        </member>
+        <member name="T:TWEngine.IMinimapShapeItem">
+            <summary>
+            The <see cref="T:TWEngine.IMinimapShapeItem"/> is the base class of any object that is renderable
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapShapeItem.PathBlockSize">
+            <summary>
+             Path block size area to affect?
+            </summary>
+             <remarks>Requires the IsPathBlocked to be TRUE.</remarks>
+        </member>
+        <member name="T:TWEngine.IMinimapInterfaceDisplay">
+            <summary>
+            The <see cref="T:TWEngine.IMinimapInterfaceDisplay"/> class manages all IFDTile instances, by
+            adding them to the internal collections, drawing and updating each game cycle, and updating
+            SceneItem placement into the game world.
+            </summary>
+        </member>
+        <member name="M:TWEngine.IMinimapInterfaceDisplay.AddInterFaceDisplayTileOverlay(System.String,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Adds a new <see cref="T:TWEngine.IMinimapInterfaceDisplay"/> tile to the 'Display-Always' collection. This is a tile
+            which will always be displayed.
+            </summary>        
+            <param name="tileTextureName"><see cref="T:TWEngine.IMinimapInterfaceDisplay"/> to add</param>
+            <param name="tileLocation"><see cref="T:Microsoft.Xna.Framework.Rectangle"/> as tile location </param>
+            <returns>Returns the tile's unique instance key.</returns>
+        </member>
+        <member name="M:TWEngine.IMinimapInterfaceDisplay.AddInterFaceDisplayTileOverlay(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Adds a new <see cref="T:TWEngine.IMinimapInterfaceDisplay"/> tile to the 'Display-Always' collection. This is a tile
+            which will always be displayed.
+            </summary>        
+            <param name="tileTexture"><see cref="T:TWEngine.IMinimapInterfaceDisplay"/> texture to add</param>
+            <param name="tileLocation"><see cref="T:Microsoft.Xna.Framework.Rectangle"/> as tile location </param>  
+            <returns>Returns the tile's unique instance key.</returns>
+        </member>
+        <member name="M:TWEngine.IMinimapInterfaceDisplay.RemoveInterFaceDisplayTile(System.Int32)">
+            <summary>
+            Explicit implementation for the interface <see cref="T:TWEngine.IMinimapInterfaceDisplay"/>.
+            </summary>
+            <param name="tileInstanceKey">The tile's unique instance key.</param>
+        </member>
+        <member name="T:TWEngine.IMinimapPlayer">
+            <summary>
+            Represents the current state of each <see cref="T:TWEngine.IMinimapPlayer"/> in the game
+            </summary>
+        </member>
+        <member name="M:TWEngine.IMinimapPlayer.GetSelectableItems(TWEngine.IMinimapSceneItem[]@,System.Int32@)">
+            <summary>
+            Helper method used to retrieve the <see cref="T:TWEngine.IMinimapSceneItem"/> collections type.
+            </summary> 
+            <param name="minimapSceneItems">Returns a collection of <see cref="T:TWEngine.IMinimapSceneItem"/>.</param> 
+            <param name="actualCount">The actual count value within the collection.</param> 
+        </member>
+        <member name="P:TWEngine.IMinimapPlayer.SelectableMinimapRects">
+            <summary>
+            Collection of <see cref="T:Microsoft.Xna.Framework.Rectangle"/> for <see cref="T:TWEngine.IMinimap"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IMinimapPlayer.PlayerColor">
+            <summary>
+            The current <see cref="T:TWEngine.IMinimapPlayer"/> <see cref="T:Microsoft.Xna.Framework.Color"/>.
+            </summary>
+        </member>
+    </members>
+</doc>
