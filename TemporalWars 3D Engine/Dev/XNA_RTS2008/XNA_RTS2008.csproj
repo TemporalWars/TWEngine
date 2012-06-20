@@ -1,0 +1,1746 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectGuid>{BF89EE2A-30FC-400F-999A-342B8928178F}</ProjectGuid>
+    <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TWEngine</RootNamespace>
+    <AssemblyName>XNA_RTS2008</AssemblyName>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <XnaPlatform>Windows</XnaPlatform>
+    <ApplicationIcon>Spacewar_Template.ico</ApplicationIcon>
+    <Thumbnail>SpacewarThumbnail.png</Thumbnail>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>DFE3FF17A8AB09D8554FF21AD0E3EE535356C768</ManifestCertificateThumbprint>
+    <ManifestKeyFile>XNA_RTS2008_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <SignManifests>false</SignManifests>
+    <XnaCrossPlatformGroupID>c7e3f442-a737-472d-905b-4ad664501b2a</XnaCrossPlatformGroupID>
+    <StartupObject>TWEngine.Program</StartupObject>
+    <XnaUpgrade>1</XnaUpgrade>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <XnaOutputType>Game</XnaOutputType>
+    <XnaProfile>HiDef</XnaProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>e:\deploy\XNARTS2008\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS ; EditMode; NWithLicense</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>True</XnaCompressContent>
+    <DocumentationFile>bin\x86\Debug\XNA_RTS2008.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS WithLicense</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>True</XnaCompressContent>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>XNA_RTS2008.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DeployLX.Licensing.v4, Version=4.1.4000.0, Culture=neutral, PublicKeyToken=798276055709c98a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>0References\DeployLX.Licensing.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="fbDeprofiler">
+      <HintPath>..\..\..\..\..\Downloads\fbDeprofiler\fbDeprofiler.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython, Version=2.6.10920.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>0References\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.6.10920.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>0References\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>0References\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>0References\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Debugging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>0References\Microsoft.Scripting.Debugging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Avatar, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Input.Touch, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Video, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="NGenerics, Version=1.3.0.0, Culture=neutral, PublicKeyToken=e4b41be133ea7faf, processorArchitecture=MSIL" />
+    <Reference Include="NGenerics.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e4b41be133ea7faf, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\WPF Toolkit\v3.5.50211.1\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ZipArchiveCreator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ZipArchiveCreator\bin\Debug\ZipArchiveCreator.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AI\AIManager.cs" />
+    <Compile Include="DeployLXKeys.cs" />
+    <Compile Include="Interfaces\IScriptingActionChangeRequest.cs" />
+    <Compile Include="SceneItems\Enums\RotationAxisEnum.cs" />
+    <Compile Include="SceneItems\ScenaryDataReaderV2.cs" />
+    <Compile Include="SceneItems\Structs\ScenaryItemDataAudio.cs" />
+    <Compile Include="SkyDomes\Enums\SkyDomeTextureEnum.cs" />
+    <Compile Include="Terrain\TerrainDirectionalIconManager.cs" />
+    <Compile Include="Utilities\AccelerationValueBehavior.cs" />
+    <Compile Include="Utilities\DebugShapeRenderer.cs" />
+    <Compile Include="_LicenseHelper.cs" />
+    <None Include="1ContentAudio\x86\AmbientMusicSoundBank.xsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\AmbientMusicWaveBank.xwb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\AmbientSoundBank.xsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\AmbientWaveBank.xwb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\ExplosionsSoundBank.xsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\ExplosionsWaveBank.xwb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\InterfaceSoundBank.xsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\InterfaceWaveBank.xwb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\MechanicalSoundBank.xsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\MechanicalWaveBank.xwb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\SciFiWeaponsSoundBank.xsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\SciFiWeaponsWaveBank.xwb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentAudio\x86\XNA2008_ben.xgs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\Arial10.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\Arial12.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\Arial18.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\Arial8.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\ConsoleFont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\CourierNew.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\FramerateFont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\gamefont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\health.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\hud_round_button.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\hud_weapon_icons.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\in-game_Player_text.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\in-game_score.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\ingame_counter.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\menufont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\ship_names.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\weapon_large_font.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Fonts\weapon_small_font.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\backdrop.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\BasicEffect.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Bloom\BloomCombine.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Bloom\BloomExtract.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Bloom\GaussianBlur.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Blur.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\CombineEffect.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\c_bensBackyard16D.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Deferred1Scene.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Deferred2Lights.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Deferred3Final.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\DeferredShadowMap.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Glow\Glow.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModelCommon.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModelShadows.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_Blinn.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_ColorBlend.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_CustomMetal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_FresnelTerm.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_Glossy.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_Metal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_Phong.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_PhongFlashWhite.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_PhongRed.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_Plastic.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_ReflectiveMetal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_Saturation.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_Velvety.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\InstancedModel\InstancedModel_Wood.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\lightingShaders.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\MiniMap.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\MultiTerrainEffect.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\noiseL8.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\OceanWater.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\OceanWater2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\ParticleEffect.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\perlinNoise.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\RoundMeterEffect.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\ShadowEffect.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\ShadowMethods.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\sunol_cubemap.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\Shaders\Water.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\StatusBars\EnergyOff.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\StatusBars\statusBarContainer.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\StatusBars\statusBarGreen.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\StatusBars\statusBarOrange.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\StatusBars\statusBarRed.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\StatusBars\statusBarYellow.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\XSIEffects\Constant.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\XSIEffects\Lambert.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\XSIEffects\Phong.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\XSIEffects\xsi_defaultvs.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\XSIEffects\xsi_include9.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\XSIEffects\xsi_lightdef9.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentMisc\x86\XSIEffects\xsi_lightlist9.hlsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\glass_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\metl3_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\metl5-sp_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\metl5_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\metl5_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\metl5_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\metl5_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\metl5_yellowGreen_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\sciFiBomber01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\sciFiBomber06.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\sciFiBomber07.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\sciFiGunShip01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\sciFiGunShip02.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\sciFiHeli01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\sciFiHeli02.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\tex-sp_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\tex_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\tex_helios_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\tex_helios_yellowGreen_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\tex_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\tex_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Aircrafts\tex_yellowGreen_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\InstancedModel_Blinn_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\mtl-bld_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda02.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda03.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda04.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda05.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda06.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda07.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda08.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda09.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda10.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings1\sciFiBlda11.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-01-blue_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-01-blue_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-01-green_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-01-green_a_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-01-green_b_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-02-blue_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-02-blue_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-02-green_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-02-green_1.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-02-green_a_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-02-green_b_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-03-blue_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-03-blue_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-03-green_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-03-green_a_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\bld-03-green_b_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\FlagMarker.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb02.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb03.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb04.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb05.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb06.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb07.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb08.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb09.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb10.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb11.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb12.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb13.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb14.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Buildings2\sciFiBldb15.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\metl4-sp_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\metl4_AAGuns_a_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\metl4_AAGuns_b_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\metl4_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\metl4_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\sciFiAAGun01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\sciFiAAGun02.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\sciFiAAGun04.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\sciFiAAGun05.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\tex-sp_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\tex_AAGun05_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\tex_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Structures\SciFi_Defenses\tex_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiJeeps\jeep-sp_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiJeeps\jeep1_yellowGreen_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiJeeps\jeep3_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiJeeps\jeep_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiJeeps\jeep_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiJeeps\sciFiJeep01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiJeeps\sciFiJeep03.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiJeeps\track_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\d_metal1_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\gs-map_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\gs-map_normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\gs-map_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\m3-2-sp_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\m3-2_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\m3-2_t05_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\m3-2_t07_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\metl4-sp_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\metl4_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\metl4_t03_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\metl4_t08_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\metl4_t09_yellowGreen_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\n_metal1_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiArtilery01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank01.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank02.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank03.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank04.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank05.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank06.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank07.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank08.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank09.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank10.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\sciFiTank11.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\tex-sp_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\tex_normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\tex_t02_bluish_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\tex_t04_yellowGreen_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\tex_t06_yellowGreen_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\tex_t10_yellowGreen_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\tex_t11_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\track_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\track_1.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentPlayable\x86\Vehicles\SciFiTanks\wheel_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\AmberSeriesSkyBox.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\clouds.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\clouds_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\DarkMountainsSkyBox.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\DustDesertSkyBox.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\GreenGrayMtsSkyBox.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\GreenWhispSkyBox.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\skyboxEffect.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\skyboxtexture.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\SkyDome\SkyDome.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\background.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\base.soldier.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\blank.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\BlockedArea.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\circle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\cursor.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\cursorArrow.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\DottedLine.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\fogView.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\gradient.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\in-game_score_overlay.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\info_screen.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\intro_bg.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\m16.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\Particles\explosion.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\Particles\fire.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\Particles\Particle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\Particles\raindrop.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\Particles\smoke.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\Particles\snowFlake.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\pickRectangle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\rocks.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\roundedMenu.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\scoreBoard.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\Spacewar_Title_FINAL.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\Title_button_overlay.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\waterbump.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentTextures\x86\Textures\waves2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\AIThreadManager_org.cs" />
+    <Compile Include="Audio\Enums\SoundBankGroup.cs" />
+    <Compile Include="Audio\Structs\LoopSongData.cs" />
+    <Compile Include="Audio\Structs\SoundRequestItem.cs" />
+    <Compile Include="Audio\Enums\Sounds.cs" />
+    <Compile Include="BeginGame\Enums\RenderingType.cs" />
+    <Compile Include="BeginGame\Enums\ScreenResolution.cs" />
+    <Compile Include="BeginGame\Enums\TerrainTextures.cs" />
+    <Compile Include="Common\Extensions\XNAExtensions.cs" />
+    <Compile Include="Console\Enums\ConsoleState.cs" />
+    <Compile Include="Console\Structs\KeyBinding.cs" />
+    <Compile Include="Explosions\Structs\ExplosionItem.cs" />
+    <Compile Include="GameCamera\Enums\CameraDirection.cs" />
+    <Compile Include="GameCamera\Structs\CinematicNode.cs" />
+    <Compile Include="GameCamera\Enums\CameraMoveType.cs" />
+    <Compile Include="GameCamera\Delegates\UpdateDueToCameraMovement.cs" />
+    <Compile Include="IFDTiles\Delegates\CreateItemToPlace.cs" />
+    <Compile Include="IFDTiles\Delegates\SceneItemPlacedEventHandler.cs" />
+    <Compile Include="IFDTiles\Delegates\ItemCreateRequestEventHandler.cs" />
+    <Compile Include="IFDTiles\IFDTile_Manager.cs" />
+    <Compile Include="InstancedModels\InstancedModelPartExtraReader.cs" />
+    <Compile Include="InstancedModels\InstancedModelPartExtra.cs" />
+    <Compile Include="InstancedModels\InstancedModelTexturesReader.cs" />
+    <Compile Include="InstancedModels\InstancedModelTextures.cs" />
+    <Compile Include="InstancedModels\InstancedModelExtraReader.cs" />
+    <Compile Include="InstancedModels\InstancedModelExtra.cs" />
+    <Compile Include="Interfaces\IIFDTileManager.cs" />
+    <Compile Include="InstancedModels\Enums\InstanceDataParam.cs" />
+    <Compile Include="InstancedModels\Enums\RotationAxis.cs" />
+    <Compile Include="InstancedModels\Enums\ShaderToUseEnum.cs" />
+    <Compile Include="IFDTiles\Structs\SubQueueKey.cs" />
+    <Compile Include="Interfaces\IWaterBase.cs" />
+    <Compile Include="ItemTypeAttributes\Structs\PlayableItemTypeAttributes.cs" />
+    <Compile Include="ItemTypeAttributes\Structs\SoundToPlay.cs" />
+    <Compile Include="MemoryPool\PoolEventArgs.cs" />
+    <Compile Include="MemoryPool\Delegates\PoolMemoryEventHandler.cs" />
+    <Compile Include="ParallelTasks\AIDefenseParallelFor.cs" />
+    <Compile Include="ParallelTasks\AIaStarParallelFor.cs" />
+    <Compile Include="AI\FSM_AIControl.cs" />
+    <Compile Include="AI\FSM_Machine.cs" />
+    <Compile Include="AI\FSM_State.cs" />
+    <Compile Include="AI\Enums\FSM_StateType.cs" />
+    <Compile Include="AI\FSMStates\AttackState.cs" />
+    <Compile Include="AI\FSMStates\AttackMoveState.cs" />
+    <Compile Include="AI\FSMStates\DefenseAttackState.cs" />
+    <Compile Include="AI\FSMStates\DefenseIdleState.cs" />
+    <Compile Include="AI\FSMStates\RepairState.cs" />
+    <Compile Include="AI\FSMStates\IdleState.cs" />
+    <Compile Include="Common\AStarItem.cs" />
+    <Compile Include="Common\BlurManager.cs" />
+    <Compile Include="ParallelTasks\ClosestItemParallelFor.cs" />
+    <Compile Include="ParallelTasks\Delegates\LoopBody.cs" />
+    <Compile Include="ParallelTasks\Structs\CameraBoundItemStruct.cs" />
+    <Compile Include="ParallelTasks\CameraBoundThreadManager.cs" />
+    <Compile Include="ParallelTasks\ParallelFor.cs" />
+    <Compile Include="Common\Enums\BlurTechnique.cs" />
+    <Compile Include="Common\Enums\CursorTextureEnum.cs" />
+    <Compile Include="Common\FogOfWarItem.cs" />
+    <Compile Include="Explosions\ExplosionsManager.cs" />
+    <Compile Include="GameCamera\CameraCinematics.cs" />
+    <Compile Include="HandleGameInput\HandleInput.cs" />
+    <None Include="ParallelTasks\InstancedModelParallelFor.cs" />
+    <Compile Include="InstancedModels\Enums\ProceduralMaterialParameters.cs" />
+    <Compile Include="InstancedModels\InstancedItemCulling.cs" />
+    <Compile Include="InstancedModels\InstancedItemLoader.cs" />
+    <Compile Include="InstancedModels\InstancedModelBone.cs" />
+    <Compile Include="InstancedModels\InstancedModelBoneCollection.cs" />
+    <Compile Include="InstancedModels\InstancedModelMaterialDefinitions.cs" />
+    <Compile Include="InstancedModels\Structs\MaterialDefinition.cs" />
+    <Compile Include="InstancedModels\Structs\MaterialParamDef.cs" />
+    <Compile Include="InstancedModels\Structs\MaterialSpinnerDef.cs" />
+    <Compile Include="InstancedModels\Structs\InstancedDataForDraw.cs" />
+    <Compile Include="InstancedModels\InstancedModelChangeRequests.cs" />
+    <Compile Include="InstancedModels\Structs\ChangeRequestItem.cs" />
+    <Compile Include="InstancedModels\Enums\ChangeRequest.cs" />
+    <Compile Include="InstancedModels\Enums\DrawTransformsType.cs" />
+    <Compile Include="InstancedModels\Enums\ItemGroupType.cs" />
+    <Compile Include="InstancedModels\Enums\ItemType.cs" />
+    <Compile Include="InstancedModels\Enums\InstancingTechnique.cs" />
+    <Compile Include="InstancedModels\Enums\PartType.cs" />
+    <Compile Include="InstancedModels\Structs\PackedVector3.cs" />
+    <Compile Include="InstancedModels\Structs\InstancedModelAttsData.cs" />
+    <Compile Include="InstancedModels\Structs\InstancedItemTransform.cs" />
+    <Compile Include="InstancedModels\Structs\InstancedDataCommunication.cs" />
+    <Compile Include="IFDTiles\Enums\IFDGroupControlType.cs" />
+    <Compile Include="IFDTiles\Enums\TileState.cs" />
+    <Compile Include="IFDTiles\Enums\IFDMessageType.cs" />
+    <Compile Include="IFDTiles\Enums\IFDSubGroupPosition.cs" />
+    <Compile Include="IFDTiles\IFDTile_TextureLoader.cs" />
+    <Compile Include="IFDTiles\ItemCreatedArgs.cs" />
+    <Compile Include="IFDTiles\Enums\TilePlacement.cs" />
+    <Compile Include="Interfaces\ICursor.cs" />
+    <Compile Include="Interfaces\ICurve3D.cs" />
+    <Compile Include="Interfaces\IFPS.cs" />
+    <Compile Include="Interfaces\IGameConsole.cs" />
+    <Compile Include="Interfaces\IGameViewPort.cs" />
+    <Compile Include="Interfaces\IInstancedItem.cs" />
+    <Compile Include="Interfaces\ILake.cs" />
+    <Compile Include="Interfaces\IMessageDisplay.cs" />
+    <Compile Include="Interfaces\IOcean.cs" />
+    <Compile Include="Interfaces\ISceneItemWithPick.cs" />
+    <Compile Include="Interfaces\IShadowMap.cs" />
+    <Compile Include="Interfaces\IShadowShapeItem.cs" />
+    <Compile Include="Interfaces\ITerrainAlphaMaps.cs" />
+    <Compile Include="Interfaces\ITerrainScreen.cs" />
+    <Compile Include="Interfaces\ITerrainShape.cs" />
+    <Compile Include="Interfaces\ITerrainStorageRoutines.cs" />
+    <Compile Include="Interfaces\ITurretAttributes.cs" />
+    <Compile Include="Interfaces\IVehicleSceneType.cs" />
+    <Compile Include="Interfaces\IVehicleShapeType.cs" />
+    <Compile Include="Interfaces\IWaterManager.cs" />
+    <Compile Include="ItemTypeAttributes\Structs\MessageTagDescription.cs" />
+    <Compile Include="MemoryPool\PoolNode.cs" />
+    <Compile Include="Networking\Structs\GamerInfo.cs" />
+    <Compile Include="Networking\Structs\LobbyScreenData.cs" />
+    <Compile Include="Particles\Enums\ParticleSystemTypes.cs" />
+    <Compile Include="Particles\Enums\PathShape.cs" />
+    <Compile Include="Particles\Enums\ProjectileType.cs" />
+    <Compile Include="Particles\ParticleSystems\SnowParticleSystem.cs" />
+    <Compile Include="Particles\Structs\ParticleSystemItem.cs" />
+    <Compile Include="Particles\ProjectilePoolItem.cs" />
+    <None Include="PhysX\MeshHash.cs" />
+    <None Include="PhysX\ObjMesh.cs" />
+    <None Include="PhysX\PhysXSoftBody.cs" />
+    <None Include="PhysX\PhysXVehicle.cs" />
+    <None Include="PhysX\PhysXHeightField.cs" />
+    <None Include="PhysX\PhysXCloth.cs" />
+    <None Include="PhysX\PhysXEngine.cs" />
+    <None Include="PhysX\refSoftBody.cs">
+      <SubType>Code</SubType>
+    </None>
+    <None Include="PhysX\User Output.cs" />
+    <Compile Include="Players\PlayerStats.cs" />
+    <Compile Include="PostProcessEffects\BloomEffect\Enums\BloomType.cs" />
+    <Compile Include="PostProcessEffects\GBlurEffect\GBlur.cs" />
+    <Compile Include="PostProcessEffects\GBlurEffect\GBlurPass.cs" />
+    <Compile Include="PostProcessEffects\GBlurEffect\Enums\GBlurPassToUse.cs" />
+    <Compile Include="PostProcessEffects\GlowEffect\Glow.cs" />
+    <Compile Include="PostProcessEffects\GlowEffect\BlurGlow.cs" />
+    <Compile Include="PostProcessEffects\BloomEffect\Bloom.cs" />
+    <Compile Include="PostProcessEffects\BloomEffect\BloomExtract.cs" />
+    <Compile Include="PostProcessEffects\BloomEffect\BloomCombine.cs" />
+    <Compile Include="PostProcessEffects\PostProcessEffect.cs" />
+    <Compile Include="PostProcessEffects\Quadrangle.cs" />
+    <Compile Include="InstancedModels\InstancedModelPackedVector3Reader.cs" />
+    <Compile Include="InstancedModels\InstancedModelAttsDataReader.cs" />
+    <Compile Include="InstancedModels\InstancedItem.cs" />
+    <Compile Include="InstancedModels\Structs\InstancedItemData.cs" />
+    <None Include="InstancedModels\InstancedModelAnimation.cs" />
+    <Compile Include="IFDTiles\IFDTile_SubGroupControl.cs" />
+    <Compile Include="IFDTiles\IFDTile_Overlay.cs" />
+    <Compile Include="IFDTiles\IFDTile_GroupControl.cs" />
+    <Compile Include="IFDTiles\IFDTile_Message.cs" />
+    <Compile Include="IFDTiles\IFDTile_Placement.cs" />
+    <Compile Include="IFDTiles\InterFaceRoundMeter.cs" />
+    <Compile Include="PostProcessEffects\BloomEffect\BloomSettings.cs" />
+    <Compile Include="Common\Cursor.cs" />
+    <Compile Include="Common\Curve3D.cs" />
+    <Compile Include="Common\Framerate.cs" />
+    <Compile Include="InstancedModels\InstancedModel.cs" />
+    <Compile Include="InstancedModels\InstancedModelPart.cs" />
+    <Compile Include="InstancedModels\InstancedModelReader.cs" />
+    <Compile Include="Console\GameConsole.cs" />
+    <Compile Include="Console\KeyBindings.cs" />
+    <Compile Include="Console\PythonConsole.cs" />
+    <Compile Include="IFDTiles\IFDTile.cs" />
+    <Compile Include="ItemTypeAttributes\PlayableItemTypeAtts.cs" />
+    <Compile Include="Networking\SinglePlayerScreen.cs" />
+    <Compile Include="Networking\Lobby2Screen.cs" />
+    <Compile Include="Networking\NetworkGameSyncer.cs" />
+    <Compile Include="Particles\ParticleFrequencyEmitter.cs" />
+    <Compile Include="Particles\ParticleSystems\BallParticleSystemWhite.cs" />
+    <Compile Include="Particles\ParticleSystems\BallParticleSystemRed.cs" />
+    <Compile Include="Particles\ParticleSystems\BallParticleSystemBlue.cs" />
+    <Compile Include="Particles\ParticleSystems\BallParticleSystemOrange.cs" />
+    <Compile Include="Particles\ParticleSystems\RainParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\FlashParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\TorchParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\LargeExplosionSmokeParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\MediumExplosionSmokeParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\DustPlumeParticleSystem.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryPool\Interfaces\IPoolNodeItem.cs" />
+    <Compile Include="rtsCommands\rtsCommValidator.cs" />
+    <Compile Include="rtsCommands\rtsCommSceneItemHealth.cs" />
+    <Compile Include="rtsCommands\Enums\NetworkCommands.cs" />
+    <Compile Include="rtsCommands\rtsCommCeaseAttackSceneItem.cs" />
+    <Compile Include="rtsCommands\rtsCommSceneItemStance.cs" />
+    <Compile Include="rtsCommands\rtsCommGameSlow.cs" />
+    <Compile Include="rtsCommands\rtsCommLobbyData.cs" />
+    <Compile Include="rtsCommands\rtsCommMoveSceneItem2.cs" />
+    <Compile Include="rtsCommands\rtsCommKillSceneItem.cs" />
+    <Compile Include="rtsCommands\rtsCommQueueMarker.cs" />
+    <Compile Include="rtsCommands\rtsCommGameTurn.cs" />
+    <Compile Include="rtsCommands\rtsCommIsReady.cs" />
+    <Compile Include="rtsCommands\rtsCommDelayTime.cs" />
+    <Compile Include="rtsCommands\rtsCommSyncTime.cs" />
+    <Compile Include="rtsCommands\rtsCommAttackSceneItem.cs" />
+    <Compile Include="rtsCommands\rtsCommStartAttackSceneItem.cs" />
+    <Compile Include="SceneItems\Structs\AttackByLastItemType.cs" />
+    <Compile Include="SceneItems\BuildingScenePoolItem.cs" />
+    <Compile Include="SceneItems\Enums\AIOrderType.cs" />
+    <Compile Include="SceneItems\Enums\DefenseAIStance.cs" />
+    <Compile Include="SceneItems\DefenseScenePoolItem.cs" />
+    <Compile Include="SceneItems\Enums\ItemStates.cs" />
+    <Compile Include="MemoryPool\Interfaces\IPoolNodeSceneItem.cs" />
+    <Compile Include="SceneItems\KillSceneItemManager.cs" />
+    <Compile Include="SceneItems\Structs\KillSceneItemStruct.cs" />
+    <Compile Include="SceneItems\PoolItem.cs" />
+    <Compile Include="SceneItems\SciFiAircraftScenePoolItem.cs" />
+    <Compile Include="SceneItems\SciFiTankScenePoolItem.cs" />
+    <Compile Include="SceneItems\Structs\ItemMoveState.cs" />
+    <Compile Include="SceneItems\ScenaryDataReader.cs" />
+    <Compile Include="SceneItems\Structs\ScenaryItemData.cs" />
+    <Compile Include="SceneItems\SciFiAircraftScene.cs" />
+    <Compile Include="SceneItems\DefenseScene.cs" />
+    <Compile Include="SceneItems\Structs\TurretAttributes.cs" />
+    <Compile Include="SceneItems\SceneItemWithPickComparer.cs" />
+    <Compile Include="ScreenManagerC\DeferredRenderingStyle.cs" />
+    <Compile Include="ScreenManagerC\Enums\ScreenState.cs" />
+    <Compile Include="GameScreens\Generic\MenuPanes.cs" />
+    <Compile Include="GameScreens\Generic\MenuPaneItem.cs" />
+    <Compile Include="ItemTypeAttributes\MessageItemTypeAtts.cs" />
+    <Compile Include="ItemTypeAttributes\ScenaryItemTypeAtts.cs" />
+    <Compile Include="Networking\NetworkGameComponent.cs" />
+    <Compile Include="Particles\ParticlesManager.cs" />
+    <Compile Include="rtsCommands\rtsCommAddSceneItem.cs" />
+    <Compile Include="rtsCommands\rtsCommand.cs" />
+    <Compile Include="rtsCommands\rtsCommMoveSceneItem.cs" />
+    <Compile Include="Networking\RollingAverage.cs" />
+    <Compile Include="SceneItems\BuildingScene.cs" />
+    <Compile Include="SceneItems\SciFiTankScene.cs" />
+    <Compile Include="ScreenManagerC\InputState.cs" />
+    <Compile Include="ScreenManagerC\MessageDisplayComponent.cs" />
+    <Compile Include="Networking\AvailableSessionMenuEntry.cs" />
+    <Compile Include="Networking\CreateOrFindSessionScreen.cs" />
+    <Compile Include="Networking\JoinSessionScreen.cs" />
+    <Compile Include="Networking\LobbyScreen.cs" />
+    <Compile Include="Networking\NetworkBusyScreen.cs" />
+    <Compile Include="Networking\NetworkErrorScreen.cs" />
+    <Compile Include="Networking\NetworkSessionComponent.cs" />
+    <Compile Include="Networking\OperationCompletedEventArgs.cs" />
+    <Compile Include="Networking\ProfileSignInScreen.cs" />
+    <Compile Include="ScreenManagerC\GameScreen.cs" />
+    <Compile Include="ScreenManagerC\ScreenManager.cs" />
+    <Compile Include="GameScreens\Generic\BackgroundScreen.cs" />
+    <Compile Include="GameScreens\TerrainScreen.cs" />
+    <Compile Include="GameScreens\Generic\LoadingScreen.cs" />
+    <Compile Include="GameScreens\Generic\MainMenuScreen.cs" />
+    <Compile Include="GameScreens\Generic\MenuEntry.cs" />
+    <Compile Include="GameScreens\Generic\MenuScreen.cs" />
+    <Compile Include="GameScreens\Generic\MessageBoxScreen.cs" />
+    <Compile Include="GameScreens\Generic\PauseMenuScreen.cs" />
+    <Compile Include="Shadows\Enums\DebugIsFor.cs" />
+    <Compile Include="Shadows\ShadowItem.cs" />
+    <Compile Include="Shadows\ShadowMap.cs" />
+    <Compile Include="Shadows\Enums\ShadowQuality.cs" />
+    <Compile Include="Shadows\Structs\ShadowMapData.cs" />
+    <Compile Include="ItemTypeAttributes\ItemTypeAtts.cs" />
+    <Compile Include="Shapes\BuildingShape.cs" />
+    <Compile Include="Shapes\DefenseShape.cs" />
+    <Compile Include="Shapes\Enums\ModelType.cs" />
+    <Compile Include="Shapes\Enums\VehicleType.cs" />
+    <Compile Include="Shapes\ScenaryItemShape.cs" />
+    <Compile Include="Shapes\SciFiAircraftShape.cs" />
+    <Compile Include="Shapes\SciFiTankShape.cs" />
+    <Compile Include="Shapes\Shape.cs" />
+    <Compile Include="Shapes\ShapeWithPick.cs" />
+    <Compile Include="Shapes\VehicleShape.cs" />
+    <Compile Include="SkyDomes\SkyDome.cs" />
+    <Compile Include="ParallelTasks\ForceBehaviorsParallelFor.cs" />
+    <Compile Include="SkyDomes\Structs\VertexPosition.cs" />
+    <Compile Include="ForceBehaviors\Enums\Behaviors.cs" />
+    <Compile Include="ForceBehaviors\AbstractBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\ArriveBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\CohesionBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\AlignmentBehavior.cs" />
+    <Compile Include="ForceBehaviors\Enums\Deceleration.cs" />
+    <Compile Include="ForceBehaviors\TurretBehaviors\DefenseTurretBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\ObstacleAvoidanceBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\SeparationBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\FleeBehavior.cs" />
+    <Compile Include="ForceBehaviors\ForceBehaviorsManager.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\WanderBehavior.cs" />
+    <Compile Include="ForceBehaviors\TurretBehaviors\TurnTurretBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\TurnToFaceBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\UpdateOrientationBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\OffsetPursuitBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\FollowPathBehavior.cs" />
+    <Compile Include="ForceBehaviors\SteeringBehaviors\SeekBehavior.cs" />
+    <Compile Include="ForceBehaviors\ForceBehaviorsCalculator.cs" />
+    <Compile Include="ForceBehaviors\Structs\BehaviorsTimeSpan.cs" />
+    <Compile Include="TerrainTools\MainMenuToolRoutines.cs" />
+    <Compile Include="TerrainTools\TerrainPaintToolRoutines.cs" />
+    <Compile Include="TerrainTools\TerrainItemToolRoutines.cs" />
+    <Compile Include="TerrainTools\Enums\HeightTool.cs" />
+    <Compile Include="TerrainTools\Enums\ItemsTool.cs" />
+    <Compile Include="TerrainTools\Enums\PaintTool.cs" />
+    <Compile Include="TerrainTools\ListViewWayPointsPaths.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TerrainTools\MainMenuTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TerrainTools\MainMenuTool.Designer.cs">
+      <DependentUpon>MainMenuTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TerrainTools\PropertiesToolsMaterialParams.cs" />
+    <Compile Include="TerrainTools\SaveMapsTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TerrainTools\SaveMapsTool.Designer.cs">
+      <DependentUpon>SaveMapsTool.cs</DependentUpon>
+    </Compile>
+    <None Include="runtime.lic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TerrainTools\Obsolete\ItemsTools.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="TerrainTools\Obsolete\ItemsTools.designer.cs">
+      <DependentUpon>ItemsTools.cs</DependentUpon>
+    </None>
+    <None Include="TerrainTools\Obsolete\HeightTools.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="TerrainTools\Obsolete\HeightTools.Designer.cs">
+      <DependentUpon>HeightTools.cs</DependentUpon>
+    </None>
+    <Compile Include="TerrainTools\LoadMapsTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TerrainTools\LoadMapsTool.Designer.cs">
+      <DependentUpon>LoadMapsTool.cs</DependentUpon>
+    </Compile>
+    <None Include="TerrainTools\Obsolete\PaintTools.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="TerrainTools\Obsolete\PaintTools.designer.cs">
+      <DependentUpon>PaintTools.cs</DependentUpon>
+    </None>
+    <None Include="Particles\Obsolete\ParticleEmitter.cs" />
+    <None Include="Particles\Obsolete\ParticleSettings.cs" />
+    <None Include="Particles\Obsolete\ParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\ExplosionParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\SmallExplosionSmokeParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\FireParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\ProjectileTrailParticleSystem.cs" />
+    <Compile Include="Particles\ParticleSystems\SmokePlumeParticleSystem.cs" />
+    <None Include="Particles\Obsolete\ParticleVertex.cs" />
+    <Compile Include="Particles\Projectile.cs" />
+    <Compile Include="TerrainTools\PropertiesTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TerrainTools\PropertiesTools.Designer.cs">
+      <DependentUpon>PropertiesTools.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SceneItems\SceneItemWithPick.cs" />
+    <Compile Include="GameCamera\Camera.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="SceneItems\VehicleScene.cs" />
+    <Compile Include="SceneItems\ScenaryItemScene.cs" />
+    <Compile Include="TerrainTools\Structs\MaterialControls.cs" />
+    <Compile Include="TerrainTools\Structs\MaterialParameters.cs" />
+    <Compile Include="TerrainTools\TerrainEditRoutines.cs" />
+    <Compile Include="TerrainTools\TerrainHeightToolRoutines.cs" />
+    <Compile Include="TerrainTools\TerrainWPFTools.cs" />
+    <Compile Include="TerrainTools\WaterAtts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TerrainTools\WaterAtts.Designer.cs">
+      <DependentUpon>WaterAtts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Terrain\PopulatePathNodesParallelFor.cs" />
+    <Compile Include="Terrain\Enums\TerrainLightingType.cs" />
+    <Compile Include="Terrain\Structs\QuadToRayIntersection.cs" />
+    <Compile Include="Terrain\TerrainDirectionalIcon.cs" />
+    <Compile Include="Terrain\TerrainPerlinClouds.cs" />
+    <Compile Include="Terrain\TerrainQuadTessellater.cs" />
+    <Compile Include="Terrain\TerrainTriggerAreas.cs" />
+    <Compile Include="Terrain\Enums\LOD.cs" />
+    <Compile Include="Terrain\Enums\QuadSection.cs" />
+    <Compile Include="Terrain\Structs\blueTexCube.cs" />
+    <Compile Include="Terrain\Enums\DrawMode.cs" />
+    <Compile Include="Terrain\Enums\PickRayScale.cs" />
+    <Compile Include="Terrain\Enums\GraphicsLevel.cs" />
+    <Compile Include="Terrain\Enums\QuadAdjacent.cs" />
+    <Compile Include="Terrain\HeightDataReader.cs" />
+    <None Include="Terrain\HeightMapInfoReader.cs" />
+    <Compile Include="Terrain\Enums\LayerGroup.cs" />
+    <Compile Include="Terrain\Structs\pickTriangles.cs" />
+    <Compile Include="Terrain\Structs\PerlinNoiseData.cs" />
+    <Compile Include="Terrain\Structs\MapMarkerPositions.cs" />
+    <Compile Include="Terrain\TerrainAlphaMaps.cs" />
+    <Compile Include="Terrain\TerrainAreaSelect.cs" />
+    <Compile Include="Terrain\TerrainData.cs" />
+    <Compile Include="Terrain\TerrainHeightData.cs" />
+    <Compile Include="Terrain\Enums\TerrainIsIn.cs" />
+    <Compile Include="Terrain\TerrainPickingRoutines.cs" />
+    <Compile Include="Terrain\TerrainScene.cs" />
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+    <None Include="1ContentZipped\ContentScenary_x86.xzb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentZipped\ContentTextures_low_x86.xzb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentZipped\ContentTextures_med_x86.xzb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="app.config" />
+    <None Include="GameData\Misc\MessageItemTypeAtts.sav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\Misc\PlayableItemTypeAtts.sav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="GameData\Misc\ScenaryItemTypeAtts.sav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\x86\InterfaceTiles\Aircrafts\SciFi_Bomber01_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Aircrafts\SciFi_Bomber06_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Aircrafts\SciFi_Bomber07_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Aircrafts\SciFi_Gunship02_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Aircrafts\SciFi_Heli01_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Aircrafts\SciFi_Heli02_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld01_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld02_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld03_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld04_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld05_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld06_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld07_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld08_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld09_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld10_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set1\SciFi_Bld11_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB01_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB02_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB03_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB04_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB05_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB06_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB07_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB08_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB09_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB10_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB11_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB12_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB13_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB14_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Buildings\Set2\SciFi_BldB15_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Defenses\SciFi_AAGun01_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Defenses\SciFi_AAGun02_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Defenses\SciFi_AAGun04_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Defenses\SciFi_AAGun05_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\EnergyOff.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\FlagMarker.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileBlueOff.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileBlueOn.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileBlueRdy.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileGC_Airplanes.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileGC_Buildings.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileGC_People.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileGC_Selected.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileGC_Shields.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileGC_Vehicles.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileGreyOff.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\IFDTileMinimapWrap.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\NetworkBusyIcon.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\RoundMeterClock.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\RoundMeterClock_75.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\statusBarContainer.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\statusBarGreen.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\statusBarOrange.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\statusBarRed.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\statusBarYellow.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\tmpFactorTileOn.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\tmpWindMillTile.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\tmpWindMillTileOn.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Artilery01_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Jeep01_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Jeep03_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank01_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank02_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank03_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank04_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank05_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank06_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank07_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank08_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank09_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank10_Pic.xnb" />
+    <None Include="Resources\x86\InterfaceTiles\Vehicles\SciFi_Tank11_Pic.xnb" />
+    <None Include="Resources\x86\Textures\chat_able.xnb" />
+    <None Include="Resources\x86\Textures\chat_mute.xnb" />
+    <None Include="Resources\x86\Textures\chat_ready.xnb" />
+    <None Include="Resources\x86\Textures\chat_talking.xnb" />
+    <None Include="Resources\x86\Textures\MenuBackgroundImage1a.xnb" />
+    <None Include="Resources\x86\Textures\MenuBackgroundImage1b.xnb" />
+    <None Include="Resources\x86\Textures\MenuBackgroundSpaceEclipse.xnb" />
+    <None Include="XNA_RTS2008.snk" />
+    <None Include="XNA_RTS2008_TemporaryKey.pfx" />
+    <Compile Include="Players\Player.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BeginGame\Program.cs" />
+    <Compile Include="SceneItems\SceneItem.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Audio\AudioManager.cs" />
+    <Compile Include="BeginGame\TemporalWars3DEngine.cs" />
+    <None Include="Terrain\HeightMapInfo.cs" />
+    <Compile Include="Terrain\TerrainQuadTree.cs" />
+    <Compile Include="Terrain\TerrainShape.cs" />
+    <Compile Include="Terrain\Structs\TerrainQuadPatch.cs" />
+    <Compile Include="Terrain\TerrainStorageRoutines.cs" />
+    <Compile Include="Terrain\TerrainVisualCircles.cs" />
+    <Compile Include="Terrain\Structs\VertexMultitextured_Stream1.cs" />
+    <Compile Include="Terrain\Structs\VertexMultitextured_Stream2.cs" />
+    <Compile Include="Terrain\Structs\VertexMultitexturedDeclaration.cs" />
+    <Compile Include="Terrain\Structs\VertexMultitextured_Stream3.cs" />
+    <Compile Include="Terrain\Enums\VertexBufferComponent.cs" />
+    <Compile Include="Terrain\Structs\TexturesGroupData.cs" />
+    <Compile Include="Terrain\Structs\TexturesAtlasData.cs" />
+    <Compile Include="Terrain\Enums\ToolType.cs" />
+    <Compile Include="Terrain\Enums\TessellateLevel.cs" />
+    <Compile Include="Terrain\Structs\VisualCircleRadius.cs" />
+    <Compile Include="Terrain\TerrainWaypoints.cs" />
+    <Compile Include="Terrain\Structs\TriggerAreaStruct.cs" />
+    <Compile Include="Terrain\Structs\TriggerAreaStructToSave.cs" />
+    <Compile Include="Terrain\Structs\WaypointPathsSaveStruct.cs" />
+    <Compile Include="Terrain\Structs\WaypointsSaveStruct.cs" />
+    <Compile Include="Terrain\Structs\WaypointStruct.cs" />
+    <Compile Include="Utilities\AveragerForFloats.cs" />
+    <Compile Include="Utilities\Compression\CopyEncoder.cs" />
+    <Compile Include="Utilities\Compression\DeflateInput.cs" />
+    <Compile Include="Utilities\Compression\Deflater.cs" />
+    <Compile Include="Utilities\Compression\DeflateStream.cs" />
+    <Compile Include="Utilities\Compression\DeflateStreamAsyncResult.cs" />
+    <Compile Include="Utilities\Compression\Enums\BlockType.cs" />
+    <Compile Include="Utilities\Compression\Enums\CompressionMode.cs" />
+    <Compile Include="Utilities\Compression\Enums\InflaterState.cs" />
+    <Compile Include="Utilities\Compression\Enums\MatchState.cs" />
+    <Compile Include="Utilities\Compression\FastEncoder.cs" />
+    <Compile Include="Utilities\Compression\FastEncoderStatics.cs" />
+    <Compile Include="Utilities\Compression\FastEncoderWindow.cs" />
+    <Compile Include="Utilities\Compression\HuffmanTree.cs" />
+    <Compile Include="Utilities\Compression\IFileFormatReader.cs" />
+    <Compile Include="Utilities\Compression\IFileFormatWriter.cs" />
+    <Compile Include="Utilities\Compression\Inflater.cs" />
+    <Compile Include="Utilities\Compression\InputBuffer.cs" />
+    <Compile Include="Utilities\Compression\Match.cs" />
+    <Compile Include="Utilities\Compression\OutputBuffer.cs" />
+    <Compile Include="Utilities\Compression\OutputWindow.cs" />
+    <Compile Include="Utilities\Compression\SR.cs" />
+    <Compile Include="Utilities\Enums\ImageFileFormat.cs" />
+    <Compile Include="Utilities\MathUtils.cs" />
+    <Compile Include="MemoryPool\Pool.cs" />
+    <Compile Include="MemoryPool\PoolManager.cs" />
+    <Compile Include="ItemTypeAttributes\Structs\ScenaryItemTypeAttributes.cs" />
+    <Compile Include="Utilities\Enums\StorageLocation.cs" />
+    <Compile Include="Utilities\Structs\SaveItemTypesData.cs" />
+    <Compile Include="Utilities\Structs\SelectablesDataProperties.cs" />
+    <Compile Include="Utilities\Structs\SaveTerrainSelectablesData.cs" />
+    <Compile Include="Utilities\Structs\ScenaryDataProperties.cs" />
+    <Compile Include="Utilities\Structs\SaveTerrainScenaryData.cs" />
+    <Compile Include="Utilities\Structs\SaveTerrainData.cs" />
+    <Compile Include="Utilities\AveragerForVector3.cs" />
+    <Compile Include="Utilities\Storage.cs" />
+    <Compile Include="Utilities\TriangleShapeHelper.cs" />
+    <Compile Include="Utilities\ZippedContent.cs" />
+    <Compile Include="VehicleTypes\VehicleSceneType.cs" />
+    <Compile Include="VehicleTypes\VehicleShapeType.cs" />
+    <Compile Include="Viewports\GameViewport.cs" />
+    <Compile Include="Viewports\Structs\GameViewPortItem.cs" />
+    <Compile Include="Water\Ocean.cs" />
+    <Compile Include="Water\Enums\ViewPortTexture.cs" />
+    <Compile Include="Water\Lake.cs" />
+    <Compile Include="Water\Structs\WaterData.cs" />
+    <Compile Include="Water\WaterBase.cs" />
+    <Compile Include="Water\WaterManager.cs" />
+    <Compile Include="Water\Enums\WaterType.cs" />
+    <Reference Include="DeployLX.Licensing.v4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\XHEO\DeployLX\v4.1\Redistributable\.NET 2.0\Encrypted (32-bit)\DeployLX.Licensing.v4.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="0LateBinds\x86\AStarComponentLibrary.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="0LateBinds\x86\RTS_FogOfWarComponentLibrary.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="0LateBinds\x86\RTS_MinimapComponentLibrary.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="0LateBinds\x86\RTS_StatusBarComponentLibrary.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="0References\DeployLX.Licensing.Management.v4.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="0References\DeployLX.Licensing.Nlm.v4.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="0References\DeployLX.Licensing.v4.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="0References\fbDeprofiler.dll" />
+    <Content Include="0References\HeightDataPipeline.dll" />
+    <Content Include="0References\InstancedModelPipeline.dll" />
+    <Content Include="0References\IronMath.dll" />
+    <Content Include="0References\IronPython.dll" />
+    <Content Include="0References\IronPython.Modules.dll" />
+    <Content Include="0References\Microsoft.Dynamic.dll" />
+    <Content Include="0References\Microsoft.Scripting.Debugging.dll" />
+    <Content Include="0References\Microsoft.Scripting.dll" />
+    <Content Include="0References\NGenerics.dll" />
+    <Content Include="0References\NGenerics.UI.dll" />
+    <Content Include="0References\ScenaryDataPipeline.dll" />
+    <Content Include="NxCharacter.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NxCooking.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXLoader.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="settings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SpacewarThumbnail.png" />
+    <Content Include="XNA_RTS2008.sdm" />
+    <EmbeddedResource Include="Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerrainTools\MainMenuTool.resx">
+      <DependentUpon>MainMenuTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerrainTools\SaveMapsTool.resx">
+      <DependentUpon>SaveMapsTool.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerrainTools\Obsolete\ItemsTools.resx">
+      <DependentUpon>ItemsTools.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerrainTools\Obsolete\HeightTools.resx">
+      <DependentUpon>HeightTools.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerrainTools\LoadMapsTool.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LoadMapsTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerrainTools\Obsolete\PaintTools.resx">
+      <DependentUpon>PaintTools.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerrainTools\PropertiesTools.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PropertiesTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Spacewar_Template.ico" />
+    <EmbeddedResource Include="TerrainTools\WaterAtts.resx">
+      <DependentUpon>WaterAtts.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <NestedContentProject Include="ContentMaps\ContentMaps.contentproj">
+      <Project>14825eb9-d62a-47d3-ab28-706354735ceb</Project>
+      <Visible>false</Visible>
+    </NestedContentProject>
+    <NestedContentProject Include="Content\Content.contentproj">
+      <ContentRootPath>Content</ContentRootPath>
+      <Visible>False</Visible>
+    </NestedContentProject>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Xna.Framework.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="0LateBinds\XBox360\" />
+    <Folder Include="1ContentZipped\UnZipScenary\x86\" />
+    <Folder Include="Explosions\Documentation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AStarInterfaces\AStarInterfaces.csproj">
+      <Project>{D06567C5-43D7-4877-9FFD-325F9DAB5EEC}</Project>
+      <Name>AStarInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BenScharbachTWScriptingInterfaces\BenScharbachTWScriptingInterfaces.csproj">
+      <Project>{154CA226-DE78-4999-9714-AE8CD16F7E64}</Project>
+      <Name>BenScharbachTWScriptingInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CompileContentMaps\CompileContentMaps\ContentMaps\ContentMaps.contentproj">
+      <Project>{690986AE-0D12-40EE-A133-35D47C6DF120}</Project>
+      <Name>ContentMaps</Name>
+      <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
+    <ProjectReference Include="..\ParallelTasksComponent\ParallelTasksComponent.csproj">
+      <Project>{81F2C524-E118-475B-A960-2A2659272DD0}</Project>
+      <Name>ParallelTasksComponent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Particles3DComponentLibrary\Particles3DComponentLibrary.csproj">
+      <Project>{74DCA318-2E3F-40DE-BF8E-F82A589406D9}</Project>
+      <Name>Particles3DComponentLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PerfTimersComponent\PerfTimersComponent.csproj">
+      <Project>{6E2CD990-6DC5-460E-B530-E42D932CD004}</Project>
+      <Name>PerfTimersComponent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RTS_FogOfWarInterfaces\RTS_FogOfWarInterfaces.csproj">
+      <Project>{065070DA-60F2-45B4-B61B-55A3171CD6A0}</Project>
+      <Name>RTS_FogOfWarInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RTS_MinimapInterfaces\RTS_MinimapInterfaces.csproj">
+      <Project>{F5B40DA6-CF7A-4FC6-8537-0CB453B6A775}</Project>
+      <Name>RTS_MinimapInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RTS_StatusBarInterfaces\RTS_StatusBarInterfaces.csproj">
+      <Project>{C7A88CC2-424C-4A13-A829-45A536AD041E}</Project>
+      <Name>RTS_StatusBarInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScreenTextDisplayer\ScreenTextDisplayer.csproj">
+      <Project>{792AE2D7-7B3D-4B97-A488-3E2E1A7F3466}</Project>
+      <Name>ScreenTextDisplayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleQuadDrawer\SimpleQuadDrawer.csproj">
+      <Project>{60104248-015A-4991-B9AC-3597D27EA5D5}</Project>
+      <Name>SimpleQuadDrawer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpeedCollectionComponent\SpeedCollectionComponent.csproj">
+      <Project>{932439F3-ECF4-46B7-A517-3F7BD4587EE4}</Project>
+      <Name>SpeedCollectionComponent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TemporalWarInterfaces\TemporalWarInterfaces.csproj">
+      <Project>{3AAA1C51-AC48-40FC-8108-3D3495FA9CC6}</Project>
+      <Name>TemporalWarInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TWTerrainToolsWPF\TWTerrainToolsWPF\TWTerrainToolsWPF.csproj">
+      <Project>{029FCB50-0A9B-423B-91D4-ED492D1AE314}</Project>
+      <Name>TWTerrainToolsWPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TWTerrainToolsWPF\TWTerrainTools_Interfaces\TWTerrainTools_Interfaces.csproj">
+      <Project>{7CADFF7B-95D1-407B-B97A-DB605D0FFCAA}</Project>
+      <Name>TWTerrainTools_Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="Content\ContentEmpty.contentproj">
+      <Project>{17496DB1-81B5-48C6-8C0F-9B29FC4CC631}</Project>
+      <Name>ContentEmpty %28ContentProjects\ContentEmpty\ContentEmpty%29</Name>
+      <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" Condition="" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
