@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RTS_StatusBarInterfaces</name>
+    </assembly>
+    <members>
+        <member name="T:TWEngine.IStatusBarItem">
+            <summary>
+            Represents a single <see cref="T:TWEngine.IStatusBarItem"/> for a <see cref="T:TWEngine.IStatusBarSceneItem"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.DrawStatusBar">
+            <summary>
+            Enable display of <see cref="T:TWEngine.IStatusBarItem"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.StatusBarCurrentValue">
+            <summary>
+            Current value to show in <see cref="T:TWEngine.IStatusBarItem"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.StatusBarLength">
+            <summary>
+            Length of <see cref="T:TWEngine.IStatusBarItem"/> container
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.StatusBarOffsetPosition2D">
+            <summary>
+            Offset position to draw <see cref="T:TWEngine.IStatusBarItem"/>, from root position.
+            This is because usually the root position given for a <see cref="T:TWEngine.IStatusBarSceneItem"/>, 
+            is not the best place to draw the <see cref="T:TWEngine.IStatusBarItem"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.StatusBarStartValue">
+            <summary>
+            Starting value which defines a full <see cref="T:TWEngine.IStatusBarItem"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.StatusBarWorldPosition">
+            <summary>
+            World 3D position to draw <see cref="T:TWEngine.IStatusBarItem"/>; 
+            </summary>
+            <remarks>Offset 
+            can also be applied to this value using the <see cref="P:TWEngine.IStatusBarItem.StatusBarOffsetPosition2D"/>
+            property.</remarks>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.ShowEnergyOffSymbol">
+            <summary>
+            Display EnergyOff icon when power value is less than zero.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.InUse">
+            <summary>
+            Identifies if the <see cref="T:TWEngine.IStatusBarItem"/> is currently in use.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.IndexInArray">
+            <summary>
+            Index of <see cref="T:TWEngine.IStatusBarItem"/> in internal array.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.SceneItemOwner">
+            <summary>
+            <see cref="T:TWEngine.IStatusBarSceneItem"/> which owns this <see cref="T:TWEngine.IStatusBarItem"/> instance.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.StatusBarShape">
+            <summary>
+            Rectangle which defines this <see cref="T:TWEngine.IStatusBarItem"/>'s shape.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarItem.StatusBarContainerShape">
+            <summary>
+            Rectangle which defines this <see cref="T:TWEngine.IStatusBarItem"/>'s container shape.
+            </summary>
+        </member>
+        <member name="T:TWEngine.IStatusBarEngineRef">
+            <summary>
+            Required reference to game engine.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarEngineRef.ContentMiscLoc">
+            <summary>
+             Provides Content Misc project folder location.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarEngineRef.Players">
+            <summary>
+            Provide reference to <see cref="T:TWEngine.IStatusBarPlayer"/> collection.
+            </summary>
+        </member>
+        <member name="T:TWEngine.IStatusBarPlayer">
+            <summary>
+            Provides the energy value from the defined <see cref="T:TWEngine.IStatusBarPlayer"/> instance.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarPlayer.EnergyOff">
+            <summary>
+            Allows the <see cref="T:TWEngine.IStatusBarPlayer"/> class instance to check the EnergyOff status.
+            </summary>
+        </member>
+        <member name="T:TWEngine.NamespaceDoc">
+             <summary>
+             The <see cref="N:TWEngine"/> namespace contains the enum
+            
+             </summary>
+        </member>
+        <member name="T:TWEngine.IStatusBar">
+            <summary>
+            The <see cref="T:TWEngine.IStatusBar"/> or (Health Bar) is a game mechanic used in computer
+            and video games to give value to characters, enemies, NPCs, and related objects.
+            </summary>
+        </member>
+        <member name="M:TWEngine.IStatusBar.AddNewStatusBarItem(TWEngine.IStatusBarSceneItem,TWEngine.IStatusBarItem@)">
+            <summary>
+            Adds a <see cref="T:TWEngine.IStatusBarItem"/> instance to display.
+            </summary>
+            <param name="sceneItemOwner"><see cref="T:TWEngine.IStatusBarSceneItem"/> instance </param>
+            <param name="statusBarItem">(OUT) <see cref="T:TWEngine.IStatusBarItem"/></param>
+        </member>
+        <member name="M:TWEngine.IStatusBar.RemoveStatusBarItem(TWEngine.IStatusBarItem@)">
+            <summary>
+            Removes a <see cref="T:TWEngine.IStatusBarItem"/> instance from the display, by simply changing the
+            internal flag to 'InUse=False'.
+            </summary>
+            <param name="statusBarItem"><see cref="T:TWEngine.IStatusBarItem"/> reference to remove </param>
+        </member>
+        <member name="M:TWEngine.IStatusBar.UpdateStatusBarItem(TWEngine.IStatusBarItem@)">
+            <summary>
+            Allows updating a <see cref="T:TWEngine.IStatusBarItem"/> instance.
+            </summary>
+            <param name="statusBarItem"><see cref="T:TWEngine.IStatusBarItem"/> to update </param>
+        </member>
+        <member name="M:TWEngine.IStatusBar.ClearAllStatusBarItems">
+            <summary>
+            Clears out all <see cref="T:TWEngine.IStatusBarItem"/> from the internal collection.
+            </summary>
+        </member>
+        <member name="M:TWEngine.IStatusBar.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Allows the game component to draw itself.
+            </summary>
+            <param name="gameTime">Provides the GameTime instance</param>
+        </member>
+        <member name="T:TWEngine.IStatusBarSceneItem">
+            <summary>
+            The <see cref="T:TWEngine.IStatusBarSceneItem"/> is the base class, which provides the primary funtions
+            for any <see cref="T:TWEngine.IStatusBarSceneItem"/>.  This includes updating the transforms for position data, 
+            updating attributes, like current health, etc.
+            This class inherts from a collection of <see cref="T:TWEngine.IStatusBarSceneItem"/>, allowing a single item to have
+            multiple children of <see cref="T:TWEngine.IStatusBarSceneItem"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarSceneItem.PlayerNumber">
+            <summary>
+            The <see cref="T:TWEngine.IStatusBarPlayer"/> number this <see cref="T:TWEngine.IStatusBarSceneItem"/> belongs to.
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarSceneItem.PickSelected">
+            <summary>
+            This <see cref="T:TWEngine.IStatusBarSceneItem"/> is pick selected?
+            </summary>
+        </member>
+        <member name="P:TWEngine.IStatusBarSceneItem.PickHovered">
+            <summary>
+            Is this <see cref="T:TWEngine.IStatusBarSceneItem"/> currently pick hovered by cursor?
+            </summary>
+        </member>
+    </members>
+</doc>

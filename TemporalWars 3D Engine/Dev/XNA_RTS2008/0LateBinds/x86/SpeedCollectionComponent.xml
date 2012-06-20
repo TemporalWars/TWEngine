@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SpeedCollectionComponent</name>
+    </assembly>
+    <members>
+        <member name="T:SpeedCollectionComponent.SpeedCollection`1">
+            <summary>
+            Generic <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>, which implements the <see cref="T:System.Collections.IDictionary"/> interface, but
+            stores values internally in a simple array.  This should be used in time-sensitive code,
+            where performance is critical!
+            </summary>
+            <remarks>
+            This should not be used for very large arrays, since the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> sets the requested
+            array size in memory twice; one collection for the 'Items', and the 2nd for tracking valid 'Keys'.  By eliminating
+            the need to micro-manage the memory, like with the <see cref="T:System.Collections.Generic.Dictionary`2"/> class, the Add, Remove, and
+            Check routines are FAST!  However, if memory is an issue, then use the regular <see cref="T:System.Collections.Generic.Dictionary`2"/> class.
+            </remarks>
+            <typeparam name="TValue">Generic <see cref="!:TValue"/> to use in collection</typeparam>
+        </member>
+        <member name="F:SpeedCollectionComponent.SpeedCollection`1.ThreadLock">
+            <summary>
+             ThreadLock object
+            </summary>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.#ctor(System.Int32)">
+            <summary>
+             Creates the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>, using the
+             given <paramref name="arraySize"/>.
+            </summary>
+            <param name="arraySize">Array size to use for new collection</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.Add(System.Collections.Generic.KeyValuePair{System.Int32,`0})">
+            <summary>
+            Adds an item to the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.Add(System.Int32,`0)">
+            <summary>
+            Adds an element with the provided key and value to the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <param name="key">The object to use as the key of the element to add.</param>
+            <param name="value">The object to use as the value of the element to add.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the given <paramref name="key"/> is less than zero.</exception>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.Clear">
+            <summary>
+            Removes all items from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.Contains(System.Collections.Generic.KeyValuePair{System.Int32,`0})">
+            <summary>
+            Determines whether the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> contains a specific value.
+            </summary>
+            <returns>
+            true if <paramref name="item"/> is found in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>; otherwise, false.
+            </returns>
+            <param name="item">The object to locate in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.ContainsKey(System.Int32)">
+            <summary>
+            Determines whether the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> contains an element with the specified key.
+            </summary>
+            <returns>
+            true if the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> contains an element with the key; otherwise, false.
+            </returns>
+            <param name="key">The key to locate in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.Remove(System.Collections.Generic.KeyValuePair{System.Int32,`0})">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <returns>
+            true if <paramref name="item"/> was successfully removed from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>; otherwise, false. This method also returns false if <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </returns>
+            <param name="item">The object to remove from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.Remove(System.Int32)">
+            <summary>
+            Removes the element with the specified key from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <returns>
+            true if the element is successfully removed; otherwise, false.  This method also returns false if <paramref name="key"/> 
+            was not found in the original <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </returns>
+            <param name="key">The key of the element to remove.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection`1.TryGetValue(System.Int32,`0@)">
+            <summary>
+            Gets the value associated with the specified key.
+            </summary>
+            <returns>
+            true if the object that implements <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> contains an element with the specified key; otherwise, false.
+            </returns>
+            <param name="key">The key whose value to get.</param>
+            <param name="value">When this method returns, the value associated with the specified key, 
+            if the key is found; otherwise, the default value for the type of the <paramref name="value"/> parameter. This parameter is passed uninitialized.
+                            </param>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection`1.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <returns>
+            The number of elements contained in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </returns>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the element with the specified key.
+            </summary>
+            <returns>
+            The element with the specified key.
+            </returns>
+            <param name="key">The key of the element to get or set.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is null.</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">The property is retrieved and <paramref name="key"/> is not found.</exception>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection`1.Keys">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the keys of the KeyNotFoundException.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.Generic.ICollection`1"/> containing the keys of the object that implements KeyNotFoundException.
+            </returns>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection`1.KeysReversed">
+            <summary>
+             Returns the internal keys in reverse order.
+            </summary>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection`1.Values">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the values in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.Generic.ICollection`1"/> containing the values in the object that implements <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </returns>
+        </member>
+        <member name="T:SpeedCollectionComponent.SpeedCollection">
+            <summary>
+            Generic <see cref="T:SpeedCollectionComponent.SpeedCollection"/>, which implements the <see cref="T:System.Collections.IDictionary"/> interface, but
+            stores values internally in a simple array.  This should be used in time-sensitive code,
+            where performance is critical!
+            </summary>
+            <remarks>
+            This should not be used for very large arrays, since the <see cref="T:SpeedCollectionComponent.SpeedCollection"/> sets the requested
+            array size in memory twice; one collection for the 'Items', and the 2nd for tracking valid 'Keys'.  By eliminating
+            the need to micro-manage the memory, like with the <see cref="T:System.Collections.Generic.Dictionary`2"/> class, the Add, Remove, and
+            Check routines are FAST!  However, if memory is an issue, then use the regular <see cref="T:System.Collections.Generic.Dictionary`2"/> class.
+            </remarks> 
+        </member>
+        <member name="F:SpeedCollectionComponent.SpeedCollection.ThreadLock">
+            <summary>
+             ThreadLock object
+            </summary>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.#ctor(System.Int32)">
+            <summary>
+             Creates the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>, using the
+             given <paramref name="arraySize"/>.
+            </summary>
+            <param name="arraySize">Array size to use for new collection</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.Add(System.Collections.Generic.KeyValuePair{System.Int32,System.Single})">
+            <summary>
+            Adds an item to the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.Add(System.Int32,System.Single)">
+            <summary>
+            Adds an element with the provided key and value to the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <param name="key">The object to use as the key of the element to add.</param>
+            <param name="value">The object to use as the value of the element to add.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the given <paramref name="key"/> is less than zero.</exception>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.Clear">
+            <summary>
+            Removes all items from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.Contains(System.Collections.Generic.KeyValuePair{System.Int32,System.Single})">
+            <summary>
+            Determines whether the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> contains a specific value.
+            </summary>
+            <returns>
+            true if <paramref name="item"/> is found in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>; otherwise, false.
+            </returns>
+            <param name="item">The object to locate in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.ContainsKey(System.Int32)">
+            <summary>
+            Determines whether the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> contains an element with the specified key.
+            </summary>
+            <returns>
+            true if the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> contains an element with the key; otherwise, false.
+            </returns>
+            <param name="key">The key to locate in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.Remove(System.Collections.Generic.KeyValuePair{System.Int32,System.Single})">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <returns>
+            true if <paramref name="item"/> was successfully removed from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>; otherwise, false. This method also returns false if <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </returns>
+            <param name="item">The object to remove from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.Remove(System.Int32)">
+            <summary>
+            Removes the element with the specified key from the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <returns>
+            true if the element is successfully removed; otherwise, false.  This method also returns false if <paramref name="key"/> 
+            was not found in the original <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </returns>
+            <param name="key">The key of the element to remove.</param>
+        </member>
+        <member name="M:SpeedCollectionComponent.SpeedCollection.TryGetValue(System.Int32,System.Single@)">
+            <summary>
+            Gets the value associated with the specified key.
+            </summary>
+            <returns>
+            true if the object that implements <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/> contains an element with the specified key; otherwise, false.
+            </returns>
+            <param name="key">The key whose value to get.</param>
+            <param name="value">When this method returns, the value associated with the specified key, 
+            if the key is found; otherwise, the default value for the type of the <paramref name="value"/> parameter. This parameter is passed uninitialized.
+                            </param>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <returns>
+            The number of elements contained in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </returns>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection.Item(System.Int32)">
+            <summary>
+            Gets or sets the element with the specified key.
+            </summary>
+            <returns>
+            The element with the specified key.
+            </returns>
+            <param name="key">The key of the element to get or set.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is null.</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">The property is retrieved and <paramref name="key"/> is not found.</exception>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection.Keys">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the keys of the KeyNotFoundException.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.Generic.ICollection`1"/> containing the keys of the object that implements KeyNotFoundException.
+            </returns>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection.KeysReversed">
+            <summary>
+             Returns the internal keys in reverse order.
+            </summary>
+        </member>
+        <member name="P:SpeedCollectionComponent.SpeedCollection.Values">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the values in the <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.Generic.ICollection`1"/> containing the values in the object that implements <see cref="T:SpeedCollectionComponent.SpeedCollection`1"/>.
+            </returns>
+        </member>
+    </members>
+</doc>
