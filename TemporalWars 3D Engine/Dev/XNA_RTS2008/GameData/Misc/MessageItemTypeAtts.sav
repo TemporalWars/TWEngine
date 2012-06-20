@@ -1,0 +1,661 @@
+<?xml version="1.0"?>
+<SaveItemTypesDataOfMessageTagDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <itemAttributes>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Refinery</string>
+      </Reqs>
+      <Description>
+        <string>The 1st SciFi building.</string>
+      </Description>
+      <ItemType>sciFiBlda01</ItemType>
+      <Title>Building 1</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+      </Reqs>
+      <Description>
+        <string>The 2nd cool building.</string>
+      </Description>
+      <ItemType>sciFiBlda02</ItemType>
+      <Title>Building 2</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Refinery</string>
+        <string>Barracks</string>
+      </Reqs>
+      <Description>
+        <string>The 3rd cool building.</string>
+      </Description>
+      <ItemType>sciFiBlda03</ItemType>
+      <Title>Building 3</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Refinery</string>
+      </Reqs>
+      <Description>
+        <string>The 4th SciFi building.</string>
+      </Description>
+      <ItemType>sciFiBlda04</ItemType>
+      <Title>Building 4</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Technology Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Barracks</string>
+      </Reqs>
+      <Description>
+        <string>The 5th cool Tech building.</string>
+      </Description>
+      <ItemType>sciFiBlda05</ItemType>
+      <Title>Building 5</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Technology Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Refinery</string>
+        <string>War Factory</string>
+        <string>Barracks</string>
+      </Reqs>
+      <Description>
+        <string>The best building.</string>
+        <string>Might just be too cool!</string>
+      </Description>
+      <ItemType>sciFiBlda06</ItemType>
+      <Title>Building 6</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Technology Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Refinery</string>
+      </Reqs>
+      <Description>
+        <string>The 7tn SciFi building.</string>
+      </Description>
+      <ItemType>sciFiBlda07</ItemType>
+      <Title>Building 7</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+      </Reqs>
+      <Description>
+        <string>The 8th cool building.</string>
+      </Description>
+      <ItemType>sciFiBlda08</ItemType>
+      <Title>Building 8</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Technology Center</string>
+        <string>War Factory</string>
+      </Reqs>
+      <Description>
+        <string>The 9th building.</string>
+      </Description>
+      <ItemType>sciFiBlda09</ItemType>
+      <Title>Building 9</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>HQ</string>
+      </Reqs>
+      <Description>
+        <string>Produces vehicles.</string>
+      </Description>
+      <ItemType>sciFiBldb01</ItemType>
+      <Title>War Factory</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>War Factory</string>
+        <string>Airport</string>
+      </Reqs>
+      <Description>
+        <string>Research Center</string>
+      </Description>
+      <ItemType>sciFiBldb02</ItemType>
+      <Title>Tech Upgrades</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Technology Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Refinery</string>
+      </Reqs>
+      <Description>
+        <string>The 3rd cool building.</string>
+      </Description>
+      <ItemType>sciFiBldb03</ItemType>
+      <Title>Building 3</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>War Factory</string>
+        <string>Airport</string>
+      </Reqs>
+      <Description>
+        <string>Research Center</string>
+      </Description>
+      <ItemType>sciFiBldb04</ItemType>
+      <Title>Tech Upgrades</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Technology Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>HQ</string>
+      </Reqs>
+      <Description>
+        <string>Provides energy for the base.</string>
+      </Description>
+      <ItemType>sciFiBldb05</ItemType>
+      <Title>Power Plant</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Technology Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+        <string>Refinery</string>
+        <string>War Factory</string>
+        <string>Barracks</string>
+      </Reqs>
+      <Description>
+        <string>The best building.</string>
+        <string>Might just be too cool!</string>
+      </Description>
+      <ItemType>sciFiBldb06</ItemType>
+      <Title>Building 6</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Technology Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+      </Reqs>
+      <Description>
+        <string>Produces income for the base.</string>
+      </Description>
+      <ItemType>sciFiBldb07</ItemType>
+      <Title>Refinery</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Supply Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+      </Reqs>
+      <Description>
+        <string>The 8th cool building.</string>
+      </Description>
+      <ItemType>sciFiBldb08</ItemType>
+      <Title>Building 8</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>HQ</string>
+      </Reqs>
+      <Description>
+        <string>Provides energy for the base.</string>
+      </Description>
+      <ItemType>sciFiBldb09</ItemType>
+      <Title>Power Plant</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Technology Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+      </Reqs>
+      <Description>
+        <string>Produces aircraft for the base.</string>
+      </Description>
+      <ItemType>sciFiBldb10</ItemType>
+      <Title>Airport</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>HQ</string>
+      </Reqs>
+      <Description>
+        <string>Produces vehicles for the base.</string>
+      </Description>
+      <ItemType>sciFiBldb11</ItemType>
+      <Title>War Factory</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+      </Reqs>
+      <Description>
+        <string>Produces income for the base.</string>
+      </Description>
+      <ItemType>sciFiBldb12</ItemType>
+      <Title>Supply Dropoff</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Supply Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Power Plant</string>
+      </Reqs>
+      <Description>
+        <string>Produces aircraft for the base.</string>
+      </Description>
+      <ItemType>sciFiBldb13</ItemType>
+      <Title>Airport</Title>
+      <Cost>$1000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>15</Energy>
+      <Type>Production Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None</string>
+      </Reqs>
+      <Description>
+        <string>HeadQuarters.</string>
+      </Description>
+      <ItemType>sciFiBldb14</ItemType>
+      <Title>HQ</Title>
+      <Cost>$2000</Cost>
+      <TimeToBuild>1</TimeToBuild>
+      <Energy>25</Energy>
+      <Type>HQ Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None</string>
+      </Reqs>
+      <Description>
+        <string>HeadQuarters.</string>
+      </Description>
+      <ItemType>sciFiBldb15</ItemType>
+      <Title>HQ</Title>
+      <Cost>$2000</Cost>
+      <TimeToBuild>1</TimeToBuild>
+      <Energy>25</Energy>
+      <Type>HQ Structure</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>Flag Marker</string>
+      </Reqs>
+      <Description>
+        <string>Location for unit to go to.</string>
+      </Description>
+      <ItemType>flagMarker</ItemType>
+      <Title>Flag Marker</Title>
+      <Cost>$0</Cost>
+      <TimeToBuild>0</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Marker Location</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong VS Vehicles.</string>
+      </Description>
+      <ItemType>sciFiTank01</ItemType>
+      <Title>Tank-1</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Medium Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Quick, light tank, which</string>
+        <string>can attack any other unit.</string>
+      </Description>
+      <ItemType>sciFiTank02</ItemType>
+      <Title>Tank-2</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Light Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong VS Vehicles.</string>
+      </Description>
+      <ItemType>sciFiTank03</ItemType>
+      <Title>Tank-3</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Medium Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Quick, light tank, which</string>
+        <string>can attack any other unit.</string>
+      </Description>
+      <ItemType>sciFiTank04</ItemType>
+      <Title>Tank-4</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Light Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Tank Desc needed.</string>
+      </Description>
+      <ItemType>sciFiTank05</ItemType>
+      <Title>Tank-5</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong VS Buildings.</string>
+      </Description>
+      <ItemType>sciFiTank06</ItemType>
+      <Title>Tank-6</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Medium Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong, heavy tank, which can</string>
+        <string>level buildings and other units.</string>
+      </Description>
+      <ItemType>sciFiTank07</ItemType>
+      <Title>Tank-7</Title>
+      <Cost>$2000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Heavy Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong VS Buildings.</string>
+      </Description>
+      <ItemType>sciFiTank08</ItemType>
+      <Title>Tank-8</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Medium Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong, heavy tank, which can</string>
+        <string>level buildings and other units.</string>
+      </Description>
+      <ItemType>sciFiTank09</ItemType>
+      <Title>Tank-9</Title>
+      <Cost>$2000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Heavy Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Artillery Tank, capable of</string>
+        <string>long range devasting attacks.</string>
+      </Description>
+      <ItemType>sciFiTank10</ItemType>
+      <Title>Tank-10</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Artillery Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Tank Desc needed.</string>
+      </Description>
+      <ItemType>sciFiTank11</ItemType>
+      <Title>Tank-11</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Tank</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Artillery Truck, capable of</string>
+        <string>long range devasting attacks.</string>
+        <string>NOTE: Attacks when still.</string>
+      </Description>
+      <ItemType>sciFiArtilery01</ItemType>
+      <Title>Artillery-1</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Artillery Truck</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>An anti-air unit.</string>
+      </Description>
+      <ItemType>sciFiJeep01</ItemType>
+      <Title>Jeep-1</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Anti-Air Jeep</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>An anti-air unit.</string>
+      </Description>
+      <ItemType>sciFiJeep03</ItemType>
+      <Title>Jeep-3</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Anti-Air Jeep</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong VS Vehicles.</string>
+      </Description>
+      <ItemType>sciFiHeli01</ItemType>
+      <Title>Helicopter-1</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Aircraft</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong VS Vehicles.</string>
+      </Description>
+      <ItemType>sciFiHeli02</ItemType>
+      <Title>Helicopter-2</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Aircraft</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Anti Air-unit.</string>
+      </Description>
+      <ItemType>sciFiGunShip02</ItemType>
+      <Title>Gunship</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Aircraft</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong VS Buildings.</string>
+      </Description>
+      <ItemType>sciFiBomber01</ItemType>
+      <Title>Bomber-1</Title>
+      <Cost>$3000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Aircraft</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Strong VS Buildings.</string>
+      </Description>
+      <ItemType>sciFiBomber06</ItemType>
+      <Title>Bomber-6</Title>
+      <Cost>$3000</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Aircraft</Type>
+    </MessageTagDescription>
+    <MessageTagDescription>
+      <Reqs>
+        <string>None.</string>
+      </Reqs>
+      <Description>
+        <string>Anti Air-unit.</string>
+      </Description>
+      <ItemType>sciFiBomber07</ItemType>
+      <Title>Gunship</Title>
+      <Cost>$500</Cost>
+      <TimeToBuild>5</TimeToBuild>
+      <Energy>0</Energy>
+      <Type>Aircraft</Type>
+    </MessageTagDescription>
+  </itemAttributes>
+</SaveItemTypesDataOfMessageTagDescription>
