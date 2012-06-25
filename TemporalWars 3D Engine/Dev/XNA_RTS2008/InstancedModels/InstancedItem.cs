@@ -68,13 +68,11 @@ namespace TWEngine.InstancedModels
 
         // 11/1/2009 - Content Zip files
 #if XBOX360
-        internal const string ContentplayableXzb = @"1ContentPlayable\";
-        internal const string ContentscenaryXzb = @"1ContentZipped\ContentScenary_Xbox 360.xzb";
-         internal const string ContentScenaryNonZip = @"1ContentZipped\UnZipScenary\Xbox360\"; // 6/3/2012
+        internal const string ContentplayableXzb = @"1ContentPlayable\xbox360\";
+        internal const string ContentscenaryXzb = @"1ContentScenary\xbox360\";
 #else
-        internal const string ContentplayableXzb = @"1ContentPlayable\";
-        internal const string ContentscenaryXzb = @"1ContentZipped\ContentScenary_x86.xzb";
-        internal const string ContentScenaryNonZip = @"1ContentZipped\UnZipScenary\x86\"; // 6/3/2012
+        internal const string ContentplayableXzb = @"1ContentPlayable\x86\";
+        internal const string ContentscenaryXzb = @"1ContentScenary\x86\";
 #endif
         // 3/3/2009 - TerrinShape
         private static ITerrainShape _terrainShape;
@@ -112,8 +110,7 @@ namespace TWEngine.InstancedModels
 
         // 11/1/2009 - Updated to use the 'ZippedContent' manager.
         internal static ContentManager PlayableItemsContentManager; // XNA 4.0 - Updated to non-zip content manager.
-        internal static ZippedContent ScenaryItemsContentManager; // 4/22/2009
-        internal static ContentManager ScenaryItemsNonZipContentManager; // 6/3/2012 - Temporay fix, to allow loading of Zipcontent items which failed to decompress!
+        internal static ContentManager ScenaryItemsContentManager; // 4/22/2009
 
         // Since each Instance of a class will be called to render, we need to set a flag to know when a 'Batch' of InstanceModels
         // has already been drawn for the given Render cycle, thereby only drawing the batch once per cycle.  The Flag is then reset
@@ -147,11 +144,7 @@ namespace TWEngine.InstancedModels
 
             // 4/22/2009
             if (ScenaryItemsContentManager == null)
-                ScenaryItemsContentManager = new ZippedContent(ContentscenaryXzb, game.Services);
-
-            // 6/3/2012 - Backup load solution for items which do not load during the ZipLoad routines.
-            if (ScenaryItemsNonZipContentManager == null)
-                ScenaryItemsNonZipContentManager = new ContentManager(game.Services){RootDirectory = ContentScenaryNonZip};
+                ScenaryItemsContentManager = new ContentManager(game.Services, ContentscenaryXzb);
                       
             // 3/3/2009
             _terrainShape = (ITerrainShape) game.Services.GetService(typeof (ITerrainShape));
@@ -2386,7 +2379,6 @@ namespace TWEngine.InstancedModels
             // 1/5/2010 - Call UnLoad for ContentManagers
             //PlayableItemsContentManager.Unload(); // Playable items
             ScenaryItemsContentManager.Unload(); // Scenary items
-            ScenaryItemsNonZipContentManager.Unload(); // 6/3/2012 - Scenary NonZip items.
 
             // set back to false.
             InitInstanceArrayListsCompleted = false;

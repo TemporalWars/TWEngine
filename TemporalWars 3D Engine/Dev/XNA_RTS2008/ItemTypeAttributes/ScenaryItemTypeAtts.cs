@@ -69,7 +69,7 @@ namespace TWEngine.ItemTypeAttributes
             const string contentUrbanPack = @"ContentUrbanPack\Urban\";
             const string contentSticksNTwigg = @"ContentSticksNTwiggPack\STPack\";
             const string alleypack = @"ContentAlleyPack\AlleyPack\";
-            const string downtowndistrictpack = @"ContentDowntownDistrictPack\DowntownDistrictPack\";
+            const string downtowndistrictpack = @"DowntownDistrictPack\";
             const string warehousedistrictpack = @"ContentWarehouseDistrictPack\WarehouseDistrictPack\";
 
             #region DesertSet
@@ -692,6 +692,21 @@ namespace TWEngine.ItemTypeAttributes
             // TombStone 9
             AddItemTypeAttributeToArray(ItemType.farmTombStone09, ModelType.InstanceModel, contentRTSPack + @"GraveYard\farmTombStone09", false, true,
                                         false, 0, false, 0, 0, false, string.Empty, 0);
+            // BarbWireCorner
+            AddItemTypeAttributeToArray(ItemType.barbWireCorner, ModelType.XNAModel, contentRTSPack + @"Fences\barbWire\barbWireCorner", false, false,
+                                        false, 0, false, 0, 0, false, string.Empty, 0);
+            // BarbWireStraight1
+            AddItemTypeAttributeToArray(ItemType.barbWireStraight01, ModelType.XNAModel, contentRTSPack + @"Fences\barbWire\barbWireStraight1", false, false,
+                                        false, 0, false, 0, 0, false, string.Empty, 0);
+            // Stone Wall Corner1
+            AddItemTypeAttributeToArray(ItemType.stoneWallCorner01, ModelType.XNAModel, contentRTSPack + @"Fences\stoneWall\stoneWallCorner1", false, false,
+                                        true, 1, false, 0, 0, false, string.Empty, 0);
+            // Stone Wall Straight1
+            AddItemTypeAttributeToArray(ItemType.stoneWallStraight01, ModelType.XNAModel, contentRTSPack + @"Fences\stoneWall\stoneWallStraight01", false, false,
+                                        true, 1, false, 0, 0, false, string.Empty, 0);
+            // Test SceneItemOwner
+            AddItemTypeAttributeToArray(ItemType.testItem, ModelType.XNAModel, contentRTSPack + @"Fences\stoneWall\stoneWallStraight1", false, false,
+                                        true, 1, false, 0, 0, false, string.Empty, 0); 
 
 
             #endregion
@@ -1981,27 +1996,7 @@ namespace TWEngine.ItemTypeAttributes
 
             #endregion
 
-            #region MiscItems
-
-
-            // BarbWireCorner
-            AddItemTypeAttributeToArray(ItemType.barbWireCorner, ModelType.XNAModel, contentInstancedModels  + @"Fences\barbWire\barbWireCorner", false, false,
-                                        false, 0, false, 0, 0, false, string.Empty, 0);           
-            // BarbWireStraight1
-            AddItemTypeAttributeToArray(ItemType.barbWireStraight01, ModelType.XNAModel, contentInstancedModels  + @"Fences\barbWire\barbWireStraight1", false, false,
-                                        false, 0, false, 0, 0, false, string.Empty, 0);           
-            // Stone Wall Corner1
-            AddItemTypeAttributeToArray(ItemType.stoneWallCorner01, ModelType.XNAModel, contentInstancedModels  + @"Fences\stoneWall\stoneWallCorner1", false, false,
-                                        true, 1, false, 0, 0, false, string.Empty, 0);           
-            // Stone Wall Straight1
-            AddItemTypeAttributeToArray(ItemType.stoneWallStraight01, ModelType.XNAModel, contentInstancedModels  + @"Fences\stoneWall\stoneWallStraight1", false, false,
-                                        true, 1, false, 0, 0, false, string.Empty, 0); 
-          
-            // Test SceneItemOwner
-            AddItemTypeAttributeToArray(ItemType.testItem, ModelType.XNAModel, contentInstancedModels  + @"Fences\stoneWall\stoneWallStraight1", false, false,
-                                        true, 1, false, 0, 0, false, string.Empty, 0); 
-
-            #endregion
+         
 
 #if !XBOX360
             // Call Base Level Method to Save

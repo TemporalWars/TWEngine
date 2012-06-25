@@ -1829,12 +1829,18 @@ namespace TWEngine
                 case TerrainTextures.Tex128X:
                     // 7/17/2009; 11/2/2009: Updated to use the 'ZippedContent' version.
                     if (ContentGroundTextures == null)
-                        ContentGroundTextures = new ZippedContent(@"1ContentZipped\ContentTextures_low_x86.xzb", game.Services);
+                    {
+                        //ContentGroundTextures = new ContentManager(game.Services, @"1ContentTerrainTextures\x86\low128x\"); // ContentTextures_low_x86.xzb
+                        ContentGroundTextures = new ZippedContent(@"1ContentZipped\ContentTextures_low_x86.xzb", game.Services); 
+                    }
                     break;
                 case TerrainTextures.Tex256X:
                     // 7/17/2009; 11/2/2009: Updated to use the 'ZippedContent' version.
                     if (ContentGroundTextures == null)
-                        ContentGroundTextures = new ZippedContent(@"1ContentZipped\ContentTextures_med_x86.xzb", game.Services);
+                    {
+                        //ContentGroundTextures = new ContentManager(game.Services, @"1ContentTerrainTextures\x86\med256x\"); // ContentTextures_med_x86.xzb
+                        ContentGroundTextures = new ZippedContent(@"1ContentZipped\ContentTextures_med_x86.xzb", game.Services); 
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -1845,7 +1851,7 @@ namespace TWEngine
             //if (ContentGroundTextures == null) ContentGroundTextures = new ContentManager(game.Services, ContentGroundTexturesLoc);
 
             if (ContentGroundTextures == null)
-                ContentGroundTextures = new ZippedContent(@"1ContentZipped\ContentTextures_med_Xbox 360.xzb", game.Services);
+                ContentGroundTextures = new ZippedContent(@"1ContentZipped\ContentTextures_med_Xbox 360.xzb", game.Services); // ContentTextures_med_Xbox 360.xzb
 #endif
         }
 

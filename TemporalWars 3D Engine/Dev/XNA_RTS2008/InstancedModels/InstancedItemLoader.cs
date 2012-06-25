@@ -297,15 +297,8 @@ namespace TWEngine.InstancedModels
                 InstancedItem.PlayableItemsContentManager = new ContentManager(_gameInstance.Services);
 
             if (InstancedItem.ScenaryItemsContentManager == null)
-                InstancedItem.ScenaryItemsContentManager = new ZippedContent(InstancedItem.ContentscenaryXzb,
-                                                                             _gameInstance.Services);
-
-            // 6/3/2012 - Backup load solution for items which do not load during the ZipLoad routines.
-            if (InstancedItem.ScenaryItemsNonZipContentManager == null)
-                InstancedItem.ScenaryItemsNonZipContentManager = new ContentManager(_gameInstance.Services)
-                                                                     {
-                                                                         RootDirectory = InstancedItem.ContentScenaryNonZip
-                                                                     };
+                InstancedItem.ScenaryItemsContentManager = new ContentManager(_gameInstance.Services, InstancedItem.ContentscenaryXzb);
+           
 
             // Check if Playable Queue has SceneItemOwner
             while (PreLoadInstanceItemsQueue.Count > 0)
@@ -357,18 +350,10 @@ namespace TWEngine.InstancedModels
                     // 6/3/2012 - Updated to also use the new 'NonZip' scenary loader logic below.
                     // 1/6/2010 - Load from proper ContentManager.
                     var isScenaryItem = preLoadItem.SceneItemOwner != null; // 2/16/2010
-                    Model xnaModel;
-                    if (isScenaryItem)
-                    {
-                        xnaModel = preLoadItem.TryScenaryNonZipLoad
-                                       ? InstancedItem.ScenaryItemsNonZipContentManager.Load<Model>(itemTypeLoadPath)
-                                       : InstancedItem.ScenaryItemsContentManager.Load<Model>(itemTypeLoadPath);
-                    }
-                    else
-                    {
-                        xnaModel = InstancedItem.PlayableItemsContentManager.Load<Model>(
-                                           itemTypeAtts.modelLoadPathName);
-                    }
+                    Model xnaModel = isScenaryItem
+                                         ? InstancedItem.ScenaryItemsContentManager.Load<Model>(itemTypeAtts.modelLoadPathName) // itemTypeLoadPath
+                                         : InstancedItem.PlayableItemsContentManager.Load<Model>(
+                                             itemTypeAtts.modelLoadPathName);
 
 
                     // 3/23/2010 - IF null, then re-queue to try to load again.

@@ -407,6 +407,88 @@ namespace TWEngine.Terrain
 
         }
 
+        // 6/24/2012
+        /// <summary>
+        /// Creates a new waypointPath with the given <paramref name="waypointPathName"/>. (Scripting Purposes)
+        /// </summary>
+        /// <param name="waypointPathName">Waypoint path's name.</param>
+        /// <param name="waypoints">params of waypoint indexes.</param>
+        /// <remarks>
+        /// All waypoint index values given MUST be valid waypoints; otherwise, an exception will be thrown.
+        /// </remarks>
+        public static void CreateWaypointPath(string waypointPathName, params int[] waypoints)
+        {
+            // verify name is not null and unique
+            ValidateWaypointsPathName(waypointPathName);
+
+            // create new entry into dictionary
+            CreateEmptyWaypointPathInDictionary(waypointPathName);
+            var linkedList = WaypointPaths[waypointPathName];
+
+            // iterate given array
+            var length = waypoints.Length;
+            for (var index = 0; index < length; index++)
+            {
+                var waypointIndex = waypoints[index];
+
+                // validate waypoint exist
+                DoesWaypointExist(waypointIndex);
+
+                // Add item to the LinkedList
+                linkedList.AddLast(waypointIndex);
+            }
+
+            // Store updated LinkList back to Dictionary
+            WaypointPaths[waypointPathName] = linkedList;
+        }
+
+        // 6/24/2012
+        /// <summary>
+        /// Validates the given <paramref name="waypointPathName"/> is unique.
+        /// </summary>
+        /// <param name="waypointPathName">New waypointPath name to validate.</param>
+        public static void ValidateWaypointsPathName(string waypointPathName)
+        {
+            // if Null string, return.
+            if (string.IsNullOrEmpty(waypointPathName))
+                throw new ArgumentNullException(waypointPathName);
+
+            // check if 'WaypointPathName' exist in the WaypointPaths Dictionary
+            if (WaypointPaths.ContainsKey(waypointPathName))
+            {
+                throw new InvalidOperationException("Name given must be unique!");
+            }
+        }
+
+        // 6/24/2012
+        /// <summary>
+        /// Checks if the given waypoint exist and throws exception if it does not.
+        /// </summary>
+        /// <param name="waypointIndex">Index key for waypoint.</param>
+        public static void DoesWaypointExist(int waypointIndex)
+        {
+            // check if index exist.
+            if (!Waypoints.ContainsKey(waypointIndex))
+            {
+                throw new ArgumentOutOfRangeException("waypointIndex", "Waypoint index given does not exist.");
+            }
+        }
+
+        // 6/24/2012
+        /// <summary>
+        /// Creates the required LinkedList{int} in the internal <see cref="WaypointPaths"/> dictionary, with
+        /// the given <paramref name="waypointPathName"/>.
+        /// </summary>
+        /// <param name="waypointPathName">Waypoint path's name.</param>
+        public static void CreateEmptyWaypointPathInDictionary(string waypointPathName)
+        {
+            // verify name is not null and unique
+            ValidateWaypointsPathName(waypointPathName);
+
+            // Store new 'WaypointPathName' into WaypointPaths Dictionary
+            var linkedList = new LinkedList<int>();
+            WaypointPaths.Add(waypointPathName, linkedList);
+        }
 
 #if !XBOX360
 
