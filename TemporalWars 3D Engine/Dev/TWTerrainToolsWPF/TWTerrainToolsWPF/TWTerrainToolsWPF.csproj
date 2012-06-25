@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{029FCB50-0A9B-423B-91D4-ED492D1AE314}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TWTerrainToolsWPF</RootNamespace>
+    <AssemblyName>TWTerrainToolsWPF</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>TWTerrainToolsSn.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AssetsImagePaths.cs" />
+    <Compile Include="DataModel\DirectoryDataModel\FileInfoItem.cs" />
+    <Compile Include="DataModel\DirectoryDataModel\DirectoryInfoItem.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\BloomMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\DebugShaderMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\PerlinCloudsMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\WaterMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\SkyBoxMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\ShadowsMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\NormalMapMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\MiniMapMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\LightingTypeMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\IFDMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\GlowMenuItems.cs" />
+    <Compile Include="DataModel\MainMenuDataModel\FOWMenuItems.cs" />
+    <Compile Include="DataModel\PaintToolDataModel\TextureItem.cs" />
+    <Compile Include="Delegates\ShadowMapDarknessEventArgs.xaml.cs" />
+    <Compile Include="Delegates\ShadowMapDarknessDelegate.xaml.cs" />
+    <Compile Include="Delegates\DragDropDelegate.xaml.cs" />
+    <Compile Include="Delegates\DragDropEventArgs.xaml.cs" />
+    <Compile Include="Delegates\IsToggledDelegate.xaml.cs" />
+    <Compile Include="Delegates\IsToggledEventArgs.xaml.cs" />
+    <Compile Include="Enums\BloomTypeEnum.cs" />
+    <Compile Include="Enums\ViewPortTextureEnum.cs" />
+    <Compile Include="Enums\WaterTypeEnum.cs" />
+    <Compile Include="Enums\ShadowQualityEnum.cs" />
+    <Compile Include="Enums\ShadowTypeEnum.cs" />
+    <Compile Include="Enums\TerrainLightingTypeEnum.cs" />
+    <Compile Include="Enums\HeightToolEnum.xaml.cs" />
+    <Compile Include="Enums\PaintToolEnum.cs" />
+    <Compile Include="Extentions\WPFExtensions.cs" />
+    <Compile Include="Interfaces\IOnGuiThread.cs" />
+    <Compile Include="ToolInstance.cs" />
+    <Compile Include="ItemToolWindow.xaml.cs">
+      <DependentUpon>ItemToolWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenuWindow.xaml.cs">
+      <DependentUpon>MainMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaintToolWindow.xaml.cs">
+      <DependentUpon>PaintToolWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserNumericUpDownControl.xaml.cs">
+      <DependentUpon>UserNumericUpDownControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListViewItemViewModel.cs" />
+    <Compile Include="ViewModel\DirectoryViewModel\DirectoryViewModel.cs" />
+    <Compile Include="ViewModel\DirectoryViewModel\FileInfoViewModel.cs" />
+    <Compile Include="ViewModel\DirectoryViewModel\DirectoryInfoViewModel.cs" />
+    <Compile Include="ViewModel\ObservableCollectionEx.cs" />
+    <Compile Include="ViewModel\PaintToolViewModel\TexturesViewModel.cs" />
+    <Compile Include="ViewModel\PaintToolViewModel\TextureItemViewModel.cs" />
+    <Compile Include="Delegates\SelectedItemEventArgs.cs" />
+    <Compile Include="Delegates\SelectedItemEventHandler.cs" />
+    <Compile Include="ViewModel\TreeViewItemViewModel.cs" />
+    <Page Include="About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\AccentColors\AccentColorBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\AccentColors\AccentColorFonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\BureauBlack.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\BureauBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cosmopolitan\CosmopolitanBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Cosmopolitan\CosmopolitanFonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ExpressionDark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ExpressionLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ShinyBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\ShinyRed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\TwilightBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\WhistlerBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Win7\Win7BrushesResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Win7\Win7CoreStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Win7\Win7Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HeightToolWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="HeightToolWindow.xaml.cs">
+      <DependentUpon>HeightToolWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ItemToolWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaintToolWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Simple Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserNumericUpDownControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFToolsResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="TWTerrainToolsSn.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TWTerrainTools_Interfaces\TWTerrainTools_Interfaces.csproj">
+      <Project>{7CADFF7B-95D1-407B-B97A-DB605D0FFCAA}</Project>
+      <Name>TWTerrainTools_Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\folderIcon1.bmp" />
+    <Resource Include="Images\folderIcon2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BenScharbachPic.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
