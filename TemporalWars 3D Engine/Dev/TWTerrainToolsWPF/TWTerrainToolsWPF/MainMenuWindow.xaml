@@ -1,0 +1,122 @@
+﻿<Window x:Class="TWTerrainToolsWPF.MainMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Main Menu (~)" Height="281" Width="675" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" ResizeMode="NoResize" IsTabStop="False"         
+        xmlns:my="clr-namespace:System;assembly=mscorlib" 
+        xmlns:codeBh="clr-namespace:TWTerrainToolsWPF" Closing="Window_Closing" Closed="Window_Closed">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="Resources/BureauBlue.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+    
+    <Grid Margin="0,0,0,-2">
+        <DockPanel Height="Auto" HorizontalAlignment="Stretch" Name="dockPanel1" VerticalAlignment="Stretch" Width="Auto">
+            <Menu Name="menuStrip1" Width="Auto" DockPanel.Dock="Top" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" >               
+               
+                <MenuItem Header="Bloom" Name="BloomMI" SubmenuOpened="BloomMI_SubmenuOpened" >
+                    <MenuItem Header="Use Bloom" Name="useBloomMI" IsCheckable="True" Click="useBloomMI_Click" />
+                    <MenuItem Header="Bloom Setting" Name="bloomSettingMI" SubmenuOpened="bloomSettingMI_SubmenuOpened">
+                        <MenuItem Header="Default" Name="defaultBloomMI" IsCheckable="True" Click="defaultBloomMI_Click" />
+                        <MenuItem Header="Soft" Name="softBloomMI" IsCheckable="True" Click="softBloomMI_Click" />
+                        <MenuItem Header="Desaturated" Name="deSaturatedBloomMI" IsCheckable="True" Click="deSaturatedBloomMI_Click" />
+                        <MenuItem Header="Saturated" Name="saturatedBloomMI" IsCheckable="True" Click="saturatedBloomMI_Click" />
+                        <MenuItem Header="Blurry" Name="blurryBloomMI" IsCheckable="True" Click="blurryBloomMI_Click" />
+                        <MenuItem Header="Subtle" Name="subtleBloomMI" IsCheckable="True" Click="subtleBloomMI_Click" />
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="FogOfWar" Name="fogOfWarMI" SubmenuOpened="fogOfWarMI_SubmenuOpened">
+                    <MenuItem Header="Use FogOfWar" Name="useFogOfWarMI" IsCheckable="True" Click="useFogOfWarMI_Click" />
+                </MenuItem>
+               
+                <MenuItem Header="IFD" Name="ifdMI" SubmenuOpened="ifdMI_SubmenuOpened">
+                    <MenuItem Header="Use InterFace-Display" Name="useIfdMI" IsCheckable="True" Click="useIfdMI_Click" />
+                </MenuItem>
+               
+                <MenuItem Header="MiniMap" Name="miniMapMI" SubmenuOpened="miniMapMI_SubmenuOpened">
+                    <MenuItem Header="Use MiniMap" Name="useMiniMapMI" IsCheckable="True" Click="useMiniMapMI_Click" />
+                    <MenuItem Header="Show Wrapper" Name="showWrapperMI" IsCheckable="True" Click="showWrapperMI_Click" />
+                    <MenuItem Header="Create MiniMap Texture" Name="createMMTextureMI" Click="createMMTextureMI_Click" />
+                </MenuItem>
+                <MenuItem Header="NormalMap" Name="normalMapMI" SubmenuOpened="normalMapMI_SubmenuOpened">
+                    <MenuItem Header="Use NormalMap" Name="useNormalMapMI" IsCheckable="True" Click="useNormalMapMI_Click" />
+                </MenuItem>               
+            </Menu>			
+			 <Menu Name="menuStrip2" Width="Auto" DockPanel.Dock="Top" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Visibility="Visible">
+			 	<MenuItem Header="Shadows" Name="shadowsMI" SubmenuOpened="shadowsMI_SubmenuOpened">
+                    <MenuItem Header="Use Shadows" Name="useShadowsMI" IsCheckable="True" Click="useShadowsMI_Click" />
+                    <MenuItem Header="Show ShadowMap" Name="showShadowMapMI" IsCheckable="True" Click="showShadowMapMI_Click" ToolTip="Update LightSource position using F12 and numpad arrows." />
+                    <MenuItem Header="Shadow Type" Name="shadowTypeMI" SubmenuOpened="shadowTypeMI_SubmenuOpened">
+                        <MenuItem Header="Simple" Name="simpleShadowTypeMI" IsCheckable="True" Click="simpleShadowTypeMI_Click" />
+                        <MenuItem Header="PercentageCloseFilter-1" Name="pcf1ShadowTypeMI" IsCheckable="True" Click="pcf1ShadowTypeMI_Click" />
+                        <MenuItem Header="PrecentageCloseFilter-2" Name="pcf2ShadowTypeMI" IsCheckable="True" Click="pcf2ShadowTypeMI_Click" />
+                        <MenuItem Header="Variance" Name="varianceShadowTypeMI" IsCheckable="True" Click="varianceShadowTypeMI_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Shadow Quality" Name="shadowQualityMI" SubmenuOpened="shadowQualityMI_SubmenuOpened">
+                        <MenuItem Header="Low - 1024x" Name="low1024xMI" IsCheckable="True" Click="low1024xMI_Click" />
+                        <MenuItem Header="Medium - 2048x" Name="medium2048xMI" IsCheckable="True" Click="medium2048xMI_Click" />
+                        <MenuItem Header="High - 4096x" Name="high4096xMI" IsCheckable="True" Click="high4096xMI_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Rebuild Static Map" Name="rebuildStaticMapMI" Click="rebuildStaticMapMI_Click" />
+                    <MenuItem Header="Shadow Darkness" Name="shadowDarknessMI" Click="shadowDarknessMI_Click" />
+                </MenuItem>
+			 	<MenuItem Header="SkyBox" Name="skyBoxMI" SubmenuOpened="skyBoxMI_SubmenuOpened">
+                    <MenuItem Header="Use SkyBox" Name="useSkyBoxMI" IsCheckable="True" Click="useSkyBoxMI_Click" />
+                </MenuItem>
+				<MenuItem Header="Water" Name="waterMI" SubmenuOpened="waterMI_SubmenuOpened">
+                    <MenuItem Header="Visible" Name="isVisibleMI" IsCheckable="True" Click="isVisibleMI_Click" />
+                    <MenuItem Header="Use Water" Name="useWaterMI" SubmenuOpened="useWaterMI_SubmenuOpened">
+                        <MenuItem Header="None" Name="waterTypeNoneMI" IsCheckable="True" Click="waterTypeNoneMI_Click" />
+                        <MenuItem Header="Lake" Name="waterTypeLakeMI" IsCheckable="True" Click="waterTypeLakeMI_Click" />
+                        <MenuItem Header="Ocean" Name="waterTypeOceanMI" IsCheckable="True" Click="waterTypeOceanMI_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Show WaterMap" Name="showWaterMapMI" IsCheckable="True" Click="showWaterMapMI_Click" />
+                    <MenuItem Header="WaterMap Type" Name="waterMapTypeMI" SubmenuOpened="waterMapTypeMI_SubmenuOpened">
+                        <MenuItem Header="Reflection Map" Name="reflectionMapMI" IsCheckable="True" Click="reflectionMapMI_Click" />
+                        <MenuItem Header="Refraction Map" Name="refractionMapMI" IsCheckable="True" Click="refractionMapMI_Click" />
+                        <MenuItem Header="Bump Map" Name="bumpMapMI" IsCheckable="True" Click="bumpMapMI_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Edit Water Attributes" Name="editWaterAttributesMI" Click="editWaterAttributesMI_Click" />
+                </MenuItem>
+                <MenuItem Header="PerlinClouds" Name="PerlinCloudsMI" SubmenuOpened="PerlinCloudsMI_SubmenuOpened">
+                    <MenuItem Header="Use Perlin Clouds" Name="usePerlinCloudsMI" IsCheckable="True" Click="usePerlinCloudsMI_Click" />
+                </MenuItem>
+                <MenuItem Header="DebugShader" Name="DebugShaderMI" SubmenuOpened="DebugShaderMI_SubmenuOpened">
+                    <MenuItem Header="Use Debug Shader" Name="useDebugShaderMI" IsCheckable="True" Click="useDebugShaderMI_Click" />
+                    <MenuItem Header="Draw 'Collision-Spheres' for ScenaryItems" Name="DrawCollisionForScenaryItemsMI" IsCheckable="True" Click="DrawCollisionForScenaryItemsMI_Click" />
+                    <MenuItem Header="Draw 'Collision-Spheres' for PlayableItems" Name="DrawCollisionForPlayableItemsMI" IsCheckable="True" Click="DrawCollisionForPlayableItemsMI_Click" />
+                </MenuItem>
+                <MenuItem Header="LightingType" Name="lightingTypeMI" SubmenuOpened="lightingTypeMI_SubmenuOpened" Visibility="Hidden">
+                    <MenuItem Header="Plastic" Name="plasticLightingTypeMI" IsCheckable="True" Click="plasticLightingTypeMI_Click" />
+                    <MenuItem Header="Metal" Name="metalLightingTypeMI" IsCheckable="True" Click="metalLightingTypeMI_Click" />
+                    <MenuItem Header="Blinn" Name="blinnLightingTypeMI" IsCheckable="True" Click="blinnLightingTypeMI_Click" />
+                    <MenuItem Header="Glossy" Name="glossyLightingTypeMI" IsCheckable="True" Click="glossyLightingTypeMI_Click" />
+                </MenuItem>
+                <MenuItem Header="Glow" Name="glowMI" SubmenuOpened="glowMI_SubmenuOpened" Visibility="Hidden">
+                    <MenuItem Header="Use Glow" Name="useGlowMI" IsCheckable="True" Click="useGlowMI_Click" />
+                </MenuItem>
+            </Menu>
+            <StackPanel Margin="5,49,5,8">
+                <GroupBox Header="Core Tools" Height="60" Name="groupBox1" Width="540">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Height Tool (F1)" Height="23" HorizontalAlignment="Left" Margin="5,8,0,0" Name="btnHeightTool" VerticalAlignment="Top" Width="127" Click="btnHeightTool_Click" />
+                            <Button Content="Paint Tool (F2)" Height="23" HorizontalAlignment="Left" Margin="3,8,0,0" Name="btnPaintTool" VerticalAlignment="Top" Width="127" Click="btnPaintTool_Click" />
+                            <Button Content="Assets Tool (F3)" Height="23" HorizontalAlignment="Left" Margin="3,8,0,0" Name="btnItemsTool" VerticalAlignment="Top" Width="127" Click="btnItemsTool_Click" />
+                            <Button Content="Properties Tool (F4)" Height="23" HorizontalAlignment="Left" Margin="3,8,0,0" Name="btnPropertiesTool" VerticalAlignment="Top" Width="127" Click="btnPropertiesTool_Click" />
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="ShadowMap Darkness Setting" Height="75" x:Name="gbShadowDarkness" Width="540" Visibility="Hidden">
+                	<Grid>
+                		<Slider Height="35" HorizontalAlignment="Left" Margin="18,12,0,0" x:Name="tbShadowDarkness" VerticalAlignment="Top" Width="395" TickPlacement="BottomRight" SmallChange="1" Maximum="100" LargeChange="5" ValueChanged="tbShadowDarkness_ValueChanged" />
+                		<Button Content="Done" Height="23" HorizontalAlignment="Left" Margin="437,12,0,0" x:Name="btnDone" VerticalAlignment="Top" Width="75" Click="btnDone_Click" />
+                	</Grid>
+                </GroupBox>
+            </StackPanel>
+           
+        </DockPanel>
+    </Grid>
+</Window>
