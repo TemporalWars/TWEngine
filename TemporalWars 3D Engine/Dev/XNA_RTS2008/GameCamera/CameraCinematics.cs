@@ -292,10 +292,11 @@ namespace TWEngine.GameCamera
         /// <summary>
         /// Adds a single pair of <see cref="CinematicNode"/> to move the <see cref="Camera"/> from point A to point B.
         /// </summary>
+        /// <param name="cinematicSplineName">Name of this cinematic spline.</param>
         /// <param name="cinematicNodeStart"><see cref="CinematicNode"/> starting position</param>
         /// <param name="cinematicNodeEnd"><see cref="CinematicNode"/> ending position</param>
         /// <param name="cameraMoveType">Affect <see cref="Camera"/> position or target (lookAt).</param>
-        public static void AddNewCinematicNodePair(ref CinematicNode cinematicNodeStart, ref CinematicNode cinematicNodeEnd, CameraMoveType cameraMoveType)
+        public static void AddNewCinematicNodePair(string cinematicSplineName, ref CinematicNode cinematicNodeStart, ref CinematicNode cinematicNodeEnd, CameraMoveType cameraMoveType)
         {
             // Create new instance of Curve3D
              var cinematicCurveSpline = new Curve3D();
@@ -330,20 +331,8 @@ namespace TWEngine.GameCamera
             cinematicCurveSpline.MaxTimeAllowed = cinematicNodeEnd.TimeToCompleteInMilliSeconds; // 10/24/2009
             cinematicCurveSpline.SetTangents();
 
-            switch (cameraMoveType)
-            {
-                case CameraMoveType.Position:
-                    // 10/24/2009 - Add to Queue
-                    CinematicSplines_Position.Enqueue(cinematicCurveSpline);
-                    break;
-                case CameraMoveType.Target:
-                    // 10/24/2009 - Add to Queue
-                    CinematicSplines_Target.Enqueue(cinematicCurveSpline);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("cameraMoveType");
-            }// End Switch
-           
+            // 6/24/2012 - Refactored.
+            EnqueueCinematicCurveSpline(cinematicSplineName, cameraMoveType, cinematicCurveSpline);
         }
 
         // 10/24/2009
@@ -413,6 +402,17 @@ namespace TWEngine.GameCamera
             cinematicCurveSpline.MaxTimeAllowed = totalTime;
             cinematicCurveSpline.SetTangents();
 
+            // 6/24/2012 - Refactored.
+            EnqueueCinematicCurveSpline(cinematicSplineName, cameraMoveType, cinematicCurveSpline);
+        }
+
+        // 6/24/2012
+        /// <summary>
+        /// Helper method to add the given <paramref name="cinematicCurveSpline"/> to the internal queue.
+        /// </summary>
+        private static void EnqueueCinematicCurveSpline(string cinematicSplineName, CameraMoveType cameraMoveType,
+                                                        Curve3D cinematicCurveSpline)
+        {
             switch (cameraMoveType)
             {
                 case CameraMoveType.Position:
@@ -431,7 +431,7 @@ namespace TWEngine.GameCamera
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("cameraMoveType");
-            }// End Switch
+            } // End Switch
         }
 
         // 10/26/2009
