@@ -5953,10 +5953,10 @@
     <Compile Include="Console\Enums\ConsoleState.cs" />
     <Compile Include="Console\Structs\KeyBinding.cs" />
     <Compile Include="Explosions\Structs\ExplosionItem.cs" />
-    <Compile Include="GameCamera\Enums\CameraDirection.cs" />
-    <Compile Include="GameCamera\Structs\CinematicNode.cs" />
-    <Compile Include="GameCamera\Enums\CameraMoveType.cs" />
-    <Compile Include="GameCamera\Delegates\UpdateDueToCameraMovement.cs" />
+    <Compile Include="GameData\GameCamera\Enums\CameraDirection.cs" />
+    <Compile Include="GameData\GameCamera\Structs\CinematicNode.cs" />
+    <Compile Include="GameData\GameCamera\Enums\CameraMoveType.cs" />
+    <Compile Include="GameData\GameCamera\Delegates\UpdateDueToCameraMovement.cs" />
     <Compile Include="IFDTiles\Delegates\CreateItemToPlace.cs" />
     <Compile Include="IFDTiles\Delegates\SceneItemPlacedEventHandler.cs" />
     <Compile Include="IFDTiles\Delegates\ItemCreateRequestEventHandler.cs" />
@@ -6000,7 +6000,7 @@
     <Compile Include="Common\Enums\CursorTextureEnum.cs" />
     <Compile Include="Common\FogOfWarItem.cs" />
     <Compile Include="Explosions\ExplosionsManager.cs" />
-    <Compile Include="GameCamera\CameraCinematics.cs" />
+    <Compile Include="GameData\GameCamera\CameraCinematics.cs" />
     <Compile Include="HandleGameInput\HandleInput.cs" />
     <None Include="ParallelTasks\InstancedModelParallelFor.cs" />
     <Compile Include="InstancedModels\Enums\ProceduralMaterialParameters.cs" />
@@ -6303,7 +6303,7 @@
       <DependentUpon>PropertiesTools.cs</DependentUpon>
     </Compile>
     <Compile Include="SceneItems\SceneItemWithPick.cs" />
-    <Compile Include="GameCamera\Camera.cs" />
+    <Compile Include="GameData\GameCamera\Camera.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="SceneItems\VehicleScene.cs" />
     <Compile Include="SceneItems\ScenaryItemScene.cs" />

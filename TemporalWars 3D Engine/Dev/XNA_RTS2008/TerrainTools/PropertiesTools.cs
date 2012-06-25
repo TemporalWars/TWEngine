@@ -2923,7 +2923,6 @@ namespace TWEngine.TerrainTools
             }
         }
 
-
         // 10/15/2009
         /// <summary>
         /// Event handler to capture the PathName field Validated event, which will
@@ -2934,28 +2933,22 @@ namespace TWEngine.TerrainTools
         {
             try // 6/22/2010
             {
-                // if Null string, return.
-                if (string.IsNullOrEmpty(txtWaypointsPathName.Text))
-                    return;
+                // 6/24/2012 - Validate new waypointpath name.
+                TerrainWaypoints.ValidateWaypointsPathName(txtWaypointsPathName.Text);
 
-                // check if 'WaypointPathName' exist in the WaypointPaths Dictionary
-                if (TerrainWaypoints.WaypointPaths.ContainsKey(txtWaypointsPathName.Text))
-                {
-                    // Let user know error occurred.
-                    errorProviderName.SetError(txtWaypointsPathName, "Name given must be unique!");
+                // Clear the error, if any, in the error provider.
+                errorProviderName.SetError(txtWaypointsPathName, "");
 
-                    // clear out name, since not valid.
-                    txtWaypointsPathName.Text = string.Empty;
-                }
-                else
-                {
-                    // Clear the error, if any, in the error provider.
-                    errorProviderName.SetError(txtWaypointsPathName, "");
+                // Store new 'WaypointPathName' into WaypointPaths Dictionary
+                TerrainWaypoints.CreateEmptyWaypointPathInDictionary(txtWaypointsPathName.Text); // 6/24/2012
+            }
+            catch (InvalidOperationException)
+            {
+                // Let user know error occurred.
+                errorProviderName.SetError(txtWaypointsPathName, "Name given must be unique!");
 
-                    // Store new 'WaypointPathName' into WaypointPaths Dictionary
-                    var linkedList = new LinkedList<int>();
-                    TerrainWaypoints.WaypointPaths.Add(txtWaypointsPathName.Text, linkedList);
-                }
+                // clear out name, since not valid.
+                txtWaypointsPathName.Text = string.Empty;
             }
             catch (Exception ex)
             {
