@@ -184,6 +184,12 @@
   <ItemGroup>
     <Compile Include="AI\AIManager.cs" />
     <Compile Include="DeployLXKeys.cs" />
+    <Compile Include="GameCamera\Camera.cs" />
+    <Compile Include="GameCamera\CameraCinematics.cs" />
+    <Compile Include="GameCamera\Delegates\UpdateDueToCameraMovement.cs" />
+    <Compile Include="GameCamera\Enums\CameraDirection.cs" />
+    <Compile Include="GameCamera\Enums\CameraMoveType.cs" />
+    <Compile Include="GameCamera\Structs\CinematicNode.cs" />
     <Compile Include="Interfaces\IScriptingActionChangeRequest.cs" />
     <Compile Include="SceneItems\Enums\RotationAxisEnum.cs" />
     <Compile Include="SceneItems\ScenaryDataReaderV2.cs" />
