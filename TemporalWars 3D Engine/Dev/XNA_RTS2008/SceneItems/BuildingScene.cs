@@ -731,6 +731,9 @@ namespace TWEngine.SceneItems
             // Get Items Path Blocking Size and set in AStarGraph.
             if (!ShapeItem.IsPathBlocked) return;
 
+            // 6/26/2012 - Call base
+            base.SetPlacement(ref placementPosition);
+
             //  5/18/2009 - Updated to set the cost to a value of -2, rather than -1, which is reserved for 'Blocked'
             //              sections of the map!  The difference is important, because it affects how the Cursor 'Blocked'
             //              image is displayed, which is only done when it reads the -1 cost value!

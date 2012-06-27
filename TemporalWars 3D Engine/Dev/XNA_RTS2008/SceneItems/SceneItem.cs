@@ -205,6 +205,16 @@ namespace TWEngine.SceneItems
 
         #region Properties 
 
+        // 6/26/2012 - (Scripting Purposes)
+        /// <summary>
+        /// Gets or sets the state that a <see cref="SceneItem"/> is placed on the terrain.   
+        /// </summary>
+        /// <remarks>>
+        /// Occurs from the 
+        /// IFD interface creation and is set when the user places the item onto the terrain. 
+        /// </remarks>
+        public bool ItemIsPlaced { get; set; }
+
         // 5/31/2012
         /// <summary>
         /// Gets or sets if the <see cref="SceneItem"/> was spawned with some scripting action.  
@@ -1276,13 +1286,8 @@ namespace TWEngine.SceneItems
         public virtual void SetPlacement(ref Vector3 placementPosition)
         {
             // Should be filled in by inherited classes
-            return;
+            ItemIsPlaced = true; // 6/26/2012 (Scripting Purposes)
         }
-        
-        /*public virtual void OnCreateDevice()
-        {
-            return;
-        }*/
 
         // 2/24/2009
         /// <summary>

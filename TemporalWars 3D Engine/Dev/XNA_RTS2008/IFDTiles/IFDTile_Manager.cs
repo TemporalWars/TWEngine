@@ -2263,6 +2263,9 @@ namespace TWEngine.IFDTiles
                     break;
             }
 
+            // 6/26/2012 - Update the 'ItemToPlaced' flag to false.
+            _itemToPlace.ItemIsPlaced = false;
+
             // 6/15/2010: Updated to use the Player classes Add method.
             // Add to the Selectable Items 
             // NOTE: 12/17/2008 - This should not be added to SelectableItemsDict Dictionary!
@@ -2554,7 +2557,7 @@ namespace TWEngine.IFDTiles
 
             // 1/6/2009: Create the Boxes overlay on terrain, which shows passable/unpassable areas to player.
             CreatePlacementOverlay(ref PlaceItemAt, _itemToPlace);
-
+           
             // If user Clicks on Terrain, then place SceneItemOwner at this Position
             if (!HandleInput.InputState.IFDPlaceItem) return;
 
@@ -2573,6 +2576,9 @@ namespace TWEngine.IFDTiles
 
                 // Turn Off Attempting SceneItemOwner Placement
                 AttemptingItemPlacement = false;
+
+                // 6/26/2012 - Set 'ItemIsPlaced' for flag markers (Scripting Conditions)
+                _itemToPlace.ItemIsPlaced = true;
 
                 // 8/1/2009 - make sure main building for flag is now deselected.
                 Player.DeSelectSceneItem(buildingScene);
