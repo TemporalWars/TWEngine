@@ -569,6 +569,9 @@ namespace TWEngine.SceneItems
         /// <param name="placementPosition">The <see cref="Vector3"/> position to place item at</param>
         public override void SetPlacement(ref Vector3 placementPosition)
         {
+            // 6/26/2012 - Call base
+            base.SetPlacement(ref placementPosition);
+
             // Get Items Path Blocking Size and set in AStarGraph.
             if (ShapeItem.IsPathBlocked)
             {
