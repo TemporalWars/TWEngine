@@ -412,7 +412,7 @@ namespace TWEngine.Terrain
             if (MapHeight == 0 || MapWidth == 0)
                 return 0;
 
-            //try
+            try
             {
                 // we first get the height of 4 points of the quad underneath the point
                 // Check to make sure this point is not off the map at all
@@ -442,6 +442,12 @@ namespace TWEngine.Terrain
                 var blIndex = xDivS + (yDivS + 1)*MapHeight;
                 var brIndex = (xDivS + 1) + (yDivS + 1)*MapHeight;
 
+                // 6/27/2012 - Check if HeightData is Null.
+                if (HeightData == null)
+                {
+                    return 0;
+                }
+
                 var triY0 = (HeightData[tlIndex]); // TL
                 var triY1 = (HeightData[trIndex]); // TR
                 var triY2 = (HeightData[blIndex]); // BL
@@ -465,10 +471,11 @@ namespace TWEngine.Terrain
 
                 return height;
             }
-            /*catch
+            catch
             {
+                Debug.WriteLine("Method Error: GetTerrainHeight.");
                 return 0;
-            }*/
+            }
         }
 
         ///<summary>
@@ -482,11 +489,8 @@ namespace TWEngine.Terrain
             // 12/12/2009 - Check if MapWidth/MapHeight are 0.
             if (MapHeight == 0 || MapWidth == 0)
                 return 0;
-
-           // 8/12/2009 - Cache array
-            //var heightData = HeightData;
           
-            //try
+            try
             {
                 // we first get the height of 4 points of the quad underneath the point
                 // Check to make sure this point is not off the map at all
@@ -518,17 +522,21 @@ namespace TWEngine.Terrain
                 var blIndex = xDivS + (yDivS + 1)*mapHeight;
                 var brIndex = (xDivS + 1) + (yDivS + 1)*mapHeight;
 
+                // 6/27/2012 - Check if HeightData is Null.
+                if (HeightData == null)
+                {
+                    return 0;
+                }
 
                 var triY0 = (HeightData[tlIndex]); // TL
                 var triY1 = (HeightData[trIndex]); // TR
                 var triY2 = (HeightData[blIndex]); // BL
                 var triY3 = (HeightData[brIndex]); // BR
 
-
                 var sqX = (xPos*_scaleOverOne) - xDivS;
-                    // was (Xpos / scale); changed to 1/scale, which is faster Float op!
+                // was (Xpos / scale); changed to 1/scale, which is faster Float op!
                 var sqY = (yPos*_scaleOverOne) - yDivS;
-                    // was (Ypos / scale); changed to 1/scale, which is faster Float op!
+                // was (Ypos / scale); changed to 1/scale, which is faster Float op!
                 float height;
                 if ((sqX + sqY) < 1)
                 {
@@ -543,13 +551,12 @@ namespace TWEngine.Terrain
                     height += (triY2 - triY3)*(1.0f - sqX);
                 }
                 return height;
-                
             }
-            /*catch
+            catch
             {
                 Debug.WriteLine("Method Error: GetTerrainHeight.");
                 return 0;
-            }*/
+            }
         }
 
         /// <summary>

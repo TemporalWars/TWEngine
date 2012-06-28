@@ -97,6 +97,23 @@ namespace TWEngine.Audio
                                                                new SoundToNumber {CueName = "LetterOfIntent", SoundBankNumberRange = 2},
                                                                new SoundToNumber {CueName = "Mystique", SoundBankNumberRange = 3},
                                                                new SoundToNumber {CueName = "RiverFlow", SoundBankNumberRange = 4},
+                                                               // Note (6/27/2012) - New Songs from Camtasia Studio 8.
+                                                               new SoundToNumber {CueName = "AcousticCadence", SoundBankNumberRange = 5},
+                                                               new SoundToNumber {CueName = "Amity", SoundBankNumberRange = 6},
+                                                               new SoundToNumber {CueName = "AurinBee", SoundBankNumberRange = 7},
+                                                               new SoundToNumber {CueName = "BackyardSafari", SoundBankNumberRange = 8},
+                                                               new SoundToNumber {CueName = "BareKnuckles", SoundBankNumberRange = 9},
+                                                               new SoundToNumber {CueName = "BluesCountry", SoundBankNumberRange = 10},
+                                                               new SoundToNumber {CueName = "CoastToCoast", SoundBankNumberRange = 11},
+                                                               new SoundToNumber {CueName = "Electropulse", SoundBankNumberRange = 12},
+                                                               new SoundToNumber {CueName = "LaTiDa", SoundBankNumberRange = 13},
+                                                               new SoundToNumber {CueName = "PianoLounge", SoundBankNumberRange = 14},
+                                                               new SoundToNumber {CueName = "RondeauQuartet", SoundBankNumberRange = 15},
+                                                               new SoundToNumber {CueName = "SeniorYear", SoundBankNumberRange = 16},
+                                                               new SoundToNumber {CueName = "SledgeHammer", SoundBankNumberRange = 17},
+                                                               new SoundToNumber {CueName = "ThemePark", SoundBankNumberRange = 18},
+                                                               new SoundToNumber {CueName = "Undefeated", SoundBankNumberRange = 19},
+
                                                                #endregion
 
                                                                #region Ambient
