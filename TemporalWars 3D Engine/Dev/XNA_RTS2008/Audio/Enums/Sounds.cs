@@ -33,6 +33,22 @@ namespace TWEngine.Audio.Enums
         LetterOfIntent = 2,
         Mystique = 3,
         RiverFlow = 4,
+        // Note (6/27/2012) - New Songs from Camtasia Studio 8.
+        AcousticCadence = 5,
+        Amity = 6,
+        AurinBee = 7,
+        BackyardSafari = 8,
+        BareKnuckles = 9,
+        BluesCountry = 10,
+        CoastToCoast = 11,
+        Electropulse = 12,
+        LaTiDa = 13,
+        PianoLounge = 14,
+        RondeauQuartet = 15,
+        SeniorYear = 16,
+        SledgeHammer = 17,
+        ThemePark = 18,
+        Undefeated = 19,
 
         #endregion
 
