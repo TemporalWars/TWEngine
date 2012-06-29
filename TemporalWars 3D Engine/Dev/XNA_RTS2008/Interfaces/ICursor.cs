@@ -7,6 +7,8 @@
 //-----------------------------------------------------------------------------
 #endregion
 using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace TWEngine.Interfaces
 {
@@ -31,7 +33,30 @@ namespace TWEngine.Interfaces
         ///<summary>
         /// Cursor position in screen space.
         ///</summary>
-        Microsoft.Xna.Framework.Vector2 Position { get; set; }
-        
+        Vector2 Position { get; set; }
+
+        // 6/28/2012
+        /// <summary>
+        /// Sets the <see cref="Texture2D"/> to use for the Cursor.
+        /// </summary>
+        Texture2D CursorTextureNormal { set; }
+
+        // 6/28/2012
+        /// <summary>
+        /// Sets the <see cref="Texture2D"/> to use for the Blocked-Cursor.
+        /// </summary>
+        Texture2D CursorTextureBlocked { set; }
+
+        // 6/28/2012
+        /// <summary>
+        /// Gets or sets the <see cref="Color"/> TINT for the Cursor.
+        /// </summary>
+        Color ColorTintingForNormalCursor { get; set; }
+
+        // 6/28/2012
+        /// <summary>
+        /// Gets or sets the <see cref="Color"/> TINT for the Blocking-Cursor.
+        /// </summary>
+        Color ColorTintingForBlockingCursor { get; set; }
     }
 }

@@ -6,6 +6,9 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using System;
+
 namespace TWEngine.GameCamera.Enums
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
@@ -18,10 +21,12 @@ namespace TWEngine.GameCamera.Enums
     {
     }
 
+    // 6/28/2012 - Updated to include 'Flags' attribute
     ///<summary>
     /// Enumeration for direction the <see cref="Camera"/>
     /// can move in.
     ///</summary>
+    [Flags]
     public enum CameraDirectionEnum
     {
         // 6/15/2012 - Add new 'None' state.
@@ -31,38 +36,38 @@ namespace TWEngine.GameCamera.Enums
         /// <remarks>>
         /// After each camera tick, this state is reset.
         /// </remarks>
-        None,
+        None = 0,
         ///<summary>
         /// Scroll <see cref="Camera"/> in -Z axis.
         ///</summary>
-        ScrollForward,
+        ScrollForward = 1,
         ///<summary>
         /// Scroll <see cref="Camera"/> in +Z axis.
         ///</summary>
-        ScrollBackward,
+        ScrollBackward = 2,
         ///<summary>
         /// Scroll <see cref="Camera"/> in -X axis.
         ///</summary>
-        ScrollLeft,
+        ScrollLeft = 4,
         ///<summary>
         /// Scroll <see cref="Camera"/> in +X axis.
         ///</summary>
-        ScrollRight,
+        ScrollRight = 8,
         ///<summary>
         /// Scroll <see cref="Camera"/> in +Y axis.
         ///</summary>
-        Up,
+        Up = 16,
         ///<summary>
         /// Scroll <see cref="Camera"/> in -Y axis.
         ///</summary>
-        Down,
+        Down = 32,
         ///<summary>
         /// Rotates <see cref="Camera"/> clockwise.
         ///</summary>
-        RotateRight,
+        RotateRight = 64,
         ///<summary>
         /// Rotates <see cref="Camera"/> counter-clockwise.
         ///</summary>
-        RotateLeft
+        RotateLeft = 128
     }
 }

@@ -18,7 +18,6 @@ using TWEngine.GameCamera;
 using TWEngine.HandleGameInput;
 using TWEngine.IFDTiles;
 using TWEngine.Interfaces;
-using TWEngine.ScreenManagerC;
 
 namespace TWEngine.Common
 {
@@ -73,7 +72,8 @@ namespace TWEngine.Common
         private static Matrix _cameraProjection;
         private static Matrix _cameraView;
         private static readonly Vector2 Vector2Zero = Vector2.Zero;
-        private static readonly Color ColorWhite = Color.White;
+        private static Color _colorTintingForNormalCursor = Color.White;
+        private static Color _colorTintingForBlockingCursor = Color.White;
 
         ///<summary>
         /// Cursor position in screen space.
@@ -89,6 +89,82 @@ namespace TWEngine.Common
         {
             get { return Position; }
             set { Position = value; }
+        }
+
+        // 6/28/2012
+        /// <summary>
+        /// Sets the <see cref="Texture2D"/> to use for the Cursor.
+        /// </summary>
+        public static Texture2D CursorTextureNormal
+        {
+            set { _cursorTextureNormal = value; }
+        }
+
+        // 6/28/2012
+        /// <summary>
+        /// Sets the <see cref="Texture2D"/> to use for the Cursor.
+        /// </summary>
+        Texture2D ICursor.CursorTextureNormal
+        {
+            set { _cursorTextureNormal = value; }
+        }
+
+        // 6/28/2012
+        /// <summary>
+        /// Sets the <see cref="Texture2D"/> to use for the Blocked-Cursor.
+        /// </summary>
+        public static Texture2D CursorTextureBlocked
+        {
+            set { _cursorTextureBlocked = value; }
+        }
+
+        // 6/28/2012
+        /// <summary>
+        /// Sets the <see cref="Texture2D"/> to use for the Blocked-Cursor.
+        /// </summary>
+        Texture2D ICursor.CursorTextureBlocked
+        {
+            set { _cursorTextureBlocked = value; }
+        }
+
+        // 6/28/2012
+        /// <summary>
+        /// Gets or sets the <see cref="Color"/> TINT for the Cursor.
+        /// </summary>
+        public static Color ColorTintingForNormalCursor
+        {
+            get { return _colorTintingForNormalCursor; }
+            set { _colorTintingForNormalCursor = value; }
+        }
+
+        // 6/28/2012
+        /// <summary>
+        /// Gets or sets the <see cref="Color"/> TINT for the Cursor.
+        /// </summary>
+        Color ICursor.ColorTintingForNormalCursor
+        {
+            get { return _colorTintingForNormalCursor; }
+            set { _colorTintingForNormalCursor = value; }
+        }
+
+        // 6/28/2012
+        /// <summary>
+        /// Gets or sets the <see cref="Color"/> TINT for the Blocking-Cursor.
+        /// </summary>
+        public static Color ColorTintingForBlockingCursor
+        {
+            get { return _colorTintingForBlockingCursor; }
+            set { _colorTintingForBlockingCursor = value; }
+        }
+
+        // 6/28/2012
+        /// <summary>
+        /// Gets or sets the <see cref="Color"/> TINT for the Blocking-Cursor.
+        /// </summary>
+        Color ICursor.ColorTintingForBlockingCursor
+        {
+            get { return _colorTintingForBlockingCursor; }
+            set { _colorTintingForBlockingCursor = value; }
         }
 
         #endregion
@@ -140,8 +216,11 @@ namespace TWEngine.Common
             _spriteBatch = (SpriteBatch)Game.Services.GetService(typeof(SpriteBatch));
 
             // 4/6/2010: Updated to use 'ContentTexturesLoc' global var.
-            _cursorTextureNormal = TemporalWars3DEngine.GameInstance.Content.Load<Texture2D>(TemporalWars3DEngine.ContentTexturesLoc + @"\Textures\cursorArrow");
-            _cursorTextureBlocked = TemporalWars3DEngine.GameInstance.Content.Load<Texture2D>(TemporalWars3DEngine.ContentTexturesLoc + @"\Textures\BlockedArea");
+            if (_cursorTextureNormal == null) // 6/28/2012
+                _cursorTextureNormal = TemporalWars3DEngine.GameInstance.Content.Load<Texture2D>(TemporalWars3DEngine.ContentTexturesLoc + @"\Textures\cursorArrow");
+
+            if (_cursorTextureBlocked == null) // 6/28/2012
+                CursorTextureBlocked = TemporalWars3DEngine.GameInstance.Content.Load<Texture2D>(TemporalWars3DEngine.ContentTexturesLoc + @"\Textures\BlockedArea");
 
             base.LoadContent();
         }
@@ -204,11 +283,11 @@ namespace TWEngine.Common
                 switch (CursorTextureToDisplay)
                 {
                     case CursorTextureEnum.Normal:
-                        _spriteBatch.Draw(_cursorTextureNormal, _position, null, ColorWhite, 0.0f,
+                        _spriteBatch.Draw(_cursorTextureNormal, _position, null, ColorTintingForNormalCursor, 0.0f,
                                           Vector2Zero, 1.0f, SpriteEffects.None, 0.0f);
                         break;
                     case CursorTextureEnum.Blocked:
-                        _spriteBatch.Draw(_cursorTextureBlocked, _position, null, ColorWhite, 0.0f,
+                        _spriteBatch.Draw(_cursorTextureBlocked, _position, null, ColorTintingForBlockingCursor, 0.0f,
                                           Vector2Zero, 1.0f, SpriteEffects.None, 0.0f);
                         break;
                     default:
@@ -371,7 +450,7 @@ namespace TWEngine.Common
                 
                 // Null Refs
                 _spriteBatch = null;
-                _cursorTextureNormal = null;         
+                CursorTextureNormal = null;         
 
                
             }
