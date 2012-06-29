@@ -144,27 +144,52 @@ namespace TWEngine.HandleGameInput
             //              updated as the user held the stick to choose a menu item!
             if (IFDTileManager.IFDTileSetIsDisplaying)
                 return;
-            
+
+            // 6/15/2012
             // 5/1/2009 - If No Camera movement, then reset camera acceleration
             if (!InputState.MoveCameraLeft && !InputState.MoveCameraRight && !InputState.MoveCameraForward && !InputState.MoveCameraBackward)
             {
                 Camera.ResetAcceleration();
-                Camera.CameraDirection = CameraDirectionEnum.None; // 6/15/2012
+                Camera.CameraDirection = CameraDirectionEnum.None;
             }
 
+            // 6/15/2012
             // Move Left and Right
             if (InputState.MoveCameraLeft)
-                Camera.CameraDirection = CameraDirectionEnum.ScrollLeft; // 6/15/2012
+                Camera.CameraDirection = CameraDirectionEnum.ScrollLeft; 
 
+            // 6/15/2012
             if (InputState.MoveCameraRight)
-                Camera.CameraDirection = CameraDirectionEnum.ScrollRight; // 6/15/2012
+                Camera.CameraDirection = CameraDirectionEnum.ScrollRight; 
 
+            // 6/15/2012
             // Move Forward and Back
             if (InputState.MoveCameraForward)
-                Camera.CameraDirection = CameraDirectionEnum.ScrollForward; // 6/15/2012
+                Camera.CameraDirection = CameraDirectionEnum.ScrollForward; 
 
+            // 6/15/2012
             if (InputState.MoveCameraBackward)
-                Camera.CameraDirection = CameraDirectionEnum.ScrollBackward; // 6/15/2012
+                Camera.CameraDirection = CameraDirectionEnum.ScrollBackward; 
+
+            // 6/28/2012
+            // Move Diagonlly up/right
+            if (InputState.MoveCameraForward && InputState.MoveCameraRight)
+                Camera.CameraDirection = CameraDirectionEnum.ScrollForward | CameraDirectionEnum.ScrollRight;
+
+            // 6/28/2012
+            // Move Diagonlly down/right
+            if (InputState.MoveCameraBackward && InputState.MoveCameraRight)
+                Camera.CameraDirection = CameraDirectionEnum.ScrollBackward | CameraDirectionEnum.ScrollRight; 
+
+            // 6/28/2012
+            // Move Diagonlly down/left
+            if (InputState.MoveCameraBackward && InputState.MoveCameraLeft)
+                Camera.CameraDirection = CameraDirectionEnum.ScrollBackward | CameraDirectionEnum.ScrollLeft; 
+
+            // 6/28/2012
+            // Move Diagonlly up/left
+            if (InputState.MoveCameraForward && InputState.MoveCameraLeft)
+                Camera.CameraDirection = CameraDirectionEnum.ScrollForward | CameraDirectionEnum.ScrollLeft; 
 
             // 4/18/2009
             // Rotate Camera Right or Left

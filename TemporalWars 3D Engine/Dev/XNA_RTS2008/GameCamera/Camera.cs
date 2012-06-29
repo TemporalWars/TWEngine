@@ -576,37 +576,16 @@ namespace TWEngine.GameCamera
             if (LockScroll)
                 return;
 
-            // 5/1/2009 - Apply Acceleration to the Camera movement speed.
-            //            Note: Acceleration is reset by the HandleGameInput class.
-            /*_cameraAcceleration += 0.25f * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            MathHelper.Clamp(_cameraAcceleration, 0, 1);
-
-            // cache values
-            var elapsedGameTime = gameTime.ElapsedGameTime;
-            var totalSeconds = (float)elapsedGameTime.TotalSeconds;
-
-            // 10/9/2009 - Cache calculation
-            var scrolledDistance = (CameraMaxSpeed * _cameraAcceleration) * totalSeconds;*/
-
+            // Apply Accelartion
             var scrolledDistance = _accelerationValueBehavior.GetDelta(gameTime);
 
+            // 6/28/2012 - Updated to use [Flags] on enum, which allows diagonal moving! - :) Ben
             switch (_cameraDirection)
             {   
                 case CameraDirectionEnum.ScrollForward:
-                    vectorToAdd.Z = -scrolledDistance;
-                    ScrolledDistance += scrolledDistance * 25f; // 10/9/2009 (Scripting purposes)
-                    break;
                 case CameraDirectionEnum.ScrollBackward:
-                    vectorToAdd.Z = scrolledDistance;
-                    ScrolledDistance += scrolledDistance*25f; // 10/9/2009 (Scripting purposes)
-                    break;
                 case CameraDirectionEnum.ScrollLeft:
-                    vectorToAdd.X = -scrolledDistance;
-                    ScrolledDistance += scrolledDistance*25f; // 10/9/2009 (Scripting purposes)
-                    break;
                 case CameraDirectionEnum.ScrollRight:
-                    vectorToAdd.X = scrolledDistance;
-                    ScrolledDistance += scrolledDistance*25f; // 10/9/2009 (Scripting purposes)
                     break;
                 case CameraDirectionEnum.Up:
                     vectorToAdd.Y = scrolledDistance;
@@ -615,6 +594,35 @@ namespace TWEngine.GameCamera
                     vectorToAdd.Y = -scrolledDistance;
                     break;
             }
+
+            // 6/28/2012
+            if (((int)_cameraDirection & (int)CameraDirectionEnum.ScrollForward) != 0)
+            {
+                vectorToAdd.Z = -scrolledDistance;
+                ScrolledDistance += scrolledDistance * 25f; // 10/9/2009 (Scripting purposes)
+            }
+
+            // 6/28/2012
+            if (((int)_cameraDirection & (int)CameraDirectionEnum.ScrollBackward) != 0)
+            {
+                vectorToAdd.Z = scrolledDistance;
+                ScrolledDistance += scrolledDistance * 25f; // 10/9/2009 (Scripting purposes)
+            }
+
+            // 6/28/2012
+            if (((int)_cameraDirection & (int)CameraDirectionEnum.ScrollLeft) != 0)
+            {
+                vectorToAdd.X = -scrolledDistance;
+                ScrolledDistance += scrolledDistance * 25f; // 10/9/2009 (Scripting purposes)
+            }
+
+            // 6/28/2012
+            if (((int)_cameraDirection & (int)CameraDirectionEnum.ScrollRight) != 0)
+            {
+                vectorToAdd.X = scrolledDistance;
+                ScrolledDistance += scrolledDistance * 25f; // 10/9/2009 (Scripting purposes)
+            }
+
         }
 
         /// <summary>

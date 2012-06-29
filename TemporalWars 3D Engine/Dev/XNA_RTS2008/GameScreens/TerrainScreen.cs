@@ -569,7 +569,7 @@ namespace TWEngine.GameScreens
             InstancedItemLoader.PreLoadInstanceItemsFinished.Reset(); // 1/6/2010*/
 
             // 5/5/2009 - Add Birds Sound group, to play in a loop with constant delay
-            AudioManager.PlayCueLoopedWithConstantDelay(Sounds.Birds_Mountain, 45);
+            //AudioManager.PlayCueLoopedWithConstantDelay(Sounds.Birds_Mountain, 45);
             //SoundManager.PlayCueLoopedWithConstantDelay(SoundBankGroup.Ambient, Sounds.Amibient_Birds_Typical, 30);
             
             // 5/5/2009 - Start looping rain sound

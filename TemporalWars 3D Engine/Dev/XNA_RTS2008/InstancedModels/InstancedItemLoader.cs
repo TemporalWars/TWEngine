@@ -99,7 +99,49 @@ namespace TWEngine.InstancedModels
             InitializePreloadCompleteArray();
         }
 
-       
+        // 6/28/2012
+        /// <summary>
+        /// To save time during game play, some of the <see cref="InstancedModel"/> items are preloaded during game bootup by
+        /// calling this method.  
+        /// </summary>
+        internal static void PreLoadSomeInstanceItems(Game game, List<ItemType> playableItemsToLoad)
+        {
+            // 6/3/2012 - Skip loading RTS items if not set to TRUE.
+            if (!DoPreloadPlayableRtsItems)
+                return;
+
+            // 6/28/2012
+            if (playableItemsToLoad == null)
+                throw new ArgumentNullException("playableItemsToLoad");
+
+            // 6/28/2012
+            if (playableItemsToLoad.Count == 0)
+                throw new ArgumentOutOfRangeException("playableItemsToLoad", "Count must be greater than 0!");
+
+            // Set Game Instance
+            _gameInstance = game;
+
+            // 6/28/2012 - 
+            var count = playableItemsToLoad.Count;
+            for (var i = 0; i < count; i++)
+            {
+                // retrieve item
+                var itemTypeToLoad = playableItemsToLoad[i];
+                
+                // Add to preload queue
+                PreLoadPlayableInstancedItem(itemTypeToLoad);
+            }
+
+            // Flag-Marker
+            PreLoadPlayableInstancedItem(ItemType.flagMarker);
+
+            // 11/7/2009 - Start Thread
+            PreLoadInstanceItemsMethod(); // 1/7/2010
+
+            // 1/6/2010 - Mark Playable Items loaded.
+            PreloadItemsCompleted = true;
+
+        }
 
         /// <summary>
         /// To save time during game play, some of the <see cref="InstancedModel"/> items are preloaded during game bootup by

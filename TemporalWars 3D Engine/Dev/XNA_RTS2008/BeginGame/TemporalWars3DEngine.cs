@@ -9,7 +9,6 @@
 #if !XBOX360
 using System.Diagnostics;
 using System.Windows.Forms;
-
 using TWEngine.Console;
 using TWEngine.Utilities;
 using fbDeprofiler;
@@ -54,6 +53,7 @@ using TWEngine.Explosions;
 using TWEngine.Networking;
 using TWEngine.MemoryPool;
 using TWEngine.Terrain.Enums;
+using TWEngine.InstancedModels.Enums;
 using TWEngine.TerrainTools;
 using TWEngine.Utilities;
 using TWEngine.Viewports;
@@ -104,7 +104,8 @@ namespace TWEngine
 
 // ReSharper restore InconsistentNaming
 
-        // 5/29/2012 - GamePaused state.
+        // 6/28/2012 - Used to set specific playable items to load, rather than the default set.
+        private static readonly List<ItemType> _playableItemTypes = new List<ItemType>();
 
         ///<summary>
         /// Returns collection of <see cref="Player"/>.
@@ -203,6 +204,15 @@ namespace TWEngine
         
 
         #region Properties 
+
+        // 6/28/2012
+        /// <summary>
+        /// Used to set specific playable items to load, rather than the default set.
+        /// </summary>
+        public static List<ItemType> PlayableItemTypes
+        {
+            get { return _playableItemTypes; }
+        }
 
         // 5/29/2012
         /// <summary>
@@ -1043,8 +1053,17 @@ namespace TWEngine
 
             base.Initialize();
 
-            // Start Thread for Pre-Loading Some PlayableItems, for example SciFi-Tanks.           
-            InstancedItemLoader.PreLoadSomeInstanceItems(this);
+            // 6/28/2012 - Check if overriding game gave its own subset of PlayableItems to load
+            if (_playableItemTypes.Count != 0)
+            {
+                // Start Thread for Pre-Loading Some PlayableItems, for example SciFi-Tanks.           
+                InstancedItemLoader.PreLoadSomeInstanceItems(this, _playableItemTypes);
+            }
+            else
+            {
+                // Start Thread for Pre-Loading Some PlayableItems, for example SciFi-Tanks.           
+                InstancedItemLoader.PreLoadSomeInstanceItems(this);
+            }
 
             // 1/25/2010 - Moved here to be after Playable items load.
             // 8/6/2009 - Start Thread for Pre-Loading; when done, it will automatically start the InstancedItem thread.            
