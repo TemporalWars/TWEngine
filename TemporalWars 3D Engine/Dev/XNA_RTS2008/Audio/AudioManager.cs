@@ -964,6 +964,108 @@ namespace TWEngine.Audio
             
         }
 
+        // 6/29/2012
+        /// <summary>
+        /// Check if given <see cref="Cue"/> is in 'Paused' state.
+        /// </summary>
+        /// <param name="uniqueKey">The <see cref="SceneItem"/>'s uniqueKey.</param>
+        /// <param name="sound"><see cref="Sounds"/> to check state.</param>
+        // ReSharper disable UnusedMember.Global
+        public static bool IsPaused(Guid uniqueKey, Sounds sound)
+        // ReSharper restore UnusedMember.Global
+        {
+            try // 3/27/2011
+            {
+                // 5/13/2009
+                Dictionary<int, Cue> sounds;
+                if (!Cues.TryGetValue(uniqueKey, out sounds)) return false;
+
+                // 6/10/2012
+                var soundNumberKey = (int)sound;
+
+                // 6/29/2012
+                Cue cue;
+                return sounds.TryGetValue(soundNumberKey, out cue) && cue.IsPaused;
+            }
+            catch (Exception err)
+            {
+                if (err.InnerException != null)
+                    Debug.WriteLine("Method Error: Resume: {0}", err.InnerException.Message);
+                else
+                    Debug.WriteLine("Method Error: Resume.");
+
+                return false;
+            }
+        }
+
+        // 6/29/2012
+        /// <summary>
+        /// Check if given <see cref="Cue"/> is in 'Playing' state.
+        /// </summary>
+        /// <param name="uniqueKey">The <see cref="SceneItem"/>'s uniqueKey.</param>
+        /// <param name="sound"><see cref="Sounds"/> to check state.</param>
+        // ReSharper disable UnusedMember.Global
+        public static bool IsPlaying(Guid uniqueKey, Sounds sound)
+        // ReSharper restore UnusedMember.Global
+        {
+            try // 3/27/2011
+            {
+                // 5/13/2009
+                Dictionary<int, Cue> sounds;
+                if (!Cues.TryGetValue(uniqueKey, out sounds)) return false;
+
+                // 6/10/2012
+                var soundNumberKey = (int)sound;
+
+                // 6/29/2012
+                Cue cue;
+                return sounds.TryGetValue(soundNumberKey, out cue) && cue.IsPlaying;
+            }
+            catch (Exception err)
+            {
+                if (err.InnerException != null)
+                    Debug.WriteLine("Method Error: Resume: {0}", err.InnerException.Message);
+                else
+                    Debug.WriteLine("Method Error: Resume.");
+
+                return false;
+            }
+        }
+
+        // 6/29/2012
+        /// <summary>
+        /// Check if given <see cref="Cue"/> is in 'Stopped' state.
+        /// </summary>
+        /// <param name="uniqueKey">The <see cref="SceneItem"/>'s uniqueKey.</param>
+        /// <param name="sound"><see cref="Sounds"/> to check state.</param>
+        // ReSharper disable UnusedMember.Global
+        public static bool IsStopped(Guid uniqueKey, Sounds sound)
+        // ReSharper restore UnusedMember.Global
+        {
+            try // 3/27/2011
+            {
+                // 5/13/2009
+                Dictionary<int, Cue> sounds;
+                if (!Cues.TryGetValue(uniqueKey, out sounds)) return false;
+
+                // 6/10/2012
+                var soundNumberKey = (int)sound;
+
+                // 6/29/2012
+                Cue cue;
+                return sounds.TryGetValue(soundNumberKey, out cue) && cue.IsStopped;
+            }
+            catch (Exception err)
+            {
+                if (err.InnerException != null)
+                    Debug.WriteLine("Method Error: Resume: {0}", err.InnerException.Message);
+                else
+                    Debug.WriteLine("Method Error: Resume.");
+
+                return false;
+            }
+        }
+
         #region Play Cues (Looped) with delay
 
         // 5/5/2009

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Net;
 using PerfTimersComponent.Timers;
 using PerfTimersComponent.Timers.Enums;
 using TWEngine.BeginGame.Enums;
@@ -890,19 +891,23 @@ namespace TWEngine.ScreenManagerC
 
         #region Public Methods
 
-        // 6/17/2012
-        /*/// <summary>
-        /// Adds a new <see cref="PauseMenuScreen"/> to the <see cref="ScreenManager"/>.
+        // 6/29/2012
+        /// <summary>
+        /// Displays the proper 'Pause' screen.
         /// </summary>
-        /// <param name="pauseMenuScreen">Instance of <see cref="PauseMenuScreen"/></param>
-        /// <param name="isMainMenuScreen">Set to true to add to the internal <see cref="MainMenuScreens"/> collection.</param>
-        public void AddPauseScreen(PauseMenuScreen pauseMenuScreen, bool isMainMenuScreen)
+        /// <param name="networkSession">Instance of <see cref="NetworkSession"/></param>
+        /// <returns></returns>
+        public bool DisplayPauseScreen(NetworkSession networkSession)
         {
-            var screenManager = (ScreenManager)Services.GetService(typeof(ScreenManager));
-
-            // If they pressed pause, bring up the pause menu screen.
-            screenManager.AddScreen(new PauseMenuScreen(terrainScreen._networkSession), false);
-        }*/
+            // 6/17/2012 - Check if callback should be used.
+            if (!OnAddPauseMenuScreen(EventArgs.Empty))
+            {
+                // If they pressed pause, bring up the pause menu screen.
+                AddScreen(new PauseMenuScreen(networkSession), false);
+                return true;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Adds a new <see cref="GameScreen"/> to the <see cref="ScreenManager"/>.

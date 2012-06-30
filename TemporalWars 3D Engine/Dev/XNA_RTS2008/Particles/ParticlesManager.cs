@@ -404,6 +404,37 @@ namespace TWEngine.Particles
 
         }
 
+        // 6/29/2012
+        /// <summary>
+        /// Updates ALL internal particles to the current Draw 'Visibility' state.
+        /// </summary>
+        /// <param name="drawParticles">Draw Particles?</param>
+        public static void SetParticlesToDraw(bool drawParticles)
+        {
+            if (_particlesToDisplay == null)
+                return;
+
+            // iterate particlesSystems
+            var count = _particlesToDisplay.Count;
+            for (var i = 0; i < count; i++)
+            {
+                // Retrieve ParticleSystem List<>.
+                var particleSystemList = _particlesToDisplay[i];
+                if (particleSystemList == null) continue;
+
+                // iterate internal list
+                var count1 = particleSystemList.Count;
+                for (var j = 0; j < count1; j++)
+                {
+                    // Update Draw Visibility
+                    var particleSystem = particleSystemList[j];
+
+                    if (particleSystem.ParticleSystem != null) 
+                        particleSystem.ParticleSystem.Visible = drawParticles;
+                }
+            }
+        }
+
         // 1/16/2010
         /// <summary>
         /// Retrieves the <see cref="ParticleSystem"/> instance, for the given <paramref name="particleSystemType"/>.

@@ -6,6 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using AStarInterfaces.AStarAlgorithm.Enums;
@@ -421,17 +423,12 @@ namespace TWEngine.HandleGameInput
             if (TerrainShape.GameConsole.ConsoleState != ConsoleState.Closed)
                 return;
 #endif
-
-
-
             if (InputState.IsNewKeyPress(Keys.F12))
             {
-
                 ShadowMap.DebugIsFor++;
 
                 if (ShadowMap.DebugIsFor > DebugIsFor.ShadowTexelOffsetBottomRight)
                     ShadowMap.DebugIsFor = DebugIsFor.LightPosition;
-
             }
 
             // DEBUG: Test moving LightPos Height for shadows
@@ -461,7 +458,6 @@ namespace TWEngine.HandleGameInput
                 lightTar.Y -= 10;
                 ShadowMap.LightTarget = lightTar;
             }
-            
 
             // 6/10/2009 - Adjust DepthBias by the thousands
             if (InputState.IsKeyPress(Keys.Add) && (InputState.IsKeyPress(Keys.LeftShift) || InputState.IsKeyPress(Keys.RightShift)))
@@ -483,8 +479,7 @@ namespace TWEngine.HandleGameInput
             else if (InputState.IsKeyPress(Keys.Subtract))
             {
                 ShadowMap.ShadowMapDepthBias -= 0.01f;
-            }           
-
+            }
 
             // DEBUG: Test moving LightPos's Position for shadows
             if (InputState.IsKeyPress(Keys.NumPad8) && ShadowMap.DebugIsFor == DebugIsFor.LightPosition)
@@ -535,9 +530,6 @@ namespace TWEngine.HandleGameInput
                 lightTar.X += 10;
                 ShadowMap.LightTarget = lightTar;
             }
-                
-
-            
 
         }
         
@@ -667,39 +659,40 @@ namespace TWEngine.HandleGameInput
             var lastGamepadStates = InputState.LastGamepadStates; // 4/30/2010 - Cache
             for (var i = 0; i < inputs; i++)
             {
-                // 8/28/2008 - Test Turning on ShadowMap/Water for XBOX
-                if (currentGamepadStates[i].Triggers.Right > 0.9f &&
-                    !(lastGamepadStates[i].Triggers.Right > 0.9f))
-                {
-                    // 11/14/2008: TODO - Debug Purposes
-                    switch (_useItem)
-                    {
-                        case 0:
-                            // Water
-                            //ImageNexusRTSGameEngine.EngineGameConsole.Water.IsVisible = !ImageNexusRTSGameEngine.EngineGameConsole.Water.IsVisible;
-                            var water = (IWaterManager)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(IWaterManager));
-                            water.IsVisible = !water.IsVisible;
-                            break;
-                        case 1:
-                            // ShadowMap                       
-                            if (TerrainShape.ShadowMapInterface != null)
-                                TerrainShape.ShadowMapInterface.IsVisible = !TerrainShape.ShadowMapInterface.IsVisible;
-                            else
-                                TerrainShape.ShadowMapInterface = (IShadowMap)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(IShadowMap));
-                            break;
-                        case 2:
-                            // StopWatchTimers                       
-                            var timers = (StopWatchTimers)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(StopWatchTimers));
-                            timers.IsVisible = !timers.IsVisible;
+                // 6/29/2012 - Cache
+                GamePadState currentGamepadState = currentGamepadStates[i];
+                GamePadState lastGamepadState = lastGamepadStates[i];
+                GamePadTriggers gamePadTriggers = currentGamepadState.Triggers;
+                GamePadTriggers padTriggers = lastGamepadState.Triggers;
 
-                            break;
-                        case 3: // 1/20/2011 - Show Wireframe
-                            TerrainShape.DrawMode = TerrainShape.DrawMode == DrawMode.Solid ? DrawMode.WireFrame : DrawMode.Solid;
-                            break;
-                        default:
-                            break;
-                    } // End Switch
-                } // End Loop
+                // 8/28/2008 - Test Turning on ShadowMap/Water for XBOX
+                if (gamePadTriggers.Right <= 0.9f || (padTriggers.Right > 0.9f)) continue;
+
+                // 11/14/2008: TODO - Debug Purposes
+                switch (_useItem)
+                {
+                    case 0:
+                        // Water
+                        var water = (IWaterManager)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(IWaterManager));
+                        water.IsVisible = !water.IsVisible;
+                        break;
+                    case 1:
+                        // ShadowMap                       
+                        if (TerrainShape.ShadowMapInterface != null)
+                            TerrainShape.ShadowMapInterface.IsVisible = !TerrainShape.ShadowMapInterface.IsVisible;
+                        else
+                            TerrainShape.ShadowMapInterface = (IShadowMap)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(IShadowMap));
+                        break;
+                    case 2:
+                        // StopWatchTimers                       
+                        var timers = (StopWatchTimers)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(StopWatchTimers));
+                        timers.IsVisible = !timers.IsVisible;
+
+                        break;
+                    case 3: // 1/20/2011 - Show Wireframe
+                        TerrainShape.DrawMode = TerrainShape.DrawMode == DrawMode.Solid ? DrawMode.WireFrame : DrawMode.Solid;
+                        break;
+                } // End Switch
             }
 
             // 11/14/2008 - TODO: Debug Purposes
@@ -707,8 +700,13 @@ namespace TWEngine.HandleGameInput
             // checked in the method above.
             for (var i = 0; i < inputs; i++)
             {
-                if (currentGamepadStates[i].Triggers.Left <= 0.9f ||
-                    (lastGamepadStates[i].Triggers.Left > 0.9f)) continue;
+                // 6/29/2012 - Cache
+                GamePadState currentGamepadState = currentGamepadStates[i];
+                GamePadState lastGamepadState = lastGamepadStates[i];
+                GamePadTriggers gamePadTriggers = currentGamepadState.Triggers;
+                GamePadTriggers padTriggers = lastGamepadState.Triggers;
+
+                if (gamePadTriggers.Left <= 0.9f || (padTriggers.Left > 0.9f)) continue;
 
                 if (_useItem < 4)
                     _useItem++;
@@ -738,7 +736,7 @@ namespace TWEngine.HandleGameInput
 
             var playerNumber = player.PlayerNumber;
 
-            //try
+            try
             {
                 // 1/2/2010 - Set Minimap ContainsCursor
                 var miniMapContainsCursor = MiniMap != null && MiniMap.MiniMapContainsCursor;
@@ -769,7 +767,11 @@ namespace TWEngine.HandleGameInput
                     // If one SceneItemOwner selected, then make sure moveable SceneItemOwner.
                     if (itemsSelected.Count == 1)
                     {
-                        if (itemsSelected[0].ItemMoveable)
+                        // 6/29/2012 - Cache
+                        var sceneItemWithPick = itemsSelected[0];
+
+                        // 6/29/2012 - Check if null
+                        if (sceneItemWithPick != null && sceneItemWithPick.ItemMoveable)
                         {
                             // Then check for blocked areas
                             CursorPositionBlockedCheck();
@@ -793,7 +795,6 @@ namespace TWEngine.HandleGameInput
                 if (InputState.AttackOrderGiven)
                 {
                     attackOrderGiven = Player.SceneItemsAttackCheck(player, InputState);
-
                 }
 
                 // 10/19/2009 - Check if issue a 'AttackMove' order, and 'attackOrder' for some item was not just given.
@@ -818,7 +819,6 @@ namespace TWEngine.HandleGameInput
                     Player.UnitsMoveOrder(playerNumber, ref goalPosition, false);
 
                 } // End If RightClick  
-
                
                 // Check if 'Attack Ground Order' just given
                 if (InputState.AttackGroundOrderGiven)
@@ -826,7 +826,6 @@ namespace TWEngine.HandleGameInput
                     // Get PickedRay Position in PathNodes Cordinates
                     TerrainPickingRoutines.GetCursorPosByPickedRay(PickRayScale.DivideByAStarPathScale, out goalPosition);
                     Player.UnitsAttackGroundOrder(player, ref goalPosition); // 6/14/2010 - Updated to passing in 'Player'.
-
 
                 } // End If RightClick W/LeftControl Key
 
@@ -869,9 +868,11 @@ namespace TWEngine.HandleGameInput
                     SetDefenseAIStance(itemsSelected, DefenseAIStance.HoldGround);
                 }
             }
-            //catch (NullReferenceException)
+            catch (Exception ex)
             {
-                //System.Diagnostics.Debug.WriteLine("Method Error: 'HandleGameInput' classes PlayerInputCheck method threw Null error.");
+                System.Diagnostics.Debug.WriteLine(
+                    string.Format("Method Error: 'HandleGameInput' classes PlayerInputCheck method exception {0}.",
+                                  ex.Message));
             }
             
         }
@@ -1179,7 +1180,6 @@ namespace TWEngine.HandleGameInput
                 // 11/11/09 - Sets ScreenTextItems for new selection 'Visible' to true.
                 UpdateSelectionsScreenTextItems(selectionGroup, groupNumber, true); 
 
-
                 // update changes back to dictionary
                 SpecialSelectionGroups[groupNumber] = selectionGroup;
             }
@@ -1191,7 +1191,6 @@ namespace TWEngine.HandleGameInput
 
                 // 11/11/09 - Sets ScreenTextItems for new selection 'Visible' to true.
                 UpdateSelectionsScreenTextItems(specialGroup, groupNumber, true); 
-
 
                 SpecialSelectionGroups.Add(groupNumber, specialGroup);
             }
