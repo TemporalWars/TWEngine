@@ -921,6 +921,9 @@ namespace TWEngine.GameScreens
             // 6/06/2012 - Dispose of resources and collections within GameLevelManager class. (Scripting Purposes)
             if (gameLevelManager != null) gameLevelManager.UnloadContent();
 
+            // 6/29/2012 - Clear Camera Cinematics Dictionary
+            CameraCinematics.CinematicSplinesCompleted.Clear();
+
             // 6/6/2012 - Dispose of resources
             TerrainDirectionalIconManager.UnloadContent();
             
@@ -1080,13 +1083,8 @@ namespace TWEngine.GameScreens
 
             if (input.PauseGame)
             {
-                // 6/17/2012 - Check if callback should be used.
-                if (!ScreenManager.OnAddPauseMenuScreen(EventArgs.Empty))
-                {
-                    // If they pressed pause, bring up the pause menu screen.
-                    terrainScreen.ScreenManager.AddScreen(new PauseMenuScreen(terrainScreen._networkSession), false);
-                    return;
-                }
+                // 6/29/2012 - Refactored pause code to new method in ScreenManager
+                if (terrainScreen.ScreenManager.DisplayPauseScreen(terrainScreen._networkSession)) return;
             }
 
 // 2/2/2010 - Following is only for PC development; not for Xbox.
