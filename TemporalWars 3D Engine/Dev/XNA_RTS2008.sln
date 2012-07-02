@@ -302,7 +302,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenScharbachTWScriptingCont
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 15
+		SccNumberOfProjects = 18
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs14
 		SccLocalPath0 = .
@@ -356,6 +356,18 @@ Global
 		SccProjectTopLevelParentUniqueName14 = XNA_RTS2008.sln
 		SccProjectName14 = ParallelTasksComponent
 		SccLocalPath14 = ParallelTasksComponent
+		SccProjectUniqueName15 = Particles3DComponentLibrary\\Particles3DComponentLibrary.csproj
+		SccProjectTopLevelParentUniqueName15 = XNA_RTS2008.sln
+		SccProjectName15 = Particles3DComponentLibrary
+		SccLocalPath15 = Particles3DComponentLibrary
+		SccProjectUniqueName16 = Particles3DComponentLibrary\\Particles3DComponentLibrary_XBox360.csproj
+		SccProjectTopLevelParentUniqueName16 = XNA_RTS2008.sln
+		SccProjectName16 = Particles3DComponentLibrary
+		SccLocalPath16 = Particles3DComponentLibrary
+		SccProjectUniqueName17 = Xbox360Generics\\Xbox360Generics.csproj
+		SccProjectTopLevelParentUniqueName17 = XNA_RTS2008.sln
+		SccProjectName17 = Xbox360Generics
+		SccLocalPath17 = Xbox360Generics
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
