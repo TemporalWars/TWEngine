@@ -213,23 +213,8 @@ settings.xml
 1ContentPlayable\XBox360\Vehicles\SciFiTanks\track_1.xnb
 1ContentPlayable\XBox360\Vehicles\SciFiTanks\wheel_0.xnb
 1ContentTextures\Xbox360\Textures\Particles\snowFlake.xnb
-1ContentZipped\ContentScenary_Xbox 360.xzb
 1ContentZipped\ContentTextures_low_Xbox 360.xzb
 1ContentZipped\ContentTextures_med_Xbox 360.xzb
-1ContentZipped\UnZipScenary\Xbox360\Barrel_0.xnb
-1ContentZipped\UnZipScenary\Xbox360\Brl_LOD_0.xnb
-1ContentZipped\UnZipScenary\Xbox360\BS2LODNormal.xnb
-1ContentZipped\UnZipScenary\Xbox360\BS2LOD_0.xnb
-1ContentZipped\UnZipScenary\Xbox360\farmBarrelSet02.xnb
-1ContentZipped\UnZipScenary\Xbox360\farmBarrelSet04.xnb
-1ContentZipped\UnZipScenary\Xbox360\farmBarrelSet05.xnb
-1ContentZipped\UnZipScenary\Xbox360\farmBarrelSet07.xnb
-1ContentZipped\UnZipScenary\Xbox360\farmPumpkinVine01.xnb
-1ContentZipped\UnZipScenary\Xbox360\farmWestWaterMill.xnb
-1ContentZipped\UnZipScenary\Xbox360\farmWestWaterTower01.xnb
-1ContentZipped\UnZipScenary\Xbox360\InstancedModel_Blinn_0.xnb
-1ContentZipped\UnZipScenary\Xbox360\PmpkVin_0.xnb
-1ContentZipped\UnZipScenary\Xbox360\Pumpkin_0.xnb
 1ContentAudio\Xbox360\AmbientSoundBank.xsb
 1ContentAudio\Xbox360\AmbientWaveBank.xwb
 1ContentAudio\Xbox360\ExplosionsSoundBank.xsb

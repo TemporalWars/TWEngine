@@ -516,8 +516,6 @@
     <None Include="1ContentPlayable\XBox360\Vehicles\SciFiTanks\wheel_0.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="1ContentScenary\ContentTextures_low_Xbox 360.xzb" />
-    <None Include="1ContentScenary\ContentTextures_med_Xbox 360.xzb" />
     <None Include="1ContentScenary\XBox360\ContentAlleyPack\AlleyPack\aluminumtrash_NRM_0.xnb" />
     <None Include="1ContentScenary\XBox360\ContentAlleyPack\AlleyPack\aluminumtrash_SPEC_0.xnb" />
     <None Include="1ContentScenary\XBox360\ContentAlleyPack\AlleyPack\apocwall004_NRM_0.xnb" />
@@ -2186,8 +2184,12 @@
     <None Include="1ContentTextures\Xbox360\Textures\Particles\snowFlake.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="1ContentZipped\ContentTextures_low_Xbox 360.xzb" />
-    <None Include="1ContentZipped\ContentTextures_med_Xbox 360.xzb" />
+    <None Include="1ContentZipped\ContentTextures_low_Xbox 360.xzb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentZipped\ContentTextures_med_Xbox 360.xzb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="AI\AIThreadManager_org.cs" />
     <Compile Include="AI\Enums\FSM_StateType.cs" />
     <Compile Include="AI\FSMStates\AttackMoveState.cs" />
@@ -2663,13 +2665,8 @@
     <Compile Include="ItemTypeAttributes\Structs\PlayableItemTypeAttributes.cs" />
     <Compile Include="ItemTypeAttributes\Structs\ScenaryItemTypeAttributes.cs" />
     <Compile Include="ItemTypeAttributes\Structs\SoundToPlay.cs" />
-    <Compile Include="MemoryPool\Delegates\PoolMemoryEventHandler.cs" />
-    <Compile Include="MemoryPool\Interfaces\IPoolNodeItem.cs" />
     <Compile Include="MemoryPool\Interfaces\IPoolNodeSceneItem.cs" />
-    <Compile Include="MemoryPool\Pool.cs" />
-    <Compile Include="MemoryPool\PoolEventArgs.cs" />
     <Compile Include="MemoryPool\PoolManager.cs" />
-    <Compile Include="MemoryPool\PoolNode.cs" />
     <Compile Include="Networking\Lobby2Screen.cs" />
     <Compile Include="Networking\NetworkGameComponent.cs" />
     <Compile Include="Networking\NetworkGameSyncer.cs" />
@@ -3162,6 +3159,8 @@
   <ItemGroup>
     <Folder Include="0LateBinds\x86\" />
     <Folder Include="1ContentArtwork\" />
+    <Folder Include="1ContentGroundTextures\" />
+    <Folder Include="1ContentTerrainTextures\XBox360\" />
     <Folder Include="Documentation\" />
   </ItemGroup>
   <ItemGroup>
@@ -3177,6 +3176,10 @@
       <Project>{690986AE-0D12-40EE-A133-35D47C6DF120}</Project>
       <Name>ContentMaps</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
+    <ProjectReference Include="..\MemoryPoolComponent\MemoryPoolComponent_XBox360.csproj">
+      <Project>{042292DF-A609-4ECD-BB58-459DD0398928}</Project>
+      <Name>MemoryPoolComponent_XBox360</Name>
     </ProjectReference>
     <ProjectReference Include="..\ParallelTasksComponent\ParallelTasksComponent_XBox360.csproj">
       <Project>{70A61848-3890-4CB8-A326-560461BEE69F}</Project>
