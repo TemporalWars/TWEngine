@@ -6,6 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using MemoryPoolComponent;
 using TWEngine.InstancedModels.Enums;
 using TWEngine.MemoryPool;
 using TWEngine.MemoryPool.Interfaces;

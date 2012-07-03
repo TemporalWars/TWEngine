@@ -184,13 +184,11 @@
   <ItemGroup>
     <Compile Include="AI\AIManager.cs" />
     <Compile Include="DeployLXKeys.cs" />
-    <Compile Include="GameCamera\Camera.cs" />
-    <Compile Include="GameCamera\CameraCinematics.cs" />
-    <Compile Include="GameCamera\Delegates\UpdateDueToCameraMovement.cs" />
-    <Compile Include="GameCamera\Enums\CameraDirection.cs" />
-    <Compile Include="GameCamera\Enums\CameraMoveType.cs" />
-    <Compile Include="GameCamera\Structs\CinematicNode.cs" />
     <Compile Include="Interfaces\IScriptingActionChangeRequest.cs" />
+    <Compile Include="MemoryPool\PoolItems\BuildingScenePoolItem.cs" />
+    <Compile Include="MemoryPool\PoolItems\DefenseScenePoolItem.cs" />
+    <Compile Include="MemoryPool\PoolItems\SciFiAircraftScenePoolItem.cs" />
+    <Compile Include="MemoryPool\PoolItems\SciFiTankScenePoolItem.cs" />
     <Compile Include="SceneItems\Enums\RotationAxisEnum.cs" />
     <Compile Include="SceneItems\ScenaryDataReaderV2.cs" />
     <Compile Include="SceneItems\Structs\ScenaryItemDataAudio.cs" />
@@ -5959,6 +5957,10 @@
     <Compile Include="Console\Enums\ConsoleState.cs" />
     <Compile Include="Console\Structs\KeyBinding.cs" />
     <Compile Include="Explosions\Structs\ExplosionItem.cs" />
+    <Compile Include="GameCamera\Enums\CameraDirection.cs" />
+    <Compile Include="GameCamera\Structs\CinematicNode.cs" />
+    <Compile Include="GameCamera\Enums\CameraMoveType.cs" />
+    <Compile Include="GameCamera\Delegates\UpdateDueToCameraMovement.cs" />
     <Compile Include="IFDTiles\Delegates\CreateItemToPlace.cs" />
     <Compile Include="IFDTiles\Delegates\SceneItemPlacedEventHandler.cs" />
     <Compile Include="IFDTiles\Delegates\ItemCreateRequestEventHandler.cs" />
@@ -6000,6 +6002,7 @@
     <Compile Include="Common\Enums\CursorTextureEnum.cs" />
     <Compile Include="Common\FogOfWarItem.cs" />
     <Compile Include="Explosions\ExplosionsManager.cs" />
+    <Compile Include="GameCamera\CameraCinematics.cs" />
     <Compile Include="HandleGameInput\HandleInput.cs" />
     <None Include="ParallelTasks\InstancedModelParallelFor.cs" />
     <Compile Include="InstancedModels\Enums\ProceduralMaterialParameters.cs" />
@@ -6142,17 +6145,12 @@
     <Compile Include="rtsCommands\rtsCommAttackSceneItem.cs" />
     <Compile Include="rtsCommands\rtsCommStartAttackSceneItem.cs" />
     <Compile Include="SceneItems\Structs\AttackByLastItemType.cs" />
-    <Compile Include="SceneItems\BuildingScenePoolItem.cs" />
     <Compile Include="SceneItems\Enums\AIOrderType.cs" />
     <Compile Include="SceneItems\Enums\DefenseAIStance.cs" />
-    <Compile Include="SceneItems\DefenseScenePoolItem.cs" />
     <Compile Include="SceneItems\Enums\ItemStates.cs" />
     <Compile Include="MemoryPool\Interfaces\IPoolNodeSceneItem.cs" />
     <Compile Include="SceneItems\KillSceneItemManager.cs" />
     <Compile Include="SceneItems\Structs\KillSceneItemStruct.cs" />
-    <Compile Include="SceneItems\PoolItem.cs" />
-    <Compile Include="SceneItems\SciFiAircraftScenePoolItem.cs" />
-    <Compile Include="SceneItems\SciFiTankScenePoolItem.cs" />
     <Compile Include="SceneItems\Structs\ItemMoveState.cs" />
     <Compile Include="SceneItems\ScenaryDataReader.cs" />
     <Compile Include="SceneItems\Structs\ScenaryItemData.cs" />
@@ -6300,6 +6298,7 @@
       <DependentUpon>PropertiesTools.cs</DependentUpon>
     </Compile>
     <Compile Include="SceneItems\SceneItemWithPick.cs" />
+    <Compile Include="GameCamera\Camera.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="SceneItems\VehicleScene.cs" />
     <Compile Include="SceneItems\ScenaryItemScene.cs" />

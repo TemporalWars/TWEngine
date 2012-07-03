@@ -2666,6 +2666,10 @@
     <Compile Include="ItemTypeAttributes\Structs\ScenaryItemTypeAttributes.cs" />
     <Compile Include="ItemTypeAttributes\Structs\SoundToPlay.cs" />
     <Compile Include="MemoryPool\Interfaces\IPoolNodeSceneItem.cs" />
+    <Compile Include="MemoryPool\PoolItems\BuildingScenePoolItem.cs" />
+    <Compile Include="MemoryPool\PoolItems\DefenseScenePoolItem.cs" />
+    <Compile Include="MemoryPool\PoolItems\SciFiAircraftScenePoolItem.cs" />
+    <Compile Include="MemoryPool\PoolItems\SciFiTankScenePoolItem.cs" />
     <Compile Include="MemoryPool\PoolManager.cs" />
     <Compile Include="Networking\Lobby2Screen.cs" />
     <Compile Include="Networking\NetworkGameComponent.cs" />
@@ -2747,13 +2751,7 @@
     <Compile Include="SceneItems\BuildingScene.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SceneItems\BuildingScenePoolItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="SceneItems\DefenseScene.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SceneItems\DefenseScenePoolItem.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SceneItems\Enums\AIOrderType.cs">
@@ -2767,9 +2765,6 @@
     </Compile>
     <Compile Include="SceneItems\Enums\RotationAxisEnum.cs" />
     <Compile Include="SceneItems\KillSceneItemManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SceneItems\PoolItem.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SceneItems\ScenaryDataReader.cs">
@@ -2788,13 +2783,7 @@
     <Compile Include="SceneItems\SciFiAircraftScene.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SceneItems\SciFiAircraftScenePoolItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="SceneItems\SciFiTankScene.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SceneItems\SciFiTankScenePoolItem.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SceneItems\Structs\AttackByLastItemType.cs" />
