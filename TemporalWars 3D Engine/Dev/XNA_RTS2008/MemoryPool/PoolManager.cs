@@ -7,6 +7,8 @@
 //-----------------------------------------------------------------------------
 #endregion
 using System;
+using MemoryPoolComponent;
+using MemoryPoolComponent.Interfaces;
 using TWEngine.IFDTiles;
 using TWEngine.InstancedModels.Enums;
 using TWEngine.MemoryPool.Interfaces;
@@ -24,7 +26,7 @@ namespace TWEngine.MemoryPool
     /// Ultimately, the retrieving and returning of each of these <see cref="PoolNode"/> instances are managed
     /// here.
     /// </summary>
-    public class PoolManager : IDisposable
+    public class PoolManager : PoolManagerBase
     {
         // 8/17/2009 - Store PlayerNumber who owns this instance of PoolManager.
         private readonly int _playerNumberOwner;
@@ -242,7 +244,6 @@ namespace TWEngine.MemoryPool
         /// </summary>
         public PoolManager() : this(0)
         {
-            return;
         }
 
         // 5/13/2009
@@ -433,28 +434,6 @@ namespace TWEngine.MemoryPool
             }
         }
 
-        // 1/7/2010
-        /// <summary>
-        /// Generic type method helper, which takes a <see cref="Pool{TDefault}"/> type, and 
-        /// updates the internal <see cref="PoolNode"/> attributes.
-        /// </summary>
-        /// <typeparam name="TU">Some class of type <see cref="IPoolNodeItem"/>.</typeparam>
-        /// <param name="pool">
-        /// Some instance of <see cref="Pool{TDefault}"/>.
-        /// </param>
-        private static void UpdatePoolNodesAtts<TU>(Pool<TU> pool) where TU : class, IPoolNodeItem, new()
-        {
-            foreach (var node in pool.AllNodes)
-            {
-                var item = (TU)node.Item;
-                
-                item.PoolNode = node;
-                //poolNode.PoolOwner = pool; // 6/29/2009
-
-                pool.SetItemValue(node);
-            }
-        }
-
         // 1/7/2010 - Overload v2.
         /// <summary>
         /// a Generic type method helper, which takes a <see cref="Pool{TDefault}"/> type, and 
@@ -462,9 +441,9 @@ namespace TWEngine.MemoryPool
         /// </summary>
         /// <typeparam name="TU">Some Class of type <see cref="IPoolNodeItem"/></typeparam>
         /// <param name="pool"> Some instance of <see cref="Pool{TDefault}"/> </param>
-        /// <param name="poolManager"><see cref="PoolManager"/> owner.</param>
+        /// <param name="poolManager"><see cref="PoolManagerBase"/> owner.</param>
         /// <param name="playerNumber"><see cref="Player"/> number</param>
-        private static void UpdatePoolNodesAtts<TU>(Pool<TU> pool, PoolManager poolManager, byte playerNumber) where TU : class, IPoolNodeItem, IPoolNodeSceneItem, new()
+        protected new static void UpdatePoolNodesAtts<TU>(Pool<TU> pool, PoolManagerBase poolManager, byte playerNumber) where TU : class, IPoolNodeItem, IPoolNodeSceneItem, new()
         {
             foreach (var node in pool.AllNodes)
             {
@@ -478,7 +457,6 @@ namespace TWEngine.MemoryPool
             }
         }
 
-
         // 7/27/2009
         /// <summary>
         /// Returns the 'AvailableCount' of the given <see cref="PoolItem"/> type.
@@ -490,7 +468,7 @@ namespace TWEngine.MemoryPool
         /// where the class is inherited from the base class <see cref="PoolItem"/>.
         /// </remarks>
         /// <exception cref="ArgumentException">Thrown when <paramref name="itemType"/> is not of the valid <see cref="PoolItem"/> base.</exception>
-        public int GetPoolItemAvailableCount(Type itemType)
+        public override int GetPoolItemAvailableCount(Type itemType)
         {
             switch (itemType.Name)
             {
@@ -514,7 +492,7 @@ namespace TWEngine.MemoryPool
         /// <param name="itemType">typeOf(<see cref="PoolItem"/>) to check</param>
         /// <returns>Number of 'Capacity'</returns>
         /// <exception cref="ArgumentException">Thrown when <paramref name="itemType"/> is not of the valid <see cref="PoolItem"/> base.</exception>
-        public int GetPoolItemCapacity(Type itemType)
+        public override int GetPoolItemCapacity(Type itemType)
         {
             switch (itemType.Name)
             {
@@ -959,7 +937,7 @@ namespace TWEngine.MemoryPool
         /// <summary>
         /// Dispose of <see cref="Pool{Default}"/> collections.
         /// </summary>
-        public void Dispose()
+        public override void Dispose()
         {
             // Dispose of items.
             DisposePoolNodesAttributes(_buildingSceneItems);
@@ -978,7 +956,7 @@ namespace TWEngine.MemoryPool
         /// </summary>
         /// <typeparam name="TU">Set Generic Type.</typeparam>
         /// <param name="pool"><see cref="Pool{TDefault}"/> instance.</param>
-        public static void DisposePoolNodesAttributes<TU>(Pool<TU> pool) where TU : class, IPoolNodeItem, IPoolNodeSceneItem, new()
+        public new static void DisposePoolNodesAttributes<TU>(Pool<TU> pool) where TU : class, IPoolNodeItem, IPoolNodeSceneItem, new()
         {
             // Dispose of Pool Nodes
             foreach (var node in pool.AllNodes)

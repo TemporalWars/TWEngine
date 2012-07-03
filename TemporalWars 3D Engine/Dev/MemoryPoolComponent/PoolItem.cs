@@ -6,11 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using TWEngine.MemoryPool;
-using TWEngine.MemoryPool.Interfaces;
 
-namespace TWEngine.SceneItems
+using MemoryPoolComponent.Interfaces;
+using Microsoft.Xna.Framework;
+
+namespace MemoryPoolComponent
 {
     ///<summary>
     /// An item in the <see cref="PoolManager"/>.
@@ -25,7 +25,7 @@ namespace TWEngine.SceneItems
         /// <summary>
         /// Reference to the <see cref="PoolManager"/>
         /// </summary>
-        public PoolManager PoolManager { get; set; }
+        public PoolManagerBase PoolManager { get; set; }
 
         /// <summary>
         /// Is this Node in use?

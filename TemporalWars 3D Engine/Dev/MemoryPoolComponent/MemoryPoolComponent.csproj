@@ -67,6 +67,7 @@
     <Compile Include="Interfaces\IPoolNodeItem.cs" />
     <Compile Include="Pool.cs" />
     <Compile Include="PoolEventArgs.cs" />
+    <Compile Include="PoolItem.cs" />
     <Compile Include="PoolManagerBase.cs" />
     <Compile Include="Delegates\PoolMemoryEventHandler.cs" />
     <Compile Include="PoolNode.cs" />
