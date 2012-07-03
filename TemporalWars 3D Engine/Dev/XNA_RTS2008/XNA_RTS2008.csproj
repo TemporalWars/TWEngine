@@ -5959,10 +5959,6 @@
     <Compile Include="Console\Enums\ConsoleState.cs" />
     <Compile Include="Console\Structs\KeyBinding.cs" />
     <Compile Include="Explosions\Structs\ExplosionItem.cs" />
-    <Compile Include="GameData\GameCamera\Enums\CameraDirection.cs" />
-    <Compile Include="GameData\GameCamera\Structs\CinematicNode.cs" />
-    <Compile Include="GameData\GameCamera\Enums\CameraMoveType.cs" />
-    <Compile Include="GameData\GameCamera\Delegates\UpdateDueToCameraMovement.cs" />
     <Compile Include="IFDTiles\Delegates\CreateItemToPlace.cs" />
     <Compile Include="IFDTiles\Delegates\SceneItemPlacedEventHandler.cs" />
     <Compile Include="IFDTiles\Delegates\ItemCreateRequestEventHandler.cs" />
@@ -5981,8 +5977,6 @@
     <Compile Include="Interfaces\IWaterBase.cs" />
     <Compile Include="ItemTypeAttributes\Structs\PlayableItemTypeAttributes.cs" />
     <Compile Include="ItemTypeAttributes\Structs\SoundToPlay.cs" />
-    <Compile Include="MemoryPool\PoolEventArgs.cs" />
-    <Compile Include="MemoryPool\Delegates\PoolMemoryEventHandler.cs" />
     <Compile Include="ParallelTasks\AIDefenseParallelFor.cs" />
     <Compile Include="ParallelTasks\AIaStarParallelFor.cs" />
     <Compile Include="AI\FSM_AIControl.cs" />
@@ -6006,7 +6000,6 @@
     <Compile Include="Common\Enums\CursorTextureEnum.cs" />
     <Compile Include="Common\FogOfWarItem.cs" />
     <Compile Include="Explosions\ExplosionsManager.cs" />
-    <Compile Include="GameData\GameCamera\CameraCinematics.cs" />
     <Compile Include="HandleGameInput\HandleInput.cs" />
     <None Include="ParallelTasks\InstancedModelParallelFor.cs" />
     <Compile Include="InstancedModels\Enums\ProceduralMaterialParameters.cs" />
@@ -6059,7 +6052,6 @@
     <Compile Include="Interfaces\IVehicleShapeType.cs" />
     <Compile Include="Interfaces\IWaterManager.cs" />
     <Compile Include="ItemTypeAttributes\Structs\MessageTagDescription.cs" />
-    <Compile Include="MemoryPool\PoolNode.cs" />
     <Compile Include="Networking\Structs\GamerInfo.cs" />
     <Compile Include="Networking\Structs\LobbyScreenData.cs" />
     <Compile Include="Particles\Enums\ParticleSystemTypes.cs" />
@@ -6133,7 +6125,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="MemoryPool\Interfaces\IPoolNodeItem.cs" />
     <Compile Include="rtsCommands\rtsCommValidator.cs" />
     <Compile Include="rtsCommands\rtsCommSceneItemHealth.cs" />
     <Compile Include="rtsCommands\Enums\NetworkCommands.cs" />
@@ -6309,7 +6300,6 @@
       <DependentUpon>PropertiesTools.cs</DependentUpon>
     </Compile>
     <Compile Include="SceneItems\SceneItemWithPick.cs" />
-    <Compile Include="GameData\GameCamera\Camera.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="SceneItems\VehicleScene.cs" />
     <Compile Include="SceneItems\ScenaryItemScene.cs" />
@@ -6498,7 +6488,6 @@
     <Compile Include="Utilities\Compression\SR.cs" />
     <Compile Include="Utilities\Enums\ImageFileFormat.cs" />
     <Compile Include="Utilities\MathUtils.cs" />
-    <Compile Include="MemoryPool\Pool.cs" />
     <Compile Include="MemoryPool\PoolManager.cs" />
     <Compile Include="ItemTypeAttributes\Structs\ScenaryItemTypeAttributes.cs" />
     <Compile Include="Utilities\Enums\StorageLocation.cs" />
@@ -6681,6 +6670,10 @@
       <Project>{690986AE-0D12-40EE-A133-35D47C6DF120}</Project>
       <Name>ContentMaps</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
+    <ProjectReference Include="..\MemoryPoolComponent\MemoryPoolComponent.csproj">
+      <Project>{F9631B26-1C65-418A-80A2-78589F52D2E9}</Project>
+      <Name>MemoryPoolComponent</Name>
     </ProjectReference>
     <ProjectReference Include="..\ParallelTasksComponent\ParallelTasksComponent.csproj">
       <Project>{81F2C524-E118-475B-A960-2A2659272DD0}</Project>
