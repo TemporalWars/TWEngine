@@ -58,5 +58,10 @@ namespace TWEngine.Interfaces
         /// Gets or sets the <see cref="Color"/> TINT for the Blocking-Cursor.
         /// </summary>
         Color ColorTintingForBlockingCursor { get; set; }
+
+        /// <summary>
+        /// Gets or sets to use the cursor. (Scripting Purposes)
+        /// </summary>
+        bool UseCursor { get; set; }
     }
 }
