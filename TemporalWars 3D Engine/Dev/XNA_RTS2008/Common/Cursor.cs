@@ -36,12 +36,10 @@ namespace TWEngine.Common
         /// is in pixels per second.
         /// </summary>
         internal const float CursorSpeed = 750.0f; // was 250
-       
       
         #endregion
 
         #region Fields and properties
-
        
         // used to draw the Cursor.
         private static SpriteBatch _spriteBatch; 
@@ -74,6 +72,14 @@ namespace TWEngine.Common
         private static readonly Vector2 Vector2Zero = Vector2.Zero;
         private static Color _colorTintingForNormalCursor = Color.White;
         private static Color _colorTintingForBlockingCursor = Color.White;
+
+        #endregion
+
+        // 7/10/2012
+        /// <summary>
+        /// Gets or sets to use the cursor. (Scripting Purposes)
+        /// </summary>
+        public bool UseCursor { get; set; }
 
         ///<summary>
         /// Cursor position in screen space.
@@ -167,8 +173,6 @@ namespace TWEngine.Common
             set { _colorTintingForBlockingCursor = value; }
         }
 
-        #endregion
-
         #region Creation and initialization
         
         ///<summary>
@@ -256,6 +260,14 @@ namespace TWEngine.Common
         /// <param name="gameTime">GameTime instance</param>
         public override void Draw(GameTime gameTime)
         {
+            base.Draw(gameTime);
+
+            // 7/10/2012 - check usability (Scripting Purposes)
+            if (!UseCursor) return;
+
+            // 7/10/2012 - check visibility
+            if (!Visible) return;
+
 #if DEBUG
             // 5/26/2010 - DEBUG
             StopWatchTimers.StartStopWatchInstance(StopWatchName.GameDrawLoop_Main_Cursor);
@@ -271,13 +283,10 @@ namespace TWEngine.Common
                 //_spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState); // 1/5/2010 - Add 2nd 2 params.
                 _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend); // 1/5/2010 - Add 2nd 2 params.
 
-
-
                 // 1/7/2009: Updated Origin to be Zero, instead of textureCenter; this corrects the problem
                 //           of having to have the almost the entire arrow placed into an IFD tile, in order
                 //           to activate it!  Now, since the texture is placed so the tip of the arrow is the
                 //           Cursor 'Position', the player can more easily select their tiles!
-
 
                 // 5/1/2009 - Display CursorTexture, depending on enum setting
                 switch (CursorTextureToDisplay)
@@ -293,8 +302,6 @@ namespace TWEngine.Common
                     default:
                         break;
                 }
-
-                base.Draw(gameTime);
 
                 _spriteBatch.End();
             }
@@ -321,6 +328,9 @@ namespace TWEngine.Common
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            // 7/10/2012 - check usability (Scripting Purposes)
+            if (!UseCursor) return;
 
             // 6/15/2012
             var inputState = HandleInput.InputState;
