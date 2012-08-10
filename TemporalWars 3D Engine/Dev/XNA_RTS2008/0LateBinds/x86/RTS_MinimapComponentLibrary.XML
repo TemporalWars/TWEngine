@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RTS_MinimapComponentLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:TWEngine.MiniMapC.NamespaceDoc">
+            <summary>
+            The <see cref="N:TWEngine.MiniMapC"/> namespace contains the classes
+            which make up the entire <see cref="T:TWEngine.MiniMapC.Minimap"/>.
+            </summary>
+        </member>
+        <member name="T:TWEngine.MiniMapC.Minimap">
+            <summary>
+            The <see cref="T:TWEngine.MiniMapC.Minimap"/> is designed to show unit movement, structures
+            placed in the game world and to take direct mouse-click orders (Windows Platform). 
+            The <see cref="T:TWEngine.MiniMapC.Minimap"/> XNA component will also communicate with the <see cref="T:TWEngine.IFogOfWar"/> XNA component,
+            directly showing the influences of the <see cref="T:TWEngine.IFogOfWar"/> in real time.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.#ctor">
+            <summary>
+            Default Parameterless contructor required for the LateBinding on Xbox.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.#ctor(Microsoft.Xna.Framework.Game)">
+            <summary>
+            <see cref="T:TWEngine.MiniMapC.Minimap"/> constructor which calls the <see cref="M:TWEngine.MiniMapC.Minimap.CommonInitilization(Microsoft.Xna.Framework.Game)"/>.
+            </summary>
+            <param name="game"><see cref="T:Microsoft.Xna.Framework.Game"/> instance</param>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.Initialize">
+            <summary>
+            Set to capture the <see cref="T:System.NullReferenceException"/> error, which will be thrown by base, since the
+            <see cref="T:Microsoft.Xna.Framework.Game"/> instance was not able to be set for the Xbox LateBinding version!
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.CommonInitilization(Microsoft.Xna.Framework.Game)">
+            <summary>
+            <see cref="M:TWEngine.MiniMapC.Minimap.CommonInitilization(Microsoft.Xna.Framework.Game)"/> which initializes required components; for example, <see cref="T:Microsoft.Xna.Framework.Content.ContentManager"/>
+            ,<see cref="T:Microsoft.Xna.Framework.Graphics.SpriteBatch"/> ,<see cref="T:Microsoft.Xna.Framework.Graphics.RenderTarget2D"/> .
+            </summary>
+            <param name="game"><see cref="T:Microsoft.Xna.Framework.Game"/> instance</param>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.UpdateMiniMapPosition_EventHandler(System.Object,System.EventArgs)">
+            <summary>
+            <see cref="T:System.EventHandler"/> to force the <see cref="T:TWEngine.MiniMapC.Minimap"/> internal <see cref="T:TWEngine.IFogOfWarShapeItem"/> positions to update. 
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.InitSettings">
+            <summary>
+            Call to set the interface references for the <see cref="T:TWEngine.IMinimapTerrainShape"/>,
+            <see cref="T:TWEngine.IMinimapTerrainData"/>, <see cref="T:TWEngine.ICamera"/> and <see cref="T:TWEngine.IMinimapInterfaceDisplay"/>.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.UnloadContent">
+            <summary>
+            Called when graphics resources need to be unloaded. Override this method to unload any component-specific graphics resources.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the <see cref="T:TWEngine.MiniMapC.Minimap"/> by combining the landscape <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/> and <see cref="T:TWEngine.IFogOfWar"/> <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>.
+            </summary>
+            <param name="gameTime"><see cref="T:Microsoft.Xna.Framework.GameTime"/> instance</param>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Renders the <see cref="T:TWEngine.MiniMapC.Minimap"/> component.
+            </summary>
+            <param name="gameTime"><see cref="T:Microsoft.Xna.Framework.GameTime"/> instance</param>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.RenderLandscapeForMiniMap">
+            <summary>
+            Renders the landscape, using orthogonal projection, onto
+            the <see cref="F:TWEngine.MiniMapC.Minimap._landScapeRt"/> render-target.
+            </summary>        
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.TWEngine#IMinimap#RenderLandscapeForMiniMap">
+            <summary>
+            Interfaces explicit version of <see cref="M:TWEngine.MiniMapC.Minimap.RenderLandscapeForMiniMap"/>, used to indirectly call
+            the static version.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.UpdateMiniMap(Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
+            <summary>
+            Updates the <see cref="T:TWEngine.MiniMapC.Minimap"/> by combining the landscape <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/> and Fog-Of-War <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>
+            using a Combine Shader.  Then the units and buildings are drawn in the player's team color.
+            </summary>     
+            <param name="graphicsDevice"><see cref="T:Microsoft.Xna.Framework.Graphics.GraphicsDevice"/> instance</param>   
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.UpdatePlayerPositionsOnMiniMap">
+            <summary>
+            Updates the positions of the Units and Buildings for each <see cref="T:TWEngine.IMinimapPlayer"/>, and saves the 
+            data into the <see cref="P:TWEngine.IMinimapPlayer.SelectableMinimapRects"/> collection.  This will be used in the 
+            <see cref="M:TWEngine.MiniMapC.Minimap.UpdateMiniMap(Microsoft.Xna.Framework.Graphics.GraphicsDevice)"/> method to draw them with proper team colors.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.RenderMiniMap(Microsoft.Xna.Framework.Game)">
+            <summary>
+            Renders the <see cref="T:TWEngine.MiniMapC.Minimap"/> texture onto the screen at the MiniMapDest <see cref="T:Microsoft.Xna.Framework.Rectangle"/> location.
+            </summary>  
+            <param name="game"><see cref="T:Microsoft.Xna.Framework.Game"/> instance</param>      
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.SaveMiniMapTexture(System.String)">
+            <summary>
+            Saves the <see cref="T:TWEngine.MiniMapC.Minimap"/> texture using the given name; use the console
+            to call this method.
+            </summary>
+            <remarks>The name given will be saved with '_MMP' and the .BMP extension.</remarks>
+            <param name="name">The name you want to save the <see cref="T:TWEngine.MiniMapC.Minimap"/> texture as.</param>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.TWEngine#IMinimap#SaveMiniMapTexture(System.String)">
+            <summary>
+            Interfaces explicit version of <see cref="M:TWEngine.MiniMapC.Minimap.SaveMiniMapTexture(System.String)"/>, used to indirectly call
+            the static version.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.SetWrapperOn">
+            <summary>
+            Displays the <see cref="T:TWEngine.MiniMapC.Minimap"/> wrapper <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.SetWrapperOff">
+            <summary>
+            Removes the Display of the <see cref="T:TWEngine.MiniMapC.Minimap"/>  wrapper <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.UpdateWrapperTexture(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+             Updates the default wrapper texture to the given <paramref name="wrapperTexture"/>.
+            </summary>
+            <param name="wrapperTexture">Instance of <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>.</param>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.UseDefaultWrapperTexture">
+            <summary>
+            Uses the built-in default texture called 'IFDTileMinimapWrap'.
+            </summary>
+        </member>
+        <member name="M:TWEngine.MiniMapC.Minimap.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the DrawableGameComponent and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.ShowTextureWrapper">
+            <summary>
+            Controls the displaying of the <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/> wrapper
+            around the <see cref="T:TWEngine.MiniMapC.Minimap"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.MiniMapDestination">
+            <summary>
+            <see cref="P:TWEngine.MiniMapC.Minimap.MiniMapDestination"/> destination <see cref="T:Microsoft.Xna.Framework.Rectangle"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.IsVisible">
+            <summary>
+            Controls <see cref="T:TWEngine.MiniMapC.Minimap"/> display.
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.V">
+            <summary>
+            Controls <see cref="T:TWEngine.MiniMapC.Minimap"/> display.
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.DoInitMiniMap">
+            <summary>
+            Set to render landscape for <see cref="T:TWEngine.MiniMapC.Minimap"/> 
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.DoUpdateMiniMap">
+            <summary>
+            Set to tell <see cref="T:TWEngine.MiniMapC.Minimap"/> to update for unit positions.
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.TWEngine#IMinimap#DoUpdateMiniMap">
+            <summary>
+            Set to tell <see cref="T:TWEngine.MiniMapC.Minimap"/> to update for unit positions.
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.MiniMapContainsCursor">
+            <summary>
+            Tracks if <see cref="T:TWEngine.MiniMapC.Minimap"/> contains the cursor. 
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.TWEngine#IMinimap#MiniMapContainsCursor">
+            <summary>
+            Tracks if <see cref="T:TWEngine.MiniMapC.Minimap"/> contains the cursor. 
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.MMWidth">
+            <summary>
+            <see cref="T:TWEngine.MiniMapC.Minimap"/> width
+            </summary>
+        </member>
+        <member name="P:TWEngine.MiniMapC.Minimap.MMHeight">
+            <summary> 
+            <see cref="T:TWEngine.MiniMapC.Minimap"/> height
+            </summary>
+        </member>
+    </members>
+</doc>

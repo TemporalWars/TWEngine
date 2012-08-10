@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RTS_StatusBarComponentLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:TWEngine.StatusBars.NamespaceDoc">
+            <summary>
+            The <see cref="N:TWEngine.StatusBars"/> namespace contains the classes
+            which make up the entire <see cref="T:TWEngine.StatusBars.StatusBar"/>.
+            </summary>
+        </member>
+        <member name="T:TWEngine.StatusBars.StatusBar">
+            <summary>
+            The <see cref="T:TWEngine.StatusBars.StatusBar"/> or Health Bar is a game mechanic used in computer
+            and video games to give value to characters, enemies, NPCs, and related objects.
+            </summary>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.#ctor">
+            <summary>
+            Default Parameterless contructor, required for the LateBinding on Xbox.
+            </summary>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.#ctor(Microsoft.Xna.Framework.Game)">
+            <summary>
+            Creates a single <see cref="T:TWEngine.StatusBars.StatusBar"/> instance.
+            </summary>
+            <param name="game">Provides a game instance</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.Initialize">
+            <summary>
+            Set to capture the NullRefExp Error, which will be thrown by the base class, since the
+            <see cref="T:Microsoft.Xna.Framework.Game"/> instance was not able to be set for the Xbox LateBinding version.
+            </summary>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.CommonInitilization(Microsoft.Xna.Framework.Game)">
+            <summary>
+            <see cref="M:TWEngine.StatusBars.StatusBar.CommonInitilization(Microsoft.Xna.Framework.Game)"/> routines.
+            </summary>
+            <param name="game"><see cref="T:Microsoft.Xna.Framework.Game"/> instance</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.LoadContent">
+            <summary>
+            Loads graphic resource content.
+            </summary>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Drawing the <see cref="T:TWEngine.StatusBars.StatusBar"/>
+            </summary>
+            <param name="gameTime"><see cref="T:Microsoft.Xna.Framework.GameTime"/> instance.</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.DrawStatusBars">
+            <summary>
+            Helper method, which renders the individual <see cref="T:TWEngine.StatusBars.StatusBarItem"/>.
+            </summary>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.AddNewStatusBarItem(TWEngine.IStatusBarSceneItem,TWEngine.StatusBars.StatusBarItem@)">
+            <summary>
+            Adds a <see cref="T:TWEngine.StatusBars.StatusBarItem"/> instance to display.
+            </summary>
+            <param name="sceneItemOwner"><see cref="T:TWEngine.IStatusBarSceneItem"/> Owner </param>
+            <param name="statusBarItem">(OUT)<see cref="T:TWEngine.StatusBars.StatusBarItem"/> instance </param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.RemoveStatusBarItem(TWEngine.StatusBars.StatusBarItem@)">
+            <summary>
+            Removes a <see cref="T:TWEngine.StatusBars.StatusBarItem"/> instance from the display, by simply changing the
+            internal flag to 'InUse=False'.
+            </summary>
+            <param name="statusBarItem"><see cref="T:TWEngine.StatusBars.StatusBarItem"/> instance to remove</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.UpdateStatusBarItem(TWEngine.StatusBars.StatusBarItem@)">
+            <summary>
+            Allows updating a <see cref="T:TWEngine.StatusBars.StatusBarItem"/> instance.
+            </summary>
+            <param name="statusBarItem"><see cref="T:TWEngine.StatusBars.StatusBarItem"/> to update</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.ClearAllStatusBarItems">
+            <summary>
+            Clears out all <see cref="T:TWEngine.StatusBars.StatusBarItem"/> from the internal collection.
+            </summary>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.RenderStatusBar(Microsoft.Xna.Framework.Game,TWEngine.StatusBars.StatusBarItem@)">
+            <summary>
+            Draws the <see cref="T:TWEngine.StatusBars.StatusBar"/> for current <see cref="T:TWEngine.IStatusBarSceneItem"/> by using two sprite <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>.
+            1st is the container <see cref="T:Microsoft.Xna.Framework.Graphics.Texture2D"/>, and the 2nd is the overlay bar; which comes
+            in green, yellow, orange, and red.  The <see cref="T:Microsoft.Xna.Framework.Graphics.SpriteBatch"/> is set to use 'BackToFront' <see cref="T:Microsoft.Xna.Framework.Graphics.Effect"/>
+            in order to see the overlay sprite over the container sprite!
+            </summary>
+            <remarks>This is called from the Screen Class.</remarks>
+            <param name="game"><see cref="T:Microsoft.Xna.Framework.Game"/> instance</param>
+            <param name="statusBarItem"><see cref="T:TWEngine.StatusBars.StatusBarItem"/> structure</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.AddNewStatusBarItem(TWEngine.IStatusBarSceneItem,TWEngine.IStatusBarItem@)">
+            <summary>
+            Adds a <see cref="T:TWEngine.IStatusBarSceneItem"/> instance to display.
+            </summary>
+            <param name="sceneItemOwner"><see cref="T:TWEngine.IStatusBarSceneItem"/> Owner</param>
+            <param name="statusBarItem">(OUT) <see cref="T:TWEngine.IStatusBarItem"/> Item</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.RemoveStatusBarItem(TWEngine.IStatusBarItem@)">
+            <summary>
+            Removes a <see cref="T:TWEngine.IStatusBarSceneItem"/> instance from the display, by simply changing the
+            internal flag to 'InUse=False'.
+            </summary>
+            <param name="statusBarItem"><see cref="T:TWEngine.IStatusBarSceneItem"/> reference to remove</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.UpdateStatusBarItem(TWEngine.IStatusBarItem@)">
+            <summary>
+            Allows updating a <see cref="T:TWEngine.IStatusBarItem"/> instance.
+            </summary>
+            <param name="statusBarItem"><see cref="T:TWEngine.IStatusBarItem"/> to update</param>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.TWEngine#IStatusBar#ClearAllStatusBarItems">
+            <summary>
+            Clears out all <see cref="T:TWEngine.IStatusBarItem"/> from the internal collection.
+            </summary>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBar.Dispose(System.Boolean)">
+            <summary>
+            Disposes of unmanaged resources.
+            </summary>
+            <param name="disposing">Is this final dispose?</param>
+        </member>
+        <member name="T:TWEngine.StatusBars.StatusBarItem">
+            <summary>
+            Represents a single<see cref="T:TWEngine.StatusBars.StatusBarItem"/> for a <see cref="T:TWEngine.IStatusBarSceneItem"/>.
+            </summary>
+        </member>
+        <member name="M:TWEngine.StatusBars.StatusBarItem.#ctor(TWEngine.IStatusBarSceneItem)">
+            <summary>
+            Creates a new <see cref="T:TWEngine.StatusBars.StatusBarItem"/>, linked to the given
+            <see cref="T:TWEngine.IStatusBarSceneItem"/> owner.
+            </summary>
+            <param name="sceneItemOwner"><see cref="T:TWEngine.IStatusBarSceneItem"/> to link this instance.</param>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.StatusBarLength">
+            <summary>
+            Length of <see cref="T:TWEngine.StatusBars.StatusBar"/> container
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.DrawStatusBar">
+            <summary>
+            Enable display of <see cref="T:TWEngine.StatusBars.StatusBar"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.StatusBarWorldPosition">
+            <summary>
+            World 3D Position to draw <see cref="T:TWEngine.StatusBars.StatusBar"/>; an offset 
+            can also be applied to this value using the <see cref="P:TWEngine.StatusBars.StatusBarItem.StatusBarOffsetPosition2D"/> 
+            property.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.StatusBarOffsetPosition2D">
+            <summary>
+            Offset position to draw <see cref="T:TWEngine.StatusBars.StatusBar"/>, from root position.
+            This is because usually the root Position given for a <see cref="T:TWEngine.IStatusBarSceneItem"/>, 
+            is not the best place to draw the <see cref="T:TWEngine.StatusBars.StatusBar"/>!
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.StatusBarStartValue">
+            <summary>
+            Starting value which defines a full <see cref="T:TWEngine.StatusBars.StatusBar"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.StatusBarCurrentValue">
+            <summary>
+            Current value to show in <see cref="T:TWEngine.StatusBars.StatusBar"/>.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.ShowEnergyOffSymbol">
+            <summary>
+            Display EnergyOff icon when power value is less than zero.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.InUse">
+            <summary>
+            Identifies if the <see cref="T:TWEngine.StatusBars.StatusBar"/> is currently in use.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.IndexInArray">
+            <summary>
+            Index of <see cref="T:TWEngine.StatusBars.StatusBar"/> in internal collection.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.SceneItemOwner">
+            <summary>
+            <see cref="T:TWEngine.IStatusBarSceneItem"/> which owns this <see cref="T:TWEngine.StatusBars.StatusBar"/> instance.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.StatusBarShape">
+            <summary>
+            <see cref="T:Microsoft.Xna.Framework.Rectangle"/> which defines this <see cref="T:TWEngine.StatusBars.StatusBar"/> shape.
+            </summary>
+        </member>
+        <member name="P:TWEngine.StatusBars.StatusBarItem.StatusBarContainerShape">
+            <summary>
+            <see cref="T:Microsoft.Xna.Framework.Rectangle"/> which defines this <see cref="T:TWEngine.StatusBars.StatusBar"/> container shape.
+            </summary>
+        </member>
+    </members>
+</doc>
