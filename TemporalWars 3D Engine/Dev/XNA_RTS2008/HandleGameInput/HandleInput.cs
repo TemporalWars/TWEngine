@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using AStarInterfaces.AStarAlgorithm.Enums;
 using PerfTimersComponent.Timers;
 using ScreenTextDisplayer.ScreenText;
@@ -586,7 +587,6 @@ namespace TWEngine.HandleGameInput
         /// </summary>
         private static void TerrainShapeInputCheck()
         {
-
 #if !XBOX360
             // 9/9/2008 - Only HandleInput when GameConsole Closed.
             if (TerrainShape.GameConsole.ConsoleState != ConsoleState.Closed)
@@ -615,7 +615,18 @@ namespace TWEngine.HandleGameInput
             
 #endif
 
-#if DEBUG
+            // 8/18/2012 - Refactored out in order to set the 'DEBUG' condition attribute.
+            SetDebugStateInputCheck();
+        }
+
+        // 8/8/2012 - Refactored out in order to set the 'DEBUG' condition attribute.
+        /// <summary>
+        /// Checks the input state for keys or xbox controller for debug state changes, like setting
+        /// wireframe mode or turning on the 'Timers' debug displays.
+        /// </summary>
+        [Conditional("DEBUG")]
+        private static void SetDebugStateInputCheck()
+        {
 
 #if !XBOX360
             // 5/14/2008 - DEBUG: Updates the PathNodes Array
@@ -644,14 +655,14 @@ namespace TWEngine.HandleGameInput
             // 8/10/2009 - If 'T' for Timers; // 4/12/2010 - Updated to make combo with 'Left-Control'.
             if (InputState.IsKeyPress(Keys.T) && InputState.IsKeyPress(Keys.LeftControl))
             {
-                var timers = (StopWatchTimers)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(StopWatchTimers));
+                var timers = (StopWatchTimers) TemporalWars3DEngine.GameInstance.Services.GetService(typeof (StopWatchTimers));
                 timers.IsVisible = !timers.IsVisible;
             }
 
             // 7/30/2008 - Test Enabling BumpMap in Shader
             if (InputState.IsNewKeyPress(Keys.F10))
-                TerrainShape.EnableNormalMap = !TerrainShape.EnableNormalMap;  
-  
+                TerrainShape.EnableNormalMap = !TerrainShape.EnableNormalMap;
+
 #endif
 
             const int inputs = InputState.MaxInputs; // 11/6/2009
@@ -673,7 +684,8 @@ namespace TWEngine.HandleGameInput
                 {
                     case 0:
                         // Water
-                        var water = (IWaterManager)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(IWaterManager));
+                        var water =
+                            (IWaterManager) TemporalWars3DEngine.GameInstance.Services.GetService(typeof (IWaterManager));
                         water.IsVisible = !water.IsVisible;
                         break;
                     case 1:
@@ -681,11 +693,13 @@ namespace TWEngine.HandleGameInput
                         if (TerrainShape.ShadowMapInterface != null)
                             TerrainShape.ShadowMapInterface.IsVisible = !TerrainShape.ShadowMapInterface.IsVisible;
                         else
-                            TerrainShape.ShadowMapInterface = (IShadowMap)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(IShadowMap));
+                            TerrainShape.ShadowMapInterface =
+                                (IShadowMap) TemporalWars3DEngine.GameInstance.Services.GetService(typeof (IShadowMap));
                         break;
                     case 2:
                         // StopWatchTimers                       
-                        var timers = (StopWatchTimers)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(StopWatchTimers));
+                        var timers =
+                            (StopWatchTimers) TemporalWars3DEngine.GameInstance.Services.GetService(typeof (StopWatchTimers));
                         timers.IsVisible = !timers.IsVisible;
 
                         break;
@@ -713,10 +727,7 @@ namespace TWEngine.HandleGameInput
                 else
                     _useItem = 0;
             } // End Loop
-#endif
-            
-        } 
-
+        }
 
         // 8/21/2008 - 
         // 1/15/2009: Updated to be a Static method, which should optimize memory.

@@ -25,6 +25,7 @@ using TWEngine.IFDTiles.Enums;
 using TWEngine.IFDTiles.Structs;
 using TWEngine.InstancedModels.Enums;
 using TWEngine.Interfaces;
+using TWEngine.MemoryPool.PoolItems;
 using TWEngine.Players;
 using TWEngine.SceneItems;
 using TWEngine.Terrain;
