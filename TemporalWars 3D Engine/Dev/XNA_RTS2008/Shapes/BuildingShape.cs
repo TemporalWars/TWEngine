@@ -58,6 +58,11 @@ namespace TWEngine.Shapes
         /// </summary>
         internal bool ExplodeAnimStarted;
 
+        // 8/20/2012 - Set when the 'SetMarkerPosition' method is called. (Scripting Conditions)
+        private bool _setMarkerPositionCalled;
+        // 8/20/2012 - Stores the current 'Flag' world position. (Scripting Conditions)
+        private Vector3 _flagMarkerWorldPosition;
+
         #region Properties
 
         ///<summary>
@@ -470,9 +475,29 @@ namespace TWEngine.Shapes
             var worldPosition = World.Translation;
             SetMarkerPosition(ref worldPosition, ref newMarkerPosition, networkItemNumber);
 
+            // 8/20/2012 - Set state that this flag was moved (Scripting Conditions)
+            _setMarkerPositionCalled = true;
+            _flagMarkerWorldPosition = newMarkerPosition;
         }
 
-        
+        // 8/20/2012
+        /// <summary>
+        /// Returns if the current 'Flag' was moved by user and returns this position in the OUT field.
+        /// </summary>
+        /// <remarks>
+        /// Once called, the state of the 'SetMarkerPositionCalled' internally will be set to FALSE.
+        /// </remarks>
+        /// <param name="flagCurrentPosition">(OUT) Current flag postion as <see cref="Vector3"/></param>
+        /// <returns>true/false of result.</returns>
+        public bool IsMarkerPositionUpdated(out Vector3 flagCurrentPosition)
+        {
+            var isMarkerPositionCalled = _setMarkerPositionCalled;
+            _setMarkerPositionCalled = false;
+            flagCurrentPosition = _flagMarkerWorldPosition;
+
+            return isMarkerPositionCalled;
+        }
+
         // 12/8/2008; 3/10/2009: Updated to have the 'BuildingPosition' passed in.
         /// <summary>
         /// Sets the Marker for the <see cref="SceneItem"/> to path to, using the <paramref name="newMarkerPosition"/> given.
