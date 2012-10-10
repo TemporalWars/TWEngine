@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue;
 using Microsoft.Xna.Framework;
-using ParallelTasksComponent.LocklessQueue;
 
-namespace ParallelTasksComponent
+namespace ImageNexus.BenScharbach.TWTools.ParallelTasksComponent
 {
     ///<summary>
     /// The <see cref="ThreadProcessor{TDefault}"/> generic abstract class, is used to automated the

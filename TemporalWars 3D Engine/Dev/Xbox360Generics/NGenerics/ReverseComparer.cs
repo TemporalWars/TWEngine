@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Xbox360Generics.NGenerics
+namespace ImageNexus.BenScharbach.TWLate.Xbox360Generics.NGenerics
 {
     // Note: From NGenerics http://code.google.com/p/ngenerics/.
     public sealed class ReverseComparer<T> : IComparer<T>

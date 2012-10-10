@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Graphics.PackedVector;
 
 #endregion
 
-namespace Particles3DComponentLibrary
+namespace ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary
 {
     /// <summary>
     /// Custom vertex structure for drawing particles.

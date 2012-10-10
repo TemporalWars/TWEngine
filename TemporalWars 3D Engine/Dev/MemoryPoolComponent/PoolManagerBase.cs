@@ -1,7 +1,7 @@
 using System;
-using MemoryPoolComponent.Interfaces;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
 
-namespace MemoryPoolComponent
+namespace ImageNexus.BenScharbach.TWTools.MemoryPoolComponent
 {
     // 7/2/2012
     /// <summary>

@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Graphics.PackedVector;
 
 #endregion
 
-namespace Particles3DComponentLibrary
+namespace ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary
 {
     /// <summary>
     /// The main component in charge of displaying particles.

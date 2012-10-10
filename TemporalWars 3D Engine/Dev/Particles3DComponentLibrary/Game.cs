@@ -10,13 +10,10 @@
 #region Using Statements
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Particles3DComponentLibrary.ParticleSystems;
-using TWEngine;
 
 #endregion
 
-namespace Particles3DComponentLibrary
+namespace ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary
 {
     /// <summary>
     /// Sample showing how to implement a particle system entirely

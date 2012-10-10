@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace ParallelTasksComponent.LocklessQueue
+namespace ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue
 {
     internal static class PlatformHelper
     {

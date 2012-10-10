@@ -7,10 +7,10 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-using MemoryPoolComponent.Interfaces;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
 using Microsoft.Xna.Framework;
 
-namespace MemoryPoolComponent
+namespace ImageNexus.BenScharbach.TWTools.MemoryPoolComponent
 {
     ///<summary>
     /// An item in the <see cref="PoolManager"/>.

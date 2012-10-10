@@ -3,8 +3,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
-namespace ScreenTextDisplayer.ScreenText
+namespace ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText
 {
     // NOTE: MUST remain as class, since referenced now in two collections!
     // 5/27/2010: Converted back to class, rather than struct, so it can be used in 2 collections at once!

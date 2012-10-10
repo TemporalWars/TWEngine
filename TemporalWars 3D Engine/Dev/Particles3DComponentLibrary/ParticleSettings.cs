@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 #endregion
 
-namespace Particles3DComponentLibrary
+namespace ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary
 {
     /// <summary>
     /// Settings class describes all the tweakable options used

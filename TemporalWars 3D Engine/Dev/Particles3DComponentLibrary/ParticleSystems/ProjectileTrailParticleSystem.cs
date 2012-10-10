@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Content;
 
 #endregion
 
-namespace Particles3DComponentLibrary.ParticleSystems
+namespace ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary.ParticleSystems
 {
     /// <summary>
     /// Custom particle system for leaving smoke trails behind the rocket projectiles.

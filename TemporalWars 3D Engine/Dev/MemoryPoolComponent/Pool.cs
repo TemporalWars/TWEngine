@@ -23,11 +23,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using MemoryPoolComponent.Delegates;
-using MemoryPoolComponent.Interfaces;
-using ParallelTasksComponent.LocklessQueue;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Delegates;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue;
 
-namespace MemoryPoolComponent
+namespace ImageNexus.BenScharbach.TWTools.MemoryPoolComponent
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>

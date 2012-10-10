@@ -7,12 +7,12 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-namespace MemoryPoolComponent.Interfaces
+namespace ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
-    /// The <see cref="Interfaces"/> namespace contains the classes
-    /// which make up the entire <see cref="Interfaces"/> component.
+    /// The <see cref="MemoryPoolComponent.Interfaces"/> namespace contains the classes
+    /// which make up the entire <see cref="MemoryPoolComponent.Interfaces"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

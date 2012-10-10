@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 
 #endregion
 
-namespace Particles3DComponentLibrary
+namespace ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary
 {
     /// <summary>
     /// This class demonstrates how to combine several different particle systems

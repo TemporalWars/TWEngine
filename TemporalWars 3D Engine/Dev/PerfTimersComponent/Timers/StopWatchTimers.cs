@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
+using ImageNexus.BenScharbach.TWTools.SpeedCollectionComponent;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using PerfTimersComponent.Timers.Enums;
-using ScreenTextDisplayer.ScreenText;
-using SpeedCollectionComponent;
 
-
-namespace PerfTimersComponent.Timers
+namespace ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers
 {
 
     /// <summary>

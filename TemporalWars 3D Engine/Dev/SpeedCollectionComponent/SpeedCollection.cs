@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace SpeedCollectionComponent
+namespace ImageNexus.BenScharbach.TWTools.SpeedCollectionComponent
 {
     // 6/3/2010: Optimized by using the InterLocked Thread methods to update values, rather than using locks!
     /// <summary>

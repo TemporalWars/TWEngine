@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using Xbox360Generics.NGenerics.Enums;
-using Xbox360Generics.NGenerics.Interfaces;
+using ImageNexus.BenScharbach.TWLate.Xbox360Generics.NGenerics.Enums;
+using ImageNexus.BenScharbach.TWLate.Xbox360Generics.NGenerics.Interfaces;
 
-namespace Xbox360Generics.NGenerics
+namespace ImageNexus.BenScharbach.TWLate.Xbox360Generics.NGenerics
 {
     // Note: From NGenerics http://code.google.com/p/ngenerics/.
     public class Heap<T> : IVisitableCollection<T>, ICollection<T>, IEnumerable<T>, IEnumerable, IVisitable<T>, IHeap<T>

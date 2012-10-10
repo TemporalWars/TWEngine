@@ -8,14 +8,14 @@
 #endregion
 
 using System;
-using MemoryPoolComponent.Interfaces;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
 
-namespace MemoryPoolComponent
+namespace ImageNexus.BenScharbach.TWTools.MemoryPoolComponent
 {
     // 1/07/2010: Note: This was a STRUCT; however, made it a class to eliminate any referencing problems!
 
     /// <summary>
-    /// Represents an entry in a <see cref="Pool{TDefault}"/> collections.
+    /// Represents an entry in a <see cref="Pool{T}"/> collections.
     /// </summary>
     public class PoolNode
     {
