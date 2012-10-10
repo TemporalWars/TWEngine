@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW
 {
     ///<summary>
     /// The <see cref="IFOWTerrainShape"/> class is a manager, which uses the other terrain classes to create and manage

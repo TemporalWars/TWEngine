@@ -1,4 +1,4 @@
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW
 {
     /// <summary>
     /// Represents the current state of each <see cref="IFOWPlayer"/> in the game

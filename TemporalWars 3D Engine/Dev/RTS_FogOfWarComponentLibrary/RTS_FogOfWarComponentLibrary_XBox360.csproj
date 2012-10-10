@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RTS_FogOfWarComponentLibrary</RootNamespace>
-    <AssemblyName>RTS_FogOfWarComponentLibrary</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary</RootNamespace>
+    <AssemblyName>In.BenS.TWLate.FogOfWar</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Xbox 360</XnaPlatform>
@@ -70,7 +70,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>RTS_FogOfWarComponentSn.snk</AssemblyOriginatorKeyFile>
@@ -124,6 +124,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWLate.FogOfWarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=2b67964fb36d8042, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWTools.ParallelTasks, Version=1.9.4.0, Culture=neutral, PublicKeyToken=226b4272b1e9ff29, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.0, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWTools.SpeedCollection, Version=1.9.4.0, Culture=neutral, PublicKeyToken=2621d214a7a8510c, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework">
       <Private>False</Private>
     </Reference>
@@ -171,32 +176,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ParallelTasksComponent\ParallelTasksComponent_XBox360.csproj">
-      <Project>{70A61848-3890-4CB8-A326-560461BEE69F}</Project>
-      <Name>ParallelTasksComponent_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PerfTimersComponent\PerfTimersComponent_XBox360.csproj">
-      <Project>{E831DFF6-4A34-4286-ADBB-045B46CC7D29}</Project>
-      <Name>PerfTimersComponent_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RTS_FogOfWarInterfaces\RTS_FogOfWarInterfaces_XBox360.csproj">
-      <Project>{D7A56734-DED1-4B2E-A84F-51B38410247B}</Project>
-      <Name>RTS_FogOfWarInterfaces_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpeedCollectionComponent\SpeedCollectionComponent_XBox360.csproj">
-      <Project>{C1A988B0-9260-4303-9393-4F3BE914CE3B}</Project>
-      <Name>SpeedCollectionComponent_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TemporalWarInterfaces\TemporalWarInterfaces_XBox360.csproj">
-      <Project>{D26BA984-074B-464E-BFE2-E53FD4DB198C}</Project>
-      <Name>TemporalWarInterfaces_XBox360</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="RTS_FogOfWarComponentSn.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy  "$(TargetDir)In.BenS.TWLate.FogOfWar.dll" "$(SolutionDir)XNA_RTS2008\0LateBinds\XBox360\" /E /F /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using Microsoft.Xna.Framework;
 
 namespace TWEngine.FOW
 {

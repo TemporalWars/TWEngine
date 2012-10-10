@@ -1,4 +1,4 @@
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW
 {
     /// <summary>
     /// Required reference to game engine.
