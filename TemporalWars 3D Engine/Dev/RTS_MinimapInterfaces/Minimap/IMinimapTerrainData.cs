@@ -1,4 +1,4 @@
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap
 {
     ///<summary>
     /// The <see cref="IMinimapTerrainData"/> class is used to hold the important meta-data for the Terrain class; for example,

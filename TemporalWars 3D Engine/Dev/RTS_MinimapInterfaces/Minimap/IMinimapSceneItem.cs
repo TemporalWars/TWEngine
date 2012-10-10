@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap
 {
     /// <summary>
     /// The <see cref="IMinimapSceneItem"/> is the base class, which provides the primary funtions

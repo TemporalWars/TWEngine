@@ -1,4 +1,4 @@
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap
 {
     /// <summary>
     /// The <see cref="IMinimapShapeItem"/> is the base class of any object that is renderable
