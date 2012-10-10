@@ -6,22 +6,22 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Explosions.Structs;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.Particles.Enums;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
 using Microsoft.Xna.Framework;
-using ParallelTasksComponent;
-using ParallelTasksComponent.LocklessQueue;
-using Particles3DComponentLibrary;
-using TWEngine.Explosions.Structs;
-using TWEngine.InstancedModels;
 using System.Threading;
-using TWEngine.Particles;
-using TWEngine.Particles.Enums;
-using TWEngine.Shapes;
 
-
-namespace TWEngine.Explosions
+namespace ImageNexus.BenScharbach.TWEngine.Explosions
 {
     /// <summary>
     /// Explosions Manager class, manages the calculations and updates for
