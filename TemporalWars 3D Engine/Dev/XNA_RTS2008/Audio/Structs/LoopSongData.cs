@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using TWEngine.Audio.Enums;
 
-namespace TWEngine.Audio.Structs
+using System;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+
+namespace ImageNexus.BenScharbach.TWEngine.Audio.Structs
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>

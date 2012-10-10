@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Audio.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Audio.Enums
 {
     // 6/10/2012 - Updated Enum with number ranges.
     /// <summary>
