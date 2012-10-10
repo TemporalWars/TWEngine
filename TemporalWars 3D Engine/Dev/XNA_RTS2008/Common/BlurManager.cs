@@ -6,14 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common.Enums;
+using ImageNexus.BenScharbach.TWTools.SimpleQuadDrawer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SimpleQuadDrawer;
-using TWEngine.Common.Enums;
-using TWEngine.Utilities;
 
-namespace TWEngine.Common
+namespace ImageNexus.BenScharbach.TWEngine.Common
 {
     ///<summary>
     /// Manager of the Blur PostProcess effect.

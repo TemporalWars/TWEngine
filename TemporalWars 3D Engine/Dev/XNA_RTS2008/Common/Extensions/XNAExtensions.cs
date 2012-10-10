@@ -6,14 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
-using TWEngine.ForceBehaviors.Structs;
+using System.Collections.Generic;
 
-namespace TWEngine.Common.Extensions
+namespace ImageNexus.BenScharbach.TWEngine.Common.Extensions
 {
     ///<summary>
     /// The <see cref="XNAExtensions"/> is used to extend other pre-made classes with new

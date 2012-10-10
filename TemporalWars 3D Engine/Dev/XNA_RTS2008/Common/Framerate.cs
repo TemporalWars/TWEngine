@@ -9,14 +9,13 @@
 #region Using Statements
 
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ScreenTextDisplayer.ScreenText;
-using TWEngine.Interfaces;
 
 #endregion
 
-namespace TWEngine.Common
+namespace ImageNexus.BenScharbach.TWEngine.Common
 {
     /// <summary>
     /// The <see cref="FPS"/> (Frames Per Second) component, used to show the
