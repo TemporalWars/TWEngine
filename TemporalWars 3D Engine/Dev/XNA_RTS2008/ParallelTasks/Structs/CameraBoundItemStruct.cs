@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 
-namespace TWEngine.ParallelTasks.Structs
+namespace ImageNexus.BenScharbach.TWEngine.ParallelTasks.Structs
 {
     // 2/28/2011
     ///<summary>

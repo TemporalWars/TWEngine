@@ -6,14 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
 
-namespace TWEngine.ParallelTasks.Delegates
+namespace ImageNexus.BenScharbach.TWEngine.ParallelTasks.Delegates
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.ParallelTasks.Delegates"/> namespace contains the classes
-    /// which make up the entire <see cref="ParallelTasks.Delegates"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.ParallelTasks.Delegatesnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

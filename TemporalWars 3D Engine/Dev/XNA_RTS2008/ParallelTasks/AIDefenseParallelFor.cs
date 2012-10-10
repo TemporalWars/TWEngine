@@ -6,13 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
 using Microsoft.Xna.Framework;
-using ParallelTasksComponent;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ParallelTasks
+namespace ImageNexus.BenScharbach.TWEngine.ParallelTasks
 {
     /// <summary>
     /// The <see cref="AIDefenseParallelFor"/> class, threads the calling of the FSM_Machine logic, 

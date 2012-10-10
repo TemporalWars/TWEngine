@@ -6,14 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using ParallelTasksComponent;
-using TWEngine.SceneItems;
-using TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
 
-namespace TWEngine.ParallelTasks
+namespace ImageNexus.BenScharbach.TWEngine.ParallelTasks
 {
     ///<summary>
     /// The <see cref="ClosestItemParallelFor"/> class, threads the calling of the player logic, 
