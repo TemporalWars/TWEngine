@@ -6,22 +6,23 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.MemoryPool;
-using TWEngine.MemoryPool.Interfaces;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems;
 
-namespace TWEngine.rtsCommands
+namespace ImageNexus.BenScharbach.TWEngine.rtsCommands
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.rtsCommands"/> namespace contains the classes
-    /// which make up the entire <see cref="rtsCommands"/> component.
+    /// which make up the entire <see cref="TWEngine.rtsCommands"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
@@ -87,7 +88,7 @@ namespace TWEngine.rtsCommands
         ///<summary>
         /// Set or Get a reference to the <see cref="IPoolNodeItem.PoolManager"/> instance.
         ///</summary>
-        public PoolManager PoolManager { get; set; }
+        public PoolManagerBase PoolManager { get; set; }
                
         ///<summary>
         /// Set or Get if <see cref="IPoolNodeItem.PoolNode"/> is in use.
