@@ -6,19 +6,21 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using MemoryPoolComponent;
-using MemoryPoolComponent.Interfaces;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.MemoryPool.Interfaces;
-using TWEngine.Particles;
-using TWEngine.Players;
-using TWEngine.rtsCommands;
-using TWEngine.SceneItems;
-using TWEngine.ForceBehaviors;
 
-namespace TWEngine.MemoryPool
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.PoolItems;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
+
+namespace ImageNexus.BenScharbach.TWEngine.MemoryPool
 {
     /// <summary>
     /// The <see cref="PoolManager"/> class, creates multiple <see cref="Pool{TDefault}"/> instances for

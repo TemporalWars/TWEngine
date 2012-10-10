@@ -7,12 +7,13 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-using MemoryPoolComponent;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.MemoryPool;
-using TWEngine.MemoryPool.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent;
 
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.MemoryPool.PoolItems
 {
     // 2/24/2009 - 
     ///<summary>
