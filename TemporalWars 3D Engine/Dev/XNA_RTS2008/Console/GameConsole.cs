@@ -6,17 +6,20 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using PerfTimersComponent.Timers;
-using TWEngine.Console.Enums;
-using TWEngine.IFDTiles;
-using TWEngine.Interfaces;
-using TWEngine.Networking;
-using TWEngine.ScreenManagerC;
-using TWEngine.Viewports;
-using TWEngine.Terrain;
 
-namespace TWEngine.Console
+using ImageNexus.BenScharbach.TWEngine.Console.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Viewports;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using Microsoft.Xna.Framework;
+using TWEngine;
+
+namespace ImageNexus.BenScharbach.TWEngine.Console
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
@@ -275,7 +278,7 @@ namespace TWEngine.Console
         }
 
         /// <summary>
-        /// Returns Ref to <see cref="PerfTimersComponent.Timers.StopWatchTimers"/> Class via script
+        /// Returns Ref to <see cref="StopWatchTimers"/> Class via script
         /// </summary>
         public StopWatchTimers Timers
         {
@@ -528,7 +531,7 @@ namespace TWEngine.Console
         }
 
         /// <summary>
-        /// Get a Reference to <see cref="PerfTimersComponent.Timers.StopWatchTimers"/> Class using GameServices.
+        /// Get a Reference to <see cref="StopWatchTimers"/> Class using GameServices.
         /// </summary>
         private void GetTimersInterfaceRef()
         {

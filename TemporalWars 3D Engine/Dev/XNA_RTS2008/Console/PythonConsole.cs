@@ -6,19 +6,20 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.IO;
 using System.Text;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Console.Enums;
 using IronPython.Hosting;
-using IronPython.Runtime;
 using Microsoft.Scripting.Hosting;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using TWEngine.Console.Enums;
 
-namespace TWEngine.Console
+namespace ImageNexus.BenScharbach.TWEngine.Console
 {
     ///<summary>
     /// Pyhton game scripting console.
