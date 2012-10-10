@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.SceneItems;
 
-namespace TWEngine.IFDTiles.Delegates
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Delegates
 {
     ///<summary>
     /// Delegate used by the <see cref="IFDTilePlacement"/> item, to request the creation of some <see cref="SceneItem"/>.

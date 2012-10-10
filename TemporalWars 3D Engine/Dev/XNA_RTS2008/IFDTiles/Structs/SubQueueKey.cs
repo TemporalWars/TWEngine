@@ -6,7 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.IFDTiles.Structs
+
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Structs
 {
     // 7/24/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>

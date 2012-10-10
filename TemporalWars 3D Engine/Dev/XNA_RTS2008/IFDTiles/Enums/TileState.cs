@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Players;
-using TWEngine.SceneItems;
 
-namespace TWEngine.IFDTiles.Enums
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums
 {
     // 9/28/2008 - State of Tile
     ///<summary>

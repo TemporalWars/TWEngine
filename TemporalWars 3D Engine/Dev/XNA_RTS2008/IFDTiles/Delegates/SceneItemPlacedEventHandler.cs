@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using TWEngine.SceneItems;
 
-namespace TWEngine.IFDTiles.Delegates
+using System;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Delegates
 {
     // 10/19/2008 - Event Handler Delegate    
     ///<summary>

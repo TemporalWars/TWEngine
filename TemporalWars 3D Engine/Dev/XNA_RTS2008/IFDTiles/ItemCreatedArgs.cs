@@ -6,13 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Players;
-using TWEngine.SceneItems;
 
-namespace TWEngine.IFDTiles
+using System;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles
 {
     // 11/5/2008; 12/26/2008: Add ItemGroupToAttack Enum; 4/6/209: Add 'GameTime' value.
     /// <summary>

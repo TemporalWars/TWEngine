@@ -6,7 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.IFDTiles.Enums
+
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums
 {
     ///<summary>
     /// <see cref="IFDTileMessage"/> Enum for type of message
