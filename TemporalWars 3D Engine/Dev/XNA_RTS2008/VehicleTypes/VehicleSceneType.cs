@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.Interfaces;
 
-namespace TWEngine.VehicleTypes
+using System;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.VehicleTypes
 {
     ///<summary>
     /// The <see cref="VehicleSceneType"/> class is used to create vehicles which have four wheels.

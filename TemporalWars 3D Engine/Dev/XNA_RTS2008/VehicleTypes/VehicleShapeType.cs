@@ -6,12 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using TWEngine.Interfaces;
 
-namespace TWEngine.VehicleTypes
+namespace ImageNexus.BenScharbach.TWEngine.VehicleTypes
 {
     // 7/11/2008 - The VehicleShape Interface Type
     ///<summary>
