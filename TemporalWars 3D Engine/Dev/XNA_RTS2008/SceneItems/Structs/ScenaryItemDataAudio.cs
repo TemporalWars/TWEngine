@@ -6,13 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
 using Microsoft.Xna.Framework.Audio;
-using TWEngine.Audio;
-using TWEngine.Audio.Enums;
 
-namespace TWEngine.SceneItems.Structs
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Structs
 {
     // 6/10/2012
     ///<summary>

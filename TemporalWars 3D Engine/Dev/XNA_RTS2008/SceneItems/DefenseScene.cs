@@ -6,33 +6,38 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWEngine.AI;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.PoolItems;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.Particles.Enums;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Structs;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
 using Microsoft.Xna.Framework;
-using Particles3DComponentLibrary;
-using TWEngine.AI;
-using TWEngine.Audio;
-using TWEngine.HandleGameInput;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.MemoryPool;
-using TWEngine.Players;
-using TWEngine.SceneItems.Structs;
-using TWEngine.Terrain.Structs;
-using TWEngine.Utilities;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Interfaces;
-using TWEngine.Particles;
-using TWEngine.Particles.Enums;
-using TWEngine.Shapes;
-using TWEngine.Terrain;
-using TWEngine.ForceBehaviors;
-using TWEngine.IFDTiles;
 
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
 
     // 12/25/2008
@@ -224,7 +229,7 @@ namespace TWEngine.SceneItems
         /// <summary>
         /// The <see cref="CommonInitilization"/> method sets internal tweakable flags
         /// back to there defaults, retrieves the current rotation value, updates the proper
-        /// <see cref="IFogOfWar"/> settings if required, and obtains the current <see cref="Terrain"/>
+        /// <see cref="IFogOfWar"/> settings if required, and obtains the current <see cref="TWEngine.Terrain"/>
         /// height for the given position.
         /// </summary>
         /// <param name="game"><see cref="Game"/> instance</param>
@@ -530,7 +535,7 @@ namespace TWEngine.SceneItems
 
 
         /// <summary>
-        /// When a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, via the <see cref="IFDTileManager"/>, this method
+        /// When a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, via the <see cref="IFDTileManager"/>, this method
         /// is called in order to do specific <see cref="SceneItem"/> placement checks; for example, if the <see cref="SceneItem"/>
         /// requires A* blocking updated.
         /// </summary>
@@ -547,7 +552,7 @@ namespace TWEngine.SceneItems
         }
 
         /// <summary>
-        /// When a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, via the <see cref="IFDTileManager"/>, this method
+        /// When a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, via the <see cref="IFDTileManager"/>, this method
         /// is called to check if the x/y values given, are within this sceneItem's <paramref name="pathBlockSize"/> zone.
         /// </summary>
         /// <param name="placementPosition">The <see cref="Vector3"/> position to place item at</param>
@@ -563,7 +568,7 @@ namespace TWEngine.SceneItems
         }
 
         /// <summary>
-        /// Once a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, this method is called
+        /// Once a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, this method is called
         /// in order to set its placement in the AStarGraph component, using the PathBlockSize.
         /// </summary>
         /// <param name="placementPosition">The <see cref="Vector3"/> position to place item at</param>
@@ -582,12 +587,12 @@ namespace TWEngine.SceneItems
                 if (aStarGraph != null) // 1/13/2010
                     aStarGraph.SetCostToPos((int)placementPosition.X, (int)placementPosition.Z, -2, ShapeItem.PathBlockSize);
 
-                Terrain.TerrainShape.PopulatePathNodesArray();
+                global::ImageNexus.BenScharbach.TWEngine.Terrain.TerrainShape.PopulatePathNodesArray();
             }
 
             // 4/11/2009 - Add VisualCircle
             _visualCircle = new VisualCircleRadius(position, AttackRadius);
-            _visualCircleIndex = Terrain.TerrainShape.TerrainVisualCircles.AddVisualCircle(ref _visualCircle);
+            _visualCircleIndex = global::ImageNexus.BenScharbach.TWEngine.Terrain.TerrainShape.TerrainVisualCircles.AddVisualCircle(ref _visualCircle);
         }
 
         /// <summary>
@@ -610,7 +615,7 @@ namespace TWEngine.SceneItems
         protected override void OnPickSelected(bool pickSelected)
         {
             // 4/11/2009 - Update displaying of visual circle.
-            Terrain.TerrainShape.TerrainVisualCircles.ShowVisualCircle(_visualCircleIndex, pickSelected);            
+            global::ImageNexus.BenScharbach.TWEngine.Terrain.TerrainShape.TerrainVisualCircles.ShowVisualCircle(_visualCircleIndex, pickSelected);            
             
         }
 
@@ -700,7 +705,7 @@ namespace TWEngine.SceneItems
                 aStarGraph.RemoveCostAtPos((int)position.X, (int)position.Z, ShapeItem.PathBlockSize);
 
             // 4/11/2009 - Remove VisualCircle
-            Terrain.TerrainShape.TerrainVisualCircles.RemoveVisualCircle(_visualCircleIndex);
+            global::ImageNexus.BenScharbach.TWEngine.Terrain.TerrainShape.TerrainVisualCircles.RemoveVisualCircle(_visualCircleIndex);
 
             // 3/28/2009 - Tell InstanceModel to draw using Explosion Pieces!
             InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData,

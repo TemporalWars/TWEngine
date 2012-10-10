@@ -6,48 +6,52 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-#if !XBOX360
-using System.Collections.Specialized;
-#endif
-using System.Diagnostics;
 using System.Threading;
-using AStarInterfaces.AStarAlgorithm.Enums;
-using MemoryPoolComponent;
+using ImageNexus.BenScharbach.TWEngine.AI;
+using ImageNexus.BenScharbach.TWEngine.AI.FSMStates;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Explosions;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Structs;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using ScreenTextDisplayer.ScreenText;
-using TWEngine.AI;
-using TWEngine.AI.FSMStates;
-using TWEngine.Audio;
-using TWEngine.Audio.Enums;
-using TWEngine.Common;
-using TWEngine.Explosions;
-using TWEngine.GameCamera;
-using TWEngine.GameScreens;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.MemoryPool;
-using TWEngine.Networking;
-using TWEngine.Particles;
-using TWEngine.Players;
-using TWEngine.rtsCommands;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems.Enums;
-using TWEngine.SceneItems.Structs;
-using TWEngine.Shapes;
-using TWEngine.ForceBehaviors;
-using TWEngine.ForceBehaviors.SteeringBehaviors;
-using TWEngine.ForceBehaviors.Enums;
-using TWEngine.Utilities;
+
+#if !XBOX360
+#endif
 
 
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
     /// <summary>
     /// The <see cref="SceneItemWithPick"/> class inherits all the functionality from <see cref="SceneItem"/> adding the ability to pick.

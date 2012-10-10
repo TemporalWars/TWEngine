@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.SceneItems.Enums
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Enums
 {
     // 6/11/2012
     /// <summary>

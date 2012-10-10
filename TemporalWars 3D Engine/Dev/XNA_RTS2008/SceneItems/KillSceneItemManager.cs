@@ -6,16 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Structs;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue;
 using Microsoft.Xna.Framework;
-using ParallelTasksComponent;
-using ParallelTasksComponent.LocklessQueue;
-using TWEngine.SceneItems.Structs;
 
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
     // 10/3/2009 - KillSceneItemStruct
 

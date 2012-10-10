@@ -6,7 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.SceneItems.Enums
+
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Enums
 {
     ///<summary>
     /// The <see cref="ItemStates"/> of some <see cref="SceneItem"/>; for example, item is in 'Resting' state

@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Interfaces;
 
-namespace TWEngine.SceneItems.Structs
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Structs
 {
     // 4/27/2010 - Update to be a structure, rather than class.
     ///<summary>

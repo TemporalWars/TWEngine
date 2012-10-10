@@ -6,19 +6,20 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using AStarInterfaces.AStarAlgorithm.Enums;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Common;
-using TWEngine.Interfaces;
-using TWEngine.Shapes.Enums;
-using TWEngine.Shapes;
-using TWEngine.ForceBehaviors.Enums;
-using TWEngine.Terrain;
-using TWEngine.VehicleTypes;
 
-namespace TWEngine.SceneItems
+using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Shapes.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.VehicleTypes;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
     sealed class VehicleScene : SceneItemWithPick, IVehicleSceneType
     {
