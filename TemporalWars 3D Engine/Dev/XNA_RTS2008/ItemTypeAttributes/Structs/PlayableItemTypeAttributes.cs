@@ -6,17 +6,19 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Particles.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Particles.Enums;
-using TWEngine.SceneItems;
-using TWEngine.Shapes;
 
-namespace TWEngine.ItemTypeAttributes.Structs
+namespace ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs
 {
 #pragma warning disable 1587
     ///<summary>

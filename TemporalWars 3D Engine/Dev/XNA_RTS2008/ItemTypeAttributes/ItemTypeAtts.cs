@@ -6,26 +6,28 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System.Collections.Generic;
-#if !XBOX360
-using System.Diagnostics;
-#endif
-using Microsoft.Xna.Framework;
-using TWEngine.GameScreens.Generic;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.SceneItems;
-using TWEngine.Utilities;
-using TWEngine.InstancedModels;
-using TWEngine.Utilities.Enums;
-using TWEngine.Utilities.Structs;
 
-namespace TWEngine.ItemTypeAttributes
+using System.Collections.Generic;
+using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Structs;
+using Microsoft.Xna.Framework;
+
+#if !XBOX360
+#endif
+
+namespace ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes
 {
       
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.ItemTypeAttributes"/> namespace contains the classes
-    /// which make up the entire <see cref="ItemTypeAttributes"/> component.
+    /// which make up the entire <see cref="TWEngine.ItemTypeAttributes"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

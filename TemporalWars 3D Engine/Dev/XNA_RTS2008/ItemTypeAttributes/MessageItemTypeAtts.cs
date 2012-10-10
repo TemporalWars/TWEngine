@@ -9,16 +9,16 @@
 #region
 
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using Microsoft.Xna.Framework;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.SceneItems;
 
 #endregion
 
-namespace TWEngine.ItemTypeAttributes
+namespace ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes
 {
     ///<summary>
     /// The <see cref="MessageItemTypeAtts"/> class, inheriting from <see cref="ItemTypeAtts"/> base class, is 
@@ -642,7 +642,7 @@ namespace TWEngine.ItemTypeAttributes
             if (ItemTypeAtts != null)
                 ItemTypeAtts.Clear();
 
-            ItemTypeAttributes.ItemTypeAtts.Dispose();
+            ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.ItemTypeAtts.Dispose();
         }
     }
 }
