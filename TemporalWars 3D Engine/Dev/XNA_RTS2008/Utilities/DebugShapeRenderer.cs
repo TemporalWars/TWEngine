@@ -9,13 +9,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.GameCamera;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Utilities
+namespace ImageNexus.BenScharbach.TWEngine.Utilities
 {
     /// <summary>
     /// A system for handling rendering of various debug shapes.

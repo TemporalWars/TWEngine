@@ -15,13 +15,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Compression;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Compression.Enums;
 using Microsoft.Xna.Framework.Content;
-using TWEngine.Utilities.Compression;
-using TWEngine.Utilities.Compression.Enums;
 
 #endregion Imports
 
-namespace TWEngine.Utilities
+namespace ImageNexus.BenScharbach.TWEngine.Utilities
 {
     /// <summary>
     /// Reads a zip file created with the program and creates a content manager to work with it. You should use the .cs

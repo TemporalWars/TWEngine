@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Utilities.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Enums
 {
     // 8/1/2008 - Used to Save ScenaryItemType Attributes.
     // 9/26/2008: Becomes nested in the 'SaveItemTypeData' Struct via Generics.

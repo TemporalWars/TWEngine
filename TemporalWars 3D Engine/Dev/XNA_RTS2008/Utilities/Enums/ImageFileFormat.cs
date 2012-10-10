@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Utilities.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Enums
 {
     ///<summary>
     /// Image format used for storage.

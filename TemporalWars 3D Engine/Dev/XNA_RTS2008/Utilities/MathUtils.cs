@@ -6,12 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-
-namespace TWEngine.Utilities
+namespace ImageNexus.BenScharbach.TWEngine.Utilities
 {
     /// <summary>
     /// Singleton <see cref="MathUtils"/> class for helping with common math functions

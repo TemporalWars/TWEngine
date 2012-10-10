@@ -6,15 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using AStarInterfaces.AStarAlgorithm.Structs;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Structs;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.Water.Structs;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Structs;
 using Microsoft.Xna.Framework;
-using TWEngine.Shadows.Structs;
-using TWEngine.Terrain.Structs;
-using TWEngine.Water.Structs;
 
-namespace TWEngine.Utilities.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Structs
 {
 #pragma warning disable 1587
     ///<summary>

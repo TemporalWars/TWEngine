@@ -6,19 +6,21 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Structs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
 using System.Threading;
-using TWEngine.Utilities.Enums;
-using TWEngine.Utilities.Structs;
 
-namespace TWEngine.Utilities
+namespace ImageNexus.BenScharbach.TWEngine.Utilities
 {
     ///<summary>
     /// The <see cref="Storage"/> class is used to load and save game data, like <see cref="SaveTerrainData"/> or <see cref="SelectablesDataProperties"/>.

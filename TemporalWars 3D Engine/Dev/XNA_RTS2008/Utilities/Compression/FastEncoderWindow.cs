@@ -11,9 +11,9 @@
 
 using System;
 using System.Diagnostics;
-using TWEngine.Utilities.Compression.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Compression.Enums;
 
-namespace TWEngine.Utilities.Compression
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Compression
 {
     internal class FastEncoderWindow
     {
