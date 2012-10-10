@@ -6,7 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.SceneItems.Enums
+
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Enums
 {
     // 6/1/2009 - Defense AI Stances
     ///<summary>

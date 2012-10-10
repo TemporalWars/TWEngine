@@ -6,32 +6,39 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Diagnostics;
-using AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Structs;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.PoolItems;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.Particles.Enums;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ScreenTextDisplayer.ScreenText;
-using TWEngine.Audio;
-using TWEngine.Audio.Enums;
-using TWEngine.HandleGameInput;
-using TWEngine.IFDTiles.Structs;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.MemoryPool;
-using TWEngine.Particles;
-using TWEngine.Particles.Enums;
-using TWEngine.Players;
-using TWEngine.Shapes;
-using TWEngine.Terrain;
-using TWEngine.IFDTiles;
 
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.SceneItems"/> namespace contains the classes
-    /// which make up the entire <see cref="SceneItems"/> component.
+    /// which make up the entire <see cref="TWEngine.SceneItems"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
@@ -249,7 +256,7 @@ namespace TWEngine.SceneItems
         /// <summary>
         /// The <see cref="CommonInitilization"/> method sets internal tweakable flags
         /// back to there defaults, retrieves the current rotation value, updates the proper
-        /// <see cref="IFogOfWar"/> settings if required, and obtains the current <see cref="Terrain"/>
+        /// <see cref="IFogOfWar"/> settings if required, and obtains the current <see cref="TWEngine.Terrain"/>
         /// height for the given position.
         /// </summary>
         /// <param name="game"><see cref="Game"/> instance</param>
@@ -687,7 +694,7 @@ namespace TWEngine.SceneItems
 
         // 9/23/2008 - Called when an SceneItemOwner is placed on the screen, via the IFD Display.       
         /// <summary>
-        /// When a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, via the <see cref="IFDTileManager"/>, this method
+        /// When a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, via the <see cref="IFDTileManager"/>, this method
         /// is called in order to do specific <see cref="SceneItem"/> placement checks; for example, if the <see cref="SceneItem"/>
         /// requires A* blocking updated.
         /// </summary>
@@ -705,7 +712,7 @@ namespace TWEngine.SceneItems
 
         // 6/8/2009  - Called when an SceneItemOwner is placed on the screen, via the IFD Display. 
         /// <summary>
-        /// When a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, via the <see cref="IFDTileManager"/>, this method
+        /// When a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, via the <see cref="IFDTileManager"/>, this method
         /// is called to check if the x/y values given, are within this sceneItem's <paramref name="pathBlockSize"/> zone.
         /// </summary>
         /// <param name="placementPosition">The <see cref="Vector3"/> position to place item at</param>
@@ -722,7 +729,7 @@ namespace TWEngine.SceneItems
         // 3/2/2009 - Once SceneItemOwner is placed on terrain, this should be called to set the PathBlockSize of this SceneItemOwner
         //            into the AStarGraph.
         /// <summary>
-        /// Once a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, this method is called
+        /// Once a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, this method is called
         /// in order to set its placement in the AStarGraph component, using the PathBlockSize.
         /// </summary>
         /// <param name="placementPosition">The <see cref="Vector3"/> position to place item at</param>
@@ -741,7 +748,7 @@ namespace TWEngine.SceneItems
             if (aStarGraph != null) // 1/13/2010
                 aStarGraph.SetCostToPos((int)placementPosition.X, (int)placementPosition.Z, -2, ShapeItem.PathBlockSize);
 
-            Terrain.TerrainShape.PopulatePathNodesArray();
+            global::ImageNexus.BenScharbach.TWEngine.Terrain.TerrainShape.PopulatePathNodesArray();
         }
 
         // 10/16/2008

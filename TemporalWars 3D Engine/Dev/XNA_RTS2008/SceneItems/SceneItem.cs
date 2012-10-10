@@ -6,25 +6,28 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Explosions;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Structs;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using TWEngine.Explosions;
-using TWEngine.ForceBehaviors;
-using TWEngine.GameCamera;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels;
-using TWEngine.MemoryPool;
-using TWEngine.Players;
-using TWEngine.SceneItems.Enums;
-using TWEngine.SceneItems.Structs;
-using TWEngine.Shapes;
-using TWEngine.Utilities;
 
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
     /// <summary>
     /// The <see cref="SceneItem"/> is the base class, which provides the primary funtions
@@ -1225,7 +1228,7 @@ namespace TWEngine.SceneItems
 
         // 9/23/2008
         /// <summary>
-        /// When a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, via the <see cref="IFDTileManager"/>, this virtual method
+        /// When a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, via the <see cref="IFDTileManager"/>, this virtual method
         /// is called in order to do specific <see cref="SceneItem"/> placement checks; for example, if the <see cref="SceneItem"/>
         /// requires A* Blocking updated.
         /// </summary>
@@ -1239,7 +1242,7 @@ namespace TWEngine.SceneItems
 
         // 6/8/2009
         /// <summary>
-        /// When a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, via the <see cref="IFDTileManager"/>, this method
+        /// When a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, via the <see cref="IFDTileManager"/>, this method
         /// is called to check if the x/y values given, are within this sceneItem's <paramref name="pathBlockSize"/> zone.
         /// </summary>
         /// <param name="placementPosition">The <see cref="Vector3"/> position to place item at</param>
@@ -1279,7 +1282,7 @@ namespace TWEngine.SceneItems
 
         // 3/2/2009
         /// <summary>
-        /// Once a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, this virtual method is called
+        /// Once a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, this virtual method is called
         /// in order to set its placement in the AStarGraph component, using the PathBlockSize.
         /// </summary>
         /// <param name="placementPosition">The <see cref="Vector3"/> position to place item at.</param>

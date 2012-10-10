@@ -6,32 +6,35 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Structs;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
 using Microsoft.Xna.Framework;
-using TWEngine.Audio.Enums;
-using TWEngine.Common;
-using TWEngine.GameCamera;
-using TWEngine.GameScreens;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Players;
-using TWEngine.SceneItems.Enums;
-using TWEngine.Shapes;
-using TWEngine.Terrain;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.SceneItems.Structs;
-using TWEngine.Utilities;
 
 #if XBOX360
-using TWEngine.Common.Extensions;
+
 #endif
 
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
 
     ///<summary>
@@ -704,7 +707,7 @@ namespace TWEngine.SceneItems
         }
 
         /// <summary>
-        /// When a <see cref="SceneItem"/> is placed on the <see cref="Terrain"/>, via the <see cref="IFDTileManager"/>, this method
+        /// When a <see cref="SceneItem"/> is placed on the <see cref="TWEngine.Terrain"/>, via the <see cref="IFDTileManager"/>, this method
         /// is called in order to do specific <see cref="SceneItem"/> placement checks; for example, if the <see cref="SceneItem"/>
         /// requires A* blocking updated.
         /// </summary>

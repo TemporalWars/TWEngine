@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using TWEngine.InstancedModels.Enums;
 
-namespace TWEngine.SceneItems.Structs
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Structs
 {
     // 7/24/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>

@@ -6,7 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.SceneItems.Structs
+
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Structs
 {
     ///<summary>
     /// The <see cref="KillSceneItemStruct"/> structure stores the current <see cref="SceneItem"/>

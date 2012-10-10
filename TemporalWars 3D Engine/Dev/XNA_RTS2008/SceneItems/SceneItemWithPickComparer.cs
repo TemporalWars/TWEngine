@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
 
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
     /// <summary>
     /// IComparer Class for the binarySearch.  Compares using the 'SceneItemNumber'.

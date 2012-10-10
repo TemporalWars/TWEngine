@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.SceneItems.Structs
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Structs
 {
     // 12/16/2008 - Add SmoothHeading
     // 9/8/2008 - Interpolation State Struct for Network Games    

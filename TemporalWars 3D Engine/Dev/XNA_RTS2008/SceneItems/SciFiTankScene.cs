@@ -6,37 +6,39 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.AI;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.TurretBehaviors;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.PoolItems;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.Particles.Enums;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Structs;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.VehicleTypes;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
 using Microsoft.Xna.Framework;
-using TWEngine.AI;
-using TWEngine.Audio;
-using TWEngine.Audio.Enums;
-using TWEngine.Common;
-using TWEngine.ForceBehaviors.TurretBehaviors;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.MemoryPool;
-using TWEngine.Particles;
-using TWEngine.Particles.Enums;
-using TWEngine.Players;
-using TWEngine.SceneItems.Enums;
-using TWEngine.SceneItems.Structs;
-using TWEngine.Shapes;
-using TWEngine.ForceBehaviors.SteeringBehaviors;
-using TWEngine.ForceBehaviors.Enums;
-using TWEngine.VehicleTypes;
-using TWEngine.ForceBehaviors;
-using TWEngine.Terrain;
-using TWEngine.IFDTiles;
 
-
-namespace TWEngine.SceneItems
+namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 {
 
     ///<summary>
@@ -302,7 +304,7 @@ namespace TWEngine.SceneItems
         /// <summary>
         /// The <see cref="CommonInitilization"/> method sets internal tweakable flags
         /// back to there defaults, retrieves the current rotation value, updates the proper
-        /// <see cref="IFogOfWar"/> settings if required, and obtains the current <see cref="Terrain"/>
+        /// <see cref="IFogOfWar"/> settings if required, and obtains the current <see cref="TWEngine.Terrain"/>
         /// height for the given position.
         /// </summary>
         /// <param name="initialPosition"><see cref="Vector3"/> position to place item</param>
