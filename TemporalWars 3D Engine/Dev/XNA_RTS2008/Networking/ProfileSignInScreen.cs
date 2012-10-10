@@ -8,13 +8,13 @@
 #endregion
 
 using System;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.GamerServices;
-using TWEngine.GameScreens.Generic;
-using TWEngine.ScreenManagerC;
 
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// In order to play a networked game, you must have a player profile signed in.

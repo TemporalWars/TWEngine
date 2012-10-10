@@ -7,25 +7,25 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-
 using System;
 using System.Text;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking.Structs;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.GameScreens;
-using TWEngine.GameScreens.Generic;
-using TWEngine.MemoryPool;
-using TWEngine.Networking.Structs;
-using TWEngine.rtsCommands;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.ScreenManagerC;
-using TWEngine.ScreenManagerC.Enums;
 
-
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
 
     /// <summary>

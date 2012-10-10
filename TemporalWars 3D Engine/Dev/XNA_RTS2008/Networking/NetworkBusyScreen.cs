@@ -7,14 +7,14 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.ScreenManagerC;
 
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// When an asynchronous network operation (for instance searching for or joining a

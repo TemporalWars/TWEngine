@@ -10,16 +10,17 @@
 #endregion
 
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.Networking.Structs;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.GameScreens;
-using TWEngine.GameScreens.Generic;
-using TWEngine.Networking.Structs;
-using TWEngine.ScreenManagerC;
 
-
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// The <see cref="SinglePlayerScreen"/> class, is used to draw the campaign maps for single player games.   

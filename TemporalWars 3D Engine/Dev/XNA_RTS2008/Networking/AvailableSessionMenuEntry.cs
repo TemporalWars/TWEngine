@@ -7,18 +7,17 @@
 //-----------------------------------------------------------------------------
 #endregion
 
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.GameScreens.Generic;
-using TWEngine.SceneItems;
 
-
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.Networking"/> namespace contains the classes
-    /// which make up the entire <see cref="Networking"/> component.
+    /// which make up the entire <see cref="TWEngine.Networking"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

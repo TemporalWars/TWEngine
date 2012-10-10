@@ -6,16 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Players;
 
-namespace TWEngine.Networking.Structs
+using ImageNexus.BenScharbach.TWEngine.Players;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Networking.Structs
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.Networking.Structs"/> namespace contains the structures
-    /// which make up the entire <see cref="Networking.Structs"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.Networking.Structsnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

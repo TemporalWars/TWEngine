@@ -9,7 +9,7 @@
 
 using System;
 
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// Custom EventArgs class used by the <see cref="NetworkBusyScreen.OperationCompleted"/> event.

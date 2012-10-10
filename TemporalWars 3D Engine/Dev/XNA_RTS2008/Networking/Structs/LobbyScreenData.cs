@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Networking.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Networking.Structs
 {
     // 2/21/2009
     ///<summary>

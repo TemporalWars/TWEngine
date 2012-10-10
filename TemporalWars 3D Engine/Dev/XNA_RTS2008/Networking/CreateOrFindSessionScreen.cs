@@ -8,12 +8,13 @@
 #endregion
 
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.GamerServices;
-using TWEngine.GameScreens.Generic;
 
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// This <see cref="MenuScreen"/> lets the user choose whether to create a new
