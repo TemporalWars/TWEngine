@@ -6,16 +6,17 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using ImageNexus.BenScharbach.TWEngine.Common.Enums;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Common.Enums;
 
-namespace TWEngine.PostProcessEffects.GlowEffect
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GlowEffect
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.PostProcessEffects.GlowEffect"/> namespace contains the classes
-    /// which make up the entire <see cref="GlowEffect"/> component.
+    /// which make up the entire <see cref="TWEngine.PostProcessEffects.GlowEffect"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

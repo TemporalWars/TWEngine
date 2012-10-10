@@ -10,7 +10,7 @@
 using System;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine.PostProcessEffects.BloomEffect
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect
 {
     /// <summary>
     /// The <see cref="BloomSettings"/> holds all the Settings used to tweak the <see cref="Bloom"/> effect.

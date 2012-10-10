@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine.PostProcessEffects
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects
 {
     /// <summary>
     /// The <see cref="Quadrangle"/> class is used to draw a rectangle which 

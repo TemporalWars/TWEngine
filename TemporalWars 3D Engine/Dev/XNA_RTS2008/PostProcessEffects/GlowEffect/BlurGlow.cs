@@ -6,13 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Common.Enums;
 
-namespace TWEngine.PostProcessEffects.GlowEffect
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GlowEffect
 {
     ///<summary>
     /// The <see cref="BlurGlow"/> class is used by the <see cref="Glow"/> class, to 

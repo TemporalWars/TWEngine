@@ -6,20 +6,20 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
+
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect.Enums;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.GameScreens;
-using TWEngine.ScreenManagerC;
-using TWEngine.PostProcessEffects.BloomEffect.Enums;
-using TWEngine.PostProcessEffects.GBlurEffect;
 
-namespace TWEngine.PostProcessEffects.BloomEffect
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.PostProcessEffects.BloomEffect"/> namespace contains the classes
-    /// which make up the entire <see cref="PostProcessEffects.BloomEffect"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.PostProcessEffects.BloomEffectnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

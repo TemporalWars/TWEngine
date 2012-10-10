@@ -6,17 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.PostProcessEffects.BloomEffect;
 
-namespace TWEngine.PostProcessEffects
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.PostProcessEffects"/> namespace contains the classes
-    /// which make up the entire <see cref="PostProcessEffects"/> component.
+    /// which make up the entire <see cref="TWEngine.PostProcessEffects"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

@@ -6,11 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine.PostProcessEffects.BloomEffect
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect
 {
     ///<summary>
     /// The <see cref="BloomCombine"/> class combines the <see cref="Bloom"/> image with the original
