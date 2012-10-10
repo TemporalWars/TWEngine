@@ -6,20 +6,20 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common.Enums;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.Common.Enums;
-using TWEngine.GameCamera;
-using TWEngine.HandleGameInput;
-using TWEngine.IFDTiles;
-using TWEngine.Interfaces;
 
-namespace TWEngine.Common
+namespace ImageNexus.BenScharbach.TWEngine.Common
 {
     /// <summary>
     /// Cursor is a DrawableGameComponent that draws a Cursor on the screen. It works
@@ -263,7 +263,7 @@ namespace TWEngine.Common
             base.Draw(gameTime);
 
             // 7/10/2012 - check usability (Scripting Purposes)
-            if (!UseCursor) return;
+            //if (!UseCursor) return;
 
             // 7/10/2012 - check visibility
             if (!Visible) return;
@@ -330,7 +330,7 @@ namespace TWEngine.Common
             base.Update(gameTime);
 
             // 7/10/2012 - check usability (Scripting Purposes)
-            if (!UseCursor) return;
+            //if (!UseCursor) return;
 
             // 6/15/2012
             var inputState = HandleInput.InputState;

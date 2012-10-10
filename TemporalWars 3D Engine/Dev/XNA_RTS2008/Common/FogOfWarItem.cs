@@ -6,9 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.Common
+namespace ImageNexus.BenScharbach.TWEngine.Common
 {
     ///<summary>
     /// Fog-of-war Item, inherting from the 'IFogOfWarShapeItem' 

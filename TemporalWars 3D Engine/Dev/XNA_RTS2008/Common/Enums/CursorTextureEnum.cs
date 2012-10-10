@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Common.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Common.Enums
 {
     /// <summary>
     /// Mouse cursor texture to show, depending

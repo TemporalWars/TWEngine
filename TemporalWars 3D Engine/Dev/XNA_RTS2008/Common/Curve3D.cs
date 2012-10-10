@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.Interfaces;
 
-namespace TWEngine.Common
+using System;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Common
 {
     /// <summary>
     /// Curve3D class provides the ability to do smooth Vector3 curves, using the XNA frameworks
