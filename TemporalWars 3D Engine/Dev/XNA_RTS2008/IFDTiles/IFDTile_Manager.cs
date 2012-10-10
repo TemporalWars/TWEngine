@@ -6,39 +6,40 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Delegates;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Structs;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.PoolItems;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.GameCamera;
-using TWEngine.GameLevels;
-using TWEngine.GameScreens;
-using TWEngine.HandleGameInput;
-using TWEngine.IFDTiles.Delegates;
-using TWEngine.IFDTiles.Enums;
-using TWEngine.IFDTiles.Structs;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Interfaces;
-using TWEngine.MemoryPool.PoolItems;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Enums;
-using TWEngine.Utilities;
 
 #if XBOX360
-using TWEngine.Common.Extensions;
-using TWEngine.GameCamera;
 #endif
 
 
-namespace TWEngine.IFDTiles
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles
 {
     /// <summary>
     /// The <see cref="IFDTileManager"/> class manages all <see cref="IFDTile"/> instances, by
@@ -118,7 +119,7 @@ namespace TWEngine.IFDTiles
         private static bool _displayScoreboardForScripting;
         // 
         /// <summary>
-        /// Attributes used for placing <see cref="SceneItem"/> on <see cref="Terrain"/>.
+        /// Attributes used for placing <see cref="SceneItem"/> on <see cref="TWEngine.Terrain"/>.
         /// </summary>
         internal static Vector3 PlaceItemAt;
         private static ItemType _itemTypeToUse;
@@ -1165,7 +1166,7 @@ namespace TWEngine.IFDTiles
 
         // 6/1/2010
         /// <summary>
-        /// Iterates <see cref="IFDTiles"/>, calling render for the <see cref="IFDTilePlacement.RoundMeter"/>.
+        /// Iterates <see cref="TWEngine.IFDTiles"/>, calling render for the <see cref="IFDTilePlacement.RoundMeter"/>.
         /// </summary>
         private static void RenderRoundMeters()
         {
@@ -2284,7 +2285,7 @@ namespace TWEngine.IFDTiles
         /// <summary>
         /// Checks for mouse/gamepad input for the <see cref="IFDTileManager"/>, and activates the approriate functions
         /// where necessary; for example, a click on war-factor would allow user to place a war-factor
-        /// on the <see cref="Terrain"/>.
+        /// on the <see cref="TWEngine.Terrain"/>.
         /// </summary>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
         private static void UpdateInterfaceDisplay(GameTime gameTime)
@@ -2445,7 +2446,7 @@ namespace TWEngine.IFDTiles
 
         // 6/17/2010
         /// <summary>
-        /// Iterate through all <see cref="IFDTiles"/> and call Update, regardless if they
+        /// Iterate through all <see cref="TWEngine.IFDTiles"/> and call Update, regardless if they
         /// are the current display group or not, since the progress still needs
         /// to be updated.
         /// </summary>
@@ -2536,7 +2537,7 @@ namespace TWEngine.IFDTiles
         }
 
         /// <summary>
-        /// Helper Fn: Called when user is attempting to place a <see cref="SceneItem"/> owner on the <see cref="Terrain"/>.
+        /// Helper Fn: Called when user is attempting to place a <see cref="SceneItem"/> owner on the <see cref="TWEngine.Terrain"/>.
         /// </summary>     
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>   
         /// <param name="interfaceDisplay"><see cref="IFDTileManager"/> manager reference</param>

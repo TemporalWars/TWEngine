@@ -6,16 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Structs;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.IFDTiles.Enums;
-using TWEngine.IFDTiles.Structs;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.SceneItems;
-using TWEngine.GameCamera;
 
-namespace TWEngine.IFDTiles
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles
 {
     // 11/04/2008: Created
     /// <summary>

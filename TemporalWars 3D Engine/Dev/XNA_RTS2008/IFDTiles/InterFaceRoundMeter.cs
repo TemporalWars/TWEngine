@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace TWEngine.IFDTiles
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles
 {
     // 9/28/2008: Created
     /// <summary>

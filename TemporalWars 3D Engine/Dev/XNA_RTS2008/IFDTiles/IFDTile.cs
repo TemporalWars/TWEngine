@@ -6,23 +6,25 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-using TWEngine.Audio;
-using TWEngine.Audio.Enums;
-using TWEngine.IFDTiles.Enums;
-using TWEngine.Interfaces;
-using TWEngine.HandleGameInput;
 
-namespace TWEngine.IFDTiles
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.IFDTiles"/> namespace contains the common classes
-    /// which make up the entire <see cref="IFDTiles"/> component.
+    /// which make up the entire <see cref="TWEngine.IFDTiles"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

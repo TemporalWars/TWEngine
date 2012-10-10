@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.IFDTiles.Enums
+namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums
 {
     // 9/23/2008 - Common Tile Placement Enum
     ///<summary>
