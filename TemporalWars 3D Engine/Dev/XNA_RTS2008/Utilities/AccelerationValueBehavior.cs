@@ -6,13 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.Utilities
+namespace ImageNexus.BenScharbach.TWEngine.Utilities
 {
     // 6/15/2012
     /// <summary>

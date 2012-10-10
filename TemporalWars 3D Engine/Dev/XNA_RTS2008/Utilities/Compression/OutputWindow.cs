@@ -6,10 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using System.Runtime;
 
-namespace TWEngine.Utilities.Compression
+using System;
+
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Compression
 {
     internal class OutputWindow
     {

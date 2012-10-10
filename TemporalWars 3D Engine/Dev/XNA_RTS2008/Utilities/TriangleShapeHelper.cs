@@ -6,14 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using TWEngine.GameCamera;
 
-
-namespace TWEngine.Utilities
+namespace ImageNexus.BenScharbach.TWEngine.Utilities
 {
     // 4/21/2009: Updated all variables to be STATIC, which reduced the instances of the 'EffectParameter' on the
     //            HEAP, from over 232,000, down to 21,000.  This was due indirectly to the instanting the 'BasicEffect' class!

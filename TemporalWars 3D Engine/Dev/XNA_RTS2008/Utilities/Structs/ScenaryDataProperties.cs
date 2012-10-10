@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Utilities.Structs
+using System;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Structs
 {
     // Used in Struct 'SaveTerrainScenaryData'.
 

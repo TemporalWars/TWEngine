@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Globalization;
 using System.Resources;
 using System.Threading;
 
-namespace TWEngine.Utilities.Compression
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Compression
 {
     internal sealed class SR
     {

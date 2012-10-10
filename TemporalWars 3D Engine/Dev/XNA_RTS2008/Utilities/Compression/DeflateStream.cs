@@ -12,9 +12,9 @@
 using System;
 using System.IO;
 using System.Threading;
-using TWEngine.Utilities.Compression.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Compression.Enums;
 
-namespace TWEngine.Utilities.Compression
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Compression
 {
     public class DeflateStream : Stream
     {

@@ -6,7 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Utilities.Compression
+
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Compression
 {
     internal interface IFileFormatReader
     {

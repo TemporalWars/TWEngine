@@ -12,7 +12,7 @@
 using System;
 using System.Threading;
 
-namespace TWEngine.Utilities.Compression
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Compression
 {
     internal class DeflateStreamAsyncResult : IAsyncResult
     {

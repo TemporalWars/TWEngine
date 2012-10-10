@@ -9,7 +9,7 @@
 
 #endregion
 
-namespace TWEngine.Utilities.Compression
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Compression
 {
     internal class Deflater
     {

@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
 
-namespace TWEngine.Utilities.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Utilities.Structs
 {
     // 10/7/2009
 

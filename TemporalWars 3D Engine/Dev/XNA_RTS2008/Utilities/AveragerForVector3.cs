@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.Utilities
+namespace ImageNexus.BenScharbach.TWEngine.Utilities
 {
     /// <summary>
     /// The <see cref="AveragerForVector3"/> class is used to average <see cref="Vector3"/>, keeping only the 'SampleSize'
