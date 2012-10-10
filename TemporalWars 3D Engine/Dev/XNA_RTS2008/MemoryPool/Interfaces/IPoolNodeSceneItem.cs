@@ -6,9 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.SceneItems;
 
-namespace TWEngine.MemoryPool.Interfaces
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent;
+
+namespace ImageNexus.BenScharbach.TWEngine.MemoryPool.Interfaces
 {
     /// <summary>
     /// Interface <see cref="IPoolNodeSceneItem"/>, for a <see cref="PoolNode"/> 
