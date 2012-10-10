@@ -9,7 +9,7 @@
 
 using System;
 
-namespace TWEngine.GameCamera.Enums
+namespace ImageNexus.BenScharbach.TWEngine.GameCamera.Enums
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>

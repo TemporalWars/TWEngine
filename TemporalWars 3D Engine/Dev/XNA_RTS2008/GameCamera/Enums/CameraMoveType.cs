@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.GameCamera.Enums
+namespace ImageNexus.BenScharbach.TWEngine.GameCamera.Enums
 {
     ///<summary>
     /// Enumeration for camera's movement type.
