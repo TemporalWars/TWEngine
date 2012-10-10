@@ -1,8 +1,8 @@
 using System;
 using System.Windows.Controls;
-using TWTerrainToolsWPF.ViewModel.DirectoryViewModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.DirectoryViewModel;
 
-namespace TWTerrainToolsWPF.Delegates
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates
 {
     // 7/8/2010
     /// <summary>

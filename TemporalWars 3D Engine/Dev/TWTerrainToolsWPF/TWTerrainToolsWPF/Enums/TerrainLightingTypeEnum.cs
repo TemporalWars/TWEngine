@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TWTerrainToolsWPF.Enums
+﻿namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums
 {
     /// <summary>
     /// The <see cref="TerrainLightingType"/> Enum Controls the material LightingType to use during rendering, 

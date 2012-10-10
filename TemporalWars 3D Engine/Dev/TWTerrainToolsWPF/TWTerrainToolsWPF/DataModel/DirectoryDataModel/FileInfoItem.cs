@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace TWTerrainToolsWPF.DataModel.DirectoryDataModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.DirectoryDataModel
 {
     // 7/2/2010
     public class FileInfoItem

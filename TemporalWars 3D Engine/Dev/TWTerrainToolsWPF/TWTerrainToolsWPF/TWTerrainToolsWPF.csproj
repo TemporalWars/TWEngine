@@ -8,8 +8,8 @@
     <ProjectGuid>{029FCB50-0A9B-423B-91D4-ED492D1AE314}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TWTerrainToolsWPF</RootNamespace>
-    <AssemblyName>TWTerrainToolsWPF</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF</RootNamespace>
+    <AssemblyName>In.BenS.TWTools.TWTerrainToolsWPF</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -52,6 +52,7 @@
     <AssemblyOriginatorKeyFile>TWTerrainToolsSn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TWTools.TWTerrainToolsInt, Version=1.9.4.0, Culture=neutral, PublicKeyToken=8c5c60936fef4864, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="PresentationFramework.Aero" />
@@ -251,12 +252,6 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="TWTerrainToolsSn.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TWTerrainTools_Interfaces\TWTerrainTools_Interfaces.csproj">
-      <Project>{7CADFF7B-95D1-407B-B97A-DB605D0FFCAA}</Project>
-      <Name>TWTerrainTools_Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\folderIcon1.bmp" />

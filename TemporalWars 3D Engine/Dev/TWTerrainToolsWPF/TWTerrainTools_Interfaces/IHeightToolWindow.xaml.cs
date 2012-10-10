@@ -1,8 +1,6 @@
-﻿using System.ServiceModel;
-using TWTerrainTools_Interfaces.Structs;
+﻿using ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs;
 
-
-namespace TWTerrainTools_Interfaces
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces
 {
     // 6/30/2010
     /// <summary>

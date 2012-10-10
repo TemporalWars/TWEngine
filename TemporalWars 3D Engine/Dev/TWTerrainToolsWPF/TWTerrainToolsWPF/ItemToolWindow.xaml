@@ -1,7 +1,10 @@
-﻿<Window x:Class="TWTerrainToolsWPF.ItemToolWindow"
+﻿<Window x:Class="ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ItemToolWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Items Tool (F3)" Height="584" Width="891" xmlns:my="clr-namespace:TWTerrainToolsWPF" xmlns:DirectoryViewModel="clr-namespace:TWTerrainToolsWPF.ViewModel.DirectoryViewModel" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" Topmost="True" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" Closing="ItemTools_Closing" Closed="Window_Closed" ResizeMode="NoResize">
+        Title="Items Tool (F3)" Height="584" Width="891"
+        xmlns:DirectoryViewModel1="clr-namespace:ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.DirectoryViewModel"
+        xmlns:my="clr-namespace:ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF"
+        Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" Topmost="True" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" Closing="ItemTools_Closing" Closed="Window_Closed" ResizeMode="NoResize">
 	<Window.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -29,14 +32,14 @@
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
                 <HierarchicalDataTemplate 
-          DataType="{x:Type DirectoryViewModel:DirectoryInfoViewModel}" 
+          DataType="{x:Type DirectoryViewModel1:DirectoryInfoViewModel}" 
           ItemsSource="{Binding Children}">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="16" Height="16" Margin="3,0" Source="{Binding DirectoryImage}"  />
                         <TextBlock Text="{Binding DirectoryName}" />
                     </StackPanel>
                 </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type DirectoryViewModel:FileInfoViewModel}">
+                <DataTemplate DataType="{x:Type DirectoryViewModel1:FileInfoViewModel}">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="25" Height="25" Margin="3,0" Source="{Binding FileIcon}"  />
                         <TextBlock Text="{Binding FileName}" />

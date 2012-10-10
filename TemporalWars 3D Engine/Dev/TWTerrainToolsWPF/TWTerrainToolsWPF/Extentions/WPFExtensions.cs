@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Windows.Media.Imaging;
 using System.Drawing;
 
-namespace TWTerrainToolsWPF.Extentions
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Extentions
 {
     // 7/4/2010
     ///<summary>

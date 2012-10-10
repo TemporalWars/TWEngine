@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
-using System.Runtime;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace TWTerrainToolsWPF
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF
 {
     /// <summary>
     /// Interaction logic for UserNumUpDownControl.xaml

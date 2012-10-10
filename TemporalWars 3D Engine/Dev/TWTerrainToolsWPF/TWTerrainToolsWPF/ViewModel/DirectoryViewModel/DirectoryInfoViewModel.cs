@@ -2,10 +2,10 @@
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Media.Imaging;
-using TWTerrainToolsWPF.DataModel;
-using TWTerrainToolsWPF.DataModel.DirectoryDataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.DirectoryDataModel;
 
-namespace TWTerrainToolsWPF.ViewModel.DirectoryViewModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.DirectoryViewModel
 {
     // 7/2/2010
     public class DirectoryInfoViewModel : TreeViewItemViewModel

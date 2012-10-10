@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Data;
-using System.Windows.Controls;
-
-namespace TWTerrainToolsWPF.DataModel.MainMenuDataModel
+﻿namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.MainMenuDataModel
 {
     // 8/20/2010
     public class MiniMapMenuItems

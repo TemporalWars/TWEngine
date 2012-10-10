@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TWTerrainTools_Interfaces.Structs
+﻿namespace ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs
 {
     // 7/2/2010
     /// <summary>

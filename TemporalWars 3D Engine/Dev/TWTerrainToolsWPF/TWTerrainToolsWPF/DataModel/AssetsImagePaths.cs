@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace TWTerrainToolsWPF.DataModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel
 {
     // 7/7/2010
     public class AssetsImagePaths

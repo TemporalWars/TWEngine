@@ -1,9 +1,9 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-    xmlns:uNuD="clr-namespace:TWTerrainToolsWPF" 
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TWTerrainToolsWPF.HeightToolWindow"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uNuD="clr-namespace:ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF" mc:Ignorable="d" x:Class="ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.HeightToolWindow"
         Title="Height Tool (F1)" Height="669" Width="530" WindowStyle="ToolWindow" ResizeMode="NoResize" x:Name="HeightTools" Closing="HeightTools_Closing" Loaded="HeightTools_Loaded" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" Topmost="True" WindowStartupLocation="CenterScreen" Closed="HeightTools_Closed">
 	<Window.Resources>
 		<ResourceDictionary>

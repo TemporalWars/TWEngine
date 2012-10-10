@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using TWTerrainToolsWPF.DataModel;
-using TWTerrainToolsWPF.DataModel.PaintToolDataModel;
-using TWTerrainToolsWPF.Delegates;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.PaintToolDataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates;
 
-namespace TWTerrainToolsWPF.ViewModel.PaintToolViewModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.PaintToolViewModel
 {
     /// <summary>
     /// The ViewModel for the <see cref="TexturesViewModel"/>.

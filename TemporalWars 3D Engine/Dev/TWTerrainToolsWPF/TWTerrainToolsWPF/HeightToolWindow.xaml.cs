@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using TWTerrainTools_Interfaces;
-using TWTerrainTools_Interfaces.Structs;
-using TWTerrainToolsWPF.Enums;
-using TWTerrainToolsWPF.Extentions;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Extentions;
+using ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces;
+using ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs;
 
-namespace TWTerrainToolsWPF
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF
 {
     /// <summary>
     /// Interaction logic for HeightToolWindow.xaml

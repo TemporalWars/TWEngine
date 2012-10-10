@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace TWTerrainTools_Interfaces.Structs
+﻿namespace ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs
 {
     // 6/30/2010
     /// <summary>

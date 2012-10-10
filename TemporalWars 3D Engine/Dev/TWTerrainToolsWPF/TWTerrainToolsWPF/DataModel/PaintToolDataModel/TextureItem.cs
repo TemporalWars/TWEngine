@@ -1,4 +1,4 @@
-﻿namespace TWTerrainToolsWPF.DataModel.PaintToolDataModel
+﻿namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.PaintToolDataModel
 {
     // 7/2/2010
     /// <summary>

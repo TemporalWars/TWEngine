@@ -1,10 +1,10 @@
-﻿<Window x:Class="TWTerrainToolsWPF.PaintToolWindow"
+﻿<Window x:Class="ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.PaintToolWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Paint Tool (F2)" Height="650" Width="937" xmlns:my="clr-namespace:TWTerrainToolsWPF" 
-        xmlns:DirectoryViewModel="clr-namespace:TWTerrainToolsWPF.ViewModel.DirectoryViewModel" 
-        xmlns:PaintToolViewModel="clr-namespace:TWTerrainToolsWPF.ViewModel.PaintToolViewModel"         
-        WindowStartupLocation="CenterScreen" Topmost="True" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" WindowStyle="ToolWindow" Closing="PaintTool_Closing" Closed="Window_Closed" ResizeMode="NoResize">
+        Title="Paint Tool (F2)" Height="650" Width="937"
+        xmlns:DirectoryViewModel1="clr-namespace:ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.DirectoryViewModel"
+        xmlns:PaintToolViewModel1="clr-namespace:ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.PaintToolViewModel"
+        xmlns:my="clr-namespace:ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF" WindowStartupLocation="CenterScreen" Topmost="True" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" WindowStyle="ToolWindow" Closing="PaintTool_Closing" Closed="Window_Closed" ResizeMode="NoResize">
 	<Window.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -32,14 +32,14 @@
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
                 <HierarchicalDataTemplate 
-          DataType="{x:Type DirectoryViewModel:DirectoryInfoViewModel}" 
+          DataType="{x:Type DirectoryViewModel1:DirectoryInfoViewModel}" 
           ItemsSource="{Binding Children}">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="16" Height="16" Margin="3,0" Source="{Binding DirectoryImage}"  />
                         <TextBlock Text="{Binding DirectoryName}" FontFamily="Microsoft Sans Serif" FontSize="8.25" Foreground="MidnightBlue" />
                     </StackPanel>
                 </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type DirectoryViewModel:FileInfoViewModel}">
+                <DataTemplate DataType="{x:Type DirectoryViewModel1:FileInfoViewModel}">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="25" Height="25" Margin="3,0" Source="{Binding FileIcon}"  />
                         <TextBlock Text="{Binding FileName}" FontFamily="Microsoft Sans Serif" FontSize="8.25" Foreground="MidnightBlue" />
@@ -133,7 +133,7 @@
                             </ListView.ItemContainerStyle>
                             <ListView.Resources>
                                
-                                <DataTemplate DataType="{x:Type PaintToolViewModel:TextureItemViewModel}">
+                                <DataTemplate DataType="{x:Type PaintToolViewModel1:TextureItemViewModel}">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Width="25" Height="25" Margin="3,0" Source="{Binding TextureImage, Mode=OneWay}"  />
                                         <TextBlock Text="{Binding TextureName, Mode=OneWay}" FontFamily="Microsoft Sans Serif" FontSize="8.25" Foreground="MidnightBlue"></TextBlock>
@@ -164,7 +164,7 @@
                             </ListView.ItemContainerStyle>
                             <ListView.Resources>
 
-                                <DataTemplate DataType="{x:Type PaintToolViewModel:TextureItemViewModel}">
+                                <DataTemplate DataType="{x:Type PaintToolViewModel1:TextureItemViewModel}">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Width="25" Height="25" Margin="3,0" Source="{Binding TextureImage}"  />
                                         <TextBlock Text="{Binding TextureName}" FontSize="8.25" FontFamily="Microsoft Sans Serif" Foreground="MidnightBlue" />

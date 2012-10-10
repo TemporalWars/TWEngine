@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
+﻿using System.ComponentModel;
 
-namespace TWTerrainToolsWPF.ViewModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel
 {
     /// <summary>
     /// Base class for all ViewModel classes displayed by TreeViewItems.  

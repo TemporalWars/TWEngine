@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel;
 
-namespace TWTerrainTools_Interfaces
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces
 {
     // 6/30/2010 - Callbacks for WCF (Essentially Events)
     /// <summary>

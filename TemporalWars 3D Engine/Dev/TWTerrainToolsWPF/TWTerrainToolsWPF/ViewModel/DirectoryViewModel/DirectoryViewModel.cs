@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using TWTerrainToolsWPF.DataModel;
-using TWTerrainToolsWPF.DataModel.DirectoryDataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.DirectoryDataModel;
 
-namespace TWTerrainToolsWPF.ViewModel.DirectoryViewModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.DirectoryViewModel
 {
     /// <summary>
     /// The ViewModel for the LoadOnDemand demo.  This simply

@@ -1,6 +1,6 @@
-﻿using TWTerrainToolsWPF.Interfaces;
+﻿using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Interfaces;
 
-namespace TWTerrainToolsWPF
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF
 {
     // 2/4/2011
     internal class ToolInstance

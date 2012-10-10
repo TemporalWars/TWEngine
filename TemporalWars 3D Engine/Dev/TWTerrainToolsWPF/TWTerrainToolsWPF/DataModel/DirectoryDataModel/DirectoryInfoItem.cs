@@ -3,10 +3,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Media.Imaging;
-using TWTerrainToolsWPF.Extentions;
-using TWTerrainToolsWPF.Properties;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Extentions;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Properties;
 
-namespace TWTerrainToolsWPF.DataModel.DirectoryDataModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.DirectoryDataModel
 {
     // 7/2/2010
     /// <summary>

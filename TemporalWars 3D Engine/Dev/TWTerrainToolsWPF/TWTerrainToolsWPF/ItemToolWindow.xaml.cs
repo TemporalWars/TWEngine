@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
-using TWTerrainTools_Interfaces.Structs;
-using TWTerrainToolsWPF.DataModel;
-using TWTerrainToolsWPF.DataModel.DirectoryDataModel;
-using TWTerrainToolsWPF.Extentions;
-using TWTerrainToolsWPF.Interfaces;
-using TWTerrainToolsWPF.ViewModel.DirectoryViewModel;
-using Path = System.IO.Path;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.DirectoryDataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Extentions;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Interfaces;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.DirectoryViewModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs;
 
-
-namespace TWTerrainToolsWPF
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF
 {
     /// <summary>
     /// Interaction logic for ItemToolWindow.xaml
