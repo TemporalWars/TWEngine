@@ -9,10 +9,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
-using TWEngine.InstancedModels;
 using TWEngine.Utilities;
 
 #if !XBOX360 
