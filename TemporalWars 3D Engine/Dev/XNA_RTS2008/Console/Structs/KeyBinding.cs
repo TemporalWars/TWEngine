@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework.Input;
 
-namespace TWEngine.Console.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Console.Structs
 {
     /// <summary>
     /// Characters and commands bound to specific key strokes.

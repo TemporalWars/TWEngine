@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework.Input;
-using TWEngine.Console.Structs;
 
-namespace TWEngine.Console
+using ImageNexus.BenScharbach.TWEngine.Console.Structs;
+using Microsoft.Xna.Framework.Input;
+
+namespace ImageNexus.BenScharbach.TWEngine.Console
 {
     /// <summary>
     /// The <see cref="KeyboardHelper"/> populates the <see cref="KeyBinding"/> collection.
