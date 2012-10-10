@@ -6,15 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using TWEngine.AI.Enums;
-using TWEngine.Common;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
 
-namespace TWEngine.AI.FSMStates
+using System;
+using ImageNexus.BenScharbach.TWEngine.AI.Enums;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.AI.FSMStates
 {
     /// <summary>
     /// Attack state, used in the FSM_Machine class; specifically makes a unit

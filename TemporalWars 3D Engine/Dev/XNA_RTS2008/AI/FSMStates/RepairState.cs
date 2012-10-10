@@ -6,12 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.AI.Enums;
-using TWEngine.Players;
-using TWEngine.SceneItems;
+
+using ImageNexus.BenScharbach.TWEngine.AI.Enums;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.AI.FSMStates
+namespace ImageNexus.BenScharbach.TWEngine.AI.FSMStates
 {
     /// <summary>
     /// Repair state, used in the FSM_Machine class; in the Repair state, the

@@ -6,13 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.ParallelTasks;
-using TWEngine.SceneItems;
 
-namespace TWEngine.AI
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.ParallelTasks;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+using TWEngine;
+
+namespace ImageNexus.BenScharbach.TWEngine.AI
 {
     // 8/21/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
@@ -120,7 +121,7 @@ namespace TWEngine.AI
             var sThisPlayer = TemporalWars3DEngine.SThisPlayer;
 
             // 6/15/2010 - Updated to use new GetPlayer method.
-            Players.Player player;
+            global::ImageNexus.BenScharbach.TWEngine.Players.Player player;
             if (!TemporalWars3DEngine.GetPlayer(sThisPlayer, out player))
                 return;
 

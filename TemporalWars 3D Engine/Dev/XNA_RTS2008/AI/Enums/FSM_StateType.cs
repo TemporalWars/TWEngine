@@ -7,9 +7,9 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-using TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 
-namespace TWEngine.AI.Enums
+namespace ImageNexus.BenScharbach.TWEngine.AI.Enums
 {
     // 8/21/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
