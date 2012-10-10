@@ -6,18 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using System.Xml.Serialization;
 using System.Collections.Generic;
 using System.Text;
-using TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
 
-namespace TWEngine.ItemTypeAttributes.Structs
+namespace ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.ItemTypeAttributes.Structs"/> namespace contains the structures
-    /// which make up the entire <see cref="ItemTypeAttributes.Structs"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.ItemTypeAttributes.Structsnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

@@ -6,16 +6,17 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.SceneItems;
-using TWEngine.InstancedModels;
-using TWEngine.Shapes;
-using TWEngine.Shapes.Enums;
 
-namespace TWEngine.ItemTypeAttributes
+using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shapes.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes
 {
     ///<summary>
     /// The <see cref="ScenaryItemTypeAtts"/> class, inheriting from <see cref="ItemTypeAtts"/> base class, is
@@ -2098,7 +2099,7 @@ namespace TWEngine.ItemTypeAttributes
             if (ItemTypeAtts != null)
                 ItemTypeAtts.Clear();
 
-            ItemTypeAttributes.ItemTypeAtts.Dispose();
+            ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.ItemTypeAtts.Dispose();
         }
     }
 }

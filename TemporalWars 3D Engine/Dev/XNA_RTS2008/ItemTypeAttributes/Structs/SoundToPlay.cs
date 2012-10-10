@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using TWEngine.Audio.Enums;
-using TWEngine.InstancedModels.Enums;
 
-namespace TWEngine.ItemTypeAttributes.Structs
+using System;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+
+namespace ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs
 {
 #pragma warning disable 1587
     ///<summary>

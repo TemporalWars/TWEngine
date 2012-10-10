@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.SceneItems;
-using TWEngine.Shapes.Enums;
 
-namespace TWEngine.ItemTypeAttributes.Structs
+using System;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shapes.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+
+namespace ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs
 {
 #pragma warning disable 1587
     ///<summary>
