@@ -1,4 +1,4 @@
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar
 {
     /// <summary>
     /// Required reference to game engine.

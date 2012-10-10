@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
+using Microsoft.Xna.Framework;
 
-namespace TWEngine.StatusBars
+namespace ImageNexus.BenScharbach.TWLate.RTS_StatusBarComponentLibrary.StatusBars
 {
     /// <summary>
     /// Represents a single<see cref="StatusBarItem"/> for a <see cref="IStatusBarSceneItem"/>.
