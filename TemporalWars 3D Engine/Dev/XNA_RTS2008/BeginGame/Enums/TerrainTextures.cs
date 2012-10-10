@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.BeginGame.Enums
+namespace ImageNexus.BenScharbach.TWEngine.BeginGame.Enums
 {
     ///<summary>
     /// The <see cref="TerrainTextures"/> Enum is used to specify the quality 

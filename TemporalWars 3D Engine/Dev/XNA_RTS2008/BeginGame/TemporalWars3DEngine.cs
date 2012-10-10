@@ -6,65 +6,70 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-#if !XBOX360
+
 using System.Diagnostics;
-using System.Windows.Forms;
-using TWEngine.Console;
-using TWEngine.Utilities;
-using fbDeprofiler;
-using MessageBoxIcon = System.Windows.Forms.MessageBoxIcon;
-#endif
 using System;
 using System.IO;
 using System.Reflection;
 using System.Collections.Generic;
-using AStarInterfaces.AStarAlgorithm;
+using ImageNexus.BenScharbach.TWEngine.AI;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Explosions;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Enums;
+using ImageNexus.BenScharbach.TWEngine.SkyDomes;
+using ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.Viewports;
+using ImageNexus.BenScharbach.TWEngine.Water;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
+using ImageNexus.BenScharbach.TWTools.SimpleQuadDrawer;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
+using ImageNexus.BenScharbach.TWScripting.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
-using ParallelTasksComponent;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using ScreenTextDisplayer.ScreenText;
-using SimpleQuadDrawer;
-using TWEngine.AI;
-using TWEngine.Audio;
-using TWEngine.BeginGame.Enums;
-using TWEngine.Common;
-using TWEngine.GameScreens;
-using TWEngine.GameScreens.Generic;
-using TWEngine.HandleGameInput;
-using TWEngine.InstancedModels;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.IFDTiles;
-using TWEngine.GameCamera;
-using TWEngine.Particles;
-using Particles3DComponentLibrary;
-using TWEngine.Players;
-using TWEngine.PostProcessEffects.BloomEffect.Enums;
-using TWEngine.SceneItems;
-using TWEngine.ScreenManagerC;
-using TWEngine.Shadows.Enums;
-using TWEngine.SkyDomes;
-using TWEngine.Terrain;
-using TWEngine.Shadows;
-using TWEngine.Explosions;
-using TWEngine.Networking;
-using TWEngine.MemoryPool;
-using TWEngine.Terrain.Enums;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.TerrainTools;
-using TWEngine.Utilities;
-using TWEngine.Viewports;
-using TWEngine.ForceBehaviors;
-using TWEngine.Water;
-using BenScharbachTWScriptingInterfaces;
 using Microsoft.Xna.Framework.Content;
-using Cursor = TWEngine.Common.Cursor;
+using Cursor = ImageNexus.BenScharbach.TWEngine.Common.Cursor;
 
+//using fbDeprofiler;
 
-namespace TWEngine
+#if !XBOX360
+using System.Windows.Forms;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWEngine.Console;
+using MessageBoxIcon = System.Windows.Forms.MessageBoxIcon;
+#endif
+
+namespace ImageNexus.BenScharbach.TWEngine.BeginGame
 {
     // 9/11/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
@@ -81,6 +86,12 @@ namespace TWEngine
     /// </summary>
     public class TemporalWars3DEngine : Game, IFOWEngineRef, IMinimapEngineRef, IStatusBarEngineRef
     {
+        // 10/7/2012 - Names of the possible Late-Bind assemblies - Ben
+        private const string AstarLateBindAssembly = "ImageNexus.BenScharbach.TWLate.AStarComponentLibrary.dll";
+        private const string FogOfWarLateBindAssembly = "ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary.dll";
+        private const string MinimapLateBindAssembly = "ImageNexus.BenScharbach.TWLate.RTS_MinimapComponentLibrary.dll";
+        private const string StatusBarLateBindAssembly = "ImageNexus.BenScharbach.TWLate.RTS_StatusBarComponentLibrary.dll";
+
         // 4/6/2010 - Set Content locations from Resource files, using proper resource file
         //            depending on XBOX or PC build.
 // ReSharper disable InconsistentNaming
@@ -590,17 +601,17 @@ namespace TWEngine
 
 #if WithLicense
 #if !XBOX360
-            var license = new LicenseHelper();
-            license.Required();
+            //var license = new LicenseHelper();
+            //license.Required();
 #endif
 #endif
 
             // 4/11/2012 - Simple Hack which removes the check for the HiDef, which causes crash in VMWare.
-#if DEBUG
+//#if DEBUG
 #if !XBOX360
-            DeProfiler.Run();
+            //DeProfiler.Run();
 #endif
-#endif
+//#endif
 
             // 1/19/2011 - Check if Game Purchased.
             IsPurchasedGame = !Guide.IsTrialMode;
@@ -937,7 +948,7 @@ namespace TWEngine
             
            
             // 1/1/2010 - LateBind to FOW assembly, if it exist in the LateBind folders.
-            if (LateBindAssembly("RTS_FogOfWarComponentLibrary.dll", "FogOfWar", out _fogOfWar))
+            if (LateBindAssembly(FogOfWarLateBindAssembly, "FogOfWar", out _fogOfWar))
             {
                 // Add FogOfWar Interface
                 //_fogOfWar = new FogOfWar(this) { IsVisible = true };
@@ -950,7 +961,7 @@ namespace TWEngine
             }
 
             // 1/1/2010 - LateBind to Minimap assembly, if it exist in the LateBind folders.
-            if (LateBindAssembly("RTS_MinimapComponentLibrary.dll", "Minimap", out _miniMap))
+            if (LateBindAssembly(MinimapLateBindAssembly, "Minimap", out _miniMap))
             {
                 //_miniMap = new Minimap(this);
                 Components.Add(_miniMap as IGameComponent);
@@ -960,9 +971,9 @@ namespace TWEngine
                 AStarItem.PathMoveToCompletedG += ((IMinimap)_miniMap).UpdateMiniMapPosition_EventHandler;
             }
 
-            // 1/13/2010 - LateBind to Minimap assembly, if it exist in the LateBind folders.
+            // 1/13/2010 - LateBind to Astar assembly, if it exist in the LateBind folders.
             // Add AStar Component Class; 6/16/2009: Currently, method 'InitAStarEngines', called in LoadHeightData of 'TerrainData' class.
-            if (LateBindAssembly("AStarComponentLibrary.dll", "AStarManager", out _aStarInstance))
+            if (LateBindAssembly(AstarLateBindAssembly, "AStarManager", out _aStarInstance))
             {
                 //_aStarInstance = new AStarManager(this, SPathNodeSize, _pathNodeStride, false);
                 Components.Add(_aStarInstance as IGameComponent);
@@ -988,8 +999,8 @@ namespace TWEngine
             Components.Add(_particles);
             Services.AddService(typeof(ParticlesManager), _particles);
            
-            // 1/3/2010 - LateBind to Minimap assembly, if it exist in the LateBind folders.
-            if (LateBindAssembly("RTS_StatusBarComponentLibrary.dll", "StatusBar", out _statusBar))
+            // 1/3/2010 - LateBind to statusbar assembly, if it exist in the LateBind folders.
+            if (LateBindAssembly(StatusBarLateBindAssembly, "StatusBar", out _statusBar))
             {
                 //_statusBar = new StatusBar(this);
                 Components.Add(_statusBar as IGameComponent);
@@ -1368,7 +1379,7 @@ namespace TWEngine
             base.Update(gameTime);
 
             // Check if in Trial Mode
-            if (IsPurchasedGame) return;
+            //if (IsPurchasedGame) return;
 
             // Check to show the Marketplace screen
             CheckToShowMarketplace();
@@ -1385,7 +1396,7 @@ namespace TWEngine
 
         }
 
-        // 1/19/2011
+        // 1/19/2011; 10/5/2012: Updated to now call the 'ShowMarketplace' method in InputState.
         /// <summary>
         /// Checks if either the keyboard combination 'Alt-M' is pressed or
         /// the gamepad 'Right-Trigger' is pressed to show the
@@ -1398,35 +1409,14 @@ namespace TWEngine
                 ShowMarketplace();
         }
 
+        // 10/5/2012: Note: This method is now in the InputState class.
         // 1/19/2011
         /// <summary>
         /// Calls the framework <see cref="Microsoft.Xna.Framework.GamerServices.Guide.ShowMarketplace"/>.
         /// </summary>
         public static void ShowMarketplace()
         {
-            try
-            {
-                // Check if user signed in.
-                if (_signedInGamer == null)
-                {
-                    if (!Guide.IsVisible)
-                        Guide.ShowSignIn(1, true);
-
-                    return;
-                }
-
-                // Checks if the current gamer can purchase items.
-                if (!_signedInGamer.Privileges.AllowPurchaseContent) return;
-
-                // Show Guide's marketplace.
-                if (!Guide.IsVisible)
-                    Guide.ShowMarketplace(_signedInGamer.PlayerIndex);
-            }
-            catch (GamerPrivilegeException)
-            {
-                // empty
-            }
-           
+            HandleInput.InputState.ShowMarketplaceGuide(_signedInGamer);
         }
 
         // 1/19/2011
