@@ -1,8 +1,10 @@
 ﻿using System;
+using ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap
 {
     // 8/14/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>

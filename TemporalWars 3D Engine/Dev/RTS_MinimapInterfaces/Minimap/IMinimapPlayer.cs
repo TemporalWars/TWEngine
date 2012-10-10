@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap
 {
     /// <summary>
     /// Represents the current state of each <see cref="IMinimapPlayer"/> in the game

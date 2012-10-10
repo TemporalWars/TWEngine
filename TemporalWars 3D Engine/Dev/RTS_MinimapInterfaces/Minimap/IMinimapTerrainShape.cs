@@ -1,6 +1,6 @@
 using System;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap
 {
     ///<summary>
     /// The <see cref="IMinimapTerrainShape"/> class is a manager, which uses the other terrain classes to create and manage

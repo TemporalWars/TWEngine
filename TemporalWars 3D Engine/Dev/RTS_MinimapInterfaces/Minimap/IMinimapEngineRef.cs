@@ -1,4 +1,6 @@
-namespace TWEngine
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+
+namespace ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap
 {
     /// <summary>
     /// Required reference to game engine.

@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap
 {
     /// <summary>
     /// The <see cref="IMinimapInterfaceDisplay"/> class manages all IFDTile instances, by
