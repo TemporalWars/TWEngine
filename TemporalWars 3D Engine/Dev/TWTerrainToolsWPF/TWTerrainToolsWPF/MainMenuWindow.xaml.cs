@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows;
-using TWTerrainToolsWPF.DataModel.MainMenuDataModel;
-using TWTerrainToolsWPF.Delegates;
-using TWTerrainToolsWPF.Enums;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.MainMenuDataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums;
 
-
-namespace TWTerrainToolsWPF
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF
 {
     /// <summary>
     /// Interaction logic for MainMenuWindow.xaml

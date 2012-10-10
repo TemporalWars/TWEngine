@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TWTerrainToolsWPF.Delegates
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates
 {
     /// <summary>
     /// This <see cref="SelectedItemEventArgs"/> class is used to pass important

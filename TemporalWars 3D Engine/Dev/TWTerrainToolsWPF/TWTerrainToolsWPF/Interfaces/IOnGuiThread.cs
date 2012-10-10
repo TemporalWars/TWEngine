@@ -1,7 +1,6 @@
 using System;
 
-
-namespace TWTerrainToolsWPF.Interfaces
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Interfaces
 {
     // 2/4/2011
     public interface IOnGuiThread

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Threading;
 
-namespace TWTerrainToolsWPF.ViewModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel
 {
     // 2/5/2011
     // Note: http://geekswithblogs.net/NewThingsILearned/archive/2008/01/16/have-worker-thread-update-observablecollection-that-is-bound-to-a.aspx

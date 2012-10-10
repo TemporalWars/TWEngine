@@ -1,4 +1,4 @@
-﻿namespace TWTerrainToolsWPF.Enums
+﻿namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums
 {
     ///<summary>
     /// The <see cref="HeightTool"/> Enum identifies what action to use

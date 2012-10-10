@@ -1,28 +1,26 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.DirectoryDataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.PaintToolDataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Extentions;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Interfaces;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.DirectoryViewModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.PaintToolViewModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs;
 using Microsoft.Xna.Framework;
-using TWTerrainTools_Interfaces.Structs;
-using TWTerrainToolsWPF.DataModel;
-using TWTerrainToolsWPF.DataModel.DirectoryDataModel;
-using TWTerrainToolsWPF.DataModel.PaintToolDataModel;
-using TWTerrainToolsWPF.Delegates;
-using TWTerrainToolsWPF.Enums;
-using TWTerrainToolsWPF.Extentions;
-using TWTerrainToolsWPF.Interfaces;
-using TWTerrainToolsWPF.ViewModel.DirectoryViewModel;
-using TWTerrainToolsWPF.ViewModel.PaintToolViewModel;
-using Point = System.Windows.Point;
 using System.Windows.Threading;
+using Point = System.Windows.Point;
 
-namespace TWTerrainToolsWPF
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF
 {
     /// <summary>
     /// Interaction logic for PaintToolWindow.xaml

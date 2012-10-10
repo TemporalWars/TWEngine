@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TWTerrainToolsWPF.Enums
+﻿namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums
 {
     ///<summary>
     /// The <see cref="PaintTool"/> Enum is used to paint or erase textures on the Terrain.

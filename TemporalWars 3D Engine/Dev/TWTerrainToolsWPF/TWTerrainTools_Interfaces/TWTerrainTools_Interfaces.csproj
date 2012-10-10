@@ -8,8 +8,8 @@
     <ProjectGuid>{7CADFF7B-95D1-407B-B97A-DB605D0FFCAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TWTerrainTools_Interfaces</RootNamespace>
-    <AssemblyName>TWTerrainTools_Interfaces</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces</RootNamespace>
+    <AssemblyName>In.BenS.TWTools.TWTerrainToolsInt</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

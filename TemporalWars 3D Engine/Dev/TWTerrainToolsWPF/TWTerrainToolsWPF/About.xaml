@@ -1,4 +1,4 @@
-﻿<Window x:Class="TWTerrainToolsWPF.About"
+﻿<Window x:Class="ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.About"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="About" Height="352" Width="600" Name="AboutICL" 

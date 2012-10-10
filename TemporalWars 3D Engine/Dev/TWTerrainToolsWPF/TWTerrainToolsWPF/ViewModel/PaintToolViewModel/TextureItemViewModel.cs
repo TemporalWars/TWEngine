@@ -1,9 +1,8 @@
 ﻿using System.Windows.Media.Imaging;
-using TWTerrainToolsWPF.DataModel;
-using TWTerrainToolsWPF.DataModel.PaintToolDataModel;
-using TWTerrainToolsWPF.Delegates;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.DataModel.PaintToolDataModel;
 
-namespace TWTerrainToolsWPF.ViewModel.PaintToolViewModel
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.ViewModel.PaintToolViewModel
 {
     // 7/7/2010
     public class TextureItemViewModel : ListViewItemViewModel

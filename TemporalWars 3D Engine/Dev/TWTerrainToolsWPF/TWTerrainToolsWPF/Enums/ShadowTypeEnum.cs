@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TWTerrainToolsWPF.Enums
+﻿namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums
 {
     // NOTE: (8/17/2010): List Enum list MUST match the 'ShadowMap' classes Enum list.
     ///<summary>

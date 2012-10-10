@@ -1,4 +1,4 @@
-namespace TWTerrainToolsWPF.Delegates
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates
 {
     // 8/17/2010
     /// <summary>

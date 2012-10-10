@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using TWTerrainToolsWPF.Extentions;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Extentions;
 
-namespace TWTerrainToolsWPF
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF
 {
     /// <summary>
     /// Interaction logic for About.xaml

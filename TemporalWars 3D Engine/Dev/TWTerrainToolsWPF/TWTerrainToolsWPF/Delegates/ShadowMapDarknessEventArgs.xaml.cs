@@ -1,6 +1,6 @@
 using System;
 
-namespace TWTerrainToolsWPF.Delegates
+namespace ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates
 {
     /// <summary>
     /// Custom eventArgs for ShadowMapDarkness event and delegate

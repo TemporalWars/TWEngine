@@ -1,9 +1,8 @@
-﻿<Window x:Class="TWTerrainToolsWPF.MainMenuWindow"
+﻿<Window x:Class="ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.MainMenuWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Main Menu (~)" Height="281" Width="675" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" ResizeMode="NoResize" IsTabStop="False"         
-        xmlns:my="clr-namespace:System;assembly=mscorlib" 
-        xmlns:codeBh="clr-namespace:TWTerrainToolsWPF" Closing="Window_Closing" Closed="Window_Closed">
+        xmlns:my="clr-namespace:System;assembly=mscorlib" Closing="Window_Closing" Closed="Window_Closed">
 	<Window.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
