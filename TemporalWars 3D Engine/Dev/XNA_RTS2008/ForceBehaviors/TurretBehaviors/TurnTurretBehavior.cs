@@ -6,15 +6,17 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.SteeringBehaviors;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.Utilities;
-using TWEngine.Interfaces;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.TurretBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.TurretBehaviors
 {
     ///<summary>
     /// The <see cref="TurnTurretBehavior"/> is used to turn some gun turret the proper direction, depending on its target.
@@ -59,7 +61,7 @@ namespace TWEngine.ForceBehaviors.TurretBehaviors
         /// Constructor, which creates an instance of <see cref="TurnToFaceBehavior"/>.
         ///</summary>
         public TurnTurretBehavior()
-            : base((int)Enums.BehaviorsEnum.TurnTurret, 0.0f)
+            : base((int)BehaviorsEnum.TurnTurret, 0.0f)
         {
             _turnToFaceAbstractBehavior = new TurnToFaceBehavior();
         }

@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// The <see cref="CohesionBehavior"/> class produces a steering force which moves a <see cref="SceneItem"/>
@@ -33,7 +35,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// Constructor, which creates an instance of the <see cref="SeekBehavior"/>.
         ///</summary>
         public CohesionBehavior()
-            : base((int)Enums.BehaviorsEnum.Cohesion, 1.0f)
+            : base((int)BehaviorsEnum.Cohesion, 1.0f)
         {
             _seekBehavior = new SeekBehavior();
 

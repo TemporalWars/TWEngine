@@ -6,12 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.ParallelTasks;
 
-namespace TWEngine.ForceBehaviors
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.ParallelTasks;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors
 {
     // 5/22/2012 - Renamed from SteeringBehaviorsManager to ForceBehaviorsManager
     ///<summary>

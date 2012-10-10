@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// The <see cref="SeparationBehavior"/> class creates a force that steers a <see cref="SceneItem"/> away
@@ -32,7 +34,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// Constructor
         ///</summary>
         public SeparationBehavior()
-            : base((int)Enums.BehaviorsEnum.Separation, 4.0f)
+            : base((int)BehaviorsEnum.Separation, 4.0f)
         {
             // Default to Off, so user has to turn on in Properties Tool window
             //UseBehavior = false;

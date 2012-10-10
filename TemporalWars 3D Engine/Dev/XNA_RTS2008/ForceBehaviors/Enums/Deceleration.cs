@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.SceneItems;
-using TWEngine.ForceBehaviors.SteeringBehaviors;
 
-namespace TWEngine.ForceBehaviors.Enums
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums
 {
     ///<summary>
     /// The <see cref="ArriveBehavior"/> makes use of these Enums to determine how quickly a <see cref="SceneItem"/>

@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 
-namespace TWEngine.ForceBehaviors.Structs
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs
 {
     // 6/12/2010
     /// <summary>
