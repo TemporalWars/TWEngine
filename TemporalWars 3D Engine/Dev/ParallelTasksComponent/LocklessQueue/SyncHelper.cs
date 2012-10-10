@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace ParallelTasksComponent.LocklessQueue 
+namespace ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue 
 {
     /// <summary>
     /// 

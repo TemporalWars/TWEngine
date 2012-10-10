@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace ScreenTextDisplayer.Interfaces
+namespace ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.Interfaces
 {
     // 4/22/2010
     /// <summary>

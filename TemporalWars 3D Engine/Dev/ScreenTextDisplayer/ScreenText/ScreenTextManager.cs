@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine;
+
 #if XBOX
-using Xbox360Generics;
+using ImageNexus.BenScharbach.TWLate.Xbox360Generics;
 #endif
-//using PerfTimersComponent.Timers;
-//using PerfTimersComponent.Timers.Enums;
 
 
-namespace ScreenTextDisplayer.ScreenText
+namespace ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText
 {
     // 10/15/2008
     /// <summary>

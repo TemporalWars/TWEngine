@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ParallelTasksComponent
+namespace ImageNexus.BenScharbach.TWTools.ParallelTasksComponent
 {
     ///<summary>
     /// The <see cref="ThreadSafeDictionary{TKey, TValue}"/> class, inherits from the <see cref="IDictionary"/>, but

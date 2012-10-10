@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading;
 
-namespace ParallelTasksComponent.LocklessQueue 
+namespace ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue 
 {
     /// <summary>
-    /// Similar to the Net 4.0 ConcurrentQueue, this <see cref="LocklessQueue"/> provides thread-safe processing, with
+    /// Similar to the Net 4.0 ConcurrentQueue, this <see cref="ParallelTasksComponent.LocklessQueue"/> provides thread-safe processing, with
     /// the benefit of working on the Xbox-360.
     /// </summary>
     /// <typeparam name="T"></typeparam>

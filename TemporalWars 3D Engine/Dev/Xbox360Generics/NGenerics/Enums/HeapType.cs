@@ -1,4 +1,4 @@
-namespace Xbox360Generics.NGenerics.Enums
+namespace ImageNexus.BenScharbach.TWLate.Xbox360Generics.NGenerics.Enums
 {
     // Note: From NGenerics http://code.google.com/p/ngenerics/.
     public enum HeapType

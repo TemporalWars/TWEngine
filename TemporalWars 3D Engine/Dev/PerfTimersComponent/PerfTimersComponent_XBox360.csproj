@@ -7,17 +7,17 @@
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PerfTimersComponent</RootNamespace>
-    <AssemblyName>PerfTimersComponent</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWTools.PerfTimersComponent</RootNamespace>
+    <AssemblyName>In.BenS.TWTools.PerfTimers</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Xbox 360</XnaPlatform>
     <XnaCrossPlatformGroupID>3ae6698f-444f-47f9-a66d-d001694a53b5</XnaCrossPlatformGroupID>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <SccProjectName>%24/temporalWarsIndieEng/TemporalWars 3D Engine/Dev/PerfTimersComponent</SccProjectName>
-    <SccLocalPath>.</SccLocalPath>
-    <SccAuxPath>https://tfs.codeplex.com/tfs/tfs14</SccAuxPath>
-    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <XnaUpgrade>
     </XnaUpgrade>
     <XnaOutputType>Library</XnaOutputType>
@@ -70,7 +70,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>PerfTimersComponentSn.snk</AssemblyOriginatorKeyFile>
@@ -124,6 +124,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TWTools.ScreenTextDisplayer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=ba8d5641a0a65aa7, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWTools.SpeedCollection, Version=1.9.4.0, Culture=neutral, PublicKeyToken=2621d214a7a8510c, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework">
       <Private>False</Private>
     </Reference>
@@ -169,16 +171,6 @@
     <Reference Include="System.Xml.Linq">
       <Private>False</Private>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ScreenTextDisplayer\ScreenTextDisplayer_XBox360.csproj">
-      <Project>{BC2A4ACB-ABEA-4FEE-BC7D-ECA3CC0EFA8D}</Project>
-      <Name>ScreenTextDisplayer_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpeedCollectionComponent\SpeedCollectionComponent_XBox360.csproj">
-      <Project>{C1A988B0-9260-4303-9393-4F3BE914CE3B}</Project>
-      <Name>SpeedCollectionComponent_XBox360</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="PerfTimersComponentSn.snk" />

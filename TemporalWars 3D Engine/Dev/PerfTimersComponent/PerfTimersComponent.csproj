@@ -7,16 +7,16 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PerfTimersComponent</RootNamespace>
-    <AssemblyName>PerfTimersComponent</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWTools.PerfTimersComponent</RootNamespace>
+    <AssemblyName>In.BenS.TWTools.PerfTimers</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaCrossPlatformGroupID>3ae6698f-444f-47f9-a66d-d001694a53b5</XnaCrossPlatformGroupID>
-    <SccProjectName>%24/temporalWarsIndieEng/TemporalWars 3D Engine/Dev/PerfTimersComponent</SccProjectName>
-    <SccLocalPath>.</SccLocalPath>
-    <SccAuxPath>https://tfs.codeplex.com/tfs/tfs14</SccAuxPath>
-    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <XnaUpgrade>
     </XnaUpgrade>
@@ -54,7 +54,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>false</XnaCompressContent>
-    <DocumentationFile>bin\x86\Debug\PerfTimersComponent.XML</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\In.BenS.TWTools.PerfTimers.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -71,12 +71,14 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>PerfTimersComponentSn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TWTools.ScreenTextDisplayer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=ba8d5641a0a65aa7, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWTools.SpeedCollection, Version=1.9.4.0, Culture=neutral, PublicKeyToken=2621d214a7a8510c, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553">
       <Private>False</Private>
     </Reference>
@@ -178,16 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="PerfTimersComponentSn.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ScreenTextDisplayer\ScreenTextDisplayer.csproj">
-      <Project>{792AE2D7-7B3D-4B97-A488-3E2E1A7F3466}</Project>
-      <Name>ScreenTextDisplayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpeedCollectionComponent\SpeedCollectionComponent.csproj">
-      <Project>{932439F3-ECF4-46B7-A517-3F7BD4587EE4}</Project>
-      <Name>SpeedCollectionComponent</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

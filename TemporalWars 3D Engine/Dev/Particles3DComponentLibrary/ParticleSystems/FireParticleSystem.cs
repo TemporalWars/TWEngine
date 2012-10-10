@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 #endregion
 
-namespace Particles3DComponentLibrary.ParticleSystems
+namespace ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary.ParticleSystems
 {
     /// <summary>
     /// Custom particle system for creating a flame effect.

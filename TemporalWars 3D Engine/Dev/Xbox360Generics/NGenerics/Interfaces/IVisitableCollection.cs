@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Xbox360Generics.NGenerics.Interfaces
+namespace ImageNexus.BenScharbach.TWLate.Xbox360Generics.NGenerics.Interfaces
 {
     // Note: From NGenerics http://code.google.com/p/ngenerics/.
     [Obsolete("Please use the AcceptVisitor extension method on IEnumerable<T>.")]

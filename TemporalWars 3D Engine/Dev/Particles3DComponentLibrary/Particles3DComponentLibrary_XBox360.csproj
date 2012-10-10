@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Particles3DComponentLibrary</RootNamespace>
-    <AssemblyName>Particles3DComponentLibrary</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary</RootNamespace>
+    <AssemblyName>In.BenS.TWTools.Particles3D</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
@@ -45,7 +45,7 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Particles3DComponentSn.snk</AssemblyOriginatorKeyFile>
@@ -72,10 +72,6 @@
     <Content Include="Particle3DSample.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TemporalWarInterfaces\TemporalWarInterfaces_XBox360.csproj">
-      <Project>{D26BA984-074B-464E-BFE2-E53FD4DB198C}</Project>
-      <Name>TemporalWarInterfaces_XBox360</Name>
-    </ProjectReference>
     <ProjectReference Include="Content\Particle3DSampleContent.contentproj">
       <Project>{12A1407B-BACE-4F2A-9413-A4C8DD9E4922}</Project>
       <Name>Particle3DSampleContent %28Content%29</Name>
@@ -83,6 +79,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework">
       <Private>False</Private>
     </Reference>
@@ -129,6 +126,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy  "$(TargetDir)Content\*.*" "$(SolutionDir)XNA_RTS2008\$(OutDir)\Content\" /E /F /Y</PostBuildEvent>
+  </PropertyGroup>
   <!--
       To modify your build process, add your task inside one of the targets below and uncomment it. 
       Other similar extension points exist, see Microsoft.Common.targets.

@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
-using System.Security.Permissions;
 using System.Threading;
 
-namespace ParallelTasksComponent.LocklessDictionary
+namespace ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessDictionary
 {
     // 6/21/2010 - Created own version of system.Func<t,t1>, because causes crash in TFS Build due to 
     //             ambuigity error between 3.5 and 4 .Net libraries; essentially, a Microsoft error.

@@ -6,12 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace MemoryPoolComponent.Delegates
+
+namespace ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Delegates
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
-    /// The <see cref="Delegates"/> namespace contains the classes
-    /// which make up the entire <see cref="Delegates"/> component.
+    /// The <see cref="MemoryPoolComponent.Delegates"/> namespace contains the classes
+    /// which make up the entire <see cref="MemoryPoolComponent.Delegates"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

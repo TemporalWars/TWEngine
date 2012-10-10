@@ -1,4 +1,4 @@
-namespace PerfTimersComponent.Timers.Enums
+namespace ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums
 {
     // 8/20/2009 - StopWatch Enum Names.
     //             CurrentCount = 63.

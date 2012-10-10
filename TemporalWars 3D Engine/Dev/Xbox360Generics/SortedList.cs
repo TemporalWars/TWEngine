@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 
 // 3/7/2011 - New SortedList, used to give this functionality back to the Xbox, which was removed in XNA 4.0
-namespace Xbox360Generics
+namespace ImageNexus.BenScharbach.TWLate.Xbox360Generics
 {
     //[Serializable, DebuggerTypeProxy(typeof(System_DictionaryDebugView<,>)), DebuggerDisplay("Count = {Count}"), ComVisible(false)]
     public class SortedList<TKey, TValue> : IDictionary<TKey, TValue>, ICollection<KeyValuePair<TKey, TValue>>,

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 
-namespace ParallelTasksComponent
+namespace ImageNexus.BenScharbach.TWTools.ParallelTasksComponent
 {
     /// <summary>
     /// Simple <see cref="ThreadPool"/>, for use in place of the XNA ThreadPool which creates

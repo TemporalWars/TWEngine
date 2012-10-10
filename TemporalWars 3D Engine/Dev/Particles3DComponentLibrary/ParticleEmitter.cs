@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 
 #endregion
 
-namespace Particles3DComponentLibrary
+namespace ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary
 {
     /// <summary>
     /// Helper for objects that want to leave particles behind them as they

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 
-namespace ParallelTasksComponent
+namespace ImageNexus.BenScharbach.TWTools.ParallelTasksComponent
 {
     /// <summary>
     /// The <see cref="AbstractParallelFor"/> abstract class, is ued to parallize the 'For-Loop', using 4 internal threads.

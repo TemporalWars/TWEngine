@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SpeedCollectionComponent")]
-[assembly: AssemblyProduct("SpeedCollectionComponent")]
+[assembly: AssemblyTitle("ImageNexus.BenScharbach.TWTools.SpeedCollectionComponent")]
+[assembly: AssemblyProduct("ImageNexus.BenScharbach.TWTools.SpeedCollectionComponent")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2010")]
@@ -28,4 +28,4 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.9.4.0")]

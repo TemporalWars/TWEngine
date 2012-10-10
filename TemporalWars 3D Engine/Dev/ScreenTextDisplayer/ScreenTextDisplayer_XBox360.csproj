@@ -7,17 +7,17 @@
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScreenTextDisplayer</RootNamespace>
-    <AssemblyName>ScreenTextDisplayer</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer</RootNamespace>
+    <AssemblyName>In.BenS.TWTools.ScreenTextDisplayer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Xbox 360</XnaPlatform>
     <XnaCrossPlatformGroupID>87917841-bf40-4732-9298-27640a2d140d</XnaCrossPlatformGroupID>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <SccProjectName>%24/temporalWarsIndieEng/TemporalWars 3D Engine/Dev/ScreenTextDisplayer</SccProjectName>
-    <SccLocalPath>.</SccLocalPath>
-    <SccAuxPath>https://tfs.codeplex.com/tfs/tfs14</SccAuxPath>
-    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <XnaUpgrade>1</XnaUpgrade>
     <XnaOutputType>Library</XnaOutputType>
     <XnaProfile>HiDef</XnaProfile>
@@ -71,7 +71,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>ScreenTextDisplayerSn.snk</AssemblyOriginatorKeyFile>
@@ -126,6 +126,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWLate.Xbox360Generics, Version=2.1.0.0, Culture=neutral, PublicKeyToken=7979e0108265eb74, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Avatar, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
@@ -152,19 +154,7 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="0Refs\XBox360\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TemporalWarInterfaces\TemporalWarInterfaces_XBox360.csproj">
-      <Project>{D26BA984-074B-464E-BFE2-E53FD4DB198C}</Project>
-      <Name>TemporalWarInterfaces_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Xbox360Generics\Xbox360Generics.csproj">
-      <Project>{662FC297-827D-4983-A82E-3509040C6B81}</Project>
-      <Name>Xbox360Generics</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="ScreenTextDisplayerSn.snk" />
   </ItemGroup>

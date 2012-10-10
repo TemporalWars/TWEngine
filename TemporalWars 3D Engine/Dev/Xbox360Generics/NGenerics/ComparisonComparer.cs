@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Xbox360Generics.NGenerics
+namespace ImageNexus.BenScharbach.TWLate.Xbox360Generics.NGenerics
 {
     public sealed class ComparisonComparer<T> : IComparer<T>
     {

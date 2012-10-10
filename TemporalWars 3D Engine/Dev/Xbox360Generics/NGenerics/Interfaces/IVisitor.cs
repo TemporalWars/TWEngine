@@ -1,4 +1,4 @@
-namespace Xbox360Generics.NGenerics.Interfaces
+namespace ImageNexus.BenScharbach.TWLate.Xbox360Generics.NGenerics.Interfaces
 {
     // Note: From NGenerics http://code.google.com/p/ngenerics/.
     public interface IVisitor<T>

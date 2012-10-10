@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SimpleQuadDrawer
+namespace ImageNexus.BenScharbach.TWTools.SimpleQuadDrawer
 {
     /// <summary>
     /// The <see cref="SimpleQuadDraw"/> class was created to draw the results of Post-Processing effects back

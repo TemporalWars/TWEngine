@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Xbox360Generics")]
-[assembly: AssemblyProduct("Xbox360Generics")]
+[assembly: AssemblyTitle("ImageNexus.BenScharbach.TWLate.Xbox360Generics")]
+[assembly: AssemblyProduct("ImageNexus.BenScharbach.TWLate.Xbox360Generics")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
@@ -31,4 +31,4 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.1.0.0")]

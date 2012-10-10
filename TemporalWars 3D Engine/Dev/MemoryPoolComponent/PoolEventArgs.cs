@@ -9,7 +9,7 @@
 
 using System;
 
-namespace MemoryPoolComponent
+namespace ImageNexus.BenScharbach.TWTools.MemoryPoolComponent
 {
     // 3/23/2009 - 
     ///<summary>

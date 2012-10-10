@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ParallelTasksComponent</RootNamespace>
-    <AssemblyName>ParallelTasksComponent</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWTools.ParallelTasksComponent</RootNamespace>
+    <AssemblyName>In.BenS.TWTools.ParallelTasks</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Xbox 360</XnaPlatform>
@@ -70,7 +70,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>ParallelTasksSn.snk</AssemblyOriginatorKeyFile>
