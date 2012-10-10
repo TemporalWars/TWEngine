@@ -6,14 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.PostProcessEffects.BloomEffect;
-using TWEngine.PostProcessEffects.GBlurEffect.Enums;
 
-namespace TWEngine.PostProcessEffects.GBlurEffect
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect
 {
     ///<summary>
     /// The <see cref="GBlurPass"/> class does the work for creating the guassian blur

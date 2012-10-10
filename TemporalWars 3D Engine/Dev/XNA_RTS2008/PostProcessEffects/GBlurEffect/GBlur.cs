@@ -6,17 +6,17 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect.Enums;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.PostProcessEffects.GBlurEffect.Enums;
-using TWEngine.ScreenManagerC;
 
-namespace TWEngine.PostProcessEffects.GBlurEffect
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.PostProcessEffects.GBlurEffect"/> namespace contains the classes
-    /// which make up the entire <see cref="PostProcessEffects.GBlurEffect"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.PostProcessEffects.GBlurEffectnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

@@ -6,12 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.PostProcessEffects.GBlurEffect.Enums
+namespace ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect.Enums
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.PostProcessEffects.GBlurEffect.Enums"/> namespace contains the enumerations
-    /// which make up the entire <see cref="PostProcessEffects.GBlurEffect.Enums"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.PostProcessEffects.GBlurEffect.Enumsnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
