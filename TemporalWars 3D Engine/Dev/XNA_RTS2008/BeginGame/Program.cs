@@ -6,9 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWEngine.BeginGame
 {
     static class Program
     {
