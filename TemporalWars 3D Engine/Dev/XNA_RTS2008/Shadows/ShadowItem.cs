@@ -6,22 +6,24 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
-using TWEngine.GameCamera;
-using TWEngine.Interfaces;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Shadows
+namespace ImageNexus.BenScharbach.TWEngine.Shadows
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.Shadows"/> namespace contains the classes
-    /// which make up the entire <see cref="Shadows"/> component.
+    /// which make up the entire <see cref="TWEngine.Shadows"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
@@ -309,7 +311,7 @@ namespace TWEngine.Shadows
 
         // 3/7/2008 - 
         /// <summary>
-        /// Helper Function to map the <see cref="Terrain"/> effect to the custom 
+        /// Helper Function to map the <see cref="TWEngine.Terrain"/> effect to the custom 
         /// 'MultiTexture' shader.
         /// </summary>
         /// <param name="model"><see cref="Model"/> instance</param>

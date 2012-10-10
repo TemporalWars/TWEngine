@@ -6,12 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Shadows.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Shadows.Enums
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.Shadows.Enums"/> namespace contains the enumerations
-    /// which make up the entire <see cref="Shadows.Enums"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.Shadows.Enumsnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

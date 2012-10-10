@@ -6,9 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine.Shadows.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Shadows.Enums
 {
     // NOTE: (8/17/2010) Anything changed or added to this ShadowQuality, 
     // NOTE:  MUST be done to Enum ShadowQuality in TWTerrainToolsWPF.

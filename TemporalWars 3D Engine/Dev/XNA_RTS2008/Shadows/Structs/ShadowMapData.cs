@@ -6,14 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 
-namespace TWEngine.Shadows.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Shadows.Structs
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.Shadows.Structs"/> namespace contains the common classes
-    /// which make up the entire <see cref="Shadows.Structs"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.Shadows.Structsnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
