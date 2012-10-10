@@ -15,7 +15,6 @@ using Microsoft.Xna.Framework.Graphics.PackedVector;
 using TWEngine.GameCamera;
 using TWEngine.Particles.Structs;
 using TWEngine.Utilities;
-using TWEngine.Utilities.Enums;
 
 namespace TWEngine.Particles
 {

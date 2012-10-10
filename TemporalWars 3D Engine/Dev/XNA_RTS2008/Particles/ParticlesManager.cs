@@ -6,18 +6,20 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.Particles.Enums;
+using ImageNexus.BenScharbach.TWEngine.Particles.ParticleSystems;
+using ImageNexus.BenScharbach.TWEngine.Particles.Structs;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
-using Particles3DComponentLibrary;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.GameCamera;
-using TWEngine.Particles.Enums;
-using TWEngine.Particles.ParticleSystems;
-using TWEngine.Particles.Structs;
 
-namespace TWEngine.Particles
+namespace ImageNexus.BenScharbach.TWEngine.Particles
 {
     // 1/16/2010
 

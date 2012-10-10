@@ -6,11 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.MemoryPool;
-using TWEngine.MemoryPool.Interfaces;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Particles
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
+
+namespace ImageNexus.BenScharbach.TWEngine.Particles
 {
     // 5/13/2009 - Memory pool SceneItemOwner class wrapper
     /// <summary>
@@ -27,7 +29,7 @@ namespace TWEngine.Particles
         /// <summary>
         /// Reference to PoolManager instance
         /// </summary>
-        public PoolManager PoolManager { get; set; }
+        public PoolManagerBase PoolManager { get; set; }
         /// <summary>
         /// Is <see cref="SceneItem"/> in use?
         /// </summary>

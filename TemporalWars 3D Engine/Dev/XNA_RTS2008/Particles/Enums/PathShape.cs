@@ -6,7 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Particles.Enums
+
+namespace ImageNexus.BenScharbach.TWEngine.Particles.Enums
 {
     /// <summary>
     /// The <see cref="PathShape"/> Enum specifies the type of path the
