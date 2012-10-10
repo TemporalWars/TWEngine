@@ -8,14 +8,17 @@
 #endregion
 using System;
 using System.Windows.Forms;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWEngine.Water.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using Microsoft.Xna.Framework;
-using TWEngine.GameScreens;
-using TWEngine.PostProcessEffects.BloomEffect.Enums;
-using TWEngine.Shadows;
-using TWEngine.Shadows.Enums;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Enums;
-using TWEngine.Water.Enums;
 using System.Diagnostics;
 
 

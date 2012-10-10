@@ -6,30 +6,33 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Structs;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF;
+using ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using TWEngine.GameScreens;
-using TWEngine.HandleGameInput;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Structs;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Enums;
-using TWEngine.Utilities;
-using TWTerrainTools_Interfaces.Structs;
-using TWTerrainToolsWPF;
+using TWEngine.TerrainTools;
 
-namespace TWEngine.TerrainTools
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
 {
     // 7/1/2010
     /// <summary>

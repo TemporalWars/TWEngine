@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
 
-namespace TWEngine.TerrainTools.Structs
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Structs
 {
     /// <summary>
     /// Defines a group of parameters, which defines one Material.

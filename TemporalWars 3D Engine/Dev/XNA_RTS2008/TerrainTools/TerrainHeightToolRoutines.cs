@@ -6,23 +6,23 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Windows.Forms;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF;
+using ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Enums;
-using TWEngine.TerrainTools.Enums;
-using TWTerrainTools_Interfaces.Structs;
-using TWTerrainToolsWPF;
+using TWEngine.TerrainTools;
 using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
 
-namespace TWEngine.TerrainTools
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
 {
     // 7/1/2010
     /// <summary>
@@ -313,7 +313,7 @@ namespace TWEngine.TerrainTools
 
                         switch (HeightToolWindowI.CurrentTool)
                         {
-                            case TWTerrainToolsWPF.Enums.HeightTool.Raise:
+                            case ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums.HeightTool.Raise:
                                 if (!_bHeightSet && _bUseConstantFeet)
                                 {
                                     TerrainEditRoutines.ConstantFeetValue =
@@ -323,13 +323,13 @@ namespace TWEngine.TerrainTools
                                 }
                                 TerrainEditRoutines.QuadRaiseHeight();
                                 break;
-                            case TWTerrainToolsWPF.Enums.HeightTool.Lower:
+                            case ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums.HeightTool.Lower:
                                 TerrainEditRoutines.QuadLowerHeight();
                                 break;
-                            case TWTerrainToolsWPF.Enums.HeightTool.Smooth:
+                            case ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums.HeightTool.Smooth:
                                 TerrainEditRoutines.QuadSmooth();
                                 break;
-                            case TWTerrainToolsWPF.Enums.HeightTool.Flatten:
+                            case ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums.HeightTool.Flatten:
                                 if (!_bHeightSet)
                                 {
                                     TerrainEditRoutines.FlattenHeight =

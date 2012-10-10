@@ -1,4 +1,4 @@
-namespace TWEngine.TerrainTools.Enums
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Enums
 {
     ///<summary>
     /// The <see cref="PaintTool"/> Enum is used to paint or erase textures on the <see cref="Terrain"/>.

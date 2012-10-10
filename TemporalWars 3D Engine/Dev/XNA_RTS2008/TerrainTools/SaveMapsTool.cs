@@ -8,8 +8,8 @@
 #endregion
 using System;
 using System.Windows.Forms;
-using TWEngine.GameScreens;
-using TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
 using System.Diagnostics;
 
 namespace TWEngine.TerrainTools

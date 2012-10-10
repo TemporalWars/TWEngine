@@ -6,31 +6,32 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing.Printing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Enums;
+using ImageNexus.BenScharbach.TWTools.TWTerrainTools_Interfaces.Structs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using TWEngine.BeginGame.Enums;
-using TWEngine.GameScreens;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Enums;
-using TWEngine.Utilities;
-using TWEngine.Utilities.Enums;
-using TWTerrainTools_Interfaces.Structs;
-using TWTerrainToolsWPF;
-using TWTerrainToolsWPF.Delegates;
+using TWEngine.TerrainTools;
 using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
-using PaintTool = TWTerrainToolsWPF.Enums.PaintTool;
-using Point = Microsoft.Xna.Framework.Point;
 
-namespace TWEngine.TerrainTools
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
 {
     // 7/1/2010
     /// <summary>

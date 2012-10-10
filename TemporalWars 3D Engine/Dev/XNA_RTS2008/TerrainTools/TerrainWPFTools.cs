@@ -6,14 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Threading;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
 using Microsoft.Xna.Framework;
-using TWEngine.Terrain.Enums;
 
-namespace TWEngine.TerrainTools
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
 {
     /// <summary>
     /// Simple delegate used for Dispatcher communication.
