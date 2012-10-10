@@ -8,16 +8,12 @@
 #endregion
 
 #region Using Statements
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using System.IO;
-using System.Xml.Serialization;
+
+
+
 #endregion
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWEngine
 {
     /// <summary>
     /// The Setting class handles loading and saving of global application Settings.

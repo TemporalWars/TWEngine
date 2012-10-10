@@ -1,5 +1,5 @@
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWEngine
 {
     /// <summary>
     /// This enum if for the state transitions.

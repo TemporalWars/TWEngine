@@ -7,20 +7,16 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TWEngine</RootNamespace>
-    <AssemblyName>XNA_RTS2008</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWEngine</RootNamespace>
+    <AssemblyName>In.BenS.TwEngine</AssemblyName>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <ApplicationIcon>Spacewar_Template.ico</ApplicationIcon>
     <Thumbnail>SpacewarThumbnail.png</Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <ManifestCertificateThumbprint>DFE3FF17A8AB09D8554FF21AD0E3EE535356C768</ManifestCertificateThumbprint>
-    <ManifestKeyFile>XNA_RTS2008_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>true</GenerateManifests>
     <TargetZone>LocalIntranet</TargetZone>
-    <SignManifests>false</SignManifests>
     <XnaCrossPlatformGroupID>c7e3f442-a737-472d-905b-4ad664501b2a</XnaCrossPlatformGroupID>
-    <StartupObject>TWEngine.Program</StartupObject>
+    <StartupObject>ImageNexus.BenScharbach.TWEngine.BeginGame.Program</StartupObject>
     <XnaUpgrade>1</XnaUpgrade>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
@@ -58,21 +54,21 @@
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\x86\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS ; EditMode; NWithLicense</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS ; NEditMode; NWithLicense</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>True</XnaCompressContent>
-    <DocumentationFile>bin\x86\Debug\XNA_RTS2008.XML</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\In.BenS.TwEngine.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\x86\Release</OutputPath>
-    <DefineConstants>TRACE;WINDOWS WithLicense</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS ; EditMode; NWithLicense</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -82,18 +78,60 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>XNA_RTS2008.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>XNA_RTS2008Sn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DeployLX.Licensing.v4, Version=4.1.4000.0, Culture=neutral, PublicKeyToken=798276055709c98a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>0References\DeployLX.Licensing.v4.dll</HintPath>
     </Reference>
-    <Reference Include="fbDeprofiler">
-      <HintPath>..\..\..\..\..\Downloads\fbDeprofiler\fbDeprofiler.dll</HintPath>
+    <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.AStarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=defca1e01bac3edd, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.FogOfWarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=2b67964fb36d8042, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.MinimapInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=4c85968ce1bdd107, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.StatusBarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5764133d0623b6d1, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWScripting.Interfaces, Version=1.12.0.0, Culture=neutral, PublicKeyToken=4be498e0408458af, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.MemoryPool, Version=1.9.4.0, Culture=neutral, PublicKeyToken=8016b5272d8c8076, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.ParallelTasks, Version=1.9.4.0, Culture=neutral, PublicKeyToken=226b4272b1e9ff29, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.Particles3D, Version=1.9.4.0, Culture=neutral, PublicKeyToken=09c0cc67248582a1, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.0, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.ScreenTextDisplayer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=ba8d5641a0a65aa7, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.SimpleQuadDrawer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=061ec4462646e261, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.SpeedCollection, Version=1.9.4.0, Culture=neutral, PublicKeyToken=2621d214a7a8510c, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.TWTerrainToolsInt, Version=1.9.4.0, Culture=neutral, PublicKeyToken=8c5c60936fef4864, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.TWTerrainToolsWPF, Version=1.9.4.0, Culture=neutral, PublicKeyToken=8c5c60936fef4864, processorArchitecture=x86">
+      <Private>False</Private>
     </Reference>
     <Reference Include="IronPython, Version=2.6.10920.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -2925,9 +2963,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="1ContentScenary\x86\ContentRTSPack\GraveYard\Tomb01_0.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="1ContentScenary\x86\InstancedModel_Blinn_0.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="1ContentScenary\x86\ContentRTSPack\LampPosts\farmLampPost01.xnb">
@@ -6103,7 +6138,7 @@
     <Compile Include="Common\Framerate.cs" />
     <Compile Include="InstancedModels\InstancedModel.cs" />
     <Compile Include="InstancedModels\InstancedModelPart.cs" />
-    <Compile Include="InstancedModels\InstancedModelReader.cs" />
+    <None Include="InstancedModels\InstancedModelReader.cs" />
     <Compile Include="Console\GameConsole.cs" />
     <Compile Include="Console\KeyBindings.cs" />
     <Compile Include="Console\PythonConsole.cs" />
@@ -6172,7 +6207,7 @@
     <Compile Include="Networking\RollingAverage.cs" />
     <Compile Include="SceneItems\BuildingScene.cs" />
     <Compile Include="SceneItems\SciFiTankScene.cs" />
-    <Compile Include="ScreenManagerC\InputState.cs" />
+    <Compile Include="HandleGameInput\InputState.cs" />
     <Compile Include="ScreenManagerC\MessageDisplayComponent.cs" />
     <Compile Include="Networking\AvailableSessionMenuEntry.cs" />
     <Compile Include="Networking\CreateOrFindSessionScreen.cs" />
@@ -6432,8 +6467,6 @@
     <None Include="Resources\x86\Textures\MenuBackgroundImage1a.xnb" />
     <None Include="Resources\x86\Textures\MenuBackgroundImage1b.xnb" />
     <None Include="Resources\x86\Textures\MenuBackgroundSpaceEclipse.xnb" />
-    <None Include="XNA_RTS2008.snk" />
-    <None Include="XNA_RTS2008_TemporaryKey.pfx" />
     <Compile Include="Players\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BeginGame\Program.cs" />
@@ -6448,9 +6481,9 @@
     <Compile Include="Terrain\TerrainStorageRoutines.cs" />
     <Compile Include="Terrain\TerrainVisualCircles.cs" />
     <Compile Include="Terrain\Structs\VertexMultitextured_Stream1.cs" />
-    <Compile Include="Terrain\Structs\VertexMultitextured_Stream2.cs" />
-    <Compile Include="Terrain\Structs\VertexMultitexturedDeclaration.cs" />
-    <Compile Include="Terrain\Structs\VertexMultitextured_Stream3.cs" />
+    <None Include="Terrain\Structs\VertexMultitextured_Stream2.cs" />
+    <None Include="Terrain\Structs\VertexMultitexturedDeclaration.cs" />
+    <None Include="Terrain\Structs\VertexMultitextured_Stream3.cs" />
     <Compile Include="Terrain\Enums\VertexBufferComponent.cs" />
     <Compile Include="Terrain\Structs\TexturesGroupData.cs" />
     <Compile Include="Terrain\Structs\TexturesAtlasData.cs" />
@@ -6511,22 +6544,23 @@
     <Compile Include="Water\WaterBase.cs" />
     <Compile Include="Water\WaterManager.cs" />
     <Compile Include="Water\Enums\WaterType.cs" />
+    <None Include="XNA_RTS2008Sn.snk" />
     <Reference Include="DeployLX.Licensing.v4">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\XHEO\DeployLX\v4.1\Redistributable\.NET 2.0\Encrypted (32-bit)\DeployLX.Licensing.v4.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="0LateBinds\x86\AStarComponentLibrary.dll">
+    <Content Include="0LateBinds\x86\In.BenS.TWLate.AStar.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="0LateBinds\x86\RTS_FogOfWarComponentLibrary.dll">
+    <Content Include="0LateBinds\x86\In.BenS.TWLate.FogOfWar.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="0LateBinds\x86\RTS_MinimapComponentLibrary.dll">
+    <Content Include="0LateBinds\x86\In.BenS.TWLate.Minimap.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="0LateBinds\x86\RTS_StatusBarComponentLibrary.dll">
+    <Content Include="0LateBinds\x86\In.BenS.TWLate.StatusBar.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="0References\DeployLX.Licensing.Management.v4.dll">
@@ -6657,70 +6691,10 @@
     <Folder Include="Explosions\Documentation\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AStarInterfaces\AStarInterfaces.csproj">
-      <Project>{D06567C5-43D7-4877-9FFD-325F9DAB5EEC}</Project>
-      <Name>AStarInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BenScharbachTWScriptingInterfaces\BenScharbachTWScriptingInterfaces.csproj">
-      <Project>{154CA226-DE78-4999-9714-AE8CD16F7E64}</Project>
-      <Name>BenScharbachTWScriptingInterfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CompileContentMaps\CompileContentMaps\ContentMaps\ContentMaps.contentproj">
       <Project>{690986AE-0D12-40EE-A133-35D47C6DF120}</Project>
       <Name>ContentMaps</Name>
       <XnaReferenceType>Content</XnaReferenceType>
-    </ProjectReference>
-    <ProjectReference Include="..\MemoryPoolComponent\MemoryPoolComponent.csproj">
-      <Project>{F9631B26-1C65-418A-80A2-78589F52D2E9}</Project>
-      <Name>MemoryPoolComponent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ParallelTasksComponent\ParallelTasksComponent.csproj">
-      <Project>{81F2C524-E118-475B-A960-2A2659272DD0}</Project>
-      <Name>ParallelTasksComponent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Particles3DComponentLibrary\Particles3DComponentLibrary.csproj">
-      <Project>{74DCA318-2E3F-40DE-BF8E-F82A589406D9}</Project>
-      <Name>Particles3DComponentLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PerfTimersComponent\PerfTimersComponent.csproj">
-      <Project>{6E2CD990-6DC5-460E-B530-E42D932CD004}</Project>
-      <Name>PerfTimersComponent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RTS_FogOfWarInterfaces\RTS_FogOfWarInterfaces.csproj">
-      <Project>{065070DA-60F2-45B4-B61B-55A3171CD6A0}</Project>
-      <Name>RTS_FogOfWarInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RTS_MinimapInterfaces\RTS_MinimapInterfaces.csproj">
-      <Project>{F5B40DA6-CF7A-4FC6-8537-0CB453B6A775}</Project>
-      <Name>RTS_MinimapInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RTS_StatusBarInterfaces\RTS_StatusBarInterfaces.csproj">
-      <Project>{C7A88CC2-424C-4A13-A829-45A536AD041E}</Project>
-      <Name>RTS_StatusBarInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ScreenTextDisplayer\ScreenTextDisplayer.csproj">
-      <Project>{792AE2D7-7B3D-4B97-A488-3E2E1A7F3466}</Project>
-      <Name>ScreenTextDisplayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SimpleQuadDrawer\SimpleQuadDrawer.csproj">
-      <Project>{60104248-015A-4991-B9AC-3597D27EA5D5}</Project>
-      <Name>SimpleQuadDrawer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpeedCollectionComponent\SpeedCollectionComponent.csproj">
-      <Project>{932439F3-ECF4-46B7-A517-3F7BD4587EE4}</Project>
-      <Name>SpeedCollectionComponent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TemporalWarInterfaces\TemporalWarInterfaces.csproj">
-      <Project>{3AAA1C51-AC48-40FC-8108-3D3495FA9CC6}</Project>
-      <Name>TemporalWarInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TWTerrainToolsWPF\TWTerrainToolsWPF\TWTerrainToolsWPF.csproj">
-      <Project>{029FCB50-0A9B-423B-91D4-ED492D1AE314}</Project>
-      <Name>TWTerrainToolsWPF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TWTerrainToolsWPF\TWTerrainTools_Interfaces\TWTerrainTools_Interfaces.csproj">
-      <Project>{7CADFF7B-95D1-407B-B97A-DB605D0FFCAA}</Project>
-      <Name>TWTerrainTools_Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="Content\ContentEmpty.contentproj">
       <Project>{17496DB1-81B5-48C6-8C0F-9B29FC4CC631}</Project>
