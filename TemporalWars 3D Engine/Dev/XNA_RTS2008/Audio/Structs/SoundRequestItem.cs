@@ -6,12 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework.Audio;
-using TWEngine.Audio.Enums;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Audio.Structs
+using System;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework.Audio;
+
+namespace ImageNexus.BenScharbach.TWEngine.Audio.Structs
 {
     ///<summary>
     /// The <see cref="SoundRequestItem"/> structure is used to queue a specific sound request.

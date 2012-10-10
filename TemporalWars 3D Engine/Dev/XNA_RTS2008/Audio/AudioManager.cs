@@ -6,20 +6,21 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.Audio.Structs;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
 using Microsoft.Xna.Framework.Audio;
 using System.Threading;
 using Microsoft.Xna.Framework;
-using ParallelTasksComponent;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.Audio.Enums;
-using TWEngine.Audio.Structs;
-using TWEngine.SceneItems;
+using TWEngine;
 
-namespace TWEngine.Audio
+namespace ImageNexus.BenScharbach.TWEngine.Audio
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
