@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Terrain;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     ///<summary>
     /// The <see cref="TerrainStorageRoutines"/> class provides basic save and load routines, used
@@ -18,7 +19,7 @@ namespace TWEngine.Interfaces
     {  
 #if !XBOX360
         /// <summary>
-        /// Saves the <see cref="Terrain"/> meta-data, like heights, ground textures, waypoints, quads, etc.
+        /// Saves the <see cref="TWEngine.Terrain"/> meta-data, like heights, ground textures, waypoints, quads, etc.
         /// </summary>
         /// <param name="mapName">Map name</param>
         /// <param name="mapType">Map type; either SP or MP.</param>

@@ -6,14 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Terrain;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
 
     ///<summary>
-    /// The <see cref="TerrainAlphaMaps"/> class is used to control the texture splatting onto the <see cref="Terrain"/>.
+    /// The <see cref="TerrainAlphaMaps"/> class is used to control the texture splatting onto the <see cref="TWEngine.Terrain"/>.
     /// This class is specifically updated from the edit PaintTool form, and used during game play to draw the textures at
     /// the proper placement, with the proper splatting effect.
     ///</summary>

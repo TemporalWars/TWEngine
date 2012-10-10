@@ -7,9 +7,9 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-using TWEngine.Water;
+using ImageNexus.BenScharbach.TWEngine.Water;
 
-namespace TWEngine.Interfaces
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     ///<summary>
     /// The <see cref="WaterBase"/> class is the base class for creating any water-type component.

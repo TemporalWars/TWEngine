@@ -7,12 +7,13 @@
 //-----------------------------------------------------------------------------
 #endregion
 
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.IFDTiles;
-using TWEngine.Players;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Interfaces
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// The <see cref="IIFDTileManager"/> interface manages all <see cref="IFDTile"/> instances, by

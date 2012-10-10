@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.SceneItems;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     ///<summary>
     /// Holds attributes for some gun turret for any <see cref="SceneItem"/>

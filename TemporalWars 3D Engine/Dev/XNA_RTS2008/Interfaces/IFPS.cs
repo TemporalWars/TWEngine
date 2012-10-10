@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Common;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.Common;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// The <see cref="FPS"/> (Frames Per Second) component, used to show the

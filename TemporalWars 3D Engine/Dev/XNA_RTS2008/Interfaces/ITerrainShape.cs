@@ -6,21 +6,23 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Interfaces;
-using TWEngine.SceneItems;
-using TWEngine.Shadows;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Structs;
-using TWEngine.TerrainTools;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     ///<summary>
     /// The <see cref="TerrainShape"/> class is a manager, which uses the other terrain classes to create and manage
-    /// the <see cref="Terrain"/>.  For example, the drawing of the terrain is intiated in this class, but the actual drawing is
+    /// the <see cref="TWEngine.Terrain"/>.  For example, the drawing of the terrain is intiated in this class, but the actual drawing is
     /// done in the <see cref="TerrainQuadTree"/> class.  This class also loads the <see cref="SceneItem"/> into memory at the
     /// beginning of a level load.  This class also used the <see cref="TerrainAlphaMaps"/>, <see cref="TerrainPickingRoutines"/>, and
     /// the <see cref="TerrainEditRoutines"/> classes.
@@ -79,7 +81,7 @@ namespace TWEngine
         bool DrawBoundingBoxes { get; set; }
         
         ///<summary>
-        /// Get or Set the <see cref="Effect"/> used to draw the <see cref="Terrain"/>
+        /// Get or Set the <see cref="Effect"/> used to draw the <see cref="TWEngine.Terrain"/>
         ///</summary>
         Effect Effect { get; set; }
         
