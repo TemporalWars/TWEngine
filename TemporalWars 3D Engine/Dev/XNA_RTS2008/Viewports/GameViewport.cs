@@ -6,14 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Viewports.Structs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Interfaces;
-using TWEngine.Shadows;
-using TWEngine.Viewports.Structs;
 
-namespace TWEngine.Viewports
+namespace ImageNexus.BenScharbach.TWEngine.Viewports
 {
 
     /// <summary>
