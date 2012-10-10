@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.GameCamera
+namespace ImageNexus.BenScharbach.TWEngine.GameCamera.Delegates
 {
     ///<summary>
     /// Delegate signature used for the Camera Movement event.

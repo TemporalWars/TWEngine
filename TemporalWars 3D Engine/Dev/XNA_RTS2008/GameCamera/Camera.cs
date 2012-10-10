@@ -8,14 +8,18 @@
 #endregion
 
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera.Delegates;
+using ImageNexus.BenScharbach.TWEngine.GameCamera.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using Microsoft.Xna.Framework;
-using TWEngine.GameCamera.Enums;
-using TWEngine.SceneItems;
-using TWEngine.ScreenManagerC;
-using TWEngine.Terrain;
-using TWEngine.Utilities;
 
-namespace TWEngine.GameCamera
+namespace ImageNexus.BenScharbach.TWEngine.GameCamera
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
@@ -1120,7 +1124,7 @@ namespace TWEngine.GameCamera
 
         // 1/7/2009
         /// <summary>
-        /// Returns the current <see cref="Terrain"/> height, using the given <see cref="Vector3"/> (X/Z) values.
+        /// Returns the current <see cref="TWEngine.Terrain"/> height, using the given <see cref="Vector3"/> (X/Z) values.
         /// </summary>
         /// <param name="inVector">A <see cref="Vector3"/> to use for height search</param>
         /// <param name="terrainHeight">(OUT) Height Result</param>
