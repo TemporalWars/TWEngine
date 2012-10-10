@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System.Collections.Generic;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Players
+using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.Players
 {
     ///<summary>
     /// The <see cref="PlayerStats"/> class is used to track player stats, like number of enemy units killed or
