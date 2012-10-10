@@ -6,10 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Terrain.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
     ///<summary>
-    /// The <see cref="ToolType"/> Enum is used to determine the <see cref="Terrain"/> Tool in use.
+    /// The <see cref="ToolType"/> Enum is used to determine the <see cref="TWEngine.Terrain"/> Tool in use.
     ///</summary>
     public enum ToolType
     {

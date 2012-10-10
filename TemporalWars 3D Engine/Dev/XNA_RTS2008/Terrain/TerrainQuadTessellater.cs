@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System.Collections.Generic;
-using TWEngine.Terrain.Enums;
-using TWEngine.Terrain.Structs;
-using TWEngine.TerrainTools;
 
-namespace TWEngine.Terrain
+using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     /// <summary>
     /// The <see cref="TerrainQuadTessellater"/> class is used to tessellate 

@@ -6,38 +6,41 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Structs;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Structs;
+using ImageNexus.BenScharbach.TWEngine.Water;
+using ImageNexus.BenScharbach.TWEngine.Water.Structs;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Structs;
+using Microsoft.Xna.Framework;
+
 #if !XBOX360
 using System.Windows.Forms;
-#endif
-using AStarInterfaces.AStarAlgorithm.Structs;
-using Microsoft.Xna.Framework;
-using TWEngine.GameScreens;
-using TWEngine.GameScreens.Generic;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.Shadows;
-using TWEngine.Shadows.Structs;
-using TWEngine.Terrain.Structs;
 using TWEngine.TerrainTools;
-using TWEngine.Utilities;
-using TWEngine.Utilities.Enums;
-using TWEngine.Utilities.Structs;
-using TWEngine.Water;
-using TWEngine.Water.Structs;
+#endif
 
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     ///<summary>
     /// The <see cref="TerrainStorageRoutines"/> class provides basic save and load routines, used
@@ -83,7 +86,7 @@ namespace TWEngine.Terrain
         #region Save Method Routines
 
         /// <summary>
-        /// Saves the <see cref="Terrain"/> meta-data, like heights, ground textures, waypoints, quads, etc.
+        /// Saves the <see cref="TWEngine.Terrain"/> meta-data, like heights, ground textures, waypoints, quads, etc.
         /// </summary>
         /// <param name="mapName">Map name</param>
         /// <param name="mapType">Map type; either SP or MP.</param>
@@ -182,7 +185,7 @@ namespace TWEngine.Terrain
         // 10/29/2008: Updated to use the new method 'StartSave_ScenaryItemOperation', which saves directly as binary file.
         // 1/8/2009: Updated to save to the 'ContentMaps' folder.
         /// <summary>
-        /// Saves the <see cref="Terrain"/> <see cref="ScenaryItemScene"/> items, like houses, trees, bushes, etc.
+        /// Saves the <see cref="TWEngine.Terrain"/> <see cref="ScenaryItemScene"/> items, like houses, trees, bushes, etc.
         /// </summary>
         /// <param name="mapName">Map name</param>
         /// <param name="mapType">Map type; either SP or MP.</param>
@@ -230,7 +233,7 @@ namespace TWEngine.Terrain
 
         // 10/7/2009
         /// <summary>
-        /// Saves the <see cref="Terrain"/> Selectables, like Tanks, Aircraft and Buildings, which are specifically used
+        /// Saves the <see cref="TWEngine.Terrain"/> Selectables, like Tanks, Aircraft and Buildings, which are specifically used
         /// in scripting levels.  (Scripting Purposes)
         /// </summary>
         /// <param name="mapName">Map name</param>
@@ -493,7 +496,7 @@ namespace TWEngine.Terrain
         // 9/15/2008: Changed into a Thread Method.
         // 10/30/2008: Updated to use the new Content Pipeline method of loading the 'ScenaryData'.        
         ///<summary>
-        /// Loads the <see cref="Terrain"/> <see cref="ScenaryItemScene"/> items, like houses, trees, bushes, etc.
+        /// Loads the <see cref="TWEngine.Terrain"/> <see cref="ScenaryItemScene"/> items, like houses, trees, bushes, etc.
         ///</summary>
         public static void LoadTerrainSceneryItems()
         {
@@ -537,7 +540,7 @@ namespace TWEngine.Terrain
 
         // 10/7/2009; 1/15/2011 - Updated to iterate Player colletion.
         /// <summary>
-        /// Loads the <see cref="Terrain"/> Selectable items, like Tanks, Aircraft and Buildings, which are specifically used for single player
+        /// Loads the <see cref="TWEngine.Terrain"/> Selectable items, like Tanks, Aircraft and Buildings, which are specifically used for single player
         /// levels, via scripting conditions.
         /// </summary>
         /// <param name="storageTool"><see cref="Storage"/> instance</param>

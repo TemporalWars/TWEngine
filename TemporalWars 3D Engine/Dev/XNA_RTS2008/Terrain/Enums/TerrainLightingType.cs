@@ -6,12 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Terrain.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
     // 12/12/2009
     /// <summary>
     /// The <see cref="TerrainLightingType"/> Enum Controls the material LightingType to use during rendering, 
-    /// specifically for the <see cref="Terrain"/>.
+    /// specifically for the <see cref="TWEngine.Terrain"/>.
     /// </summary>
     public enum TerrainLightingType
     {

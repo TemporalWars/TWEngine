@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Structs
 {
     ///<summary>
     /// Structure used to specifically store the data used to save

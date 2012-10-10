@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Terrain.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
     ///<summary>
     /// The <see cref="GraphicsLevel"/> Enum.

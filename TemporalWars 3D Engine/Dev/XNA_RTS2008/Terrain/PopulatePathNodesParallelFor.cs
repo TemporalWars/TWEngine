@@ -6,19 +6,20 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ParallelTasksComponent;
-using TWEngine.Terrain;
 
-namespace TWEngine.ParallelTasks
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     /// <summary>
     /// Populates the PathNodes collection, which is used to show the PathNodes in the A* class
     /// on the terrain; for debug purposes only. 
     /// </summary>
-    /// <remarks> This class inherits from the <see cref="ParallelTasksComponent.AbstractParallelFor"/> thread class.</remarks>
+    /// <remarks> This class inherits from the <see cref="AbstractParallelFor"/> thread class.</remarks>
     class PopulatePathNodesParallelFor : AbstractParallelFor
     {
         private static List<VertexPositionColor> _tmpPathNodesThread;

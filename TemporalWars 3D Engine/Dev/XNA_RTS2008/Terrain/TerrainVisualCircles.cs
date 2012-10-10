@@ -6,18 +6,19 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Terrain.Structs;
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
 
     ///<summary>
     /// The <see cref="TerrainVisualCircles"/> class is used to draw 
-    /// visual circles into the game world, visible on the <see cref="Terrain"/>.
+    /// visual circles into the game world, visible on the <see cref="TWEngine.Terrain"/>.
     ///</summary>
     public class TerrainVisualCircles : IDisposable
     {       
@@ -39,14 +40,14 @@ namespace TWEngine.Terrain
         ///<summary>
         /// Constructor, which loads the 'visualDottedCircle' texture into memory.
         ///</summary>
-        ///<param name="zippedContent"><see cref="ContentManager"/> used to load texture</param>
-        public TerrainVisualCircles(ContentManager zippedContent)
+        ///<param name="content"><see cref="ContentManager"/> used to load texture</param>
+        public TerrainVisualCircles(ContentManager content)
         {
             // Init Dictionary array
             _visualCircles = new Dictionary<int, VisualCircleRadius>();
 
             // 11/2/2009: Updated to texture Name only.
-            _groundCursorTex = zippedContent.Load<Texture2D>("visualDottedCircle"); // @"ContentTextures\Terrain\visualDottedCircle"
+            _groundCursorTex = content.Load<Texture2D>(@"Terrain\visualDottedCircle"); // @"ContentTextures\Terrain\visualDottedCircle"
         }
 
         /// <summary>
@@ -123,7 +124,7 @@ namespace TWEngine.Terrain
         }        
 
         /// <summary>
-        /// Sets the <see cref="VisualCircleRadius"/> values into <see cref="Terrain"/> <see cref="Effect"/>.
+        /// Sets the <see cref="VisualCircleRadius"/> values into <see cref="TWEngine.Terrain"/> <see cref="Effect"/>.
         /// </summary>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="effect"/> given is null.</exception>
         /// <param name="effect"><see cref="Effect"/> instance</param>

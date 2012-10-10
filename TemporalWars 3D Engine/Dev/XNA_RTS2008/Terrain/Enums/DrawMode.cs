@@ -6,7 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Terrain.Enums
+
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
     ///<summary>
     /// Use <see cref="DrawMode"/> Enum to set draw type.

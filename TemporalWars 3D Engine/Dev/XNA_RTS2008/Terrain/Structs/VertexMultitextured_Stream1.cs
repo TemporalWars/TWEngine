@@ -6,18 +6,19 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
 
-namespace TWEngine.Terrain.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Structs
 {
     // XNA 4.0 Updates - Add IVertexType interface.
     // 7/8/2009 - Stream-1 contains Geometry data 
     // Custom Vertex Struct to get Vertex Data from Terrain Model
     // ReSharper disable InconsistentNaming
     ///<summary>
-    /// The <see cref="VertexMultitextured_Stream1"/> structure holds the <see cref="Terrain"/> position
+    /// The <see cref="VertexMultitextured_Stream1"/> structure holds the <see cref="TWEngine.Terrain"/> position
     /// and normals in vertex stream-1.
     ///</summary>
     public struct VertexMultitextured_Stream1 : IVertexType

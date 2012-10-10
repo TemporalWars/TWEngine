@@ -6,26 +6,27 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-#if !XBOX360
-using System.Windows.Forms;
-#endif
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Interfaces;
-using TWEngine.Terrain.Enums;
-using TWEngine.TerrainTools;
-using TWEngine.Utilities;
-using TWEngine.Utilities.Enums;
-using TWEngine.Common.Extensions;
 
-namespace TWEngine.Terrain
+#if !XBOX360
+using System.Windows.Forms;
+#endif
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     ///<summary>
-    /// The <see cref="TerrainAlphaMaps"/> class is used to control the texture splatting onto the <see cref="Terrain"/>.
+    /// The <see cref="TerrainAlphaMaps"/> class is used to control the texture splatting onto the <see cref="TWEngine.Terrain"/>.
     /// This class is specifically updated from the edit PaintTool form, and used during game play to draw the textures at
     /// the proper placement, with the proper splatting effect.
     ///</summary>
@@ -756,7 +757,7 @@ namespace TWEngine.Terrain
         //           will still have to be brought into the Content folder, within the project, and set to Compile
         //           to an '.xnb' file.
         ///<summary>
-        /// Saves the <see cref="TerrainAlphaMaps"/> (texture placement mapping) for the current <see cref="Terrain"/> map.
+        /// Saves the <see cref="TerrainAlphaMaps"/> (texture placement mapping) for the current <see cref="TWEngine.Terrain"/> map.
         ///</summary>
         ///<param name="storageTool"><see cref="Storage"/> instance used to save the map</param>
         /// <param name="mapName">MapName</param>
@@ -809,7 +810,7 @@ namespace TWEngine.Terrain
         // 9/6/2008: Updated to now load the AlphaMaps textures from the 'Content\AlphaMaps' folder, since
         //           now the textures are compiled to an '.xnb.' file, so they can also be loaded on XBOX.
         ///<summary>
-        /// Loads the <see cref="TerrainAlphaMaps"/> (texture placement mapping) for the current <see cref="Terrain"/> map.
+        /// Loads the <see cref="TerrainAlphaMaps"/> (texture placement mapping) for the current <see cref="TWEngine.Terrain"/> map.
         ///</summary>
         /// <param name="mapName">MapName</param>
         /// <param name="mapType">MapType; either SP or MP.</param>

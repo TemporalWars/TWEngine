@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Text;
 
-namespace TWEngine.Terrain.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Structs
 {
     // 1/20/2009;  5/19/2009: Updated to use 'StringBuilder' instances, rather than direct strings.
     ///<summary>

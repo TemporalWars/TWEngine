@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Terrain.Structs;
 
-namespace TWEngine.Terrain.Enums
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
     ///<summary>
     /// The <see cref="QuadAdjacent"/> Enum is used to identify one of the 4 adjacent quad locations, 

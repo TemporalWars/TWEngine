@@ -6,22 +6,25 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
-using TWEngine.GameCamera;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Terrain.Enums;
-using TWEngine.Terrain.Structs;
-using TWEngine.TerrainTools;
 
-namespace TWEngine.Terrain
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     /// <summary>
-    /// The <see cref="TerrainQuadTree"/> class makes up the entire structure of the <see cref="Terrain"/>, where each
+    /// The <see cref="TerrainQuadTree"/> class makes up the entire structure of the <see cref="TWEngine.Terrain"/>, where each
     /// instance of the <see cref="TerrainQuadTree"/> class contains a collection of four additional <see cref="TerrainQuadTree"/> instances.
     /// At the base of the tree, which are the leafs, are references to a <see cref="TerrainQuadPatch"/>.
     /// Due to the structure of the <see cref="TerrainQuadTree"/>, only <see cref="TerrainQuadPatch"/> which are in the camera view or frustum, will
@@ -124,7 +127,7 @@ namespace TWEngine.Terrain
         /// Use this constructor only when creating the root node for the entire <see cref="TerrainQuadTree"/>.
         /// </summary>
         /// <param name="game"><see cref="Game"/> instance</param>
-        /// <param name="verticesLength">Full list of vertices for the <see cref="Terrain"/></param>
+        /// <param name="verticesLength">Full list of vertices for the <see cref="TWEngine.Terrain"/></param>
         public TerrainQuadTree(Game game, int verticesLength)
         {
             // Set Default Values for Struct
@@ -247,10 +250,10 @@ namespace TWEngine.Terrain
         /// <summary>
         /// Internal constructor, used to create additional <see cref="TerrainQuadTree"/> instances.
         /// </summary>
-        /// <param name="verticesLength">Full list of vertices for the <see cref="Terrain"/></param>
+        /// <param name="verticesLength">Full list of vertices for the <see cref="TWEngine.Terrain"/></param>
         /// <param name="offsetX">offsetX value</param>
         /// <param name="offsetY">offsetY value</param>
-        /// <param name="section"><see cref="Enums.QuadSection"/> Enum</param>
+        /// <param name="section"><see cref="ImageNexus.BenScharbach.TWEngine.Terrain.Enums.QuadSection"/> Enum</param>
         /// <param name="rootWidth">root width</param>
         private TerrainQuadTree(ref int verticesLength, int offsetX, int offsetY, QuadSection section, int rootWidth)
         {
@@ -360,10 +363,10 @@ namespace TWEngine.Terrain
         /// <summary>
         /// Private construtor, used to create additional <see cref="TerrainQuadTree"/> instances.
         /// </summary>
-        /// <param name="verticesLength">Full list of vertices for the <see cref="Terrain"/></param>
+        /// <param name="verticesLength">Full list of vertices for the <see cref="TWEngine.Terrain"/></param>
         /// <param name="offsetX">offsetX value</param>
         /// <param name="offsetY">offsetY value</param>
-        /// <param name="section"><see cref="Enums.QuadSection"/> Enum</param>
+        /// <param name="section"><see cref="ImageNexus.BenScharbach.TWEngine.Terrain.Enums.QuadSection"/> Enum</param>
         /// <param name="rootWidth">root width</param>
         /// <param name="parentQuadKeyInstance">parent's quad key</param>
         public TerrainQuadTree(int verticesLength, int offsetX, int offsetY, int rootWidth, QuadSection section,

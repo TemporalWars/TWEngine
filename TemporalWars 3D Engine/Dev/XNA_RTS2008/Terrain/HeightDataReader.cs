@@ -6,12 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework.Content;
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     /// <summary>
-    /// Content pipeline support class for loading <see cref="Terrain"/> HeightData.
+    /// Content pipeline support class for loading <see cref="TWEngine.Terrain"/> HeightData.
     /// </summary>
     public class HeightDataReader : ContentTypeReader<TerrainHeightData>
     {

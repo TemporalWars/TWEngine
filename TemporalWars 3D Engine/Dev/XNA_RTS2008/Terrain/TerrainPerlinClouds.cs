@@ -6,16 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     // 1/10/2011 - Updated to Static class.
     /// <summary>
     /// The <see cref="TerrainPerlinClouds"/> class is used to generate the PerlinNoise textures used to create
-    /// the illusion of clouds on <see cref="Terrain"/>.
+    /// the illusion of clouds on <see cref="TWEngine.Terrain"/>.
     /// </summary>
     public static class TerrainPerlinClouds
     {

@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.Terrain.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Structs
 {
     // 4/8/2009 
     ///<summary>
