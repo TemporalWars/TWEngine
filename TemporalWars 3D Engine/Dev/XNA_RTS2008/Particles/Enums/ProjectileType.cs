@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Particles.ParticleSystems;
 
-namespace TWEngine.Particles.Enums
+using ImageNexus.BenScharbach.TWEngine.Particles.ParticleSystems;
+
+namespace ImageNexus.BenScharbach.TWEngine.Particles.Enums
 {
     // 12/27/2008
     ///<summary>

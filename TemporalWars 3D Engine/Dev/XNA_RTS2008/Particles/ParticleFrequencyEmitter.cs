@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using Particles3DComponentLibrary;
 
-namespace TWEngine.Particles
+using System;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Particles
 {
     // 4/27/2009
     /// <summary>

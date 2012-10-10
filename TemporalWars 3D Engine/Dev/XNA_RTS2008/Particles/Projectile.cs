@@ -6,18 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using Particles3DComponentLibrary;
-using TWEngine.Common;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.MemoryPool;
-using TWEngine.SceneItems;
-using TWEngine.Particles.Enums;
 
-namespace TWEngine.Particles
+using System;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Particles.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Particles
 {
 
     /// <summary>

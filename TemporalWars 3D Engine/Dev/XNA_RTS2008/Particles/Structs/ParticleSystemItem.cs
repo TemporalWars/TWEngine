@@ -6,14 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Particles3DComponentLibrary;
 
-namespace TWEngine.Particles.Structs
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
+
+namespace ImageNexus.BenScharbach.TWEngine.Particles.Structs
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.Particles.Structs"/> namespace contains the classes
-    /// which make up the entire <see cref="Particles.Structs"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.Particles.Structsnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

@@ -6,13 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Particles3DComponentLibrary;
 
-namespace TWEngine.Particles.ParticleSystems
+namespace ImageNexus.BenScharbach.TWEngine.Particles.ParticleSystems
 {
     /// <summary>
     /// Custom particle system for creating the fiery part of the explosions.
