@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Shapes.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Shapes.Enums
 {
     /// <summary>
     /// The <see cref="VehicleType"/> Enum

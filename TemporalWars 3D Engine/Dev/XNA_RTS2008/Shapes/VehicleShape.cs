@@ -6,22 +6,24 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shapes.Enums;
+using ImageNexus.BenScharbach.TWEngine.VehicleTypes;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
-using TWEngine.Common;
-using TWEngine.GameCamera;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Interfaces;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
-using TWEngine.Shadows;
-using TWEngine.Shapes.Enums;
-using TWEngine.VehicleTypes;
 
-namespace TWEngine.Shapes
+namespace ImageNexus.BenScharbach.TWEngine.Shapes
 {
     ///<summary>
     /// The <see cref="VehicleShape"/> class holds the actual artwork reference, to

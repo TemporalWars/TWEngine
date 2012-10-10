@@ -8,22 +8,23 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Explosions;
+using ImageNexus.BenScharbach.TWEngine.Explosions.Structs;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shapes.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using Microsoft.Xna.Framework;
-using TWEngine.Common;
-using TWEngine.Explosions;
-using TWEngine.Explosions.Structs;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.Particles;
-using TWEngine.SceneItems;
-using TWEngine.Shapes.Enums;
 
-namespace TWEngine.Shapes
+namespace ImageNexus.BenScharbach.TWEngine.Shapes
 {
     /// <summary>
     /// The <see cref="Shape"/> is the base class of any object that is renderable

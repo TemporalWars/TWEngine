@@ -6,26 +6,28 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Explosions;
+using ImageNexus.BenScharbach.TWEngine.Explosions.Structs;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shapes.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.VehicleTypes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Common;
-using TWEngine.Explosions.Structs;
-using TWEngine.GameCamera;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.Shadows;
-using TWEngine.Utilities;
-using TWEngine.InstancedModels;
-using TWEngine.VehicleTypes;
-using TWEngine.Explosions;
-using TWEngine.Shapes.Enums;
 
-namespace TWEngine.Shapes
+namespace ImageNexus.BenScharbach.TWEngine.Shapes
 {
     ///<summary>
     /// The <see cref="SciFiTankShape"/> class holds the actual artwork reference, to
