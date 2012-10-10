@@ -6,18 +6,19 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
-using TWEngine.MemoryPool;
-using TWEngine.Networking;
-using TWEngine.Players;
-using TWEngine.rtsCommands.Enums;
 
-namespace TWEngine.rtsCommands
+namespace ImageNexus.BenScharbach.TWEngine.rtsCommands
 {
 
     ///<summary>

@@ -6,17 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.IFDTiles;
-using TWEngine.MemoryPool;
-using TWEngine.MemoryPool.Interfaces;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
 
-namespace TWEngine.rtsCommands
+namespace ImageNexus.BenScharbach.TWEngine.rtsCommands
 {
     ///<summary>
     /// The <see cref="RTSCommMoveSceneItem"/> is used by some client player to request
@@ -68,7 +69,7 @@ namespace TWEngine.rtsCommands
         ///<summary>
         /// Set or Get a reference to the <see cref="IPoolNodeItem.PoolManager"/> instance.
         ///</summary>
-        public PoolManager PoolManager { get; set; }
+        public PoolManagerBase PoolManager { get; set; }
 
         ///<summary>
         /// Set or Get if <see cref="IPoolNodeItem.PoolNode"/> is in use.
@@ -174,7 +175,7 @@ namespace TWEngine.rtsCommands
 
         // 5/13/2009
         /// <summary>
-        /// Returns this instance back into the <see cref="MemoryPool.PoolManager"/>, setting 'Active' to false.
+        /// Returns this instance back into the <see cref="ImageNexus.BenScharbach.TWEngine.MemoryPool.PoolManager"/>, setting 'Active' to false.
         /// </summary>
         public override void ReturnItemToPool()
         {
