@@ -10,28 +10,25 @@
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Common.Enums;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect.Enums;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GlowEffect;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums;
+using ImageNexus.BenScharbach.TWEngine.SkyDomes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Net;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.BeginGame.Enums;
-using TWEngine.Common;
-using TWEngine.Common.Enums;
-using TWEngine.GameScreens;
-using TWEngine.GameScreens.Generic;
-using TWEngine.Particles;
-using TWEngine.PostProcessEffects.BloomEffect;
-using TWEngine.PostProcessEffects.BloomEffect.Enums;
-using TWEngine.PostProcessEffects.GBlurEffect;
-using TWEngine.PostProcessEffects.GlowEffect;
-using TWEngine.ScreenManagerC.Enums;
-using TWEngine.SkyDomes;
-using TWEngine.Water;
 
-
-namespace TWEngine.ScreenManagerC
+namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
 {
     /// <summary>
     /// The <see cref="ScreenManager"/> is a component which manages one or more <see cref="GameScreen"/>
@@ -165,7 +162,7 @@ namespace TWEngine.ScreenManagerC
         /// Controls the use of the <see cref="Glow"/> PostProcess effect.
         /// </summary>
         /// <remarks>
-        /// Requires setting the RenderingType to be <see cref="TWEngine.BeginGame.Enums.RenderingType.NormalRenderingWithPostProcessEffects"/>.
+        /// Requires setting the RenderingType to be <see cref="ImageNexus.BenScharbach.TWEngine.BeginGame.Enums.RenderingType.NormalRenderingWithPostProcessEffects"/>.
         /// </remarks>
         public bool UseGlow { get; set; }
 
