@@ -7,20 +7,18 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using TWEngine.GameScreens.Generic;
-using TWEngine.HandleGameInput;
-using TWEngine.ScreenManagerC.Enums;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Structs;
-using TWEngine.Utilities;
 
-
-namespace TWEngine.ScreenManagerC
+namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
 {
 
     /// <summary>

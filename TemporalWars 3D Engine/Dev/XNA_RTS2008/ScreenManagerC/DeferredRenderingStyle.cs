@@ -6,30 +6,32 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GlowEffect;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Enums;
+using ImageNexus.BenScharbach.TWEngine.SkyDomes;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
+using ImageNexus.BenScharbach.TWTools.SimpleQuadDrawer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using ScreenTextDisplayer.ScreenText;
-using SimpleQuadDrawer;
-using TWEngine.GameCamera;
-using TWEngine.InstancedModels;
-using TWEngine.PostProcessEffects.BloomEffect;
-using TWEngine.PostProcessEffects.GlowEffect;
-using TWEngine.ScreenManagerC.Enums;
-using TWEngine.Shadows;
-using TWEngine.Shadows.Enums;
-using TWEngine.SkyDomes;
-using TWEngine.Utilities;
 
-namespace TWEngine.ScreenManagerC
+namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.ScreenManagerC"/> namespace contains the classes
-    /// which make up the entire <see cref="ScreenManagerC"/> component.
+    /// which make up the entire <see cref="TWEngine.ScreenManagerC"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

@@ -9,14 +9,13 @@
 
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Globalization;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.Interfaces;
 
-namespace TWEngine.ScreenManagerC
+namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
 {
     /// <summary>
     /// The <see cref="MessageDisplayComponent"/> implements the <see cref="IMessageDisplay"/> interface. 
