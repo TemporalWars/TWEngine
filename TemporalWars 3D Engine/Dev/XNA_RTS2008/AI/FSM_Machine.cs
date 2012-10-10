@@ -6,12 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.AI.Enums;
 using Microsoft.Xna.Framework;
-using TWEngine.AI.Enums;
 
-namespace TWEngine.AI
+namespace ImageNexus.BenScharbach.TWEngine.AI
 {
     /// <summary>
     /// This F.S.M. (Finite State Machine) Machine class, manages

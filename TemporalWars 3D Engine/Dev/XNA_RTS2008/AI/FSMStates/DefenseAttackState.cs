@@ -6,14 +6,17 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.AI.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
 using Microsoft.Xna.Framework;
-using TWEngine.AI.Enums;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
+using TWEngine;
 
-namespace TWEngine.AI.FSMStates
+namespace ImageNexus.BenScharbach.TWEngine.AI.FSMStates
 {
     /// <summary>
     /// DefenseAttackMove state, used in the FSM_Machine class; the DefenseAttackMove state, is
@@ -139,7 +142,7 @@ namespace TWEngine.AI.FSMStates
                 return FSM_StateType.FSM_STATE_IDLE;
 
             // 6/15/2010 - Updated to use new GetPlayer method.
-            Players.Player player;
+            global::ImageNexus.BenScharbach.TWEngine.Players.Player player;
             TemporalWars3DEngine.GetPlayer(sceneItemOwner.PlayerNumber, out player);
 
             // Check if EnergyOff for the player this SceneItemOwner belongs to

@@ -6,15 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using ParallelTasksComponent.LocklessDictionary;
-using TWEngine.AI.Enums;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
 
-namespace TWEngine.AI.FSMStates
+using ImageNexus.BenScharbach.TWEngine.AI.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.AI.FSMStates
 {
     /// <summary>
     /// This namespace contains all the classes for the FSM States; for example <see cref="IdleState"/>

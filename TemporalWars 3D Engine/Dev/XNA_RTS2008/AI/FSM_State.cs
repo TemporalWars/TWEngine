@@ -6,13 +6,13 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using TWEngine.AI.Enums;
-using TWEngine.Interfaces;
-using TWEngine.SceneItems;
 
-namespace TWEngine.AI
+using ImageNexus.BenScharbach.TWEngine.AI.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.AI
 {
    
 // ReSharper disable InconsistentNaming

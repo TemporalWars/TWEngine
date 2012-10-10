@@ -6,13 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.AI.FSMStates;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using Microsoft.Xna.Framework;
-using TWEngine.SceneItems.Enums;
 
-namespace TWEngine.AI
+using ImageNexus.BenScharbach.TWEngine.AI.FSMStates;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using TWEngine;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.AI
 {
     ///<summary>
     /// This F.S.M. (Finite State Machine) class, specifically manages the AI
