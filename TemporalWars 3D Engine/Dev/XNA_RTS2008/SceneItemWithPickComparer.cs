@@ -1,7 +1,7 @@
-using TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using System.Collections.Generic;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWEngine
 {
     /// <summary>
     /// IComparer Class for the binarySearch.  Compares using the 'SceneItemNumber'.

@@ -7,16 +7,14 @@
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TWEngine</RootNamespace>
-    <AssemblyName>XNA_RTS2008</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWEngine</RootNamespace>
+    <AssemblyName>In.BenS.TwEngine</AssemblyName>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Xbox 360</XnaPlatform>
     <ApplicationIcon>Spacewar_Template.ico</ApplicationIcon>
     <Thumbnail>SpacewarThumbnail.png</Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <GenerateManifests>true</GenerateManifests>
     <TargetZone>LocalIntranet</TargetZone>
-    <SignManifests>true</SignManifests>
     <StartupObject>
     </StartupObject>
     <XnaUpgrade>1</XnaUpgrade>
@@ -77,10 +75,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>XNA_RTS2008.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>XNA_RTS2008Sn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AI\AIManager.cs" />
@@ -1296,50 +1294,138 @@
     <None Include="1ContentScenary\XBox360\ContentSticksNTwiggPack\STPack\WhiteSet\treeWhite004.xnb" />
     <None Include="1ContentScenary\XBox360\ContentSticksNTwiggPack\STPack\WhiteSet\treeWhite005.xnb" />
     <None Include="1ContentScenary\XBox360\ContentSticksNTwiggPack\STPack\WhiteSet\tswood2_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\InstancedModel_Blinn_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Barrel\BarrelB_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Barrel\BarrelB_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Barrel\BarrelB_Normal_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Barrel\urbanPlasticBarrel.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxA_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxA_Normal_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxB_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxB_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxB_Normal_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\urbanCardboardBox.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\urbanCardboardBox2.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cargo\CargoA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cargo\CargoA_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cargo\CargoA_Normal_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cargo\urbanCargoContainer.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cone\CargoA_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Crate\CrateA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Crate\CrateA_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Crate\CrateSA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Crate\urbanWoodenCrate.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Dumpster\DmpstrA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Dumpster\DmpstrA_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Dumpster\DmpstrA_Normal_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Dumpster\urbanDumpster.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceA_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceBdA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceLeA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceLkA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\urbanChainLinkFence.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletA_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletA_Normal_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletB_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletB_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletB_Normal_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\urbanWoodPallet.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\urbanWoodPallet2.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Tire\TireA_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Tire\TireA_Normal.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Tire\TireA_Normal_0.xnb" />
-    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Tire\urbanSpareTire.xnb" />
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\InstancedModel_Blinn_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Barrel\BarrelB_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Barrel\BarrelB_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Barrel\BarrelB_Normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Barrel\urbanPlasticBarrel.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxA_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxA_Normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxB_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxB_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\BoxB_Normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\urbanCardboardBox.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Box\urbanCardboardBox2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cargo\CargoA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cargo\CargoA_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cargo\CargoA_Normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cargo\urbanCargoContainer.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Cone\CargoA_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Crate\CrateA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Crate\CrateA_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Crate\CrateSA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Crate\urbanWoodenCrate.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Dumpster\DmpstrA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Dumpster\DmpstrA_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Dumpster\DmpstrA_Normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Dumpster\urbanDumpster.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceA_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceBdA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceLeA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\FenceLkA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Fence\urbanChainLinkFence.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletA_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletA_Normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletB_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletB_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\PalletB_Normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\urbanWoodPallet.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Pallet\urbanWoodPallet2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Tire\TireA_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Tire\TireA_Normal.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Tire\TireA_Normal_0.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="1ContentScenary\XBox360\ContentUrbanPack\Urban\Tire\urbanSpareTire.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="1ContentScenary\XBox360\ContentWarehouseDistrictPack\InstancedModel_Blinn_0.xnb" />
     <None Include="1ContentScenary\XBox360\ContentWarehouseDistrictPack\WarehouseDistrictPack\AlleyWalls\alleyWallBrick001.xnb" />
     <None Include="1ContentScenary\XBox360\ContentWarehouseDistrictPack\WarehouseDistrictPack\AlleyWalls\alleyWallBrick002.xnb" />
@@ -2259,6 +2345,7 @@
     <Compile Include="GameScreens\Generic\PauseMenuScreen.cs" />
     <Compile Include="GameScreens\TerrainScreen.cs" />
     <Compile Include="HandleGameInput\HandleInput.cs" />
+    <Compile Include="HandleGameInput\InputState.cs" />
     <Compile Include="IFDTiles\Delegates\CreateItemToPlace.cs" />
     <Compile Include="IFDTiles\Delegates\ItemCreateRequestEventHandler.cs" />
     <Compile Include="IFDTiles\Delegates\SceneItemPlacedEventHandler.cs" />
@@ -2817,7 +2904,6 @@
     <Compile Include="ScreenManagerC\DeferredRenderingStyle.cs" />
     <Compile Include="ScreenManagerC\Enums\ScreenState.cs" />
     <Compile Include="ScreenManagerC\GameScreen.cs" />
-    <Compile Include="ScreenManagerC\InputState.cs" />
     <Compile Include="ScreenManagerC\MessageDisplayComponent.cs" />
     <Compile Include="ScreenManagerC\ScreenManager.cs" />
     <Compile Include="Shadows\Enums\DebugIsFor.cs" />
@@ -3031,19 +3117,19 @@
     <Compile Include="Water\Structs\WaterData.cs" />
     <Compile Include="Water\WaterBase.cs" />
     <Compile Include="Water\WaterManager.cs" />
-    <None Include="XNA_RTS2008.snk" />
+    <None Include="XNA_RTS2008Sn.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="0LateBinds\XBox360\AStarComponentLibrary.dll">
+    <Content Include="0LateBinds\XBox360\In.BenS.TWLate.AStar.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="0LateBinds\XBox360\RTS_FogOfWarComponentLibrary.dll">
+    <Content Include="0LateBinds\XBox360\In.BenS.TWLate.FogOfWar.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="0LateBinds\XBox360\RTS_MinimapComponentLibrary.dll">
+    <Content Include="0LateBinds\XBox360\In.BenS.TWLate.Minimap.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="0LateBinds\XBox360\RTS_StatusBarComponentLibrary.dll">
+    <Content Include="0LateBinds\XBox360\In.BenS.TWLate.StatusBar.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="1ContentScenary\XBox360\ContentSticksNTwiggPack\STPack\PalmSet\treePalm004_Leafs.xml" />
@@ -3093,6 +3179,46 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.AStarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=defca1e01bac3edd, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.FogOfWarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=2b67964fb36d8042, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.MinimapInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=4c85968ce1bdd107, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.StatusBarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5764133d0623b6d1, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWLate.Xbox360Generics, Version=2.1.0.0, Culture=neutral, PublicKeyToken=7979e0108265eb74, processorArchitecture=MSIL" />
+    <Reference Include="In.BenS.TWScripting.Interfaces, Version=1.12.0.0, Culture=neutral, PublicKeyToken=4be498e0408458af, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.MemoryPool, Version=1.9.4.0, Culture=neutral, PublicKeyToken=8016b5272d8c8076, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.ParallelTasks, Version=1.9.4.0, Culture=neutral, PublicKeyToken=226b4272b1e9ff29, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.Particles3D, Version=1.9.4.0, Culture=neutral, PublicKeyToken=09c0cc67248582a1, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.0, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.ScreenTextDisplayer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=ba8d5641a0a65aa7, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.SimpleQuadDrawer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=061ec4462646e261, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWTools.SpeedCollection, Version=1.9.4.0, Culture=neutral, PublicKeyToken=2621d214a7a8510c, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework">
       <Private>False</Private>
     </Reference>
@@ -3153,66 +3279,10 @@
     <Folder Include="Documentation\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AStarInterfaces\AStarInterfaces_XBox360.csproj">
-      <Project>{1CB2A3B2-6858-4F6D-900B-48E0346A982C}</Project>
-      <Name>AStarInterfaces_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BenScharbachTWScriptingInterfaces\BenScharbachTWScriptingInterfaces_XBox360.csproj">
-      <Project>{BE3F13A7-CFCE-45EE-9DC7-387F885DBE90}</Project>
-      <Name>BenScharbachTWScriptingInterfaces_XBox360</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CompileContentMaps\CompileContentMaps\ContentMaps\ContentMaps.contentproj">
       <Project>{690986AE-0D12-40EE-A133-35D47C6DF120}</Project>
       <Name>ContentMaps</Name>
       <XnaReferenceType>Content</XnaReferenceType>
-    </ProjectReference>
-    <ProjectReference Include="..\MemoryPoolComponent\MemoryPoolComponent_XBox360.csproj">
-      <Project>{042292DF-A609-4ECD-BB58-459DD0398928}</Project>
-      <Name>MemoryPoolComponent_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ParallelTasksComponent\ParallelTasksComponent_XBox360.csproj">
-      <Project>{70A61848-3890-4CB8-A326-560461BEE69F}</Project>
-      <Name>ParallelTasksComponent_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Particles3DComponentLibrary\Particles3DComponentLibrary_XBox360.csproj">
-      <Project>{39D1BFC3-C860-44A2-86F7-149405F59C72}</Project>
-      <Name>Particles3DComponentLibrary_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PerfTimersComponent\PerfTimersComponent_XBox360.csproj">
-      <Project>{E831DFF6-4A34-4286-ADBB-045B46CC7D29}</Project>
-      <Name>PerfTimersComponent_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RTS_FogOfWarInterfaces\RTS_FogOfWarInterfaces_XBox360.csproj">
-      <Project>{D7A56734-DED1-4B2E-A84F-51B38410247B}</Project>
-      <Name>RTS_FogOfWarInterfaces_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RTS_MinimapInterfaces\RTS_MinimapInterfaces_XBox360.csproj">
-      <Project>{D2A60A8B-7BFC-46FD-9436-E2383F988F2E}</Project>
-      <Name>RTS_MinimapInterfaces_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RTS_StatusBarInterfaces\RTS_StatusBarInterfaces_XBox360.csproj">
-      <Project>{76CC4FC2-581B-4E73-892D-F0FB037CCDA5}</Project>
-      <Name>RTS_StatusBarInterfaces_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ScreenTextDisplayer\ScreenTextDisplayer_XBox360.csproj">
-      <Project>{BC2A4ACB-ABEA-4FEE-BC7D-ECA3CC0EFA8D}</Project>
-      <Name>ScreenTextDisplayer_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SimpleQuadDrawer\SimpleQuadDrawer_XBox360.csproj">
-      <Project>{E3D21485-59B9-42B0-9E9D-50E6F0BF7A16}</Project>
-      <Name>SimpleQuadDrawer_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpeedCollectionComponent\SpeedCollectionComponent_XBox360.csproj">
-      <Project>{C1A988B0-9260-4303-9393-4F3BE914CE3B}</Project>
-      <Name>SpeedCollectionComponent_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TemporalWarInterfaces\TemporalWarInterfaces_XBox360.csproj">
-      <Project>{D26BA984-074B-464E-BFE2-E53FD4DB198C}</Project>
-      <Name>TemporalWarInterfaces_XBox360</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Xbox360Generics\Xbox360Generics.csproj">
-      <Project>{662FC297-827D-4983-A82E-3509040C6B81}</Project>
-      <Name>Xbox360Generics</Name>
     </ProjectReference>
     <ProjectReference Include="Content\ContentEmpty.contentproj">
       <Project>{17496DB1-81B5-48C6-8C0F-9B29FC4CC631}</Project>
