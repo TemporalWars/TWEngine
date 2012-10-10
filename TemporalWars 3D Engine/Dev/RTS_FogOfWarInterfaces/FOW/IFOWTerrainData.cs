@@ -1,4 +1,4 @@
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW
 {
     ///<summary>
     /// The <see cref="IFOWTerrainData"/> class is used to hold the important meta-data for the <see cref="IFOWTerrainShape"/> class; for example,

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW
 {
     /// <summary>
     /// The <see cref="IFogOfWarShapeItem"/> Interface allows a given Shape to 

@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RTS_FogOfWarComponentLibrary")]
-[assembly: AssemblyProduct("RTS_FogOfWarComponentLibrary")]
+[assembly: AssemblyTitle("ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary")]
+[assembly: AssemblyProduct("ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2009")]
@@ -28,4 +28,4 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("2.1.0.0")]

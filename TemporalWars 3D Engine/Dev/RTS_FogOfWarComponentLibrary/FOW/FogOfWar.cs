@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessDictionary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Threading;
-using ParallelTasksComponent.LocklessDictionary;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
 
 
 namespace TWEngine.FOW

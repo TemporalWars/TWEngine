@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RTS_FogOfWarInterfaces</RootNamespace>
-    <AssemblyName>RTS_FogOfWarInterfaces</AssemblyName>
+    <RootNamespace>ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces</RootNamespace>
+    <AssemblyName>In.BenS.TWLate.FogOfWarInterfaces</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
@@ -54,7 +54,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>false</XnaCompressContent>
-    <DocumentationFile>bin\x86\Debug\RTS_FogOfWarInterfaces.XML</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\In.BenS.TWLate.FogOfWarInterfaces.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -71,12 +71,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>RTS_FogOfWarInterfacesSn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553">
       <Private>False</Private>
     </Reference>
@@ -185,16 +186,11 @@
   <ItemGroup>
     <None Include="RTS_FogOfWarInterfacesSn.snk" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TemporalWarInterfaces\TemporalWarInterfaces.csproj">
-      <Project>{3AAA1C51-AC48-40FC-8108-3D3495FA9CC6}</Project>
-      <Name>TemporalWarInterfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy  "$(TargetDir)*.*" "$(SolutionDir)XNA_RTS2008\0LateBinds\x86\" /E /F /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
