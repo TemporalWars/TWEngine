@@ -7,7 +7,7 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// To compensate for network Latency, we need to know exactly how late each

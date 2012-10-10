@@ -6,29 +6,30 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Net;
-using ParallelTasksComponent.LocklessQueue;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using ScreenTextDisplayer.ScreenText;
-using TWEngine.GameScreens;
-using TWEngine.IFDTiles;
-using TWEngine.MemoryPool;
-using TWEngine.Players;
-using TWEngine.rtsCommands;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
-using TWEngine.Shapes;
 
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     ///<summary>
     /// The <see cref="NetworkGameComponent"/>, is the main manager in network games, responsible

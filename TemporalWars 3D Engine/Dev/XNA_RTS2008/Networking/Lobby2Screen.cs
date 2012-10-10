@@ -9,25 +9,25 @@
 
 #endregion
 
-
 using System;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking.Structs;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.BeginGame.Enums;
-using TWEngine.GameScreens.Generic;
-using TWEngine.MemoryPool;
-using TWEngine.Networking.Structs;
-using TWEngine.Players;
-using TWEngine.rtsCommands;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems;
-using TWEngine.ScreenManagerC;
 
-
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// The <see cref="Lobby2Screen"/> provides a place for gamers to congregate before starting

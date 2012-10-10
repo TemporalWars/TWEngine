@@ -6,17 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.GameScreens.Generic;
-using TWEngine.Interfaces;
-using TWEngine.ScreenManagerC;
 
-
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// Component in charge of owning and updating the current <see cref="NetworkSession"/> object.

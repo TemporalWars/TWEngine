@@ -8,13 +8,11 @@
 #endregion
 
 using System;
-using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.GameScreens.Generic;
 
-
-namespace TWEngine.Networking
+namespace ImageNexus.BenScharbach.TWEngine.Networking
 {
     /// <summary>
     /// Specialized <see cref="MessageBoxScreen"/> subclass, used to display network error messages.
