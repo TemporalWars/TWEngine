@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TemporalWarInterfaces")]
-[assembly: AssemblyProduct("TemporalWarInterfaces")]
+[assembly: AssemblyTitle("ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces")]
+[assembly: AssemblyProduct("ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2010")]
@@ -27,4 +27,4 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.3750.2")]
+[assembly: AssemblyVersion("2.5.1.1")]

@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces
 {
     // 4/22/2010
     /// <summary>

@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces
 {
     /// <summary>
     /// Required common initialization interface as the XBox does not allow passing of

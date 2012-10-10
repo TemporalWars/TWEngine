@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.GameLevels.Delegates
+namespace ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.GameLevels.Delegates
 {
     // 3/11/2011
     public delegate TResult ScriptFunc<T, TResult>(T arg);
