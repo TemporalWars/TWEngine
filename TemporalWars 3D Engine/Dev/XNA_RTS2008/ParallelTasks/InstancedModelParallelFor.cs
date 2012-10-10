@@ -7,13 +7,12 @@
 //-----------------------------------------------------------------------------
 #endregion
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
 using Microsoft.Xna.Framework;
-using ParallelTasksComponent;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
 
 namespace TWEngine.ParallelTasks
 {

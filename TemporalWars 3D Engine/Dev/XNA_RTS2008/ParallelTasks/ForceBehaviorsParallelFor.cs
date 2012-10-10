@@ -10,11 +10,11 @@
 
 using System.Collections.Generic;
 using System.Threading;
-using ParallelTasksComponent;
-using TWEngine.SceneItems;
-using TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
 
-namespace TWEngine.ParallelTasks
+namespace ImageNexus.BenScharbach.TWEngine.ParallelTasks
 {
     /// <summary>
     /// The <see cref="ForceBehaviorsParallelFor"/> class, threads the calling of the <see cref="ForceBehaviorsCalculator"/> logic, 

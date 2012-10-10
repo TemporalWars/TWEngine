@@ -6,16 +6,17 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Diagnostics;
 using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.ParallelTasks.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessQueue;
 using Microsoft.Xna.Framework;
-using ParallelTasksComponent;
-using ParallelTasksComponent.LocklessQueue;
-using TWEngine.ParallelTasks.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ParallelTasks
+namespace ImageNexus.BenScharbach.TWEngine.ParallelTasks
 {
     // 2/28/2011
     /// <summary>

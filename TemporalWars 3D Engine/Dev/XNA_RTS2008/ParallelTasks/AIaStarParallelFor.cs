@@ -6,17 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System.Collections.Generic;
 using System.Threading;
-using ParallelTasksComponent;
-using TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
 
-namespace TWEngine.ParallelTasks
+namespace ImageNexus.BenScharbach.TWEngine.ParallelTasks
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.ParallelTasks"/> namespace contains the classes
-    /// which make up the entire <see cref="ParallelTasks"/> component.
+    /// which make up the entire <see cref="TWEngine.ParallelTasks"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

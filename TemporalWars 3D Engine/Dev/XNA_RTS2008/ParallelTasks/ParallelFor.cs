@@ -6,13 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
-using TWEngine.ParallelTasks.Delegates;
+using ImageNexus.BenScharbach.TWEngine.ParallelTasks.Delegates;
 
-namespace TWEngine.ParallelTasks
+namespace ImageNexus.BenScharbach.TWEngine.ParallelTasks
 {
     /// <summary>
     /// The <see cref="ParallelFor{TDefault}"/> class, is used to parallize the 'For-Loop', using 4 internal threads.
