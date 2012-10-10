@@ -6,35 +6,35 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Structs;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Viewports;
+using ImageNexus.BenScharbach.TWEngine.Viewports.Structs;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using ScreenTextDisplayer.ScreenText;
-using TWEngine.Common;
-using TWEngine.Common.Extensions;
-using TWEngine.GameCamera;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels;
-using TWEngine.Interfaces;
-using TWEngine.SceneItems;
-using TWEngine.Shadows.Enums;
-using TWEngine.Shadows.Structs;
-using TWEngine.Viewports;
-using TWEngine.Terrain;
-using TWEngine.ScreenManagerC;
-using TWEngine.Viewports.Structs;
 
-
-namespace TWEngine.Shadows
+namespace ImageNexus.BenScharbach.TWEngine.Shadows
 {
     
     /// <summary>
     /// The <see cref="ShadowMap"/> is used to create the shadow maps of the <see cref="SceneItem"/>
-    /// and the <see cref="Terrain"/>.  These are then passed to the objects which request them;  
-    /// for example, the <see cref="Terrain"/>.
+    /// and the <see cref="TWEngine.Terrain"/>.  These are then passed to the objects which request them;  
+    /// for example, the <see cref="TWEngine.Terrain"/>.
     /// </summary>
     public sealed class ShadowMap : DrawableGameComponent, IShadowMap
     {               
@@ -239,7 +239,7 @@ namespace TWEngine.Shadows
 
         // 7/13/2009
         /// <summary>
-        /// <see cref="ShadowMap"/> of <see cref="Terrain"/> depth <see cref="Texture2D"/> data.
+        /// <see cref="ShadowMap"/> of <see cref="TWEngine.Terrain"/> depth <see cref="Texture2D"/> data.
         /// </summary>
         public static Texture2D ShadowMapTerrainTexture
         {
@@ -774,7 +774,7 @@ namespace TWEngine.Shadows
 
         // 6/3/2008 - 
         ///<summary>
-        /// Draws the <see cref="Terrain"/> using the <see cref="ShadowMap"/> shader <see cref="Effect"/>, which essentially populates the
+        /// Draws the <see cref="TWEngine.Terrain"/> using the <see cref="ShadowMap"/> shader <see cref="Effect"/>, which essentially populates the
         /// <see cref="ShadowMap"/> texture with the depth information and is then passed into the normal Draw call later on.
         ///</summary>
         ///<param name="lightPos"><see cref="Vector3"/> as light position</param>
@@ -860,7 +860,7 @@ namespace TWEngine.Shadows
         }
 
         /// <summary>
-        /// This creates the static <see cref="ShadowMap"/> of the entire <see cref="Terrain"/>.  
+        /// This creates the static <see cref="ShadowMap"/> of the entire <see cref="TWEngine.Terrain"/>.  
         /// </summary>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
         private static bool CreateStaticShadowMap(GameTime gameTime)
