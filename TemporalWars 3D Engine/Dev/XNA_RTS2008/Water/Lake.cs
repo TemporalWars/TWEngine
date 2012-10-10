@@ -6,15 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SkyDomes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Water.Structs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Interfaces;
-using TWEngine.Terrain;
-using TWEngine.GameCamera;
-using TWEngine.Water.Structs;
 
-namespace TWEngine.Water
+namespace ImageNexus.BenScharbach.TWEngine.Water
 {
     /// <summary>
     /// The <see cref="Lake"/> class is created using a simple flat quad rectangle, where the waves are represented
@@ -279,7 +282,7 @@ namespace TWEngine.Water
             _dullColorEParam = _waterEffect.Parameters["xDullColor"];
 
             // 12/14/2009 - Load SkyBox texture
-            _waterEffect.Parameters["xCubeMap"].SetValue(SkyDomes.SkyDome.SkyboxTextureCube);
+            _waterEffect.Parameters["xCubeMap"].SetValue(SkyDome.SkyboxTextureCube);
 
             // 12/10/2009 - Use Distort vertices
             UseDistortVertices = true;

@@ -6,20 +6,22 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Viewports;
+using ImageNexus.BenScharbach.TWEngine.Viewports.Structs;
+using ImageNexus.BenScharbach.TWEngine.Water.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.GameCamera;
-using TWEngine.GameScreens;
-using TWEngine.InstancedModels;
-using TWEngine.Interfaces;
-using TWEngine.Shadows;
-using TWEngine.Viewports;
-using TWEngine.Viewports.Structs;
-using TWEngine.Water.Enums;
 
-namespace TWEngine.Water
+namespace ImageNexus.BenScharbach.TWEngine.Water
 {
     ///<summary>
     /// The <see cref="WaterBase"/> class is the base class for creating any water-type component.
@@ -363,7 +365,7 @@ namespace TWEngine.Water
             //graphicsDevice.SetRenderTarget(0, RefractionRenderTarget);
             graphicsDevice.SetRenderTarget(RefractionRenderTarget);
 
-            Terrain.TerrainShape.Draw(ref inCameraView, gameTime, ShadowMap.IsVisibleS); // Draw Terrain           
+            ImageNexus.BenScharbach.TWEngine.Terrain.TerrainShape.Draw(ref inCameraView, gameTime, ShadowMap.IsVisibleS); // Draw Terrain           
 
             //graphicsDevice.ClipPlanes[0].IsEnabled = false;
 
@@ -405,7 +407,7 @@ namespace TWEngine.Water
             TerrainScreen.DrawSkyBox(ref ReflectionViewMatrix, ref _reflCameraPosition); 
 
             // Draw Terrain
-            Terrain.TerrainShape.Draw(ref ReflectionViewMatrix, gameTime, ShadowMap.IsVisibleS); 
+            ImageNexus.BenScharbach.TWEngine.Terrain.TerrainShape.Draw(ref ReflectionViewMatrix, gameTime, ShadowMap.IsVisibleS); 
 
             // Draw ScenaryItems 'InstanceModels'            
             InstancedItem.DrawInstanceModelsForWaterRm(gameTime, ref ReflectionViewMatrix);

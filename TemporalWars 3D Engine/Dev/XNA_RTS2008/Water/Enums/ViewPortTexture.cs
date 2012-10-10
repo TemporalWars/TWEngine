@@ -6,9 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine.Water.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Water.Enums
 {
     // NOTE: (8/17/2010) Anything changed or added to this ViewPortTexture, 
     // NOTE:  MUST be done to Enum ViewPortTexture in TWTerrainToolsWPF.

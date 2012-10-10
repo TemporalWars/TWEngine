@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Water.Enums
+namespace ImageNexus.BenScharbach.TWEngine.Water.Enums
 {
     // NOTE: (8/17/2010) Anything changed or added to this WaterType, 
     // NOTE:  MUST be done to Enum WaterType in TWTerrainToolsWPF.

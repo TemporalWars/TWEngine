@@ -6,15 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.SkyDomes;
+using ImageNexus.BenScharbach.TWEngine.Water.Structs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
-using TWEngine.GameCamera;
-using TWEngine.Interfaces;
-using TWEngine.Water.Structs;
 
-namespace TWEngine.Water
+namespace ImageNexus.BenScharbach.TWEngine.Water
 {
     /// <summary>
     /// The <see cref="Ocean"/> class creates realistic waves using animated vertices and is resource intensive.
@@ -453,7 +456,7 @@ namespace TWEngine.Water
             _oceanWaveFrequencyEp = _oceanEffect.Parameters["fWaveFreq"]; // 12/15/2009
 
             // 12/15/2009 - Load SkyBox texture
-            _oceanEffect.Parameters["xCubeMap"].SetValue(SkyDomes.SkyDome.SkyboxTextureCube);
+            _oceanEffect.Parameters["xCubeMap"].SetValue(SkyDome.SkyboxTextureCube);
 
             // 12/15/2009 - Set Init Default Values
             _oceanDeepColorEp.SetValue(_oceanDeepColor); // 12/15/2009
