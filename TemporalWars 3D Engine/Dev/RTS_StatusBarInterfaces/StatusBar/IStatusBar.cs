@@ -1,8 +1,8 @@
 ﻿using System;
+using ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces;
 using Microsoft.Xna.Framework;
 
-
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar
 {
     // NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>

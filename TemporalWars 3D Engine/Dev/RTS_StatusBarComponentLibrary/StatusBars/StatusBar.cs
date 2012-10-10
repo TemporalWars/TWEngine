@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces;
+using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
-namespace TWEngine.StatusBars
+namespace ImageNexus.BenScharbach.TWLate.RTS_StatusBarComponentLibrary.StatusBars
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
-    /// The <see cref="TWEngine.StatusBars"/> namespace contains the classes
+    /// The <see cref="StatusBars"/> namespace contains the classes
     /// which make up the entire <see cref="StatusBar"/>.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]

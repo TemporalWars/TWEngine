@@ -1,4 +1,4 @@
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar
 {
     /// <summary>
     /// Provides the energy value from the defined <see cref="IStatusBarPlayer"/> instance.

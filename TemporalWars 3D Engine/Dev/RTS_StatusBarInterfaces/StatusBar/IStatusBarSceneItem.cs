@@ -1,4 +1,4 @@
-namespace TWEngine
+namespace ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar
 {
     /// <summary>
     /// The <see cref="IStatusBarSceneItem"/> is the base class, which provides the primary funtions
