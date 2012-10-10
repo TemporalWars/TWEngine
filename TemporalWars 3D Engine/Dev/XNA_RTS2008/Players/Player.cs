@@ -6,54 +6,57 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Structs;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool.PoolItems;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.ParallelTasks;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
+using ImageNexus.BenScharbach.TWTools.SpeedCollectionComponent;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Net;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using SpeedCollectionComponent;
-using TWEngine.Audio;
-using TWEngine.Audio.Enums;
-using TWEngine.GameCamera;
-using TWEngine.GameScreens;
-using TWEngine.HandleGameInput;
-using TWEngine.IFDTiles.Enums;
-using TWEngine.IFDTiles.Structs;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.ParallelTasks;
-using TWEngine.rtsCommands;
-using TWEngine.Networking;
-using TWEngine.InstancedModels;
-using TWEngine.IFDTiles;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
-using TWEngine.Shapes;
-using TWEngine.Terrain;
-using TWEngine.MemoryPool;
-using TWEngine.ScreenManagerC;
-using TWEngine.Shadows;
 
 #if !XBOX360
-using TWEngine.Console.Enums;
-using System.Windows.Forms;
+using ImageNexus.BenScharbach.TWEngine.Console.Enums;
 #else
-using TWEngine.Common.Extensions;
+
 #endif
 
-namespace TWEngine.Players
+namespace ImageNexus.BenScharbach.TWEngine.Players
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.Players"/> namespace contains the classes
-    /// which make up the entire <see cref="Players"/> component.
+    /// which make up the entire <see cref="TWEngine.Players"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
@@ -90,7 +93,7 @@ namespace TWEngine.Players
         
         // 4/15/2008 -
         /// <summary>
-        ///  Collection of <see cref="SceneItemWithPick"/> selectable items; made public for access from <see cref="Terrain"/> class.
+        ///  Collection of <see cref="SceneItemWithPick"/> selectable items; made public for access from <see cref="TWEngine.Terrain"/> class.
         /// </summary>
         public readonly List<SceneItemWithPick> _selectableItems;
         
@@ -2737,7 +2740,7 @@ namespace TWEngine.Players
         // 2/5/2009: Updated to only draw the AreaSelect Rectangle in this method.  Also updated to NOT deselect items when
         //           the user is holding down the LeftShift key.
         /// <summary>
-        /// Draws the <see cref="TerrainAreaSelect"/> rectangle using the <see cref="Common.Cursor"/> cordinates to create
+        /// Draws the <see cref="TerrainAreaSelect"/> rectangle using the <see cref="ImageNexus.BenScharbach.TWEngine.Common.Cursor"/> cordinates to create
         /// the rectangle size.
         /// </summary>
         /// <param name="player"><see cref="Player"/> instance</param>
