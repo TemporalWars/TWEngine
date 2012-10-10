@@ -9,11 +9,10 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
-using TWEngine.InstancedModels;
-
 #if !XBOX360 // 6/22/2009
 using StillDesign.PhysX;
 #endif

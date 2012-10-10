@@ -6,6 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
 using Microsoft.Xna.Framework;
 #if !XBOX360 // 6/22/2009
 using StillDesign.PhysX;
