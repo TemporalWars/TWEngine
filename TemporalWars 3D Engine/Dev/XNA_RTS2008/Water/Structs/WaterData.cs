@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.Water.Enums;
 
-namespace TWEngine.Water.Structs
+using System;
+using ImageNexus.BenScharbach.TWEngine.Water.Enums;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Water.Structs
 {
 #pragma warning disable 1587
     ///<summary>

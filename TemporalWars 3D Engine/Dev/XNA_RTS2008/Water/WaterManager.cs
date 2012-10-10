@@ -6,16 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Viewports;
+using ImageNexus.BenScharbach.TWEngine.Water.Enums;
+using ImageNexus.BenScharbach.TWEngine.Water.Structs;
 using Microsoft.Xna.Framework;
-using TWEngine.Interfaces;
-using TWEngine.Viewports;
-using TWEngine.Water.Enums;
-using TWEngine.Water.Structs;
 
-
-namespace TWEngine.Water
+namespace ImageNexus.BenScharbach.TWEngine.Water
 {
     /// <summary>
     /// The <see cref="WaterManager"/> class keeps copies of the water components, like the <see cref="Ocean"/> or <see cref="Lake"/>, 
