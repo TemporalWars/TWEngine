@@ -6,16 +6,17 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.GameCamera;
-using TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 
-namespace TWEngine.InstancedModels
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
     // 2/8/2010
     /// <summary>

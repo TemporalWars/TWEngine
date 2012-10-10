@@ -7,33 +7,29 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-#if !XBOX360
-using System.Diagnostics;
-//using TWEngine.PhysX;
-#endif
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
+using ImageNexus.BenScharbach.TWTools.SpeedCollectionComponent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpeedCollectionComponent;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.ForceBehaviors;
-using TWEngine.GameCamera;
-using TWEngine.SceneItems;
-using TWEngine.Shadows;
-using TWEngine.Shapes;
-using TWEngine.ForceBehaviors.SteeringBehaviors;
-using TWEngine.Terrain;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Terrain.Enums;
-using InstancedModelAttsData = TWEngine.InstancedModels.Structs.InstancedModelAttsData;
-using ShaderToUseEnum = TWEngine.InstancedModels.Enums.ShaderToUseEnum;
 
-namespace TWEngine.InstancedModels
+#if !XBOX360
+#endif
+
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
     /// <summary>
     /// The <see cref="InstancedModel"/> class can efficiently draw many copies of itself,
@@ -113,7 +109,7 @@ namespace TWEngine.InstancedModels
         /// Stores the <see cref="InstancedModelPart"/> Adjusting Bone transforms, which is used in the 
         /// <see cref="CopyAbsoluteBoneTranformsTo"/> method.
         /// </summary>
-        /// <remarks>This collection uses the custom type <see cref="SpeedCollectionComponent.SpeedCollection{TValue}"/>.</remarks>
+        /// <remarks>This collection uses the custom type <see cref="SpeedCollection{TValue}"/>.</remarks>
         internal readonly SpeedCollection<Matrix[]> _adjustingBoneTransforms = new SpeedCollection<Matrix[]>(55);
 
         /// <summary>
@@ -122,7 +118,7 @@ namespace TWEngine.InstancedModels
         /// this Collection has an entry which is 'TRUE'; only then is the calculations made.  Otherwise,
         /// they are skipped for current call.
         /// </summary>
-        /// <remarks>This collection uses the custom type <see cref="SpeedCollectionComponent.SpeedCollection{TValue}"/>.</remarks>
+        /// <remarks>This collection uses the custom type <see cref="SpeedCollection{TValue}"/>.</remarks>
         internal readonly Dictionary<int, bool> _adjustingBoneTransformsEntryMade = new Dictionary<int, bool>(55);
 
         /// <summary>
@@ -130,7 +126,7 @@ namespace TWEngine.InstancedModels
         /// the problem of having to constanly access the <see cref="Matrix"/> values, to always get the newest copy; furthermore,
         /// with references to the class, the changes are immediate!
         /// </summary>
-        /// <remarks>This collection uses the custom type <see cref="SpeedCollectionComponent.SpeedCollection{TValue}"/>.</remarks>
+        /// <remarks>This collection uses the custom type <see cref="SpeedCollection{TValue}"/>.</remarks>
         internal readonly SpeedCollection<InstancedItemTransform[]> _absoluteBoneTransforms = new SpeedCollection<InstancedItemTransform[]>(55);
         // ReSharper restore InconsistentNaming
 
@@ -183,7 +179,7 @@ namespace TWEngine.InstancedModels
         /// An array of <see cref="InstancedDataCommunication"/> structures, used to carry transform changes between
         /// the original <see cref="SceneItem"/>, and the <see cref="InstancedModelPart"/> items.
         /// </summary>
-        /// <remarks>This collection uses the custom type <see cref="SpeedCollectionComponent.SpeedCollection{TValue}"/>.</remarks>
+        /// <remarks>This collection uses the custom type <see cref="SpeedCollection{TValue}"/>.</remarks>
         internal Dictionary<int, InstancedDataCommunication> InstanceWorldTransforms = new Dictionary<int, InstancedDataCommunication>(55);
         
         
@@ -1280,7 +1276,7 @@ namespace TWEngine.InstancedModels
         /// The <paramref name="materialId"/> set, will apply to ALL instances of the given 
         /// <see cref="InstancedModel"/> type.
         /// </remarks>
-        /// <param name="materialId"><see cref="Enums.ShaderToUseEnum"/> to apply to model.</param>
+        /// <param name="materialId"><see cref="ShaderToUseEnum"/> to apply to model.</param>
         /// <param name="modelPartIndexKey">ModelPartIndex key to apply Id to; set to null to apply to all.</param>
         public void AssignProceduralMaterialId(ShaderToUseEnum materialId, int? modelPartIndexKey)
         {

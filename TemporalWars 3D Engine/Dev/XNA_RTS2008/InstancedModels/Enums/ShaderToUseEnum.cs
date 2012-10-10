@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.InstancedModels.Enums
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
     // 2/12/2010 - Enum of Shaders
     // Note: Any changes made here, also need to be done in the 'InstancedModelProcessors' version!

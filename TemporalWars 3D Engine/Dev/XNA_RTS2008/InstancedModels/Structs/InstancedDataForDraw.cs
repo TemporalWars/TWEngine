@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.InstancedModels.Structs
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs
 {
     // 4/15/2010 - Renamed from 'InstancedDataStruct', to 'InstancedDataForDraw'.
     // 8/28/2009 - InstancedDataStruct, used to pass to the graphicsDevice.

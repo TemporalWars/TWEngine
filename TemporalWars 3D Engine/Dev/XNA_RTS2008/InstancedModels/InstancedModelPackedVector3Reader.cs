@@ -8,13 +8,14 @@
 #endregion
 
 #region Using Statements
+
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
 using Microsoft.Xna.Framework.Content;
-using TWEngine.InstancedModels.Structs;
 
 #endregion
 
 // 5/28/2009
-namespace TWEngine.InstancedModels
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
     /// <summary>
     /// Content pipeline support class for loading <see cref="InstancedModel"/> <see cref="PackedVector3"/> structs.

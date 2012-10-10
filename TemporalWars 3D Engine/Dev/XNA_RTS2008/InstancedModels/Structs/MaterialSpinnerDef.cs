@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 
-namespace TWEngine.InstancedModels.Structs
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs
 {
     /// <summary>
     /// Defines a single Numeric-Up-Down spinner's

@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.InstancedModels.Enums
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
     // 5/22/2009
     ///<summary>
