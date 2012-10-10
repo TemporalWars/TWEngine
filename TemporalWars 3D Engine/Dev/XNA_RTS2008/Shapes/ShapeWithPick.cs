@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using TWEngine.Interfaces;
 
-namespace TWEngine.Shapes
+namespace ImageNexus.BenScharbach.TWEngine.Shapes
 {
     /// <summary>
     /// The <see cref="ShapeWithPick"/> class adds the ability to 'Pick' an item, which
@@ -94,7 +96,7 @@ namespace TWEngine.Shapes
             intersectionDistance = null;
 
             // 5/5/2008 - Check if Custom Cursor exist; if so, then we will use the Custom Cursor Position for the Ray.            
-            Common.Cursor.CalculateCursorRay(out _cursorRay);
+            ImageNexus.BenScharbach.TWEngine.Common.Cursor.CalculateCursorRay(out _cursorRay);
 
             if (ModelInstance == null)
                 return false;

@@ -6,33 +6,35 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
-using AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Explosions;
+using ImageNexus.BenScharbach.TWEngine.Explosions.Structs;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shapes.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Common;
-using TWEngine.Explosions.Structs;
-using TWEngine.GameCamera;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Interfaces;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.Players;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems.Enums;
-using TWEngine.Utilities;
-using TWEngine.Shadows;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.InstancedModels;
-using TWEngine.SceneItems;
-using TWEngine.Explosions;
-using TWEngine.Terrain;
-using TWEngine.rtsCommands;
-using TWEngine.Networking;
-using TWEngine.MemoryPool;
-using TWEngine.Shapes.Enums;
 
-namespace TWEngine.Shapes
+namespace ImageNexus.BenScharbach.TWEngine.Shapes
 {
     ///<summary>
     /// The <see cref="BuildingShape"/> class holds the actual artwork reference, to
