@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using TWEngine.IFDTiles.Enums;
-using TWEngine.SceneItems;
 
-namespace TWEngine.InstancedModels.Enums
+using System;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
     ///<summary>
     /// <see cref="ItemGroupType"/> Enum, used to determine

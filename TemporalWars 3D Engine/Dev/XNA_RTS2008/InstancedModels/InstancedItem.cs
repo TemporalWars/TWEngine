@@ -6,41 +6,43 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Explosions.Structs;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.BeginGame.Enums;
-using TWEngine.Common;
-using TWEngine.Explosions.Structs;
-using TWEngine.ForceBehaviors;
-using TWEngine.GameCamera;
-using TWEngine.ItemTypeAttributes;
-using TWEngine.ItemTypeAttributes.Structs;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.Shadows;
-using TWEngine.Shapes;
-using TWEngine.ForceBehaviors.SteeringBehaviors;
-using TWEngine.Terrain;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.ScreenManagerC;
-using TWEngine.Terrain.Enums;
-using TWEngine.Terrain.Structs;
-using TWEngine.Utilities;
+using TWEngine;
 
-
-namespace TWEngine.InstancedModels
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
     // 7/24/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.InstancedModels"/> namespace contains the classes
-    /// which make up the entire <see cref="InstancedModels"/>.
+    /// which make up the entire <see cref="TWEngine.InstancedModels"/>.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
@@ -550,8 +552,8 @@ namespace TWEngine.InstancedModels
         // 5/19/2009: Removed the params 'View', 'Projection', & 'LightPos' since these are avaible as STATIC variables!
         // 7/22/2008; 1/14/2009: Updated to use the Keys List instead.
         /// <summary>
-        /// Batch Draws the <see cref="InstancedModel"/> for the <see cref="Water"/>'s ReflectionMap.
-        /// Should be called from the <see cref="Water"/> Interface.
+        /// Batch Draws the <see cref="InstancedModel"/> for the <see cref="TWEngine.Water"/>'s ReflectionMap.
+        /// Should be called from the <see cref="TWEngine.Water"/> Interface.
         /// </summary>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
         /// <param name="reflectionView">Reflection view matrix</param>

@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.InstancedModels.Structs
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs
 {
     // 4/15/2009; updated to be a STRUCT!
     // 2/17/2009 - InstanceItem Transform class

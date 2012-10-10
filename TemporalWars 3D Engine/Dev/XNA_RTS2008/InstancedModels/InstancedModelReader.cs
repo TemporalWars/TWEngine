@@ -10,9 +10,6 @@ using Microsoft.Xna.Framework.Content;
 
 namespace TWEngine.InstancedModels
 {
-    /// <summary>
-    /// Content pipeline support class for loading <see cref="InstancedModel"/> objects.
-    /// </summary>
     /*public class InstancedModelReader : ContentTypeReader<InstancedModel>
     {
         /// <summary>

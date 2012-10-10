@@ -6,10 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Explosions;
-using TWEngine.Explosions.Structs;
 
-namespace TWEngine.InstancedModels.Enums
+using ImageNexus.BenScharbach.TWEngine.Explosions.Structs;
+
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
     ///<summary>
     /// <see cref="DrawTransformsType"/>  enumeration, which

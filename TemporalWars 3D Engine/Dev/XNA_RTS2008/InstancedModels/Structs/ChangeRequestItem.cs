@@ -6,16 +6,17 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.InstancedModels.Enums;
 
-namespace TWEngine.InstancedModels.Structs
+using System;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.InstancedModels.Structs"/> namespace contains the structures
-    /// which make up the entire <see cref="InstancedModels.Structs"/> component.
+    /// which make up the entire <see cref="TWEngine.TWEngine.InstancedModels.Structsnent.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc

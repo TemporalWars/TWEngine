@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.InstancedModels.Enums
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
     // 9/19/2008 - Add the new 'ShaderInstancingTwoPass' Alpha draw mode.
     // 10/28/2008 - Add Enum Numbers, which correspond to the Effect.Techniques 

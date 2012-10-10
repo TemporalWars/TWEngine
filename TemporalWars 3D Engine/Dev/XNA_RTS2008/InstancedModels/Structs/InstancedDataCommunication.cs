@@ -6,16 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using Microsoft.Xna.Framework;
+
 #if !XBOX360
 using System.Windows.Forms;
 #endif
-using Microsoft.Xna.Framework;
-using TWEngine.GameCamera;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.SceneItems;
-using TWEngine.Shapes;
 
-namespace TWEngine.InstancedModels.Structs
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs
 {
     // 4/15/2010: Renamed from 'InstancedData' to now be 'InstancedDataCommunication'.
     // 9/12/2008

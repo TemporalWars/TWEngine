@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.InstancedModels.Structs
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs
 {
     /// <summary>
     /// The <see cref="PackedVector3"/> structure, stores a regular

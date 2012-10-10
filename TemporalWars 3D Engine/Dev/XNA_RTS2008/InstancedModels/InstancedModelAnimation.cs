@@ -8,7 +8,6 @@
 #endregion
 using System;
 using Microsoft.Xna.Framework;
-using TWEngine.InstancedModels.Structs;
 
 namespace TWEngine.InstancedModels
 {

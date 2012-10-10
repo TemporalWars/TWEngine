@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.ItemTypeAttributes;
 
-namespace TWEngine.InstancedModels.Enums
+using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
+
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
     ///<summary>
     /// <see cref="ItemType"/> Enum, which represents all usable artwork for the game engine.  Using

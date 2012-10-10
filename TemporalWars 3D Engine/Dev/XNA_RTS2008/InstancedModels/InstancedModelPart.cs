@@ -6,24 +6,22 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Diagnostics;
 using System.Text;
 using System.Collections.Generic;
-using System.Threading;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.GameCamera;
-using TWEngine.Players;
-using TWEngine.Shadows;
-using TWEngine.Terrain;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
 
-namespace TWEngine.InstancedModels
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
     
 
@@ -728,14 +726,12 @@ namespace TWEngine.InstancedModels
             StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.IMDraw);
 #endif
 
-
-          
-
-
 #if DEBUG
             // 4/21/2010 - Debug Purposes           
             StopWatchTimers.StartStopWatchInstance(StopWatchName.IMPDraw);
 #endif
+            // 10/9/2012
+            if (_graphicsDevice == null) return;
 
             // 6/11/2010 - Set Regular technique.
             switch (instancingTechnique)
@@ -799,6 +795,9 @@ namespace TWEngine.InstancedModels
         public static void DrawShadows(InstancedModelPart instancedModelPart, InstancingTechnique instancingTechnique, DrawTransformsType drawTransformsType, GameTime gameTime, bool isStaticShadows)
         {
             SetRenderStates(instancedModelPart, true);
+
+            // 10/9/2012
+            if (_graphicsDevice == null) return;
 
             // 6/11/2010 - Set Shadow technique.
             switch (instancingTechnique)
@@ -992,6 +991,9 @@ namespace TWEngine.InstancedModels
                 // XMA 4.0 Updates - Set 'InstanceVertexBuffer' to 2nd stream.
                 //vertices[2].SetSource(instanceDataStream, 0, InstancedDataForDraw.SizeInBytes); // 8/28/2009 - was 2nd param = SizeOfMatrix
                 //vertices[2].SetFrequencyOfInstanceData(1);
+
+                // 10/9/2012
+                if (_graphicsDevice == null) return;
 
                 // XNA 4.0 Update - Replaced with new 'DrawInstancedPrimitives' method call.
                 // Draw all the instances in a single batch.

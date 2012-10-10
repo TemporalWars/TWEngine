@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.GameCamera;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.InstancedModels.Enums
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
     /// <summary>
     /// Used to allow updating some variable within the <see cref="InstancedDataCommunication"/>. 

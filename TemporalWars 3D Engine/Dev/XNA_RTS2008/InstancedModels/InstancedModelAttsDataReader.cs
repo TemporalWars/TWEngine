@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
 using Microsoft.Xna.Framework.Content;
-using TWEngine.InstancedModels.Structs;
 
 // 5/27/2009
-namespace TWEngine.InstancedModels
+namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
 
     /// <summary>
