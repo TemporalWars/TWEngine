@@ -6,19 +6,19 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools.Structs;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.Interfaces;
-using TWEngine.TerrainTools.Structs;
-using System.Diagnostics;
+using TWEngine.TerrainTools;
 
-namespace TWEngine.TerrainTools
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
 {
     // 2/10/2010 - 
     /// <summary>

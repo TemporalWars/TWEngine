@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Diagnostics;
 
-namespace TWEngine.TerrainTools.Structs
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Structs
 {
     /// <summary>
     /// Defines the group of controls which make up one <see cref="MaterialParameters"/>. 

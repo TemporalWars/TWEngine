@@ -1,6 +1,6 @@
-using TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
 
-namespace TWEngine.TerrainTools.Enums
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Enums
 {
     ///<summary>
     /// The <see cref="ItemsTool"/> Enum is used when 

@@ -6,25 +6,27 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Windows.Controls;
-using System.Windows.Forms;
-using Microsoft.Xna.Framework;
-using TWEngine.GameScreens;
-using TWEngine.PostProcessEffects.BloomEffect.Enums;
-using TWEngine.Shadows;
-using TWEngine.Shadows.Enums;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Enums;
-using TWEngine.Utilities;
-using TWEngine.Water.Enums;
-using TWTerrainToolsWPF;
-using MenuItem = System.Windows.Controls.MenuItem;
-using MessageBox = System.Windows.Forms.MessageBox;
 
-namespace TWEngine.TerrainTools
+using System;
+using System.Threading;
+using System.Windows.Forms;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.Water.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF;
+using ImageNexus.BenScharbach.TWTools.TWTerrainToolsWPF.Delegates;
+using Microsoft.Xna.Framework;
+using TWEngine.TerrainTools;
+
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
 {
     // 8/17/2010
     /// <summary>
@@ -447,7 +449,7 @@ namespace TWEngine.TerrainTools
         /// Turns on the GameViewPort display, to show one of the 3 waterMap textures
         /// for debug purposes.
         /// </summary>
-        static void MainMenuWindowI_ShowWaterMap(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_ShowWaterMap(object sender, IsToggledEventArgs e)
         {
             try
             {
@@ -484,7 +486,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// Allows setting the 'IsVisible' flag in the WaterManager.
         /// </summary>
-        static void MainMenuWindowI_IsWaterVisible(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_IsWaterVisible(object sender, IsToggledEventArgs e)
         {
             try
             {
@@ -524,7 +526,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// Sets the UseSkyBox flag.
         /// </summary>
-        static void MainMenuWindowI_UseSkyBox(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseSkyBox(object sender, IsToggledEventArgs e)
         {
             try 
             {
@@ -675,7 +677,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// Eventhandler for when the user moves the scroll bar.
         /// </summary>
-        static void MainMenuWindowI_ShadowMapDarknessUpdated(object sender, TWTerrainToolsWPF.Delegates.ShadowMapDarknessEventArgs e)
+        static void MainMenuWindowI_ShadowMapDarknessUpdated(object sender, ShadowMapDarknessEventArgs e)
         {
             try 
             {
@@ -778,7 +780,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// Turn Shadows Debugging on.
         /// </summary>
-        static void MainMenuWindowI_ShowShadowMap(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_ShowShadowMap(object sender, IsToggledEventArgs e)
         {
             try 
             {
@@ -797,7 +799,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// Use Shadows.
         /// </summary>
-        static void MainMenuWindowI_UseShadows(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseShadows(object sender, IsToggledEventArgs e)
         {
             try 
             {
@@ -838,7 +840,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// Set the NormalMap Visible.
         /// </summary>
-        static void MainMenuWindowI_UseNormalMap(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseNormalMap(object sender, IsToggledEventArgs e)
         {
             try 
             {
@@ -918,7 +920,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// Allows turning On/Off the Minimap's texture wrapper.
         /// </summary>
-        static void MainMenuWindowI_ShowMiniMapWrapper(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_ShowMiniMapWrapper(object sender, IsToggledEventArgs e)
         {
             try 
             {
@@ -945,7 +947,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// Set the Minimap Visible.
         /// </summary>
-        static void MainMenuWindowI_UseMiniMap(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseMiniMap(object sender, IsToggledEventArgs e)
         {
             try 
             {
@@ -1076,7 +1078,7 @@ namespace TWEngine.TerrainTools
         }
 
         // 8/17/2010
-        static void MainMenuWindowI_UseIFD(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseIFD(object sender, IsToggledEventArgs e)
         {
             try
             {
@@ -1122,7 +1124,7 @@ namespace TWEngine.TerrainTools
         }
 
         // 8/17/2010
-        static void MainMenuWindowI_UseGlow(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseGlow(object sender, IsToggledEventArgs e)
         {
             try 
             {
@@ -1169,7 +1171,7 @@ namespace TWEngine.TerrainTools
         }
 
         // 8/17/2010
-        static void MainMenuWindowI_UseFogOfWar(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseFogOfWar(object sender, IsToggledEventArgs e)
         {
             try 
             {
@@ -1264,7 +1266,7 @@ namespace TWEngine.TerrainTools
         /// When clicked, sets the UseBloom.
         /// </summary>
 // ReSharper disable InconsistentNaming
-        static void MainMenuWindowI_UseBloom(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseBloom(object sender, IsToggledEventArgs e)
 // ReSharper restore InconsistentNaming
         {
             try
@@ -1287,7 +1289,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// When clicked, sets the UsePerlinClouds.
         /// </summary>
-        static void MainMenuWindowI_UsePerlinClouds(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UsePerlinClouds(object sender, IsToggledEventArgs e)
         {
             try
             {
@@ -1335,7 +1337,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// When DebugShader's SubMenu opens, this will update the 'UseDebugShader' flag.
         /// </summary>
-        static void MainMenuWindowI_UseDebugShader(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e )
+        static void MainMenuWindowI_UseDebugShader(object sender, IsToggledEventArgs e )
         {
             try
             {
@@ -1381,7 +1383,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// When clicked, sets the UseDrawCollisionsPlayableItems.
         /// </summary>
-        static void MainMenuWindowI_UseDrawCollisionsPlayableItems(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseDrawCollisionsPlayableItems(object sender, IsToggledEventArgs e)
         {
             try
             {
@@ -1407,7 +1409,7 @@ namespace TWEngine.TerrainTools
         /// <summary>
         /// When clicked, sets the UseDrawCollisionsScenaryItems.
         /// </summary>
-        static void MainMenuWindowI_UseDrawCollisionsScenaryItems(object sender, TWTerrainToolsWPF.Delegates.IsToggledEventArgs e)
+        static void MainMenuWindowI_UseDrawCollisionsScenaryItems(object sender, IsToggledEventArgs e)
         {
             try
             {

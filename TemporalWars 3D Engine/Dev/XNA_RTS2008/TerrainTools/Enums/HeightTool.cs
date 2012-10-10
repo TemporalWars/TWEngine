@@ -1,4 +1,4 @@
-namespace TWEngine.TerrainTools.Enums
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Enums
 {
     ///<summary>
     /// The <see cref="HeightTool"/> Enum identifies what action to use

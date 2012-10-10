@@ -6,38 +6,34 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using TWEngine.GameCamera;
-using TWEngine.GameLevels;
-using TWEngine.GameScreens;
-using TWEngine.Interfaces;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.ScreenManagerC;
-using TWEngine.Terrain;
-using TWEngine.Terrain.Enums;
-using TWEngine.Terrain.Structs;
-#if !XBOX360
-using TWEngine.TerrainTools.Enums;
-using System.Windows.Forms;
-using TWTerrainTools_Interfaces.Structs;
-using System.Windows.Threading;
-using TWTerrainToolsWPF;
-using DrawMode = TWEngine.Terrain.Enums.DrawMode;
+using DrawMode = ImageNexus.BenScharbach.TWEngine.Terrain.Enums.DrawMode;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 
+#if !XBOX360
+using TWEngine.TerrainTools;
+using System.Windows.Forms;
 #endif
 
-namespace TWEngine.TerrainTools
+namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
 {
-
-
-
     // 7/29/2008
     /// <summary>
     /// The <see cref="TerrainEditRoutines"/> class holds all the terrain editing algorithms, like
@@ -399,7 +395,7 @@ namespace TWEngine.TerrainTools
             // 11/21/2009 - Check for SceneItem DragMove.
             // NOTE: MUST PROCEED the follow 'IsPicked' check; otherwise will fail!
             Vector3 newPosition;
-            if (_sceneItemDragMove != null && HandleGameInput.HandleInput.CheckForItemDragMove(ref _dragMoveStarted, out newPosition))
+            if (_sceneItemDragMove != null && ImageNexus.BenScharbach.TWEngine.HandleGameInput.HandleInput.CheckForItemDragMove(ref _dragMoveStarted, out newPosition))
                 _sceneItemDragMove.Position = newPosition;
             else
                 _sceneItemDragMove = null;
@@ -445,7 +441,7 @@ namespace TWEngine.TerrainTools
                 if (selectableItem == null) continue;
 
                 // 11/21/2009 - Do DragMove check.
-                if (HandleGameInput.HandleInput.DoDragMoveCheck(ref _dragMoveStarted))
+                if (ImageNexus.BenScharbach.TWEngine.HandleGameInput.HandleInput.DoDragMoveCheck(ref _dragMoveStarted))
                 {
                     // set item to drag move.
                     _sceneItemDragMove = selectableItem;
@@ -457,10 +453,10 @@ namespace TWEngine.TerrainTools
                 var propertiesTools = PropertiesTools; // cache
                 if (propertiesTools == null) continue; // 11/3/2009
 
-                if (!HandleGameInput.HandleInput.InputState.LeftMouseButton) continue;
+                if (!ImageNexus.BenScharbach.TWEngine.HandleGameInput.HandleInput.InputState.LeftMouseButton) continue;
 
                 // 6/11/2012: Updated to a 'Right-Click' for setting the Behaviors in the Properties tool.
-                if (HandleGameInput.HandleInput.InputState.IsKeyPress(Keys.RightControl))
+                if (ImageNexus.BenScharbach.TWEngine.HandleGameInput.HandleInput.InputState.IsKeyPress(Keys.RightControl))
                 {
                     // Store Current Position of SceneItemOwner clicked on.
                     // Store Current SceneItemOwner Ref
@@ -474,7 +470,7 @@ namespace TWEngine.TerrainTools
                 }
 
                 // 6/11/2012 - Updated to only link item when the Left-Control key clicked.
-                if (HandleGameInput.HandleInput.InputState.IsKeyPress(Keys.LeftControl))
+                if (ImageNexus.BenScharbach.TWEngine.HandleGameInput.HandleInput.InputState.IsKeyPress(Keys.LeftControl))
                 {
                     // Else, Regular Left-Mouse Click selection
                     // Call Updating the Links
@@ -525,7 +521,7 @@ namespace TWEngine.TerrainTools
                 {
                     case ToolType.PropertiesTool:
                         // 6/11/2012 - Updated to only link item when the Left-Control key clicked.
-                        if (HandleGameInput.HandleInput.InputState.IsKeyPress(Keys.LeftControl))
+                        if (ImageNexus.BenScharbach.TWEngine.HandleGameInput.HandleInput.InputState.IsKeyPress(Keys.LeftControl))
                         {
                             PropertiesTools.LinkSceneItemToTool(scenaryItemScene);
                         }
@@ -536,7 +532,7 @@ namespace TWEngine.TerrainTools
                 }
 
                 // 11/21/2009 - Do DragMove check.
-                if (HandleGameInput.HandleInput.DoDragMoveCheck(ref _dragMoveStarted))
+                if (ImageNexus.BenScharbach.TWEngine.HandleGameInput.HandleInput.DoDragMoveCheck(ref _dragMoveStarted))
                 {
                     // set item to drag move.
                     _sceneItemDragMove = scenaryItemScene;

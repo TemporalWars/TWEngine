@@ -8,9 +8,10 @@
 #endregion
 using System;
 using System.Windows.Forms;
-using TWEngine.Interfaces;
-using TWEngine.Water;
-using TWEngine.Water.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Water;
+using ImageNexus.BenScharbach.TWEngine.Water.Enums;
 using Color = Microsoft.Xna.Framework.Color;
 using System.Diagnostics;
 
