@@ -8,16 +8,15 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using BenScharbachTWScriptingInterfaces;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWScripting.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.GameLevels;
-using TWEngine.Networking;
-using TWEngine.ScreenManagerC;
 
-namespace TWEngine.GameScreens.Generic
+namespace ImageNexus.BenScharbach.TWEngine.GameScreens.Generic
 {
     /// <summary>
     /// The <see cref="PauseMenuScreen"/> comes up over the top of the game,

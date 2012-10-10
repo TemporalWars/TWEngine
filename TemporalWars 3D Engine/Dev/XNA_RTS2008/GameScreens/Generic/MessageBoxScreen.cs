@@ -1,11 +1,13 @@
 using System;
 using System.Text;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.ScreenManagerC;
 
-namespace TWEngine.GameScreens.Generic
+namespace ImageNexus.BenScharbach.TWEngine.GameScreens.Generic
 {
     /// <summary>
     /// A popup <see cref="MessageBoxScreen"/>, used to display "are you sure?"

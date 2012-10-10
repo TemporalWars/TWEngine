@@ -6,60 +6,63 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading;
-using AStarInterfaces.AStarAlgorithm;
-using BenScharbachTWScriptingInterfaces;
+using ImageNexus.BenScharbach.TWEngine.AI;
+using ImageNexus.BenScharbach.TWEngine.Audio;
+using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.Networking.Structs;
+using ImageNexus.BenScharbach.TWEngine.Particles;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.SkyDomes;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
+using ImageNexus.BenScharbach.TWScripting.Interfaces;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Net;
-using Particles3DComponentLibrary;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using ScreenTextDisplayer.ScreenText;
-using TWEngine.AI;
-using TWEngine.Audio;
-using TWEngine.Audio.Enums;
-using TWEngine.BeginGame.Enums;
-using TWEngine.Common;
-using TWEngine.GameScreens.Generic;
-using TWEngine.HandleGameInput;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Networking.Structs;
-using TWEngine.Players;
-using TWEngine.Utilities;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.ForceBehaviors;
-using TWEngine.GameLevels;
-using TWEngine.Interfaces;
-using TWEngine.Particles;
-using TWEngine.SkyDomes;
-using TWEngine.GameCamera;
-using TWEngine.rtsCommands;
-using TWEngine.Networking;
-using TWEngine.IFDTiles;
-using TWEngine.InstancedModels;
-using TWEngine.SceneItems;
-using TWEngine.ScreenManagerC;
-using TWEngine.Shapes;
-using TWEngine.Terrain;
-using TWEngine.MemoryPool;
-using TWEngine.Shadows;
-using TWEngine.Terrain.Enums;
 
 #if !XBOX360
-using TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.Console.Enums;
 using TWEngine.TerrainTools;
-using TWEngine.Console.Enums;
 #else
-using TWEngine.Common.Extensions;
 #endif
 
-namespace TWEngine.GameScreens
+namespace ImageNexus.BenScharbach.TWEngine.GameScreens
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
@@ -74,7 +77,7 @@ namespace TWEngine.GameScreens
 
     /// <summary>
     /// This <see cref="TerrainScreen"/> implements the actual RTS game logic, which includes
-    /// the creation of the <see cref="Player"/> instances, creation of the <see cref="Terrain"/>,
+    /// the creation of the <see cref="Player"/> instances, creation of the <see cref="TWEngine.Terrain"/>,
     /// loading the current level map, as well as continually calling update and draw throughout 
     /// the game cycle.
     /// </summary>
@@ -1160,7 +1163,7 @@ namespace TWEngine.GameScreens
         }
         
         /// <summary>
-        /// Draws the <see cref="Terrain"/> ONLY.
+        /// Draws the <see cref="TWEngine.Terrain"/> ONLY.
         /// </summary>    
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>    
         public override void Draw3D(GameTime gameTime)
@@ -1243,7 +1246,7 @@ namespace TWEngine.GameScreens
 
         // /5/28/2012
         /// <summary>
-        /// Helper method which iterates all the playable <see cref="SceneItems"/> and draws
+        /// Helper method which iterates all the playable <see cref="TWEngine.SceneItems"/> and draws
         /// the debug artwork, like Collision spheres.
         /// </summary>
         /// <param name="gameTime"></param>

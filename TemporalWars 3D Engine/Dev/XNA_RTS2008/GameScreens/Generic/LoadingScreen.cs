@@ -10,15 +10,16 @@
 using System;
 using System.Threading;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.Interfaces;
-using TWEngine.ScreenManagerC;
 using System.Text;
-using TWEngine.ScreenManagerC.Enums;
 
-namespace TWEngine.GameScreens.Generic
+namespace ImageNexus.BenScharbach.TWEngine.GameScreens.Generic
 {
     /// <summary>
     /// The <see cref="LoadingScreen"/> coordinates transitions between the menu system and the

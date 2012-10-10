@@ -8,16 +8,17 @@
 #endregion
 
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Net;
-using TWEngine.BeginGame.Enums;
-using TWEngine.Common;
-using TWEngine.Interfaces;
-using TWEngine.Networking;
 using Microsoft.Xna.Framework;
-using TWEngine.ScreenManagerC;
 
-namespace TWEngine.GameScreens.Generic
+namespace ImageNexus.BenScharbach.TWEngine.GameScreens.Generic
 {
     /// <summary>
     /// The <see cref="MainMenuScreen"/> is the first thing displayed when the game starts up.

@@ -13,18 +13,20 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.ScreenManagerC;
-using TWEngine.ScreenManagerC.Enums;
 
 #if XBOX360
-using TWEngine.Common.Extensions;
 #endif
 
 #endregion
 
-namespace TWEngine.GameScreens.Generic
+namespace ImageNexus.BenScharbach.TWEngine.GameScreens.Generic
 {
     /// <summary>
     /// Base class for <see cref="MenuScreen"/> that contain a menu of options. The user can
