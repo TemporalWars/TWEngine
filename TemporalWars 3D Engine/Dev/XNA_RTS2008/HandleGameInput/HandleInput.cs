@@ -11,41 +11,42 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using AStarInterfaces.AStarAlgorithm.Enums;
-using PerfTimersComponent.Timers;
-using ScreenTextDisplayer.ScreenText;
-using TWEngine.Common;
-using TWEngine.Common.Enums;
-using TWEngine.Common.Extensions;
-using TWEngine.GameCamera.Enums;
-using TWEngine.IFDTiles.Enums;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Interfaces;
-using TWEngine.Players;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems.Enums;
-using TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common;
+using ImageNexus.BenScharbach.TWEngine.Common.Enums;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameCamera.Enums;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shadows.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using TWEngine.GameCamera;
-using TWEngine.Shadows.Enums;
-using TWEngine.Terrain;
-using TWEngine.SceneItems;
-using TWEngine.Shadows;
-using TWEngine.IFDTiles;
-using TWEngine.rtsCommands;
-using TWEngine.MemoryPool;
-using TWEngine.Networking;
-using TWEngine.Terrain.Enums;
-using TWEngine.TerrainTools;
 
 #if !XBOX360
-using TWEngine.Console.Enums;
+using ImageNexus.BenScharbach.TWEngine.Console.Enums;
 #else
 using Microsoft.Xna.Framework.Graphics;
 #endif
 
-namespace TWEngine.HandleGameInput
+namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
 {
     // 4/30/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
@@ -59,7 +60,7 @@ namespace TWEngine.HandleGameInput
 
     // 4/28/2009
     /// <summary>
-    /// The <see cref="HandleGameInput"/>, handles input for the <see cref="IFDTile"/> selection,
+    /// The <see cref="TWEngine.HandleGameInput"/>, handles input for the <see cref="IFDTile"/> selection,
     /// <see cref="IMinimap"/> selection, <see cref="Cursor"/> selection, <see cref="Camera"/> selection,
     /// <see cref="ShadowMap"/> debug selection, <see cref="Player"/> selection, and special control-group
     /// selection.
