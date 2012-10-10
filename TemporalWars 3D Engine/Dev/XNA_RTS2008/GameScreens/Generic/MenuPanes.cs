@@ -9,15 +9,15 @@
 
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
 using Microsoft.Xna.Framework;
-using TWEngine.Common.Extensions;
-using TWEngine.ScreenManagerC;
 
 #if XBOX360
-using TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
 #endif
 
-namespace TWEngine.GameScreens.Generic
+namespace ImageNexus.BenScharbach.TWEngine.GameScreens.Generic
 {
     // 2/20/2009
     ///<summary>

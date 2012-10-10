@@ -8,11 +8,13 @@
 #endregion
 
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
 using Microsoft.Xna.Framework;
-using TWEngine.SceneItems;
-using TWEngine.ScreenManagerC;
 
-namespace TWEngine.GameScreens.Generic
+namespace ImageNexus.BenScharbach.TWEngine.GameScreens.Generic
 {
     /// <summary>
     /// A single <see cref="MenuPaneItem"/>, with multiple <see cref="MenuEntry"/> instances.
