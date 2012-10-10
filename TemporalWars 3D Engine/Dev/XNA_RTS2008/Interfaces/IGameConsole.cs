@@ -7,10 +7,11 @@
 //-----------------------------------------------------------------------------
 #endregion
 #if !XBOX360
-using TWEngine.Console.Enums;
+using ImageNexus.BenScharbach.TWEngine.Console.Enums;
+
 #endif
 
-namespace TWEngine.Interfaces
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// Game console class creates an instance of the Python console internally,

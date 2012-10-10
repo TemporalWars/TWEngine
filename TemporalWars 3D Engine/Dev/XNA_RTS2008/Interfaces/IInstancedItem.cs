@@ -6,13 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.InstancedModels.Structs;
-using TWEngine.SceneItems;
-using TWEngine.Shapes.Enums;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Shapes.Enums;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// The <see cref="InstancedItem"/> class is the manager for the <see cref="InstancedModel"/>

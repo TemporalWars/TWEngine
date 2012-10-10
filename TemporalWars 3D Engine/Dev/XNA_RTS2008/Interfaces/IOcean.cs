@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using TWEngine.Water;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.Water;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// The <see cref="Ocean"/> class creates realistic waves using animated vertices and is resource intensive.

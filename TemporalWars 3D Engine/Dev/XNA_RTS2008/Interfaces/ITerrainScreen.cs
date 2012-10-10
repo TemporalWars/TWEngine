@@ -6,17 +6,18 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.GameScreens;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.Terrain;
-using TWEngine.TerrainTools;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// This <see cref="TerrainScreen"/> implements the actual RTS game logic, which includes
-    /// the creation of the <see cref="Player"/> instances, creation of the <see cref="Terrain"/>,
+    /// the creation of the <see cref="Player"/> instances, creation of the <see cref="TWEngine.Terrain"/>,
     /// loading the current level map, as well as continually calling update and draw throughout 
     /// the game cycle.
     /// </summary>
@@ -24,7 +25,7 @@ namespace TWEngine.Interfaces
     {
         ///<summary>
         /// The <see cref="TerrainShape"/> class is a manager, which uses the other terrain classes to create and manage
-        /// the <see cref="Terrain"/>.  For example, the drawing of the terrain is intiated in this class, but the actual drawing is
+        /// the <see cref="TWEngine.Terrain"/>.  For example, the drawing of the terrain is intiated in this class, but the actual drawing is
         /// done in the <see cref="TerrainQuadTree"/> class.  This class also loads the <see cref="SceneItem"/> into memory at the
         /// beginning of a level load.  This class also used the <see cref="TerrainAlphaMaps"/>, <see cref="TerrainPickingRoutines"/>, and
         /// the <see cref="TerrainEditRoutines"/> classes.

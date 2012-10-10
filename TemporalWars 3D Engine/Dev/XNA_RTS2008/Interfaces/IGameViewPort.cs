@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Viewports;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.Viewports;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// This is a game component that implements IUpdateable.

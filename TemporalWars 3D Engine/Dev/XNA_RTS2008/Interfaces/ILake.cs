@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using TWEngine.Water;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.Water;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// The <see cref="Lake"/> class is created using a simple flat quad rectangle, where the waves are represented

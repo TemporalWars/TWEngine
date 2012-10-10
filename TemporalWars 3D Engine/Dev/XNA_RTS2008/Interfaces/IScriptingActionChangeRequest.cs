@@ -1,21 +1,23 @@
 #region File Description
 //-----------------------------------------------------------------------------
-// IScriptingActionChangeRequest.cs
+// IScriptingActionRequest.cs
 //
 // Ben Scharbach - XNA Community Game Platform
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Interfaces
+using System;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWTools.MemoryPoolComponent.Interfaces;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
     /// <summary>
     /// The interface for the abstract ScriptingAction change request.
     /// </summary>
-    public interface IScriptingActionChangeRequest: IDisposable
+    public interface IScriptingActionRequest : IDisposable, IPoolItemResetDefaults
     {
         /// <summary>
         /// Gets or sets the current index value for ScenaryItems.
@@ -52,7 +54,7 @@ namespace TWEngine.Interfaces
 
         // 6/9/2012
         /// <summary>
-        /// Gets the current <see cref="IScriptingActionChangeRequest"/> unique key GUID.
+        /// Gets the current <see cref="IScriptingActionRequest"/> unique key GUID.
         /// </summary>
         Guid UniqueKey { get; }
 

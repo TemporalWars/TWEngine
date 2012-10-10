@@ -6,11 +6,12 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Viewports;
-using TWEngine.Water;
-using TWEngine.Water.Enums;
 
-namespace TWEngine.Interfaces
+using ImageNexus.BenScharbach.TWEngine.Viewports;
+using ImageNexus.BenScharbach.TWEngine.Water;
+using ImageNexus.BenScharbach.TWEngine.Water.Enums;
+
+namespace ImageNexus.BenScharbach.TWEngine.Interfaces
 {
 
     /// <summary>
