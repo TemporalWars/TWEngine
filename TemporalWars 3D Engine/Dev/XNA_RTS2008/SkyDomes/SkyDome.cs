@@ -6,24 +6,23 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.SkyDomes.Enums;
+using ImageNexus.BenScharbach.TWEngine.SkyDomes.Structs;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using TWEngine.BeginGame.Enums;
-using TWEngine.GameCamera;
-using TWEngine.ScreenManagerC;
-using TWEngine.SkyDomes.Enums;
-using TWEngine.SkyDomes.Structs;
-using TWEngine.Utilities;
 
-
-namespace TWEngine.SkyDomes
+namespace ImageNexus.BenScharbach.TWEngine.SkyDomes
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.SkyDomes"/> namespace contains the classes
-    /// which make up the entire <see cref="SkyDomes"/> component.
+    /// which make up the entire <see cref="TWEngine.SkyDomes"/> component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
