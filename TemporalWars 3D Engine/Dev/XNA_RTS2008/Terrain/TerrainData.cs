@@ -6,32 +6,34 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-#if !XBOX360
-using System.Drawing;
-using System.Windows.Forms;
-#endif
-using AStarInterfaces.AStarAlgorithm;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Structs;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
-using TWEngine.GameScreens.Generic;
-using TWEngine.Terrain.Enums;
-using TWEngine.Utilities;
-using TWEngine.Terrain.Structs;
 
 #if !XBOX360
-using TWEngine.Utilities.Structs;
-using Color=System.Drawing.Color;
+using System.Drawing;
+using System.Windows.Forms;
+using Color = System.Drawing.Color;
 #endif
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     ///<summary>
-    /// The <see cref="TerrainData"/> class is used to hold the important meta-data for the <see cref="Terrain"/> class; for example,
+    /// The <see cref="TerrainData"/> class is used to hold the important meta-data for the <see cref="TWEngine.Terrain"/> class; for example,
     /// the HeightData collection, <see cref="VertexMultitextured_Stream1"/> collection, and the terrain Normals collection
     /// to name a few.
     ///</summary>
@@ -86,7 +88,7 @@ namespace TWEngine.Terrain
 
         // 12/31/2009 - Non-Static Property for interface ref
         /// <summary>
-        /// The spacing between the individual triangles when creating the <see cref="Terrain"/> mesh.
+        /// The spacing between the individual triangles when creating the <see cref="TWEngine.Terrain"/> mesh.
         /// </summary>
         int IFOWTerrainData.Scale
         {
@@ -167,7 +169,7 @@ namespace TWEngine.Terrain
 
 
         /// <summary>
-        /// Holds the normal vectors for each vertex in the <see cref="Terrain"/>.
+        /// Holds the normal vectors for each vertex in the <see cref="TWEngine.Terrain"/>.
         /// The normals for lighting are later stored in each vertex, but
         /// we want to store these values permanent for proper physics
         /// collisions with the ground.
@@ -211,22 +213,22 @@ namespace TWEngine.Terrain
         public static LOD Detail { get; set; }
 
         /// <summary>
-        /// Width of the <see cref="Terrain"/>
+        /// Width of the <see cref="TWEngine.Terrain"/>
         /// </summary>
         public static int MapWidth { get; set; }
 
         /// <summary>
-        /// Width of <see cref="Terrain"/>, multiplied by scale value.
+        /// Width of <see cref="TWEngine.Terrain"/>, multiplied by scale value.
         /// </summary>
         public static int MapWidthToScale { get; private set; }
 
         /// <summary>
-        /// Height of <see cref="Terrain"/>
+        /// Height of <see cref="TWEngine.Terrain"/>
         /// </summary>
         public static int MapHeight { get; set; }
 
         /// <summary>
-        /// Height of <see cref="Terrain"/>, multiplied by scale value.
+        /// Height of <see cref="TWEngine.Terrain"/>, multiplied by scale value.
         /// </summary>
         public static int MapHeightToScale { get; private set; }
 
@@ -237,17 +239,17 @@ namespace TWEngine.Terrain
 
         // 4/28/2008 - 
         /// <summary>
-        /// Stores middle of <see cref="Terrain"/> Width(X) value.
+        /// Stores middle of <see cref="TWEngine.Terrain"/> Width(X) value.
         /// </summary>
         public static int MiddleMapX { get; private set; }
 
         /// <summary>
-        /// Stores middle of <see cref="Terrain"/> Height(Z) value.
+        /// Stores middle of <see cref="TWEngine.Terrain"/> Height(Z) value.
         /// </summary>
         public static int MiddleMapY { get; private set; }
 
         /// <summary>
-        /// Maximum height the <see cref="Terrain"/> can be set to.
+        /// Maximum height the <see cref="TWEngine.Terrain"/> can be set to.
         /// </summary>
         public static float? HeightMapMaxHeight { get; private set; }
 
@@ -401,7 +403,7 @@ namespace TWEngine.Terrain
         // 8/22/2008 - Updated for performance
 
         ///<summary>
-        /// Returns the <see cref="Terrain"/> height at the given coordinates.
+        /// Returns the <see cref="TWEngine.Terrain"/> height at the given coordinates.
         ///</summary>
         ///<param name="xPos">X value</param>
         ///<param name="yPos">Y value</param>
@@ -479,7 +481,7 @@ namespace TWEngine.Terrain
         }
 
         ///<summary>
-        /// Returns the <see cref="Terrain"/> height at the given coordinates.
+        /// Returns the <see cref="TWEngine.Terrain"/> height at the given coordinates.
         ///</summary>
         ///<param name="xPos">X value</param>
         ///<param name="yPos">Y value</param>
@@ -1245,7 +1247,7 @@ namespace TWEngine.Terrain
         //
         //            Therefore, the best solution it to simply ADD +1 to the Y-Stride during the creation of the Verticies. - Ben
         /// <summary>
-        /// Creates the Verticies for the <see cref="VertexBuffer"/> for the entire <see cref="Terrain"/>.
+        /// Creates the Verticies for the <see cref="VertexBuffer"/> for the entire <see cref="TWEngine.Terrain"/>.
         /// </summary>               
         public static void SetupTerrainVertexBuffer()
         {
@@ -1464,9 +1466,9 @@ namespace TWEngine.Terrain
         // 4/4/2008 - Ben - Create function to retrieve any component from my VertexBuffer.
         /// <summary>
         /// This will retrieve any component within the <see cref="VertexBuffer"/> using the given <see cref="PickTriangles"/>
-        /// location from the <see cref="Terrain"/>; for example, the Normals or Position components.
+        /// location from the <see cref="TWEngine.Terrain"/>; for example, the Normals or Position components.
         /// </summary>
-        /// <param name="pickedTriangle">The current picked location on the <see cref="Terrain"/></param>
+        /// <param name="pickedTriangle">The current picked location on the <see cref="TWEngine.Terrain"/></param>
         /// <param name="vbComponent"><see cref="VertexBuffer"/> component you want return</param>
         /// <param name="vbData">(OUT) Collection of 3 Objects containing the data for the specified component</param>
         public static void GetVertexBufferComponent(ref PickTriangles pickedTriangle, VertexBufferComponent vbComponent,
@@ -1507,9 +1509,9 @@ namespace TWEngine.Terrain
         // 4/4/2008 - Ben - Create function to set any component from my VertexBuffer.
         /// <summary>
         /// This will set any component within the <see cref="VertexBuffer"/>  using the given <see cref="PickTriangles"/>
-        /// location from the <see cref="Terrain"/>; for example, the Normals or Position components.
+        /// location from the <see cref="TWEngine.Terrain"/>; for example, the Normals or Position components.
         /// </summary>
-        /// <param name="pickedTriangle">The current picked Location on the <see cref="Terrain"/></param>
+        /// <param name="pickedTriangle">The current picked Location on the <see cref="TWEngine.Terrain"/></param>
         /// <param name="vbComponent"><see cref="VertexBuffer"/> component you want to set</param>
         /// <param name="vbData">(OUT) Collection of 3 Objects containing the data for the specified component</param>
         public static void SetVertexBufferComponent(ref PickTriangles pickedTriangle, VertexBufferComponent vbComponent,

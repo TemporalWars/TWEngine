@@ -8,10 +8,10 @@
 #endregion
 
 using System;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.Terrain.Enums;
 
-namespace TWEngine.Terrain.Structs
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Structs
 {
     ///<summary>
     /// The <see cref="TerrainQuadPatch"/> structure is used to hold 

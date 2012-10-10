@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Terrain.Structs;
 
-namespace TWEngine.Terrain.Enums
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
     ///<summary>
     /// A <see cref="TerrainQuadPatch"/> is split up into 4 quadridants.  The <see cref="QuadSection"/> Enum

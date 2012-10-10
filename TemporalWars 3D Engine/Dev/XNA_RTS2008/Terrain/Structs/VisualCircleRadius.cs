@@ -6,15 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using Microsoft.Xna.Framework;
-using TWEngine.SceneItems;
 
-namespace TWEngine.Terrain.Structs
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Structs
 {
     // 4/11/2009
     ///<summary>
     /// Holds the information on where a visual 'CircleRadius' will
-    /// be drawn on the <see cref="Terrain"/>.  For example, <see cref="DefenseScene"/> items will
+    /// be drawn on the <see cref="TWEngine.Terrain"/>.  For example, <see cref="DefenseScene"/> items will
     /// save their 'AttackRadius' here, which will show a visual 'Circle' within the Terrain shader.
     ///</summary>
     public struct VisualCircleRadius

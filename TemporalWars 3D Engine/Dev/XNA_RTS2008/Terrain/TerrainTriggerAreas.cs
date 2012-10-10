@@ -6,30 +6,31 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.GameLevels.Delegates;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Enums;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 #if !XBOX360
 using System.Windows.Forms;
 using TWEngine.TerrainTools;
 #endif
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using PerfTimersComponent.Timers;
-using PerfTimersComponent.Timers.Enums;
-using TWEngine.GameCamera;
-using TWEngine.HandleGameInput;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.Terrain.Enums;
-using TWEngine.Terrain.Structs;
-using TWEngine.Utilities;
-using TWEngine.Utilities.Enums;
-using TWEngine.GameLevels.Delegates;
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     // 9/28/2009
     /// <summary>

@@ -6,36 +6,37 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     ///<summary>
-    /// Stores the <see cref="Terrain"/> maps <see cref="HeightData"/> and <see cref="NormalData"/> collections.
+    /// Stores the <see cref="TWEngine.Terrain"/> maps <see cref="HeightData"/> and <see cref="NormalData"/> collections.
     ///</summary>
     public class TerrainHeightData : IDisposable
     {
         ///<summary>
-        /// Heights for the given <see cref="Terrain"/> map.
+        /// Heights for the given <see cref="TWEngine.Terrain"/> map.
         ///</summary>
         public List<float> HeightData;
         ///<summary>
-        /// Normals for the given <see cref="Terrain"/> map.
+        /// Normals for the given <see cref="TWEngine.Terrain"/> map.
         ///</summary>
         public Vector3[] NormalData; // 7/10/2009
 
         // 5/14/2009
         ///<summary>
-        /// <see cref="Terrain"/> map height value.
+        /// <see cref="TWEngine.Terrain"/> map height value.
         ///</summary>
         public int MapHeight { get; private set; }
 
         // 5/14/2009
         ///<summary>
-        /// <see cref="Terrain"/> map width value.
+        /// <see cref="TWEngine.Terrain"/> map width value.
         ///</summary>
         public int MapWidth { get; private set; }
 

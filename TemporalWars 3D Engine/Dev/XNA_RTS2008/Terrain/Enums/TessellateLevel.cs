@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.Terrain.Structs;
 
-namespace TWEngine.Terrain.Enums
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
     ///<summary>
     /// The level of tessellation to apply to a given <see cref="TerrainQuadPatch"/>.

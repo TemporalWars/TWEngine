@@ -6,50 +6,51 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-#if !XBOX360
-using System.Windows.Forms;
-#endif
-using AStarInterfaces.AStarAlgorithm;
+
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.BeginGame.Enums;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.GameScreens;
+using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.BloomEffect;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.ScreenManagerC;
+using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWEngine.Shapes;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
+using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWEngine.Utilities;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Enums;
+using ImageNexus.BenScharbach.TWEngine.Utilities.Structs;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
+using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using TWEngine.BeginGame.Enums;
-using TWEngine.Common;
-using TWEngine.Common.Enums;
-using TWEngine.GameLevels;
-using TWEngine.GameScreens;
-using TWEngine.GameScreens.Generic;
-using TWEngine.InstancedModels;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Interfaces;
-using TWEngine.ParallelTasks;
-using TWEngine.Players;
-using TWEngine.PostProcessEffects.BloomEffect;
-using TWEngine.ScreenManagerC;
-using TWEngine.Shadows;
-using TWEngine.Terrain.Enums;
+using DrawMode = ImageNexus.BenScharbach.TWEngine.Terrain.Enums.DrawMode;
+#if !XBOX360
 using TWEngine.TerrainTools;
-using TWEngine.Utilities;
-using TWEngine.SceneItems;
-using TWEngine.Shapes;
-using TWEngine.GameCamera;
-using TWEngine.Terrain.Structs;
-using TWEngine.Utilities.Enums;
-using TWEngine.Utilities.Structs;
-using DrawMode = TWEngine.Terrain.Enums.DrawMode;
+using System.Windows.Forms;
+#endif
 
 
-namespace TWEngine.Terrain
+namespace ImageNexus.BenScharbach.TWEngine.Terrain
 {
     // 8/12/2008 - Updated the 'ITerrainShape' Interface to inherit from IWater, ITerrainStorageRoutines, and IWater; this
     //             allowed me to remove these references here, and remove the redudant code in ITerrainShape.
     ///<summary>
     /// The <see cref="TerrainShape"/> class is a manager, which uses the other terrain classes to create and manage
-    /// the <see cref="Terrain"/>.  For example, the drawing of the terrain is initialized in this class, but the actual drawing is
+    /// the <see cref="TWEngine.Terrain"/>.  For example, the drawing of the terrain is initialized in this class, but the actual drawing is
     /// done in the <see cref="TerrainQuadTree"/> class.  This class also loads the <see cref="SceneItem"/> into memory at the
     /// beginning of a level load.  This class also used the <see cref="TerrainAlphaMaps"/>, <see cref="TerrainPickingRoutines"/>, and
     /// the <see cref="TerrainEditRoutines"/> classes.
@@ -361,7 +362,7 @@ namespace TWEngine.Terrain
         public List<int> QuadParentsTessellated { get; private set; }
 
         ///<summary>
-        /// Get or Set the <see cref="Effect"/> used to draw the <see cref="Terrain"/>
+        /// Get or Set the <see cref="Effect"/> used to draw the <see cref="TWEngine.Terrain"/>
         ///</summary>
         public Effect Effect
         {
@@ -413,7 +414,7 @@ namespace TWEngine.Terrain
 
         private static List<Texture2D> _terrainTextures; // 8
         ///<summary>
-        /// Collection of <see cref="Texture2D"/> used for the current <see cref="Terrain"/> map.
+        /// Collection of <see cref="Texture2D"/> used for the current <see cref="TWEngine.Terrain"/> map.
         ///</summary>
         public static List<Texture2D> TerrainTextures
         {
@@ -422,7 +423,7 @@ namespace TWEngine.Terrain
 
         private static List<Texture2D> _terrainTextureNormals; // 4
         ///<summary>
-        /// Collection of <see cref="Texture2D"/> normal-maps, used for the current <see cref="Terrain"/> map.
+        /// Collection of <see cref="Texture2D"/> normal-maps, used for the current <see cref="TWEngine.Terrain"/> map.
         ///</summary>
         public static List<Texture2D> TerrainTextureNormals
         {
@@ -911,7 +912,7 @@ namespace TWEngine.Terrain
 
         // 6/30/2009
         /// <summary>
-        /// Creates a new empty <see cref="Terrain"/>, with given <paramref name="mapWidth"/> 
+        /// Creates a new empty <see cref="TWEngine.Terrain"/>, with given <paramref name="mapWidth"/> 
         /// and <paramref name="mapHeight"/> size.
         /// </summary>
         /// <param name="mapWidth">Map width to use</param>
@@ -1155,13 +1156,13 @@ namespace TWEngine.Terrain
 
         // 12/12/2009
         /// <summary>
-        /// Sets the proper <see cref="Shadows.ShadowMap.ShadowType"/> Enum to use into the <see cref="Effect"/>;
+        /// Sets the proper <see cref="ShadowMap.ShadowType"/> Enum to use into the <see cref="Effect"/>;
         /// 1) Simple
         /// 2) Percentage-Close-Filter#1 (Technique 1).
         /// 3) Percentage-Close-Filter#2 (Technique 2).
         /// 4) Variance.
         /// </summary>
-        /// <param name="shadowType"><see cref="Shadows.ShadowMap.ShadowType"/> Enum to use</param>
+        /// <param name="shadowType"><see cref="ShadowMap.ShadowType"/> Enum to use</param>
         public void SetShadowMapType(ShadowMap.ShadowType shadowType)
         {
             if (_multiTerrainEffect != null) 
@@ -1257,7 +1258,7 @@ namespace TWEngine.Terrain
 
         // 1/1/2010 - Add Non-Static draw method, used to draw Minimap for Minimap library.
         /// <summary>
-        /// Draws the <see cref="Terrain"/> landscape, using a top-down-view, 
+        /// Draws the <see cref="TWEngine.Terrain"/> landscape, using a top-down-view, 
         /// for the <see cref="IMinimap"/> component.
         /// </summary>
         public void DrawMiniMap()
@@ -1273,7 +1274,7 @@ namespace TWEngine.Terrain
         // 4/15/2009: Updated to be STATIC.
         // 1/28/2009 - Removed Ops Overload of Matrix Multi, since this is slow on XBOX!            
         /// <summary>
-        /// Draws the <see cref="Terrain"/>.
+        /// Draws the <see cref="TWEngine.Terrain"/>.
         /// </summary>
         /// <param name="currentViewMatrix"><see cref="Matrix"/> view</param>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
@@ -1453,7 +1454,7 @@ namespace TWEngine.Terrain
             var fow = (IFogOfWar)TemporalWars3DEngine.GameInstance.Services.GetService(typeof(IFogOfWar)); // 5/26/2012
 
             var additionalEffectsShadows = ShadowMap.IsVisibleS; // 5/26/2012
-            var additionalEffectsFogOfWar = fow.IsVisible; // 5/26/2012
+            var additionalEffectsFogOfWar = fow != null && fow.IsVisible; // 5/26/2012; 10/7/2012 - Check if null.
             var additionalEffectsPerlinNoise = TerrainPerlinClouds.EnableClouds; // 5/26/2012
             var multiTextured2Technique = _multiTextured2Technique;
             var multiTexturedAdditionalEffectsAll = _multiTexturedAdditionalEffectsAll; // 5/26/2012
@@ -1622,14 +1623,14 @@ namespace TWEngine.Terrain
 
         // 3/31/3011
         /// <summary>
-        /// Sets the <see cref="Terrain"/> texture Volumes into the <see cref="Effect"/> for the terrain.
+        /// Sets the <see cref="TWEngine.Terrain"/> texture Volumes into the <see cref="Effect"/> for the terrain.
         /// When no texture volumes exist, this method attempts to recreate the texture volumes, by using the
         /// collection <see cref="TerrainTextures"/>; index 0-3 = Volume#1, and index 4-7 = Volume#2.
         /// </summary>
         private static void DoDiffuseTextureUpdateToEffect()
         {
-            var textureSize = (TemporalWars3DEngine.TerrainTexturesQuality == BeginGame.Enums.TerrainTextures.Tex128X) ? 128 
-                                  : (TemporalWars3DEngine.TerrainTexturesQuality == BeginGame.Enums.TerrainTextures.Tex256X) ? 256 : 512;
+            var textureSize = (TemporalWars3DEngine.TerrainTexturesQuality == ImageNexus.BenScharbach.TWEngine.BeginGame.Enums.TerrainTextures.Tex128X) ? 128 
+                                  : (TemporalWars3DEngine.TerrainTexturesQuality == ImageNexus.BenScharbach.TWEngine.BeginGame.Enums.TerrainTextures.Tex256X) ? 256 : 512;
           
             // 1/21/2009 - Volume Texture creation; a stack of Texture2D are put into one Texture3D volume!
             if (TerrainTextureVolumes[0] == null)
@@ -1691,7 +1692,7 @@ namespace TWEngine.Terrain
 
         // 3/31/2011
         /// <summary>
-        /// Sets the <see cref="Terrain"/> collection of <see cref="TerrainTextureNormals"/> into the <see cref="Effect"/>.
+        /// Sets the <see cref="TWEngine.Terrain"/> collection of <see cref="TerrainTextureNormals"/> into the <see cref="Effect"/>.
         /// </summary>
         private static void DoBumpMapTexturesUpdateToEffect()
         {
@@ -2009,7 +2010,7 @@ namespace TWEngine.Terrain
 
         // 10/7/2009
         /// <summary>
-        /// Extracts all the <see cref="Terrain"/> <see cref="ScenaryDataProperties"/>, and populates into collection return via Out param, while
+        /// Extracts all the <see cref="TWEngine.Terrain"/> <see cref="ScenaryDataProperties"/>, and populates into collection return via Out param, while
         /// returning a collection of <see cref="ItemType"/> Enums too.
         /// </summary>
         /// <param name="tmpItemProperties">(OUT) Collection of <see cref="ScenaryDataProperties"/> struct</param>
@@ -2068,7 +2069,7 @@ namespace TWEngine.Terrain
 
         // 10/7/2009
         /// <summary>
-        /// Extracts all the <see cref="Terrain"/> <see cref="SelectablesDataProperties"/>, and populates into collection return via Out param, while
+        /// Extracts all the <see cref="TWEngine.Terrain"/> <see cref="SelectablesDataProperties"/>, and populates into collection return via Out param, while
         /// returning a collection of <see cref="ItemType"/> Enums too.
         /// </summary>
         /// <param name="tmpItemProperties">(OUT) Collection of <see cref="SelectablesDataProperties"/> struct</param>
@@ -2137,7 +2138,7 @@ namespace TWEngine.Terrain
 
 #if !XBOX360
         /// <summary>
-        /// Saves the <see cref="Terrain"/> meta-data, like heights, ground textures, waypoints, quads, etc.
+        /// Saves the <see cref="TWEngine.Terrain"/> meta-data, like heights, ground textures, waypoints, quads, etc.
         /// </summary>
         /// <param name="mapName">MapName</param>
         /// <param name="mapType">MapType; either SP or MP.</param>

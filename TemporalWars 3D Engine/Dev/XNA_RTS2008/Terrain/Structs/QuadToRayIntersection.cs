@@ -6,7 +6,8 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.Terrain.Structs
+
+namespace ImageNexus.BenScharbach.TWEngine.Terrain.Structs
 {
     ///<summary>
     /// The <see cref="QuadToRayIntersection"/> structure is used to store the
