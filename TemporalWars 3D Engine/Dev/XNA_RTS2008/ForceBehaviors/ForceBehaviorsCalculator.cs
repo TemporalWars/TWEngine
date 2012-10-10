@@ -6,28 +6,30 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading;
-using AStarInterfaces.AStarAlgorithm.Enums;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.TurretBehaviors;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm.Enums;
 using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.SteeringBehaviors;
-using TWEngine.ForceBehaviors.Enums;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.ForceBehaviors.TurretBehaviors;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Players;
-using TWEngine.SceneItems;
-using TWEngine.Networking;
 using Microsoft.Xna.Framework.Net;
 
 #if XBOX360
-using Xbox360Generics;
+using ImageNexus.BenScharbach.TWLate.Xbox360Generics;
 #endif
 
-namespace TWEngine.ForceBehaviors
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors
 {
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
@@ -68,7 +70,7 @@ namespace TWEngine.ForceBehaviors
 
 #if XBOX360
         // List of current Behaviors for given instance.      
-        internal volatile Xbox360Generics.SortedList<int, AbstractBehavior> Behaviors = new Xbox360Generics.SortedList<int, AbstractBehavior>(5);
+        internal volatile SortedList<int, AbstractBehavior> Behaviors = new SortedList<int, AbstractBehavior>(5);
 #else
         // List of current Behaviors for given instance.      
         internal volatile SortedList<int, AbstractBehavior> Behaviors = new SortedList<int, AbstractBehavior>(5);

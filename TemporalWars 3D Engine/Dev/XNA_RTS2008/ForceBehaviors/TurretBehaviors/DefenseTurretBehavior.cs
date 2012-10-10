@@ -6,22 +6,24 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using System;
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Common.Extensions;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWEngine.MemoryPool;
+using ImageNexus.BenScharbach.TWEngine.Networking;
+using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands;
+using ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums;
 using Microsoft.Xna.Framework;
-using TWEngine.Common.Extensions;
-using TWEngine.ForceBehaviors.SteeringBehaviors;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.InstancedModels.Enums;
-using TWEngine.Interfaces;
-using TWEngine.Players;
-using TWEngine.rtsCommands.Enums;
-using TWEngine.SceneItems;
-using TWEngine.rtsCommands;
-using TWEngine.Networking;
-using TWEngine.MemoryPool;
 
-namespace TWEngine.ForceBehaviors.TurretBehaviors
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.TurretBehaviors
 {
     // 1/16/2011
     // NOTE: DefenseScene class no longer uses this class; instead, the 'DefenseIdleState' and 'DefenseAttackState'
@@ -82,7 +84,7 @@ namespace TWEngine.ForceBehaviors.TurretBehaviors
         /// Constructor
         ///</summary>
         public DefenseTurretBehavior()
-            : base((int)Enums.BehaviorsEnum.DefenseTurretBehavior, 0.0f)
+            : base((int)BehaviorsEnum.DefenseTurretBehavior, 0.0f)
         {
             
         }

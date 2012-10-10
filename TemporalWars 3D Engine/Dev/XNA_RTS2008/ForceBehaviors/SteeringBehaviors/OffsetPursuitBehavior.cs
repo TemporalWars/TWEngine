@@ -6,13 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Enums;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// The <see cref="OffsetPursuitBehavior"/> class is used to create a steering force required to keep

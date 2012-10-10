@@ -6,13 +6,15 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// The <see cref="FollowPathBehavior"/> class is used to follow some given node path, for example 
@@ -28,7 +30,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// Constructor, which creates instances for the <see cref="ArriveBehavior"/> and <see cref="SeekBehavior"/>.
         ///</summary>
         public FollowPathBehavior()
-            : base((int)Enums.BehaviorsEnum.FollowPath, 0.05f)
+            : base((int)BehaviorsEnum.FollowPath, 0.05f)
         {
             _arriveBehavior = new ArriveBehavior();
             _seekBehavior = new SeekBehavior();

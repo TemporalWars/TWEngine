@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// The <see cref="AlignmentBehavior"/> attempts to keep a <see cref="SceneItem"/> heading aligned with its neighbors.
@@ -26,7 +28,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// forces this to be turn on from the Properites Tool window.
         ///</summary>
         public AlignmentBehavior()
-            : base((int)Enums.BehaviorsEnum.Alignment, 1.0f)
+            : base((int)BehaviorsEnum.Alignment, 1.0f)
         {
             // Default to Off, so user has to turn on in Properties Tool window
             UseBehavior = false;

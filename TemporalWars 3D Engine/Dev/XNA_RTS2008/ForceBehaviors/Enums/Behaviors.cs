@@ -6,9 +6,10 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.Enums
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums
 {
    
     ///<summary>

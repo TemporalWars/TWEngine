@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// The <see cref="SeekBehavior"/> class is used to return a force which directs a <see cref="SceneItem"/> towards
@@ -74,7 +76,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// Constructor
         ///</summary>
         public SeekBehavior()
-            : base((int)Enums.BehaviorsEnum.Seek, 1.0f)
+            : base((int)BehaviorsEnum.Seek, 1.0f)
         {
             
         }

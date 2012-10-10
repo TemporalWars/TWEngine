@@ -6,14 +6,16 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
-using TWEngine.SceneItems.Enums;
-using TWEngine.Terrain;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Enums;
+using ImageNexus.BenScharbach.TWEngine.Terrain;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// The <see cref="UpdateOrientationBehavior"/> class is used to orientate some <see cref="SceneItem"/> to match the ground's angle, like going
@@ -97,7 +99,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// Constructor
         ///</summary>
         public UpdateOrientationBehavior()
-            : base((int)Enums.BehaviorsEnum.UpdateOrientation, 0.0f)
+            : base((int)BehaviorsEnum.UpdateOrientation, 0.0f)
         {
             
         }

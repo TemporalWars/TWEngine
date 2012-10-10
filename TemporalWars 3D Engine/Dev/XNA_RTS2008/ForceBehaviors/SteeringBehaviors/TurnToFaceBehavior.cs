@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// The <see cref="TurnToFaceBehavior"/> is used to calculate the proper angles, to turn some <see cref="SceneItem"/> towards
@@ -86,7 +88,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// Constructor
         ///</summary>
         public TurnToFaceBehavior()
-            : base((int)Enums.BehaviorsEnum.TurnToFace, 0.0f)
+            : base((int)BehaviorsEnum.TurnToFace, 0.0f)
         {
             
             

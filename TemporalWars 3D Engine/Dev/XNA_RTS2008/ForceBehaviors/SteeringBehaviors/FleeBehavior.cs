@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     /// <summary>
     /// The <see cref="FleeBehavior"/> class is used to create a force which steers a <see cref="SceneItem"/>
@@ -59,7 +61,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// Constructor
         ///</summary>
         public FleeBehavior()
-            : base((int)Enums.BehaviorsEnum.Flee, 1.0f)
+            : base((int)BehaviorsEnum.Flee, 1.0f)
         {
             
         }

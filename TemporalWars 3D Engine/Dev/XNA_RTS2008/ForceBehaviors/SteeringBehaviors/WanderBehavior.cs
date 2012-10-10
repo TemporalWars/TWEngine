@@ -6,12 +6,14 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-using System;
-using Microsoft.Xna.Framework;
-using TWEngine.ForceBehaviors.Structs;
-using TWEngine.SceneItems;
 
-namespace TWEngine.ForceBehaviors.SteeringBehaviors
+using System;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums;
+using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Structs;
+using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using Microsoft.Xna.Framework;
+
+namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors
 {
     ///<summary>
     /// the <see cref="WanderBehavior"/> class is used to create a steering force which will give the
@@ -70,7 +72,7 @@ namespace TWEngine.ForceBehaviors.SteeringBehaviors
         /// Constructor
         /// </summary>
         public WanderBehavior()
-            : base((int)Enums.BehaviorsEnum.Wander, 1.0f)
+            : base((int)BehaviorsEnum.Wander, 1.0f)
         {
             
             //create a vector to a target Position on the wander circle  
