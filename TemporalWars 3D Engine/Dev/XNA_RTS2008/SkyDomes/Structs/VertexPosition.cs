@@ -6,10 +6,11 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TWEngine.SkyDomes.Structs
+namespace ImageNexus.BenScharbach.TWEngine.SkyDomes.Structs
 {
     /// <summary>
     /// Used to hold the vertex information used to create the <see cref="SkyDome"/>

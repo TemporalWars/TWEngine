@@ -6,7 +6,7 @@
 // Copyright (C) Image-Nexus, LLC. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-namespace TWEngine.SkyDomes.Enums
+namespace ImageNexus.BenScharbach.TWEngine.SkyDomes.Enums
 {
     // 6/1/2012
     /// <summary>
