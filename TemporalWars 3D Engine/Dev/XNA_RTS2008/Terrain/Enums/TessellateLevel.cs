@@ -11,10 +11,11 @@ using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
 
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The level of tessellation to apply to a given <see cref="TerrainQuadPatch"/>.
     ///</summary>
-    public enum TessellateLevel
+    public enum TessellateLevel : short
     {
         ///<summary>
         /// Default original detail level for <see cref="TerrainQuadPatch"/>.  For example, if

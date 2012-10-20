@@ -17,14 +17,13 @@ namespace ImageNexus.BenScharbach.TWEngine.Shadows.Enums
     class NamespaceDoc
     {
     }
-    
-    
-    
+
+    // 10/16/2012: Updated enum to inherit from short value.
     /// <summary>
     /// The <see cref="DebugIsFor"/> Enum is used to show
     /// debug data, like the light position.
     /// </summary>
-    public enum DebugIsFor
+    public enum DebugIsFor : short
     {
         /// <summary>
         /// Debug light position.

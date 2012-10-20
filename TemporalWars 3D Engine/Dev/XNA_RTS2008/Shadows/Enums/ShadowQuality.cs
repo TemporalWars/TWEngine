@@ -9,6 +9,7 @@
 
 namespace ImageNexus.BenScharbach.TWEngine.Shadows.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // NOTE: (8/17/2010) Anything changed or added to this ShadowQuality, 
     // NOTE:  MUST be done to Enum ShadowQuality in TWTerrainToolsWPF.
     // 12/6/2009
@@ -17,7 +18,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shadows.Enums
     /// of detail used for shadows; specifically, the size of the
     /// <see cref="RenderTarget"/> used when creating the shadow maps.
     /// </summary>
-    public enum ShadowQuality
+    public enum ShadowQuality : short
     {
         ///<summary>
         /// Low = 1024x for <see cref="RenderTarget"/>

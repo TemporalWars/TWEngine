@@ -8,10 +8,11 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="ToolType"/> Enum is used to determine the <see cref="TWEngine.Terrain"/> Tool in use.
     ///</summary>
-    public enum ToolType
+    public enum ToolType : short
     {
         ///<summary>
         /// No tool is being used.

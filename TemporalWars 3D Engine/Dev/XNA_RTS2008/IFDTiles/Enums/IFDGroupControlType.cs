@@ -18,11 +18,11 @@ namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums
     {
     }
 
-
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// <see cref="InterfaceDisplay"/> tile group to use.
     ///</summary>
-    public enum IFDGroupControlType
+    public enum IFDGroupControlType : short
     {
         ///<summary>
         /// Control group

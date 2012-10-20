@@ -18,11 +18,11 @@ namespace ImageNexus.BenScharbach.TWEngine.Audio.Enums
     {
     }
 
-
+    // 10/16/2012: Updated enum to inherit from short value.
     /// <summary>
     /// The <see cref="SoundBankGroup"/> Enum is used to specify SoundBank.
     /// </summary>
-    public enum SoundBankGroup
+    public enum SoundBankGroup : short
     {
         // 2/7/2011
         /// <summary>

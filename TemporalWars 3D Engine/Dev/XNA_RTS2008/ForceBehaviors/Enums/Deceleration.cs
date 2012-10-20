@@ -12,11 +12,12 @@ using ImageNexus.BenScharbach.TWEngine.SceneItems;
 
 namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="ArriveBehavior"/> makes use of these Enums to determine how quickly a <see cref="SceneItem"/>
     /// should decelerate to its target
     ///</summary>
-    public enum Deceleration
+    public enum Deceleration : short
     {
         ///<summary>
         /// Decelerates <see cref="SceneItem"/> slowly.

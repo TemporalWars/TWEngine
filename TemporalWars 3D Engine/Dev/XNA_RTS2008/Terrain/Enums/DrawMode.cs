@@ -11,10 +11,11 @@ using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// Use <see cref="DrawMode"/> Enum to set draw type.
     ///</summary>
-    public enum DrawMode
+    public enum DrawMode : short
     {
         ///<summary>
         /// Use to draw the paint or height brushes during editing.

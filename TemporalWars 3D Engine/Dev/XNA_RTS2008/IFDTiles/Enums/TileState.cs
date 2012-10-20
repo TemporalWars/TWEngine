@@ -12,11 +12,12 @@ using ImageNexus.BenScharbach.TWEngine.SceneItems;
 
 namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 9/28/2008 - State of Tile
     ///<summary>
     /// <see cref="TileState"/> Enum, used to represent the state of some <see cref="InterfaceDisplay"/> tile.
     ///</summary>
-    public enum TileState
+    public enum TileState : short
     {
         ///<summary>
         /// Default empty state

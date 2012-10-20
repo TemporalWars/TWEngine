@@ -8,11 +8,12 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 5/22/2009
     ///<summary>
     /// <see cref="RotationAxis"/> Enum.
     ///</summary>
-    public enum RotationAxis
+    public enum RotationAxis : short
     {
         ///<summary>
         /// Rotate on X-Axis

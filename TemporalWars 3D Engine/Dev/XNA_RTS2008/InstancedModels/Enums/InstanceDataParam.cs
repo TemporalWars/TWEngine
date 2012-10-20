@@ -13,10 +13,11 @@ using ImageNexus.BenScharbach.TWEngine.SceneItems;
 
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     /// <summary>
-    /// Used to allow updating some variable within the <see cref="InstancedDataCommunication"/>. 
+    /// Used to allow updating some variable within the <see cref="ChangeRequestItem"/>. 
     /// </summary>
-    public enum InstanceDataParam
+    public enum InstanceDataParam : short
     {
         ///<summary>
         /// <see cref="InstancedItem"/> is picked by user's mouse cursor.

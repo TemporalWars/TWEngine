@@ -11,11 +11,12 @@ using ImageNexus.BenScharbach.TWEngine.Particles.ParticleSystems;
 
 namespace ImageNexus.BenScharbach.TWEngine.Particles.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 12/27/2008
     ///<summary>
     /// The <see cref="ProjectileType"/> Enum allows settings the type of energy ball to use.
     ///</summary>
-    public enum ProjectileType
+    public enum ProjectileType : short
     {
         ///<summary>
         /// Uses the <see cref="BallParticleSystemWhite"/> type.

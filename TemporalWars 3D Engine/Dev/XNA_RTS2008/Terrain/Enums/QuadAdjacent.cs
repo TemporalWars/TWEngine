@@ -11,11 +11,12 @@ using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
 
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="QuadAdjacent"/> Enum is used to identify one of the 4 adjacent quad locations, 
     ///  relative to a single <see cref="TerrainQuadPatch"/>.
     ///</summary>
-    public enum QuadAdjacent
+    public enum QuadAdjacent : short
     {
         ///<summary>
         /// Quad adjacent to the top of given <see cref="TerrainQuadPatch"/>.

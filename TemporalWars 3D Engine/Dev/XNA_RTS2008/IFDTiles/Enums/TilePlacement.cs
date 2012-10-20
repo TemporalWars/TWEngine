@@ -8,12 +8,13 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 9/23/2008 - Common Tile Placement Enum
     ///<summary>
     /// <see cref="TilePlacement"/> Enum, which specifies the default
     /// positions for each of the 12 locations a tile could be placed.
     ///</summary>
-    public enum TilePlacement
+    public enum TilePlacement : short
     {
         ///<summary>
         /// Position 1;

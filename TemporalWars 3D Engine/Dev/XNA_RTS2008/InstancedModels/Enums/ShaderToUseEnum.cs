@@ -8,12 +8,13 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 2/12/2010 - Enum of Shaders
     // Note: Any changes made here, also need to be done in the 'InstancedModelProcessors' version!
     ///<summary>
     /// Procedural Material type to use.
     ///</summary>
-    public enum ShaderToUseEnum
+    public enum ShaderToUseEnum : short
     {
         ///<summary>
         /// Blinn material

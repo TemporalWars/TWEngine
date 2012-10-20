@@ -21,13 +21,13 @@ namespace ImageNexus.BenScharbach.TWEngine.AI.Enums
     {
     }
 
-
+    // 10/16/2012: Updated enum to inherit from short value.
 // ReSharper disable InconsistentNaming
     /// <summary>
     /// The Enum <see cref="FSM_StateType"/> is used to set the 
     /// FMS_State of some <see cref="SceneItem"/>.
     /// </summary>
-    enum FSM_StateType
+    enum FSM_StateType : short
     {
         /// <summary>
         /// No state given.

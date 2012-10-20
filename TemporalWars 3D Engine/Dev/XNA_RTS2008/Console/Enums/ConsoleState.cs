@@ -18,12 +18,12 @@ namespace ImageNexus.BenScharbach.TWEngine.Console.Enums
     {
     }
 
-
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// Enumeration of the ConsoleState; for example, 'Open' 
     /// or 'Closed'.
     ///</summary>
-    public enum ConsoleState
+    public enum ConsoleState : short
     {
         ///<summary>
         /// Console is closed.

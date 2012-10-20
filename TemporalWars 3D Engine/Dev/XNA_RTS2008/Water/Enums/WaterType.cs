@@ -8,12 +8,13 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Water.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // NOTE: (8/17/2010) Anything changed or added to this WaterType, 
     // NOTE:  MUST be done to Enum WaterType in TWTerrainToolsWPF.
     ///<summary>
     /// The <see cref="WaterType"/> Enum to use.
     ///</summary>
-    public enum WaterType
+    public enum WaterType : short
     {
         /// <summary>
         /// Set when no water type needs to be used.

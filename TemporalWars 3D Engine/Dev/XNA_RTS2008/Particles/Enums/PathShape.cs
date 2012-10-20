@@ -9,11 +9,12 @@
 
 namespace ImageNexus.BenScharbach.TWEngine.Particles.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     /// <summary>
     /// The <see cref="PathShape"/> Enum specifies the type of path the
     /// <see cref="Projectile"/> will take.
     /// </summary>
-    public enum PathShape
+    public enum PathShape : short
     {
         ///<summary>
         /// The <see cref="Projectile"/> will follow a straight path to its target.

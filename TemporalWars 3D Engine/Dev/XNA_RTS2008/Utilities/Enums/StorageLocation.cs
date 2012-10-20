@@ -8,6 +8,7 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Utilities.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 8/1/2008 - Used to Save ScenaryItemType Attributes.
     // 9/26/2008: Becomes nested in the 'SaveItemTypeData' Struct via Generics.
 
@@ -15,7 +16,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Utilities.Enums
     /// The <see cref="StorageLocation"/> Enum is used to identify the desired
     /// storage location to use; either the users game folder or the game title folder.
     ///</summary>
-    public enum StorageLocation
+    public enum StorageLocation : short
     {
         ///<summary>
         /// Uses location the game is stored in.  For example, on the PC platform, this would

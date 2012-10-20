@@ -8,11 +8,12 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 6/11/2012
     /// <summary>
     /// The <see cref="RotationAxisEnum"/> is used to set the Axis to affect.
     /// </summary>
-    public enum RotationAxisEnum
+    public enum RotationAxisEnum : short
     {
         /// <summary>
         /// Affect the X-Axis.

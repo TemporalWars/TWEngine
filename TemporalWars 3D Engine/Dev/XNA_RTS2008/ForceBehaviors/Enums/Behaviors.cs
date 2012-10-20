@@ -11,7 +11,7 @@ using ImageNexus.BenScharbach.TWEngine.SceneItems;
 
 namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums
 {
-   
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// Behaviors, where the value given is the sortOrder key.
     ///</summary>
@@ -22,7 +22,7 @@ namespace ImageNexus.BenScharbach.TWEngine.ForceBehaviors.Enums
     /// the Accumulative Force is reached; consequently, if they were at the end
     /// of the list, they might not get called each game cycle!
     /// </remarks>
-    public enum BehaviorsEnum
+    public enum BehaviorsEnum : short
     {
         ///<summary>
         /// Similar to Seek, but arrives to some position using a decelartion.

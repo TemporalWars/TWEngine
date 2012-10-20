@@ -18,12 +18,13 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Enums
     {
     }
 
+    // 10/16/2012: Updated enum to inherit from short value.
     // 6/2/2009 - AI Order Types
     ///<summary>
     /// The <see cref="AIOrderType"/> Enum tracks if attack order was
     /// requested by player or computer AI.
     ///</summary>
-    public enum AIOrderType
+    public enum AIOrderType : short
     {
         ///<summary>
         /// None - default state.

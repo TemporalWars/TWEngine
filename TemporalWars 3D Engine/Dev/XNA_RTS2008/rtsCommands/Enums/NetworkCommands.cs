@@ -18,14 +18,15 @@ namespace ImageNexus.BenScharbach.TWEngine.rtsCommands.Enums
     class NamespaceDoc
     {
     }
-    
+
+    // 10/16/2012: Updated enum to inherit from short value.
     // 9/3/2008
     // ReSharper disable InconsistentNaming
     ///<summary>
     /// The <see cref="NetworkCommands"/> represents the different types of <see cref="RTSCommand"/> instances to send
     /// accross wire, during network games.
     ///</summary>
-    public enum NetworkCommands
+    public enum NetworkCommands : short
     {
         ///<summary>
         /// None choosen

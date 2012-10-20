@@ -18,11 +18,12 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame.Enums
     {
     }
 
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="RenderingType"/> Enum is used to set the type of 
     /// rendering method to use; for example, 'Deferred' rendering.
     ///</summary>
-    public enum RenderingType
+    public enum RenderingType : short
     {
         ///<summary>
         /// Renders game using the Deferred rendering method.

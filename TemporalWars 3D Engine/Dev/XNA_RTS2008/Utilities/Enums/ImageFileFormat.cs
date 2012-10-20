@@ -8,10 +8,11 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Utilities.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// Image format used for storage.
     ///</summary>
-    public enum ImageFileFormat
+    public enum ImageFileFormat : short
     {
         Png,
         Jpeg
