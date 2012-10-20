@@ -15,6 +15,8 @@ using ImageNexus.BenScharbach.TWEngine.GameCamera;
 using ImageNexus.BenScharbach.TWEngine.HandleGameInput;
 using ImageNexus.BenScharbach.TWEngine.IFDTiles;
 using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;

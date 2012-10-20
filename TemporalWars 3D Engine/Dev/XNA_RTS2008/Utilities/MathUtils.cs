@@ -9,6 +9,7 @@
 
 using System;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace ImageNexus.BenScharbach.TWEngine.Utilities
 {
@@ -53,9 +54,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Utilities
             }
             catch (System.Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("QuaternionToEuler method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
 
         }

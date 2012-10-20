@@ -147,7 +147,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                     continue;
 
                 // 4/7/2009     
-                var instanceWorldTransforms = instanceModel.InstanceWorldTransforms; // 8/13/2009
+                var instanceWorldTransforms = instanceModel.ChangeRequestItemsTransforms; // 8/13/2009
                 int itemCount;
                 lock (InstancedItem.InstanceModelsThreadLock)
                 {
@@ -185,11 +185,11 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                     //UpdateForCulling(isInFrustrum, ref existingNode);
                     
                     // 8/27/2009: Delete All Normal Culled Parts, since item out of camera view.
-                    if (!isInFrustrum && existingNode.InCameraView)
+                    /*if (!isInFrustrum && existingNode.InCameraView)
                     {
                         InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms((ItemType)itemIndex, ref existingNode,
-                                                                                           ChangeRequest.DeleteAllCulledParts_InstanceItem, instanceModel);
-                    }
+                                                                                           ChangeRequest.RemovesASingleInstancedModelPart, instanceModel);
+                    }*/
 
                     // 8/27/2009
                     existingNode.InCameraView = isInFrustrum;
@@ -201,8 +201,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                     if (isInFrustrum)
                     {
                         // 7/21/2009: Updated to use the new 'AddChangeRequest' method, to batch entries.
-                        InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms((ItemType)itemIndex, ref existingNode,
-                                                                                           ChangeRequest.AddUpdatePart_InstanceItem, instanceModel);
+                        existingNode.ChangeRequest = ChangeRequestEnum.AddOrUpdateTransform; // 10/16/2012
+                        InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms((ItemType)itemIndex, ref existingNode, instanceModel);
                     }
 
                     // 2/8/2010 - Sleep a few ms, if necessary.

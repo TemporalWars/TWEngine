@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
@@ -62,9 +63,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
             }
             catch (System.Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("SafeUpdateValue method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
 
             return valueAdjusted;

@@ -16,7 +16,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs
     /// The <see cref="InstancedModelAttsData"/> structure is used to store
     /// the initial attributes data, stored with the given <see cref="InstancedModel"/> during
     /// creation, in the '.XNB' file, and read back into memory using the
-    /// <see cref="InstancedModelAttsDataReader"/> class.
+    /// InstancedModelAttsDataReader class.
     /// </summary>
     public struct InstancedModelAttsData
     {

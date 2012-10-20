@@ -8,6 +8,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using ImageNexus.BenScharbach.TWEngine.GameCamera;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -140,9 +141,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Utilities
             }
             catch (Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("DrawPrimitiveTriangle method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
             finally
             {

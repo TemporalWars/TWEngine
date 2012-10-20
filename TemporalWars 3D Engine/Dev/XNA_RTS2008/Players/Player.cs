@@ -8,6 +8,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ImageNexus.BenScharbach.TWEngine.Audio;
@@ -119,9 +120,10 @@ namespace ImageNexus.BenScharbach.TWEngine.Players
         // 10/7/2009 - Keeps ref to the last SceneItem created!
         private SceneItemWithPick _lastSceneItemCreated;
 
+        // 10/18/2012 - Add volatile
         // 1/29/2009 - Set when an SceneItemOwner is ready to Delete; when True, this will force a RemoveAll call 
         //             on the ItemsSelected & SelectableItems arrays.
-        internal bool DoRemoveAllCheck;
+        internal volatile bool DoRemoveAllCheck;
  
         // 8/24/2009  - Updated to use the SpeedCollection.
         // 12/17/2008 - 
@@ -397,9 +399,8 @@ namespace ImageNexus.BenScharbach.TWEngine.Players
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-#if DEBUG
                     Debug.WriteLine("GetSelectableItems method in Player class threw the ArgOutOfRangeExp");
-#endif
+
                     break;
                 }
             }

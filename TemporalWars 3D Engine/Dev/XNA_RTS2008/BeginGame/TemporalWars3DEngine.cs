@@ -87,10 +87,10 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
     public class TemporalWars3DEngine : Game, IFOWEngineRef, IMinimapEngineRef, IStatusBarEngineRef
     {
         // 10/7/2012 - Names of the possible Late-Bind assemblies - Ben
-        private const string AstarLateBindAssembly = "ImageNexus.BenScharbach.TWLate.AStarComponentLibrary.dll";
-        private const string FogOfWarLateBindAssembly = "ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary.dll";
-        private const string MinimapLateBindAssembly = "ImageNexus.BenScharbach.TWLate.RTS_MinimapComponentLibrary.dll";
-        private const string StatusBarLateBindAssembly = "ImageNexus.BenScharbach.TWLate.RTS_StatusBarComponentLibrary.dll";
+        private const string AstarLateBindAssembly = "In.BenS.TWLate.AStar.dll";
+        private const string FogOfWarLateBindAssembly = "In.BenS.TWLate.FogOfWar.dll";
+        private const string MinimapLateBindAssembly = "In.BenS.TWLate.Minimap.dll";
+        private const string StatusBarLateBindAssembly = "In.BenS.TWLate.StatusBar.dll";
 
         // 4/6/2010 - Set Content locations from Resource files, using proper resource file
         //            depending on XBOX or PC build.
@@ -298,11 +298,12 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
         /// Returns reference for the <see cref="ScreenResolution"/> Enum.
         ///</summary>
         public static ScreenResolution ScreenResolution { get; set; }
-
+        
         // 2/6/2009 - ExplosionManager Component
         ///<summary>
         /// Returns a reference for the <see cref="ExplosionsManager"/>.
         ///</summary>
+        [Obsolete]
         public static ExplosionsManager ExplosionManager { get; private set; }
 
         // 8/21/2009 - KillSceneItem Manager, used to Queue up items which need to die!
@@ -1007,10 +1008,11 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
                 Services.AddService(typeof (IStatusBar), _statusBar);
             }
 
+            // 10/13/2012 - Obsolete
             // 2/6/2009 - Add ExplosionManager Component
-            ExplosionManager = new ExplosionsManager(this);
+            /*ExplosionManager = new ExplosionsManager(this);
             //Components.Add(ExplosionManager);
-            Services.AddService(typeof(ExplosionsManager), ExplosionManager);
+            Services.AddService(typeof(ExplosionsManager), ExplosionManager);*/
 
             // 8/21/2009 - Add KillSceneItem Manager
             KillSceneItemManager = new KillSceneItemManager(this);
@@ -1628,14 +1630,15 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
                     _statusBar = null;
                 }
 
+                // 10/13/2012 - Obsolete
                 // 2/6/2009 - Remove ExplosionManager Component
-                if (ExplosionManager != null)
+                /*if (ExplosionManager != null)
                 {
                     //Components.Remove(ExplosionManager);
                     Services.RemoveService(typeof(ExplosionsManager));
                     ExplosionManager.Dispose();
                     ExplosionManager = null;
-                }
+                }*/
 
                 // 8/21/2009 - Remove KillSceneItemManager
                 if (KillSceneItemManager != null)

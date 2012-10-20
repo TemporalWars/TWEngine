@@ -9,6 +9,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.GameCamera;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
@@ -51,7 +53,9 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
 
         internal readonly QuadSection QuadSection; // 4/14/2008 - Store QuadSection        
         internal readonly int RootWidth;
-        private readonly Dictionary<int, Dictionary<int, int>> _scenaryItemTypes;  // 6/7/2012 - Was = Dictionary<int, List<int>>.
+
+        // 10/15/2012 - Updated the Dictionaries 'Value' type from int to ScenaryItemTypesQuadContainer.
+        private readonly Dictionary<int, ScenaryItemTypesQuadContainer> _scenaryItemTypes;  // 10/15/2012 - Was = Dictionary<int, Dictionary<int, int>>.
         private readonly int _vertexBufferOffset;
         
 
@@ -158,7 +162,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
                 QuadSection = QuadSection.TopLeft;
                 ParentQuadKeyInstance = null;
                 _treeBoundingBox = new BoundingBox();
-                _scenaryItemTypes = new Dictionary<int, Dictionary<int, int>>(); // 7/9/2009; 6/7/2012
+                _scenaryItemTypes = new Dictionary<int, ScenaryItemTypesQuadContainer>(); // 7/9/2009; 6/7/2012; 10/15/2012
             }
 
             // 4/21/2010 - Save GraphicsDevice instance.
@@ -285,7 +289,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
                 QuadSection = section; // 11/17/09
                 ParentQuadKeyInstance = null;
                 _treeBoundingBox = new BoundingBox();
-                _scenaryItemTypes = new Dictionary<int, Dictionary<int, int>>(); // 7/9/2009; 6/7/2012
+                _scenaryItemTypes = new Dictionary<int, ScenaryItemTypesQuadContainer>(); // 7/9/2009; 6/7/2012; 10/15/2012
             }
 
             IndexBufferData = new List<int>();
@@ -400,7 +404,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
                 QuadSection = section; // 11/17/09 - Should be set to the 'Section' param, and not alway 'TopLeft'.
                 ParentQuadKeyInstance = null;
                 _treeBoundingBox = new BoundingBox();
-                _scenaryItemTypes = new Dictionary<int, Dictionary<int, int>>(); // 7/9/2009; 6/7/2012
+                _scenaryItemTypes = new Dictionary<int, ScenaryItemTypesQuadContainer>(); // 7/9/2009; 6/7/2012; 10/15/2012
             }
 
 
@@ -1085,9 +1089,10 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
 
                 //terrainEffect.End();
 
-
+                // 10/16/2012 - Updated back to just do the check 'UpdateSceneryCulledList'
                 // 7/9/2009 - Now create scenery items 'Culled' list connected to this Quad!
-                if (terrainQuadTree._scenaryItemTypes.Count > 0 && UpdateSceneryCulledList) 
+                //if (terrainQuadTree._scenaryItemTypes.Count > 0 && UpdateSceneryCulledList)
+                if (UpdateSceneryCulledList)
                 {
                     InstancedItem.CreateSceneryInstancesCulledList(terrainQuadTree._scenaryItemTypes);
                 }
@@ -1374,24 +1379,41 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
                 // Make sure it is only added once!
                 if (!terrainQuadTree._scenaryItemTypes.ContainsKey((int)instancedItemData.ItemType))
                 {
-                    // Create Dictionary<int,int> for itemInstanceKeys.
-                    var itemKeys = new Dictionary<int, int> {{instancedItemData.ItemInstanceKey, instancedItemData.ItemInstanceKey}};
+                    // 10/15/2012 - Add to Quad Container, which holds copy of simple array.
+                    var scenaryItemTypesQuadContainer = new ScenaryItemTypesQuadContainer
+                        {
+                            // Create Dictionary<int,int> for itemInstanceKeys.
+                            ItemKeys =
+                                new Dictionary<int, int>
+                                    {{instancedItemData.ItemInstanceKey, instancedItemData.ItemInstanceKey}},
+                            ItemKeysArray = new int[1], // 10/15/2012 - Create simple array
+                        };
+
+                    // 10/15/2012 - Copy item over from dictionary to simple array
+                    scenaryItemTypesQuadContainer.ItemKeys.Values.CopyTo(scenaryItemTypesQuadContainer.ItemKeysArray, 0);
 
                     // Add 'ItemType' with List to dictionary
-                    terrainQuadTree._scenaryItemTypes.Add((int)instancedItemData.ItemType, itemKeys);
+                    terrainQuadTree._scenaryItemTypes.Add((int)instancedItemData.ItemType, scenaryItemTypesQuadContainer);
                 }
                 else // ItemType already in Dictionary, so update internal List<>.
                 {
-                    // Retrieve internal Dictionary<int, int>.
-                    Dictionary<int, int> itemKeys;
-                    if (terrainQuadTree._scenaryItemTypes.TryGetValue((int)instancedItemData.ItemType, out itemKeys))
+                    // 10/15/2012
+                    // Retrieve internal structure 'ScenaryItemTypesQuadContainer'.
+                    ScenaryItemTypesQuadContainer scenaryItemTypesQuadContainer;
+                    if (terrainQuadTree._scenaryItemTypes.TryGetValue((int)instancedItemData.ItemType, out scenaryItemTypesQuadContainer))
                     {
                         // Add new key to list
-                        if (!itemKeys.ContainsKey(instancedItemData.ItemInstanceKey))
-                            itemKeys.Add(instancedItemData.ItemInstanceKey, instancedItemData.ItemInstanceKey);
+                        if (!scenaryItemTypesQuadContainer.ItemKeys.ContainsKey(instancedItemData.ItemInstanceKey))
+                            scenaryItemTypesQuadContainer.ItemKeys.Add(instancedItemData.ItemInstanceKey, instancedItemData.ItemInstanceKey);
+
+                        // 10/15/2012 - Resize array and copy collection from dictionary
+                        var itemTypeInstancesCount = scenaryItemTypesQuadContainer.ItemKeys.Values.Count;
+                        if (scenaryItemTypesQuadContainer.ItemKeysArray.Length < itemTypeInstancesCount)
+                            Array.Resize(ref scenaryItemTypesQuadContainer.ItemKeysArray, itemTypeInstancesCount);
+                        scenaryItemTypesQuadContainer.ItemKeys.Values.CopyTo(scenaryItemTypesQuadContainer.ItemKeysArray, 0);
 
                         // update list back to dictionary.
-                        terrainQuadTree._scenaryItemTypes[(int)instancedItemData.ItemType] = itemKeys;
+                        terrainQuadTree._scenaryItemTypes[(int)instancedItemData.ItemType] = scenaryItemTypesQuadContainer;
                     }
                 }
 
@@ -1431,15 +1453,22 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
                 // Make sure it is only added once!
                 if (terrainQuadTree._scenaryItemTypes.ContainsKey((int)instancedItemData.ItemType))
                 {
-                    // Retrieve internal Dictionary<int, int>.
-                    Dictionary<int, int> itemKeys;
-                    if (terrainQuadTree._scenaryItemTypes.TryGetValue((int)instancedItemData.ItemType, out itemKeys))
+                    // 10/15/2012
+                    // Retrieve internal structure 'ScenaryItemTypesQuadContainer'.
+                    ScenaryItemTypesQuadContainer scenaryItemTypesQuadContainer;
+                    if (terrainQuadTree._scenaryItemTypes.TryGetValue((int)instancedItemData.ItemType, out scenaryItemTypesQuadContainer))
                     {
-                        // remove this ItemInstanceKEy from this quad.
-                        itemKeys.Remove(instancedItemData.ItemInstanceKey);
+                        // remove this ItemInstanceKey from this quad.
+                        scenaryItemTypesQuadContainer.ItemKeys.Remove(instancedItemData.ItemInstanceKey);
+                        
+                        // 10/15/2012 - Resize array and copy collection from dictionary
+                        var itemTypeInstancesCount = scenaryItemTypesQuadContainer.ItemKeys.Values.Count;
+                        if (scenaryItemTypesQuadContainer.ItemKeysArray.Length < itemTypeInstancesCount)
+                            Array.Resize(ref scenaryItemTypesQuadContainer.ItemKeysArray, itemTypeInstancesCount);
+                        scenaryItemTypesQuadContainer.ItemKeys.Values.CopyTo(scenaryItemTypesQuadContainer.ItemKeysArray, 0);
 
                         // update list back to dictionary.
-                        terrainQuadTree._scenaryItemTypes[(int)instancedItemData.ItemType] = itemKeys;
+                        terrainQuadTree._scenaryItemTypes[(int)instancedItemData.ItemType] = scenaryItemTypesQuadContainer;
                     }
                 }
 

@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.Explosions;
 using ImageNexus.BenScharbach.TWEngine.GameCamera;
 using ImageNexus.BenScharbach.TWEngine.Particles.Enums;
 using ImageNexus.BenScharbach.TWEngine.Particles.ParticleSystems;
@@ -660,6 +661,55 @@ namespace ImageNexus.BenScharbach.TWEngine.Particles
             _particlesToDisplay.Clear();
             _particlesToDisplay = null;
         }
-       
+
+        #region Particle Explosions
+
+        ///<summary>
+        /// Adds 25 particles to the small <see cref="ParticleSystem"/>, which draws
+        /// a small smoke explosion.
+        ///</summary>
+        ///<param name="currentPosition">Current position to start explosion</param>
+        ///<param name="currentVelocity">Current velocity for explosion smoke</param>
+        public static void DoParticles_SmallExplosion(ref Vector3 currentPosition, ref Vector3 currentVelocity)
+        {
+            for (var i = 0; i < 25; i++)
+                _explosionParticles.AddParticle(currentPosition, currentVelocity);
+
+            for (var i = 0; i < 25; i++)
+                _smallExplosionSmokeParticles.AddParticle(currentPosition, currentVelocity);
+        }
+
+        ///<summary>
+        /// Adds 50 particles to the medium <see cref="ParticleSystem"/>, which draws
+        /// a medium smoke explosion.
+        ///</summary>
+        ///<param name="currentPosition">Current position to start explosion</param>
+        ///<param name="currentVelocity">Current velocity for explosion smoke</param>
+        public static void DoParticles_MediumExplosion(ref Vector3 currentPosition, ref Vector3 currentVelocity)
+        {
+
+            for (var i = 0; i < 50; i++)
+                _explosionParticles.AddParticle(currentPosition, currentVelocity);
+
+            for (var i = 0; i < 50; i++)
+                _mediumExplosionSmokeParticles.AddParticle(currentPosition, currentVelocity);
+        }
+
+        ///<summary>
+        /// Adds 60 particles to the large <see cref="ParticleSystem"/>, which draws
+        /// a large smoke explosion.
+        ///</summary>
+        ///<param name="currentPosition">Current position to start explosion</param>
+        ///<param name="currentVelocity">Current velocity for explosion smoke</param>
+        public static void DoParticles_LargeExplosion(ref Vector3 currentPosition, ref Vector3 currentVelocity)
+        {
+            for (var i = 0; i < 60; i++)
+                _explosionParticles.AddParticle(currentPosition, currentVelocity);
+
+            for (var i = 0; i < 60; i++)
+                _largeExplosionSmokeParticles.AddParticle(currentPosition, currentVelocity);
+        }
+
+        #endregion
     }
 }

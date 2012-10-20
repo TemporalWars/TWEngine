@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.MemoryPool;
 using ImageNexus.BenScharbach.TWEngine.Networking;
@@ -371,10 +372,8 @@ namespace ImageNexus.BenScharbach.TWEngine.rtsCommands
                 // If Null, then Command is no longer availble to be resent.
                 if (rtsCommand == null)
                 {
-#if DEBUG
                     Debug.WriteLine("RTSCommand # " + commandValidator.RTSCommandNumberToValidate +
                                     ", is no longer available for resending.");
-#endif
                     return;
                 }
 

@@ -17,11 +17,15 @@ using ImageNexus.BenScharbach.TWEngine.GameScreens.Generic;
 using ImageNexus.BenScharbach.TWEngine.IFDTiles;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
 using ImageNexus.BenScharbach.TWEngine.Interfaces;
 using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
 using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes.Structs;
 using ImageNexus.BenScharbach.TWEngine.Players;
+using ImageNexus.BenScharbach.TWEngine.ScenaryDataLoader;
+using ImageNexus.BenScharbach.TWEngine.ScenaryDataLoader.Loaders;
 using ImageNexus.BenScharbach.TWEngine.SceneItems;
+using ImageNexus.BenScharbach.TWEngine.SceneItems.Structs;
 using ImageNexus.BenScharbach.TWEngine.Shadows;
 using ImageNexus.BenScharbach.TWEngine.Shadows.Structs;
 using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
@@ -515,9 +519,45 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             // 8/12/2008 - Clear all Instance Models World Transforms            
             InstancedItem.ClearAllInstanceModelsTransforms();
 
+            // 10/11/2012 - Need to attach required callbacks to loader
+            ScenaryDataReader.DisplayMessage = delegate(string s)
+                { LoadingScreen.LoadingMessage = s; };
+
+            // 10/11/2012 - Updated to use the new ScenaryDataLoader assembly.
             // 10/30/2008 - Load using the Content Pipeline '.xnb' method.
-            var items = TemporalWars3DEngine.ContentMaps.Load<List<ScenaryItemScene>>(
+            var itemsFromLoader = TemporalWars3DEngine.ContentMaps.Load<List<ScenaryItemSceneLoader>>(
                 String.Format(@"{0}\{1}\tdScenaryMetaData", mapType, mapName));
+
+            // 10/11/2012 - Create proper 'ScenaryItemScene' instance from the loader instances.
+            var items = new List<ScenaryItemScene>(itemsFromLoader.Count);
+            var inPosition = Vector3.Zero;
+            var inRotation = Quaternion.Identity;
+            foreach (var scenaryItemSceneLoader in itemsFromLoader)
+            {
+                // Create proper ScenaryItemData structures from the loader structs.
+                var internalItems = new List<ScenaryItemData>();
+                foreach (var item in scenaryItemSceneLoader.ScenaryItemData)
+                {
+
+                    internalItems.Add(new ScenaryItemData(ref inPosition, ref inRotation)
+                        {
+                            instancedItemData = new InstancedItemData((ItemType) item.ItemType),
+                            rotation = item.Rotation,
+                            position = item.Position,
+                            scale = item.Scale,
+                            pathBlockSize = item.PathBlockSize,
+                            isPathBlocked = item.IsPathBlocked,
+                            name = item.Name,
+                        });
+                }
+
+                var scenaryItem = new ScenaryItemScene(TemporalWars3DEngine.GameInstance,
+                                                       (ItemType) scenaryItemSceneLoader.ItemType, internalItems, 0);
+                items.Add(scenaryItem);
+            }
+
+            // 10/11/2012 - Trigger ItemsLoader Thread to start.
+            InstancedItemLoader.PreLoadInstanceItemsMethod();
 
             LoadingScreen.LoadingMessage = "Copying Scenary Items into Terrain";
 
