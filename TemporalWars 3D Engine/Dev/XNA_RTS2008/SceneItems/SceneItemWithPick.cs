@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using ImageNexus.BenScharbach.TWEngine.AI;
 using ImageNexus.BenScharbach.TWEngine.AI.FSMStates;
@@ -23,6 +24,7 @@ using ImageNexus.BenScharbach.TWEngine.ForceBehaviors.SteeringBehaviors;
 using ImageNexus.BenScharbach.TWEngine.GameCamera;
 using ImageNexus.BenScharbach.TWEngine.GameScreens;
 using ImageNexus.BenScharbach.TWEngine.IFDTiles;
+using ImageNexus.BenScharbach.TWEngine.InstancedModels;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
 using ImageNexus.BenScharbach.TWEngine.Interfaces;
 using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
@@ -1394,9 +1396,7 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         {
             if (attackie == null) return false;
 
-#if DEBUG
             Debug.WriteLine(string.Format("SceneItem#{0} PathToPositionWithinAttackingRange.", UniqueItemNumber));
-#endif
 
             var attackiePos = attackie.Position;
 
@@ -1411,11 +1411,8 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             Vector3 newPosition;
             GetPositionWithinGivenCircularRadius(ref attackiePos, ref position, distance, AttackRadius,
                                                  out newPosition);
-                
 
-#if DEBUG
             Debug.WriteLine(string.Format("SceneItem#{0} to attack position {1}.", UniqueItemNumber, newPosition));
-#endif
             
             // Queue new Goal Position to PathFind to.
             AStarItemI.AddWayPointGoalNode(ref newPosition);
@@ -1633,14 +1630,15 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
                 } // End Is MP game
             }
 
+            // 10/13/2012 - Obsolete
             // 1/30/2010 - Start Explosion.
-            ShapeItem.StartExplosion(this, ref elapsedTime);
+            //ShapeItem.StartExplosion(this, ref elapsedTime);
             
         }
 
         // 1/1/2009; // 2/23/2009 - Updated to call Base first, and then call 'ReturnItemToPool'.
         /// <summary>
-        /// When an item is fully dead, the <see cref="ExplosionsManager"/> will call this
+        /// When an item is fully dead, the <see cref="DoFinishKillSceneItemCheck"/> method will call this
         /// method. In turn, this is where the item is removed from the game world,
         /// and its <see cref="SceneItem.HealthState"/> is set to be 'Dead'.
         /// </summary>
@@ -1649,6 +1647,9 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         protected internal override void FinishKillSceneItem(ref TimeSpan elapsedTime, int playerNumber)
         {
            base.FinishKillSceneItem(ref elapsedTime, playerNumber);
+
+           // 10/13/2012 - Reset KillSceneItem elapsed time variable.
+           _killSceneItemElapsedTime = 0;
             
            // 4/20/2010 - Update Minimap to remove dead SceneItemOwner.
            ForceMinimapUpdate();
@@ -2300,6 +2301,7 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         // 8/11/2009 - To Optimize.
         private static readonly Vector3 Vector3Zero = Vector3.Zero;
         private static readonly TimeSpan TimeSpanZero = TimeSpan.Zero;
+        private float _killSceneItemElapsedTime;
 
         // 3/23/2009
         /// <summary>
@@ -2861,5 +2863,7 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         }
 
         #endregion
+
+       
     }
 }

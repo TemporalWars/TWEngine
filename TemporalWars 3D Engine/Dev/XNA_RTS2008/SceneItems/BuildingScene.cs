@@ -274,12 +274,9 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             // 6/15/2010 - Updated to use new GetPlayer method.
             TemporalWars3DEngine.GetPlayer(TemporalWars3DEngine.SThisPlayer, out _thisPlayer);
 
+            // 10/13/2012 - Obsolete.
             // 3/28/2009 - Tell InstanceModel to draw using Normal pieces, and not explosion pieces!
-            InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData, PlayerNumber, false);
-            
-            // Does this Building generate revenue?
-            //if (PlayableItemAtts.GeneratesRevenue)
-               // _timeToNextRevenueDeposit = TimeSpan.FromSeconds(PlayableItemAtts.TimeToNextDeposit);
+            //InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData, PlayerNumber, false);
 
             // 3/26/2009 - Is this building marked as a 'SpecialTechBuilding'?
             if (PlayableItemAtts.IsSpecialEnablerBuilding && ItemPlacedInFinalPosition)
@@ -786,9 +783,14 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             if (aStarGraph != null) // 1/13/2010
                 aStarGraph.RemoveCostAtPos((int)position.X, (int)position.Z, ShapeItem.PathBlockSize);
 
+            // 10/13/2012 - Obsolete.
             // 3/28/2009 - Tell InstanceModel to draw using Explosion Pieces!
-            InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData,
-                                                                   PlayerNumber, true);
+            //InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData,PlayerNumber, true);
+
+            // 10/13/2012 - Draw Explosion smoke
+            var currentPosition = ShapeItem.World.Translation;
+            var lastProjectileVelocity = ShapeItem.LastProjectileVelocity;
+            ParticlesManager.DoParticles_LargeExplosion(ref currentPosition, ref lastProjectileVelocity);
 
             // 4/3/2009 - Check if SupplyShip exits?
             if (PlayableItemAtts.RevenueComesFromSupplyShip)
@@ -811,13 +813,9 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
                 }
             }
 
-            // Start Explosion Animations
-
             // 5/18/2009 - if SpecialBuilding, then trigger Event.  This is used to Turn OFF Tiles in IFD.
             if (PlayableItemAtts.IsSpecialEnablerBuilding && SpecialBuildingDestroyed != null)
                 SpecialBuildingDestroyed(this, EventArgs.Empty);
-
-            
         }
 
         // 2/23/2009

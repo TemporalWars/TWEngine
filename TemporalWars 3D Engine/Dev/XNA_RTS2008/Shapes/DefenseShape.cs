@@ -296,6 +296,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
             return;
         }
 
+        // 10/13/2012 - Obsolete
         // 2/26/2009 - ExplodeItem; 1/30/2010 - Updated with 'SceneItemOwner'.     
         /// <summary>
         /// When a <see cref="SceneItem"/> is killed, the base class <see cref="Shape"/> will automatically call
@@ -306,12 +307,13 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
         /// </summary>
         /// <param name="sceneItemOwner"><see cref="SceneItemWithPick"/> owner of this shape</param>
         /// <param name="elapsedTime"><see cref="TimeSpan"/> structure as elapsed time</param>
+        [Obsolete]
         public override void StartExplosion(SceneItemWithPick sceneItemOwner, ref TimeSpan elapsedTime)
         {
             // 1/30/2010
             // NOTE: MUST set at least one ExplosionItem to have the 'SceneItemOwner' reference below; but ONLY one, otherwise multiply calls will occur.
 
-            if (ExplodeAnimStarted) return;
+            /*if (ExplodeAnimStarted) return;
 
             // 5/20/2010 - Const amount of velocity applied to Y access; 0-100%.
             // 1/18/2011 - Velocity Y Height has default 30x in shader.
@@ -427,7 +429,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
             ExplosionsManager.DoParticles_MediumExplosion(ref currentPosition, ref lastProjectileVelocity);
 
 
-            ExplodeAnimStarted = true;
+            ExplodeAnimStarted = true;*/
         }
 
         #region IShadowItem Methods

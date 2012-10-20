@@ -243,8 +243,9 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             ShapeItem.ExplodeAnimStarted = false;
             ThePickSelected = false; // 7/12/2009
 
+            // 10/13/2012 - Obsolete.
             // 3/28/2009 - Tell InstanceModel to draw using Normal pieces, and not explosion pieces!
-            InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData, PlayerNumber, false);
+            //InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData, PlayerNumber, false);
 
             // Speed turret can turn at
             _turretAtts.TurretTurnSpeed = PlayableItemAtts.TurretTurnSpeed;
@@ -275,9 +276,7 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             if (TerrainData.IsOnHeightmap(initialPosition.X, initialPosition.Z))
             {
                 initialPosition.Y = TerrainData.GetTerrainHeight(initialPosition.X, initialPosition.Z);
-
                 Position = initialPosition;
-
             }
 
             // Get the default Rotation values, contain in the ItemType's content pipeline file.
@@ -286,7 +285,6 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             InstancedItem.GetRotationY(ref ((Shape) ShapeItem).InstancedItemData, out rotY);
             InstancedItem.GetRotationZ(ref ((Shape) ShapeItem).InstancedItemData, out rotZ);
             Quaternion.CreateFromYawPitchRoll(MathHelper.ToRadians(rotY), MathHelper.ToRadians(rotX), MathHelper.ToRadians(rotZ), out rotation);
-             
 
             // ForceBehavior
             if (ForceBehaviors == null)
@@ -296,10 +294,7 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
                 // 1/26/2009 - Add Ref to ForceBehaviorsManager class
                 ForceBehaviorsManager.Add(ForceBehaviors);
             }
-
-            //if (((Shape)ShapeItem).InstancedItemData.ItemType == ItemType.sciFiAAGun05)
-                //Debugger.Break(); // 1/15/2011
-
+           
             // 6/1/2009 - Add DefenseBehavior AI to AIThreadManager.
             AIManager.AddDefenseAI(this);
 
@@ -705,13 +700,16 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
                 aStarGraph.RemoveCostAtPos((int)position.X, (int)position.Z, ShapeItem.PathBlockSize);
 
             // 4/11/2009 - Remove VisualCircle
-            global::ImageNexus.BenScharbach.TWEngine.Terrain.TerrainShape.TerrainVisualCircles.RemoveVisualCircle(_visualCircleIndex);
+            Terrain.TerrainShape.TerrainVisualCircles.RemoveVisualCircle(_visualCircleIndex);
 
+            // 10/13/2012 - Obsolete.
             // 3/28/2009 - Tell InstanceModel to draw using Explosion Pieces!
-            InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData,
-                                                                   PlayerNumber, true);
+            //InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData,PlayerNumber, true);
 
-            // Start Explosion Animations
+            // 10/13/2012 - Draw Explosion smoke
+            var currentPosition = ShapeItem.World.Translation;
+            var lastProjectileVelocity = ShapeItem.LastProjectileVelocity;
+            ParticlesManager.DoParticles_MediumExplosion(ref currentPosition, ref lastProjectileVelocity);
         }
 
         // 2/26/2009

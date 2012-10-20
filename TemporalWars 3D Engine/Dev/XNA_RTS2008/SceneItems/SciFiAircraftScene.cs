@@ -340,8 +340,9 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             ShapeItem.ExplodeAnimStarted = false;
             ThePickSelected = false; // 7/12/2009
 
+            // 10/13/2012 - Obsolete.
             // 3/28/2009 - Tell InstanceModel to draw using Normal pieces, and not explosion pieces!
-            InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData, PlayerNumber, false);
+            //InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData, PlayerNumber, false);
 
             // Set pathNodePosition to Current PathNode Position            
             var tmpPathNodePos = PathNodePosition;
@@ -661,11 +662,15 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 
             // Remove OccupiedBy at our Old Position
             AStarItem.RemoveOccupiedByAtOldPosition(AStarItemI);
-                
-            // 3/28/2009 - Tell InstanceModel to draw using Explosion Pieces!
-            InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) sciFiAircraftShape).InstancedItemData, PlayerNumber, true);
 
-            // 11/14/2008 - Start Explosion Animations
+            // 10/13/2012 - Obsolete.
+            // 3/28/2009 - Tell InstanceModel to draw using Explosion Pieces!
+            //InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) sciFiAircraftShape).InstancedItemData, PlayerNumber, true);
+
+            // 10/13/2012 - Draw Explosion smoke
+            var currentPosition = ShapeItem.World.Translation;
+            var lastProjectileVelocity = ShapeItem.LastProjectileVelocity;
+            ParticlesManager.DoParticles_MediumExplosion(ref currentPosition, ref lastProjectileVelocity);
         }
 
         // 2/26/2009
