@@ -13,8 +13,10 @@ using System.Collections.ObjectModel;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.ForceBehaviors;
 using ImageNexus.BenScharbach.TWEngine.GameCamera;
+using ImageNexus.BenScharbach.TWEngine.InstancedModelLoader.Loaders;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
+using ImageNexus.BenScharbach.TWEngine.ParallelTasks;
 using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using ImageNexus.BenScharbach.TWEngine.Shadows;
 using ImageNexus.BenScharbach.TWEngine.Shapes;
@@ -25,6 +27,7 @@ using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using ImageNexus.BenScharbach.TWTools.SpeedCollectionComponent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
 
 #if !XBOX360
 #endif
@@ -54,9 +57,6 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
    
         // 8/28/2009 - InstancedModel ChangeRequest Manager instance.
         internal readonly InstancedModelChangeRequests InstancedModelChangeRequestManager = new InstancedModelChangeRequests();
-
-        // 1/17/2011 - Save ref to current explosion boneName.
-        private string _currentExplosionBoneName;
 
         // 3/24/2011 - XNA 4.0 Updates
         private readonly InstancedModelExtra _instancedModelContent;
@@ -88,10 +88,9 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// <summary>
         /// An array of <see cref="int"/> values, which represent the index values into the <see cref="_modelParts"/> list array.
         /// </summary>
-        internal readonly List<int> ModelPartsKeys; // 
+        internal readonly List<int> ModelPartsKeys;
         private readonly List<int> _explosionPartsKeys;
-        private int _explosionPartsCount; // 7/9/2009
-        private int _modelPartsCount; // 8/21/2009
+        private int _modelPartsCount;
 
         // 2/15/2010 - When some model or models are exploding, then BOTH batches need to 
         //             be drawn in the same draw call.
@@ -103,7 +102,6 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// Reference to the <see cref="InstancedModelBoneCollection"/>.
         /// </summary>
         internal InstancedModelBoneCollection _bonesCollection;
-        private readonly bool _bonesLoaded;
 
         /// <summary>
         /// Stores the <see cref="InstancedModelPart"/> Adjusting Bone transforms, which is used in the 
@@ -131,7 +129,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         // ReSharper restore InconsistentNaming
 
         // 1/17/2011 - Stores the Explosion Velocity for given 'BoneName'.
-        private Dictionary<int, Dictionary<string, Vector3>> _explosionVelocities =
+        private readonly Dictionary<int, Dictionary<string, Vector3>> _explosionVelocities =
             new Dictionary<int, Dictionary<string, Vector3>>(55);
 
 
@@ -173,15 +171,12 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         // 8/19/2009 - Updatd to use the new 'SpeedCollection', rather than Dictionary! 
         // An Array of 'InstanceData' Structs, used to store the location of _model, if
         // _model is currently Picked, and if it is in the camera's view.
-        // 12/18/2008 - Change to Dictionary for fast retrieval! Key = ItemInstanceKey
-        //internal Dictionary<int, InstanceData> InstanceWorldTransforms = new Dictionary<int, InstanceData>(55);
         /// <summary>
-        /// An array of <see cref="InstancedDataCommunication"/> structures, used to carry transform changes between
+        /// An array of <see cref="ChangeRequestItem"/> structures, used to carry transform changes between
         /// the original <see cref="SceneItem"/>, and the <see cref="InstancedModelPart"/> items.
         /// </summary>
         /// <remarks>This collection uses the custom type <see cref="SpeedCollection{TValue}"/>.</remarks>
-        internal Dictionary<int, InstancedDataCommunication> InstanceWorldTransforms = new Dictionary<int, InstancedDataCommunication>(55);
-        
+        internal Dictionary<int, ChangeRequestItem> ChangeRequestItemsTransforms = new Dictionary<int, ChangeRequestItem>(55);
         
         // 5/11/2009 - 
         /// <summary>
@@ -198,8 +193,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         // XNA 4.0 - Now stores Stream#2 vertexDeclaration.
         internal VertexDeclaration InstanceVertexDeclaration;
 
-        // 8/26/2009
-        private readonly InstancedModelAttsData _attsData;
+        // 10/17/2012
+        //private static InstancedModelParallelFor _transformParallelFor;
 
         #endregion
 
@@ -306,7 +301,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             IsScenaryItem = isScenaryItem;
 
             // 3/18/2011 - Retrieve custom tag class
-            _instancedModelContent = (InstancedModelExtra)xnaModel.Tag;
+            //_instancedModelContent = xnaModel.Tag;
+            _instancedModelContent = new InstancedModelExtra((InstancedModelExtraLoader)xnaModel.Tag); // 10/12/2012
            
             IsFBXImported = _instancedModelContent.IsFbxFormat;
             UseBakedTransforms = _instancedModelContent.UseBakeTransforms;
@@ -336,9 +332,13 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             // Let's now save the boneOffset Index value into the proper ModelPart
             UpdateInstancedModelPartsBoneIndexes();
 
+/*#if XBOX
+            // 10/17/2012
+            _transformParallelFor = new InstancedModelParallelFor(false);
+#else
+            _transformParallelFor = new InstancedModelParallelFor(true);
+#endif*/
         }
-
-       
 
         #region OldConstructor
 
@@ -579,7 +579,6 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
             // 3/18/2011 - Save Key counts
             _modelPartsCount = ModelPartsKeys.Count;
-            _explosionPartsCount = _explosionPartsKeys.Count;
         }
 
         // 3/23/2011
@@ -603,7 +602,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                     var instancedModelPart = new InstancedModelPart(_graphicsDevice, this, false, partIndex);
 
                     // Retrieve InstancedModelPartExtra instance
-                    instancedModelPart.InstancedModelPartExtra = (InstancedModelPartExtra)meshPart.Tag;
+                    //instancedModelPart.InstancedModelPartExtra = (InstancedModelPartExtra)meshPart.Tag;
+                    instancedModelPart.InstancedModelPartExtra = new InstancedModelPartExtra((InstancedModelPartExtraLoader)meshPart.Tag); // 10/12/2012
 
                     // Attach to MeshPart
                     instancedModelPart.XnaModelMeshPart = meshPart;
@@ -827,76 +827,6 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         #endregion
 
         // 6/13/2010; 6/14/2010
-        ///<summary>
-        /// Processes all changes requests within the ChangeBuffers for given
-        /// <see cref="InstancedModel"/>.
-        ///</summary>
-        ///<param name="instancedModel"><see cref="InstancedModel"/> instance</param>
-        public static void ProcessDoubleBuffers(InstancedModel instancedModel)
-        {
-#if DEBUG
-            // 4/21/2010 - Debug Purposes           
-            StopWatchTimers.StartStopWatchInstance(StopWatchName.IMPProcBuffs);
-#endif
-            //if (instancedModel.ItemTypeInUse == ItemType.treePalmNew002c)
-              //  Debugger.Break();
-
-            try
-            {
-                var instancedModelParts = instancedModel._modelParts;
-                var modelPartsKeys = instancedModel.ModelPartsKeys;
-
-                // 6/16/2010 - Check if null
-                if (modelPartsKeys == null) return;
-
-                // Iterate ModelParts
-                var modelPartsKeysCount = modelPartsKeys.Count; // 8/12/2009
-                for (var i = 0; i < modelPartsKeysCount; i++)
-                {
-                    // Cache data 
-                    var modelPartsIndex = modelPartsKeys[i];
-
-                    // Cache modelPart 
-                    var modelPart = instancedModelParts[modelPartsIndex];
-                    if (modelPart == null) continue;
-
-                    // Process DoubleBuffer at ModePart level.
-                    InstancedModelPart.ProcessDoubleBuffers(modelPart);
-
-                } // End For ModelParts Loop
-
-                // 6/14/2010 - Check for Explosion processing
-                if (!instancedModel._drawExplosionPiecesToo) return;
-                // Iterate Explosion ModelParts
-                modelPartsKeys = instancedModel._explosionPartsKeys;
-
-                // 6/16/2010 - Check if null
-                if (modelPartsKeys == null) return;
-
-                modelPartsKeysCount = modelPartsKeys.Count;
-                for (var i = 0; i < modelPartsKeysCount; i++)
-                {
-                    // Cache data 
-                    var modelPartsIndex = modelPartsKeys[i];
-
-                    // Cache modelPart 
-                    var modelPart = instancedModelParts[modelPartsIndex];
-                    if (modelPart == null) continue;
-
-                    // Process DoubleBuffer at ModePart level.
-                    InstancedModelPart.ProcessDoubleBuffers(modelPart);
-
-                } // End For ModelParts Loop
-            }
-            finally
-            {
-#if DEBUG
-                // 4/21/2010 - Debug Purposes
-                StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.IMPProcBuffs);
-#endif 
-            }
-
-        }
 
         // 5/24/2010: Updated method to be STATIC.
         // 5/19/2009: Removed the params 'View', 'Projection', & 'LightPos' since these are avaible as STATIC variables!
@@ -908,7 +838,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         public static void DrawCulledInstances(InstancedModel instancedModel, GameTime gameTime)
         {
             // 4/20/2010 - Cache
-            var instanceWorldTransforms = instancedModel.InstanceWorldTransforms; 
+            var instanceWorldTransforms = instancedModel.ChangeRequestItemsTransforms; 
             if (instanceWorldTransforms.Count == 0) return;
 
 #if DEBUG
@@ -919,31 +849,45 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             // 4/20/2010 - Cache values
             var instancedModelParts = instancedModel._modelParts; 
             var modelPartsKeys = instancedModel.ModelPartsKeys;
-            var drawExplosionPiecesToo = instancedModel._drawExplosionPiecesToo;
-           
             
             // Draw Parts
-            DrawModelParts(instancedModel.InstancingTechnique, DrawTransformsType.NormalTransforms_Culled,
+            DrawModelParts(instancedModel.InstancingTechnique,
                            instancedModelParts, modelPartsKeys, gameTime);
 #if DEBUG
             // 3/28/2009 - TODO: Debug Purposes
             StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.IMDraw);//"IM-Draw"
 #endif
+            
+        }
 
-            // 3/26/2011 - Note: Need to fix explosion code.
-            return;
+        // 10/14/2012
+        /// <summary>
+        /// Draws all <see cref="InstancedModel"/> items, using proper <see cref="Effect"/> type.
+        /// </summary>
+        /// <param name="instancedModel">this instance of <see cref="InstancedModel"/></param>
+        /// <param name="gameTime"><see cref="GameTime"/> instance.</param>
+        public static void DrawAllInstances(InstancedModel instancedModel, GameTime gameTime)
+        {
+            // 4/20/2010 - Cache
+            var instanceWorldTransforms = instancedModel.ChangeRequestItemsTransforms;
+            if (instanceWorldTransforms.Count == 0) return;
 
-            // 2/15/2010 - Explosion Pieces are drawn in same draw call, when true!
-            if (drawExplosionPiecesToo)
-            {
-                // 4/20/2010 - Cache
-                var explosionPartsKeys = instancedModel._explosionPartsKeys;
-                if (explosionPartsKeys == null) return;
+#if DEBUG
+            // 3/28/2009 - TODO: Debug Purposes           
+            StopWatchTimers.StartStopWatchInstance(StopWatchName.IMDraw);//"IM-Draw"
+#endif
 
-                DrawModelParts(instancedModel.InstancingTechnique, DrawTransformsType.ExplosionTransforms_Culled,
-                               instancedModelParts, explosionPartsKeys, gameTime);
-            }
+            // 4/20/2010 - Cache values
+            var instancedModelParts = instancedModel._modelParts;
+            var modelPartsKeys = instancedModel.ModelPartsKeys;
 
+            // Draw Parts
+            DrawModelParts(instancedModel.InstancingTechnique,
+                           instancedModelParts, modelPartsKeys, gameTime);
+#if DEBUG
+            // 3/28/2009 - TODO: Debug Purposes
+            StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.IMDraw);//"IM-Draw"
+#endif
            
         }
 
@@ -955,10 +899,10 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// <param name="lightView"><see cref="ShadowMap"/> LightView matrix</param>
         /// <param name="lightProj"><see cref="ShadowMap"/> LightProjection matrix</param>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
-        public static void DrawCulledInstances(InstancedModel instancedModel, ref Matrix lightView, ref Matrix lightProj, GameTime gameTime)
+        public static void DrawShadowCulledInstances(InstancedModel instancedModel, ref Matrix lightView, ref Matrix lightProj, GameTime gameTime)
         {
             // 6/10/2009
-            if (instancedModel.InstanceWorldTransforms.Count == 0)
+            if (instancedModel.ChangeRequestItemsTransforms.Count == 0)
                 return;
 
 #if DEBUG
@@ -969,34 +913,16 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             // 4/20/2010 - Cache values
             var instancedModelParts = instancedModel._modelParts;
             var modelPartsKeys = instancedModel.ModelPartsKeys;
-            var drawExplosionPiecesToo = instancedModel._drawExplosionPiecesToo;
-            
+
             // Draw Parts
-            DrawModelParts(instancedModel.InstancingTechnique, DrawTransformsType.NormalTransforms_Culled, instancedModelParts, modelPartsKeys,
+            DrawModelParts(instancedModel.InstancingTechnique, instancedModelParts, modelPartsKeys,
                            ref lightView, ref lightProj, gameTime, false);
 
 #if DEBUG
             // 3/28/2009 - Debug Purposes
             StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.IMDraw);//"IM-Draw"
 #endif
-
-            // 3/26/2011 - Note: Need to fix explosion code.
-            return;
-
-            // 2/15/2010 - Explosion Pieces are drawn in same draw call, when true!
-            if (drawExplosionPiecesToo)
-            {
-                // 4/20/2010 - Cache
-                var explosionPartsKeys = instancedModel._explosionPartsKeys;
-                if (explosionPartsKeys == null) return;
-
-                DrawModelParts(instancedModel.InstancingTechnique, DrawTransformsType.ExplosionTransforms_Culled, instancedModelParts,
-                               explosionPartsKeys, ref lightView, ref lightProj, gameTime, false);
-            }
-
         }
-
-
 
         // 3/7/2009; // 5/24/2010: Updated method to be STATIC.
         /// <summary>
@@ -1007,50 +933,34 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// <param name="lightProj"><see cref="ShadowMap"/> LightProjection matrix</param>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
         /// <param name="isStaticShadows">Is Draw call for Static shadow maps?</param>
-        public static void DrawAllInstances(InstancedModel instancedModel, ref Matrix lightView, ref Matrix lightProj, GameTime gameTime, bool isStaticShadows)
+        public static void DrawShadowAllInstances(InstancedModel instancedModel, ref Matrix lightView, ref Matrix lightProj, GameTime gameTime, bool isStaticShadows)
         {
             // 6/10/2009
-            if (instancedModel.InstanceWorldTransforms.Count == 0) return;
+            if (instancedModel.ChangeRequestItemsTransforms.Count == 0) return;
            
 
             // 4/20/2010 - Cache values
             var instancedModelParts = instancedModel._modelParts;
             var modelPartsKeys = instancedModel.ModelPartsKeys;
-            var drawExplosionPiecesToo = instancedModel._drawExplosionPiecesToo;
            
             // Draw Parts
-            DrawModelParts(instancedModel.InstancingTechnique, DrawTransformsType.NormalTransforms_All, instancedModelParts, modelPartsKeys,
+            DrawModelParts(instancedModel.InstancingTechnique, instancedModelParts, modelPartsKeys,
                            ref lightView, ref lightProj, gameTime, isStaticShadows);
-
-
-            // 3/26/2011 - Note: Need to fix explosion code.
-            return;
-
-            // 2/15/2010 - Explosion Pieces are drawn in same draw call, when true!
-            if (!drawExplosionPiecesToo) return;
-
-            // 4/20/2010 - Cache
-            var explosionPartsKeys = instancedModel._explosionPartsKeys;
-            if (explosionPartsKeys == null) return;
-
-            DrawModelParts(instancedModel.InstancingTechnique, DrawTransformsType.ExplosionTransforms_Culled, instancedModelParts,
-                           explosionPartsKeys, ref lightView, ref lightProj, gameTime, isStaticShadows);
         }
 
         // 6/10/2009
         /// <summary>
-        /// Calls the <see cref="InstancedModelPart"/> DrawShadow method, passing in the <see cref="DrawTransformsType"/>, 
+        /// Calls the <see cref="InstancedModelPart"/> DrawShadow method,
         /// which specifies to draw either culled or all transforms.
         /// </summary>
         /// <param name="technique"><see cref="InstancingTechnique"/> used for this model</param>
-        /// <param name="drawTransformsType"><see cref="DrawTransformsType"/> to use</param>
         /// <param name="modelParts">Array of <see cref="InstancedModelPart"/> to draw</param>
         /// <param name="modelPartKeys">Array of Keys which index the <see cref="InstancedModelPart"/> array</param>
         /// <param name="lightView"><see cref="ShadowMap"/> LightView matrix</param>
         /// <param name="lightProj"><see cref="ShadowMap"/> LightProjection matrix</param>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
         /// <param name="isStaticShadows">Is Draw call for Static shadow maps?</param>
-        private static void DrawModelParts(InstancingTechnique technique, DrawTransformsType drawTransformsType, 
+        private static void DrawModelParts(InstancingTechnique technique, 
                                             IList<InstancedModelPart> modelParts, IList<int> modelPartKeys, 
                                             ref Matrix lightView, ref Matrix lightProj, GameTime gameTime, bool isStaticShadows)
         {
@@ -1075,21 +985,20 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
                 // 2/11/2010 - Updated to call 'DrawShadows'.
                 // Draw Batch of ModelParts  
-                InstancedModelPart.DrawShadows(modelPart, technique, drawTransformsType, gameTime, isStaticShadows);
+                InstancedModelPart.DrawShadows(modelPart, technique, gameTime, isStaticShadows);
             } // End For ModelParts Loop 
         }
 
 
         /// <summary>
-        /// Calls the <see cref="InstancedModelPart"/> 'Draw' method, passing in the <see cref="DrawTransformsType"/>, 
+        /// Calls the <see cref="InstancedModelPart"/> 'Draw' method, 
         /// which specifies to draw culled or all transforms.
         /// </summary>
         /// <param name="technique"><see cref="InstancingTechnique"/>  used for this model</param>
-        /// <param name="drawTransformsType"><see cref="DrawTransformsType"/> to use</param>
         /// <param name="modelParts">Array of <see cref="InstancedModelPart"/> to draw</param>
         /// <param name="modelPartKeys">Array of Keys which index the <see cref="InstancedModelPart"/> array</param>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
-        private static void DrawModelParts(InstancingTechnique technique, DrawTransformsType drawTransformsType, IList<InstancedModelPart> modelParts, 
+        private static void DrawModelParts(InstancingTechnique technique, IList<InstancedModelPart> modelParts, 
                                         IList<int> modelPartKeys, GameTime gameTime)
         {
             // 2/15/2010 - Check for null
@@ -1186,7 +1095,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                 InstancedModelPart.SetStaticRenderStates(modelPart);
                 
                 // Draw Batch of ModelParts  
-                InstancedModelPart.Draw(modelPart, technique, drawTransformsType, gameTime);
+                InstancedModelPart.Draw(modelPart, technique, gameTime);
 
             } // End For ModelParts Loop 
 
@@ -1371,93 +1280,131 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         }
 #endif
 
-        // 7/9/2009
+        // 7/9/2009; 10/15/2012 - Updated the parameter to now be a simple array.
         /// <summary>
         /// This method is called indirectly from the <see cref="TerrainQuadTree"/> via the <see cref="InstancedItem"/> class, 
         /// when drawing a specific quad which is in <see cref="Camera"/> view.  Then, the internal list of instanceItemKeys
         /// are passed to this method, which then populates the <see cref="InstancedModelPart.TransformsToDrawList"/> for the
         /// next draw call.
         /// </summary>
-        /// <param name="itemsInView">List of instanceItemKeys within <see cref="Camera"/> view.</param>
-        public void CreateScenaryInstancesCulledList(List<int> itemsInView)
+        /// <param name="itemTypeInstances">List of ItemType instances within <see cref="Camera"/> view.</param>
+        /// <remarks>
+        /// The <paramref name="itemTypeInstances"/> index value is created during the load cycle, 
+        /// using the method call <see cref="InstancedItem.GenerateItemInstanceKey"/>.
+        /// For <see cref="ScenaryItemScene"/>, the value is stored in itemData.instancedItemData.ItemInstanceKey.
+        /// </remarks>
+        public void CreateScenaryInstancesCulledList(ref int[] itemTypeInstances)
+        {
+            try
+            {
+                // 4/20/2010 - Cache
+                var instancedModelParts = _modelParts;
+                if (instancedModelParts == null) return;
+
+                // iterate through itemsInView list, searching the InstanceWorldTransforms dictionary, for the given key.
+                var itemTypeInstancesCount = itemTypeInstances.Length; // 8/12/2009
+
+                for (var i = 0; i < itemTypeInstancesCount; i++)
+                {
+                    // search 'InstanceWorldTransforms' dictionary for given key.
+                    ChangeRequestItem changeRequestItem;
+                    if (!ChangeRequestItemsTransforms.TryGetValue(itemTypeInstances[i], out changeRequestItem)) continue;
+
+                    // Iterate each ModelPart to update.
+                    var modelPartsCount = instancedModelParts.Count; // 8/12/2009
+                    for (var modelPartIndex = 0; modelPartIndex < modelPartsCount; modelPartIndex++)
+                    {
+                        var modelPart = instancedModelParts[modelPartIndex]; // 10/17/2012
+                        if (modelPart == null) continue; // 10/17/2012
+
+                        // 3/25/2011 - Scenary items with bones, like trees, need to be calculated for Absolute transforms.
+                        var transformResult = changeRequestItem.Transform;
+                        if (!UseBakedTransforms)
+                        {
+                            CopyAbsoluteBoneTranformsTo(this, changeRequestItem.ItemInstanceKey);
+
+                            // Optimize by removing Matrix Overload operations, which are slow on XBOX!                        
+                            var tmpTransform = changeRequestItem.Transform;
+                            // 6/17/2010 - was cast to (IDictionary<int, InstancedItemTransform[]>)
+                            Matrix.Multiply(ref _absoluteBoneTransforms[changeRequestItem.ItemInstanceKey][((IList<InstancedModelPart>)_modelParts)[modelPartIndex].BoneOffsetIndex].AbsoluteTransform,
+                                ref tmpTransform, out transformResult); // was 'out tmpTransformsToDraw[i]
+                        }
+
+                        // 7/21/2009 - Create ChangeRequestItem
+                        var bufferRequestItem = new BufferRequestItem
+                        {
+                            BufferRequest = BufferRequest.AddOrUpdateInstancedModelPart,
+                        };
+
+                        // 10/17/2012
+                        modelPart.StoreBufferRequestTransform(changeRequestItem.ItemInstanceKey, ref transformResult); // 10/17/2012
+
+                        InstancedModelPart.InstancedModelBufferRequests.EnterBufferRequestItemToCurrentChangeBuffer(modelPartIndex, changeRequestItem.ItemInstanceKey,
+                                                                    ref bufferRequestItem, instancedModelParts);
+                    } // End Loop ModelParts                    
+                } // End Loop itemsInView array.
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("CreateScenaryInstancesCulledList method threw the '{0}' error.", e.Message);
+            }
+        }
+
+        // 7/10/2009; 10/16/2012 - Updated to pass in ItemType key as parameter
+        /// <summary>
+        /// This method is called directly from the <see cref="InstancedItem"/> classes 'Draw' method, which creates
+        /// the BufferRequest to clear all instances of the ScenaryItems.
+        /// out this <see cref="InstancedModel"/> 'Culled' list.
+        /// </summary>
+        public void CreateBufferRequestToClearScenaryInstancesCulledList()
         {
             // 4/20/2010 - Cache
             var instancedModelParts = _modelParts;
             if (instancedModelParts == null) return;
 
-            // iterate through itemsInView list, searching the InstanceWorldTransforms dictionary, for the given key.
-            var itemsInViewCount = itemsInView.Count; // 8/12/2009
-           
-            for (var i = 0; i < itemsInViewCount; i++)
+            // 10/16/2012 - 
+            // Optimization: Clear all DrawToTransform instances to zero directly, instead of iterating all modelParts.
+
+            // 7/21/2009 - Create ChangeRequestItem
+            var bufferRequestItem = new BufferRequestItem
             {
-                // search 'InstanceWorldTransforms' dictionary for given key.
-                InstancedDataCommunication instanceWorldData;
-                if (!InstanceWorldTransforms.TryGetValue(itemsInView[i], out instanceWorldData)) continue;
+                BufferRequest = BufferRequest.ClearAllDrawTransformsForInstancedModel,
+            };
 
-                // Iterate each ModelPart to update.
-                var modelPartsCount = instancedModelParts.Count; // 8/12/2009
-                for (var modelPartIndex = 0; modelPartIndex < modelPartsCount; modelPartIndex++)
-                {
-                    // 3/25/2011 - Scenary items with bones, like trees, need to be calculated for Absolute transforms.
-                    var transformResult = instanceWorldData.Transform;
-                    if (!UseBakedTransforms)
-                    {
-                        CopyAbsoluteBoneTranformsTo(this, instanceWorldData.ItemInstanceKey);
-
-                        // Optimize by removing Matrix Overload operations, which are slow on XBOX!                        
-                        var tmpTransform = instanceWorldData.Transform;
-                        // 6/17/2010 - was cast to (IDictionary<int, InstancedItemTransform[]>)
-                        Matrix.Multiply(ref _absoluteBoneTransforms[instanceWorldData.ItemInstanceKey][((IList<InstancedModelPart>)_modelParts)[modelPartIndex].BoneOffsetIndex].AbsoluteTransform,
-                            ref tmpTransform, out transformResult); // was 'out tmpTransformsToDraw[i]
-                    }
-
-                    // 7/21/2009 - Create ChangeRequestItem
-                    var changeRequestItem = new ChangeRequestItem
-                                                {
-                                                    ChangeRequest = ChangeRequest.AddUpdateSceneryPart_InstanceItem,
-                                                    Transform = transformResult
-                                                };
-
-                    InstancedModelChangeRequests.EnterChangeRequestItemToCurrentChangeBuffer(modelPartIndex, instanceWorldData.ItemInstanceKey,
-                                                                ref changeRequestItem, instancedModelParts);
-                } // End Loop ModelParts                    
-            } // End Loop itemsInView array.
+            // 10/16/2012 - Instead of iterating all modelParts, one call will be done; therefore, 1st param is now set to zero.
+            // ItemIndexKey is set to Zero since all INSTANCES of this Artwork need to be removed.
+            InstancedModelPart.InstancedModelBufferRequests.EnterBufferRequestItemToCurrentChangeBuffer(0, 0, ref bufferRequestItem, instancedModelParts);
         }
 
-        // 7/10/2009
+        // 10/16/2012
         /// <summary>
-        /// This method is called directly from the <see cref="InstancedItem"/> classes 'Draw' method, which clears
-        /// out this <see cref="InstancedModel"/> 'Culled' list.
+        /// This method is called directly from the <see cref="InstancedModelChangeRequests"/> class, which clears
+        /// out this <see cref="InstancedModel"/> 'Culled' transforms list.
         /// </summary>
-        public void ClearScenaryInstancesCulledList()
+        internal void ClearInstancesCulledList()
         {
-            // 4/20/2010 - Cache
+            // Cache
             var instancedModelParts = _modelParts;
             if (instancedModelParts == null) return;
 
             var modelPartsCount = instancedModelParts.Count; // 8/12/2009
             for (var modelPartIndex = 0; modelPartIndex < modelPartsCount; modelPartIndex++)
             {
-                // 7/21/2009 - Create ChangeRequestItem
-                var changeRequestItem = new ChangeRequestItem
-                                            {
-                                                ChangeRequest = ChangeRequest.DeleteAllCulledParts_AllItems,
-                                                Transform = MatrixIdentity
-                                            };
+                var instancedModelPart = instancedModelParts[modelPartIndex];
+                if (instancedModelPart == null) continue;
 
-                // ItemIndexKey is set to Zero, which always makes as first request.
-                InstancedModelChangeRequests.EnterChangeRequestItemToCurrentChangeBuffer(modelPartIndex, 0, ref changeRequestItem, instancedModelParts);
-               
+                // clear out all transforms for given part.
+                instancedModelPart.TransformsToDrawList.Clear();
             }
         }
 
         // 6/17/2010 - Used to store a local copy when iterating the collection in the 'SetDrawExplosionPiecesFlag' method.
-        private InstancedDataCommunication[] _localCopyInstanceWorldTransforms = new InstancedDataCommunication[1];
+        private ChangeRequestItem[] _localCopyInstanceWorldTransforms = new ChangeRequestItem[1];
 
         // 7/24/2009; // 6/17/2010: Updated removing Lambda expression, and instead use simply array.
         /// <summary>
-        /// Check if the dictionary <see cref="InstanceWorldTransforms"/> has
-        /// some instance with the <see cref="InstancedDataCommunication.DrawWithExplodePieces"/> set to TRUE.  
+        /// Check if the dictionary <see cref="ChangeRequestItemsTransforms"/> has
+        /// some instance with the <see cref="ChangeRequestItem.DrawWithExplodePieces"/> set to TRUE.  
         /// The <see cref="_drawExplosionPiecesToo"/> flag is updated with the given result.   
         /// </summary>
         /// <remarks>
@@ -1469,12 +1416,12 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             //_drawExplosionPiecesToo = InstanceWorldTransforms.Count(x => x.Value.DrawWithExplodePieces) > 0;
 
             // Copy dictionary values into local copy, from thread copy.
-            var indexCount = InstanceWorldTransforms.Values.Count;
+            var indexCount = ChangeRequestItemsTransforms.Values.Count;
             var copyLength = _localCopyInstanceWorldTransforms.Length;
             if (copyLength < indexCount)
                 Array.Resize(ref _localCopyInstanceWorldTransforms, indexCount);
 
-            InstanceWorldTransforms.Values.CopyTo(_localCopyInstanceWorldTransforms, 0);
+            ChangeRequestItemsTransforms.Values.CopyTo(_localCopyInstanceWorldTransforms, 0);
 
             // iterate collection, counting number of items with 'DrawWithExplodePieces' TRUE.
             _drawExplosionPiecesToo = false;
@@ -1588,7 +1535,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         public void UpdateInstanceTransforms()
         {
             // 4/20/2010 - Cache
-            var instancedDataCommunications = InstanceWorldTransforms;
+            var instancedDataCommunications = ChangeRequestItemsTransforms;
             if (instancedDataCommunications == null) return;
 
             // 11/7/2009 - Thread Lock op; avoids the 'Count' changing before attempting the CopyTo.
@@ -1614,8 +1561,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                 {
                     var instanceWorldData = instancedDataCommunications[_keys[i]];
 
-                    // 7/25/2009
-                    UpdateInstanceTransforms(ref instanceWorldData);
+                    // 7/25/2009; 10/17/2012
+                    UpdateInstanceTransforms(this, ref instanceWorldData);
                 }
 
                 StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.UpdateTransforms);//"UpdateTransforms"
@@ -1631,69 +1578,55 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         private void UpdateInstanceTransforms(int itemInstanceKey)
         {
             // retrieve the 'InstanceWorldData' node, using the given key
-            InstancedDataCommunication instanceWorldData;
-            if (InstanceWorldTransforms.TryGetValue(itemInstanceKey, out instanceWorldData))
+            ChangeRequestItem changeRequestItem;
+            if (ChangeRequestItemsTransforms.TryGetValue(itemInstanceKey, out changeRequestItem))
             {
-                UpdateInstanceTransforms(ref instanceWorldData);
+                UpdateInstanceTransforms(this, ref changeRequestItem);
             }
         }
 
-        // 7/21/2009 - 
-        /// <summary>
-        /// Update transforms for a specific instance, using <see cref="InstancedDataCommunication"/> node to retrieve.
-        /// </summary>
-        /// <param name="instanceDataCommunication"><see cref="InstancedDataCommunication"/> structure</param>
-        internal void UpdateInstanceTransforms(ref InstancedDataCommunication instanceDataCommunication)
+        // 10/16/2012
+        internal static void UpdateInstanceFlashWhite(InstancedModel instancedModel, ref ChangeRequestItem changeRequestItem)
         {
-            // Draw with Exploding Parts?
-            UpdateInstanceTransforms(this,
-                                     instanceDataCommunication.DrawWithExplodePieces ? PartType.ExplosionPart : PartType.NormalPart,
-                                     ref instanceDataCommunication);
-            
-        }
-
-        /// <summary>
-        /// Iterates through the current <see cref="InstancedModelPart"/> collection, updating all parts
-        /// which are within the <see cref="Camera"/> view, using the data from the <see cref="InstancedDataCommunication"/>
-        /// structure.  For each <see cref="InstancedModelPart"/> update required, a new <see cref="ChangeRequestItem"/> structure
-        /// is created and added to the <see cref="InstancedModelChangeRequests"/> for processing.
-        /// </summary>    
-        /// <param name="instancedModel"><see cref="InstancedModel"/> instance to process</param>
-        /// <param name="partType"><see cref="PartType"/> to process for</param>
-        /// <param name="instanceDataCommunication"><see cref="InstancedDataCommunication"/> to retrieve data from</param>    
-        private static void UpdateInstanceTransforms(InstancedModel instancedModel, PartType partType, ref InstancedDataCommunication instanceDataCommunication)
-        {
-            // 3/25/2011 - Skip any Scenary items, since update done in CreateScenaryInstancesCulledList().
-            //if (instanceDataCommunication.IsSceneryItem) return;
-            
-            //if (instancedModel.ItemTypeInUse == ItemType.treePalmNew002c)
-            //    Debugger.Break();
-
-            // 8/27/2009 - PartType setting, to process either Explosion/Normal set
-            IList<int> modelPartsKeys = null;
-            var modelPartsKeysCount = 0;
-            switch (partType)
-            {
-                case PartType.NormalPart:
-                    modelPartsKeys = instancedModel.ModelPartsKeys;
-                    modelPartsKeysCount = instancedModel.ModelPartsCount;
-                    break;
-                case PartType.ExplosionPart:
-                    modelPartsKeys = instancedModel._explosionPartsKeys;
-                    modelPartsKeysCount = instancedModel._explosionPartsCount;
-                    break;
-            }
+            // PartType setting, to process either Explosion/Normal set
+            IList<int> modelPartsKeys = instancedModel.ModelPartsKeys;
+            var modelPartsKeysCount = instancedModel.ModelPartsCount;
 
             if (modelPartsKeys == null)
                 return;
             
-            // 2/16/2010 - TODO: Testing ParallelFor
-            //_transformParallelFor.ParallelFor(instancedModel, partType, ref instanceData, modelPartsKeys, 0, modelPartsKeysCount);
+            // Iterate through the _modelParts, creating ChangeRequestItem's for each ModelPart!
+            for (var i = 0; i < modelPartsKeysCount; i++)
+            {
+                var modelPartIndex = modelPartsKeys[i];
 
-            var bonesCollection = instancedModel._bonesCollection; // 1/28/2010; was '_model'.
-            var useBakedTransforms = instancedModel.UseBakedTransforms;
+                // Create new ChangeRequestItem
+                var bufferRequestItem = new BufferRequestItem
+                {
+                    BufferRequest = BufferRequest.AddOrUpdateInstancedModelPart,
+                    PlayerNumber = (short) changeRequestItem.PlayerNumber,
+                    ShowFlashWhite = changeRequestItem.ShowFlashWhite, // (Scripting Purposes)
+                };
 
-            // 2/3/2010: Updated to now check if the 'InstanceData' struct is restricted to one model-part.
+                // Create Change Request
+                InstancedModelPart.InstancedModelBufferRequests.EnterBufferRequestItemToCurrentChangeBuffer(
+                    modelPartIndex, changeRequestItem.ItemInstanceKey,
+                    ref bufferRequestItem, instancedModel._modelParts);
+
+
+            } // End Loop ModelPartKeys 
+        }
+
+        // 10/16/2012
+        internal static void UpdateProceduralId(InstancedModel instancedModel, ref ChangeRequestItem changeRequestItem)
+        {
+            // PartType setting, to process either Explosion/Normal set
+            IList<int> modelPartsKeys = instancedModel.ModelPartsKeys;
+            var modelPartsKeysCount = instancedModel.ModelPartsCount;
+
+            if (modelPartsKeys == null)
+                return;
+
             // Iterate through the _modelParts, creating ChangeRequestItem's for each ModelPart!
             for (var i = 0; i < modelPartsKeysCount; i++)
             {
@@ -1701,58 +1634,247 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
                 // 2/3/2010 - Check if restricted to one modelpart.
                 // Note: Its important to note, the check MUST be done using the internal '_modelPartIndexKey', and NOT the Property!
-                var restrictToModelPart = (instanceDataCommunication._modelPartIndexKey > 0 && instanceDataCommunication.ModelPartIndexKey != modelPartIndex);
+                var restrictToModelPart = (changeRequestItem._modelPartIndexKey > 0 && changeRequestItem.ModelPartIndexKey != modelPartIndex);
 
                 // Create new ChangeRequestItem
-                var changeRequestItem = new ChangeRequestItem
-                                            {
-                                                ChangeRequest = ChangeRequest.AddUpdatePart_InstanceItem,
-                                                PlayerNumber = instanceDataCommunication.PlayerNumber, // 8/28/2009
-                                                ProceduralMaterialId = (restrictToModelPart) ? 0 : instanceDataCommunication.ProceduralMaterialId, // 2/3/2010
-                                                ProjectileVelocity = instancedModel.RetrieveBoneExplosionVelocity(instancedModel._currentExplosionBoneName, instanceDataCommunication.ItemInstanceKey), // 6/6/2010; 1/17/2010
-                                                ShowFlashWhite = instanceDataCommunication.ShowFlashWhite, // 10/12/2009 (Scripting Purposes)
-                                                PartType = partType // 7/24/2009
-                                            };
+                var bufferRequestItem = new BufferRequestItem
+                {
+                    BufferRequest = BufferRequest.AddOrUpdateInstancedModelPart,
+                    PlayerNumber = (short) changeRequestItem.PlayerNumber, // 8/28/2009
+                    ProceduralMaterialId = (short) ((restrictToModelPart) ? 0 : changeRequestItem.ProceduralMaterialId),
+                };
+               
+                // Create Change Request
+                InstancedModelPart.InstancedModelBufferRequests.EnterBufferRequestItemToCurrentChangeBuffer(
+                    modelPartIndex, changeRequestItem.ItemInstanceKey,
+                    ref bufferRequestItem, instancedModel._modelParts);
+
+            } // End Loop ModelPartKeys 
+        }
+
+        // 10/18/2012
+        /// <summary>
+        /// Iterates through the current <see cref="InstancedModelPart"/> collection, creating <see cref="BufferRequestItem"/> structure
+        ///  to remove the itemType instance transform.
+        /// </summary>
+        /// <param name="instancedModel"><see cref="InstancedModel"/> instance to process</param>
+        /// <param name="changeRequestItem"><see cref="ChangeRequestItem"/> to retrieve data from</param>
+        internal static void RemoveInstanceTransform(InstancedModel instancedModel, ref ChangeRequestItem changeRequestItem)
+        {
+            // PartType setting, to process either Explosion/Normal set
+            IList<int> modelPartsKeys = instancedModel.ModelPartsKeys;
+            var modelPartsKeysCount = instancedModel.ModelPartsCount;
+
+            if (modelPartsKeys == null)
+                return;
+
+            // Iterate through the _modelParts, creating ChangeRequestItem's for each ModelPart!
+            for (var i = 0; i < modelPartsKeysCount; i++)
+            {
+                var modelPartIndex = modelPartsKeys[i];
+                var modelPart = instancedModel.ModelParts[modelPartIndex];
+
+                // Create new bufferRequestItem
+                var bufferRequestItem = new BufferRequestItem
+                {
+                    BufferRequest = BufferRequest.RemoveInstancedModelPart,
+                };
+
+                var transform = Matrix.Identity;
+                modelPart.StoreBufferRequestTransform(changeRequestItem.ItemInstanceKey, ref transform);
+
+                InstancedModelPart.InstancedModelBufferRequests.EnterBufferRequestItemToCurrentChangeBuffer(modelPartIndex, changeRequestItem.ItemInstanceKey,
+                                                                                                            ref bufferRequestItem, instancedModel._modelParts);
+            }
+           
+        }
+
+        /// <summary>
+        /// Iterates through the current <see cref="InstancedModelPart"/> collection, updating all parts
+        /// which are within the <see cref="Camera"/> view, using the data from the <see cref="ChangeRequestItem"/>
+        /// structure.  For each <see cref="InstancedModelPart"/> update required, a new <see cref="BufferRequestItem"/> structure
+        /// is created and added to the <see cref="InstancedModelPart.InstancedModelBufferRequests"/> for processing.
+        /// </summary>    
+        /// <param name="instancedModel"><see cref="InstancedModel"/> instance to process</param>
+        /// <param name="changeRequestItem"><see cref="ChangeRequestItem"/> to retrieve data from</param>    
+        internal static void UpdateInstanceTransforms(InstancedModel instancedModel, ref ChangeRequestItem changeRequestItem)
+        {
+            // 8/27/2009 - PartType setting, to process either Explosion/Normal set
+            IList<int> modelPartsKeys = instancedModel.ModelPartsKeys;
+            var modelPartsKeysCount = instancedModel.ModelPartsCount;
+
+            if (modelPartsKeys == null)
+                return;
+
+#if DEBUG
+            StopWatchTimers.StartStopWatchInstance(StopWatchName.UpdateTransforms);
+#endif
+            
+            // 2/16/2010 - TODO: Testing ParallelFor - 10/16/2012 - Slower than regular verison on Xbox.
+            //_transformParallelFor.ParallelFor(instancedModel, ref changeRequestItem, modelPartsKeys, 0, modelPartsKeysCount);
+
+            //var bonesCollection = instancedModel._bonesCollection; // 1/28/2010; was '_model'.
+            var useBakedTransforms = instancedModel.UseBakedTransforms;
+
+            // 2/3/2010: Updated to now check if the 'InstanceData' struct is restricted to one model-part.
+            // Iterate through the _modelParts, creating ChangeRequestItem's for each ModelPart!
+            for (var i = 0; i < modelPartsKeysCount; i++)
+            {
+                var modelPartIndex = modelPartsKeys[i];
+                var modelPart = instancedModel.ModelParts[modelPartIndex]; // 10/17/2012
 
                 // Only add if in camera view.
-                if (instanceDataCommunication.InCameraView)
+                if (changeRequestItem.InCameraView)
                 {
                     // Only Calc if NOT using BakedTransforms
-                    var transformResult = instanceDataCommunication.Transform;
+                    var transformResult = changeRequestItem.Transform;
                     if (!useBakedTransforms)
                     {
-                        CopyAbsoluteBoneTranformsTo(instancedModel, instanceDataCommunication.ItemInstanceKey);
+                        CopyAbsoluteBoneTranformsTo(instancedModel, changeRequestItem.ItemInstanceKey);
 
                         // Optimize by removing Matrix Overload operations, which are slow on XBOX!                        
-                        var tmpTransform = instanceDataCommunication.Transform;
+                        var tmpTransform = changeRequestItem.Transform;
                         // 6/17/2010 - was cast to (IDictionary<int, InstancedItemTransform[]>)
-                        Matrix.Multiply(ref instancedModel._absoluteBoneTransforms[instanceDataCommunication.ItemInstanceKey][((IList<InstancedModelPart>) instancedModel._modelParts)[modelPartIndex].BoneOffsetIndex].AbsoluteTransform,
+                        Matrix.Multiply(ref instancedModel._absoluteBoneTransforms[changeRequestItem.ItemInstanceKey][((IList<InstancedModelPart>)instancedModel._modelParts)[modelPartIndex].BoneOffsetIndex].AbsoluteTransform,
                             ref tmpTransform, out transformResult); // was 'out tmpTransformsToDraw[i]
                     }
-                   
+
                     // Update ChangeRequestItem                    
-                    changeRequestItem.Transform = transformResult;
+                    //bufferRequestItem.Transform = transformResult;
+                    modelPart.StoreBufferRequestTransform(changeRequestItem.ItemInstanceKey, ref transformResult); // 10/17/2012
                 }
                 else // Update ChangeRequestItem                                
-                    changeRequestItem.Transform = instanceDataCommunication.Transform;
+                {
+                    //bufferRequestItem.Transform = changeRequestItem.Transform;
+                    var transform = changeRequestItem.Transform;
+                    modelPart.StoreBufferRequestTransform(changeRequestItem.ItemInstanceKey, ref transform); // 10/17/2012
+                }
 
                 // 1/16/2011 - Updated to check if 'TerrainIsIn' playableMode before hiding units for FOW.
                 // 4/21/2010 - Updated to check if 'ShapeItem' is null.
                 // 1/30/2010 - Set Transform to zero, if FOW=false; 6/13/2010 - Not for Scenary items.
-                if (TerrainShape.TerrainIsIn == TerrainIsIn.PlayableMode && !instanceDataCommunication.ShapeItem.IsFOWVisible) 
-                    changeRequestItem.Transform = new Matrix();
+                if (TerrainShape.TerrainIsIn == TerrainIsIn.PlayableMode && !changeRequestItem.ShapeItem.IsFOWVisible)
+                {
+                    //bufferRequestItem.Transform = new Matrix();
+                    var transform = Matrix.Identity;
+                    modelPart.StoreBufferRequestTransform(changeRequestItem.ItemInstanceKey, ref transform); // 10/17/2012
+                }
 
-                // NOTE: DEBUG
-                if (instancedModel.ItemTypeInUse == ItemType.treePalmNew002c)
-                    System.Console.WriteLine(string.Format("The UpdateTransforms = {0}.", changeRequestItem.Transform));
+                // Create new ChangeRequestItem
+                var bufferRequestItem = new BufferRequestItem
+                {
+                    BufferRequest = BufferRequest.AddOrUpdateInstancedModelPart,
+                    PlayerNumber = (short)changeRequestItem.PlayerNumber,
+                };
 
-                InstancedModelChangeRequests.EnterChangeRequestItemToCurrentChangeBuffer(modelPartIndex, instanceDataCommunication.ItemInstanceKey,
-                                                            ref changeRequestItem, instancedModel._modelParts);
+                // Create Change Request
+                InstancedModelPart.InstancedModelBufferRequests.EnterBufferRequestItemToCurrentChangeBuffer(
+                    modelPartIndex, changeRequestItem.ItemInstanceKey,
+                    ref bufferRequestItem, instancedModel._modelParts);
 
-                                        
-            } // End Loop ModelPartKeys  
-            
-       
+            } // End Loop ModelPartKeys
+
+#if DEBUG
+            StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.UpdateTransforms);
+#endif
+
+        }
+
+        // 10/14/2012
+        /// <summary>
+        /// Iterates through this <see cref="InstancedModelPart"/> collection, while calling
+        /// the <see cref="UpdateInstanceTransforms"/> method, which updates all bone transforms 
+        /// and stores the <see cref="Matrix"/> transforms of only the culled items.
+        /// </summary>
+        public void UpdateInstanceTransformsFromLoader()
+        {
+            // 4/20/2010 - Cache
+            var changeRequestItems = ChangeRequestItemsTransforms;
+            if (changeRequestItems == null) return;
+
+            // 11/7/2009 - Thread Lock op; avoids the 'Count' changing before attempting the CopyTo.
+            //lock (instancedDataCommunications.ThreadLock)
+            {
+                //StopWatchTimers.StartStopWatchInstance(StopWatchName.UpdateTransforms);//"UpdateTransforms"
+
+                // 4/13/2009 - Cache data to improve CPI in VTUNE!
+                var keys = changeRequestItems.Keys; // 4/20/2010
+                var changeRequestItemsCount = keys.Count;
+
+                // 8/20/2009 - skip any processing, if empty.
+                if (changeRequestItemsCount <= 0) return;
+
+                // Get Keys to Dictionary
+                if (_keys.Length < changeRequestItemsCount)
+                    Array.Resize(ref _keys, changeRequestItemsCount);
+                keys.CopyTo(_keys, 0);
+
+                // Iterate through Dictionary Keys, which represents each instance of
+                // this modelType.
+                for (var i = 0; i < changeRequestItemsCount; i++)
+                {
+                    var changeRequestItem = changeRequestItems[_keys[i]];
+                    UpdateInstanceTransformsDirectly(this, ref changeRequestItem);
+                }
+
+                //StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.UpdateTransforms);//"UpdateTransforms"
+
+            } // End ThreadLock
+        }
+
+        // 10/14/2012
+        /// <summary>
+        /// Iterates through the current <see cref="InstancedModelPart"/> collection, updating all parts
+        /// which are within the <see cref="Camera"/> view, using the data from the <see cref="ChangeRequestItem"/>
+        /// structure.  For each <see cref="InstancedModelPart"/> update required, a new <see cref="BufferRequestItem"/> structure
+        /// is created and added to the <see cref="InstancedModelChangeRequests"/> for processing.
+        /// </summary>    
+        /// <param name="instancedModel"><see cref="InstancedModel"/> instance to process</param>
+        /// <param name="changeRequestItem"><see cref="ChangeRequestItem"/> to retrieve data from</param>    
+        private static void UpdateInstanceTransformsDirectly(InstancedModel instancedModel, ref ChangeRequestItem changeRequestItem)
+        {
+            // 8/27/2009 - PartType setting, to process either Normal set
+            IList<int> modelPartsKeys = instancedModel.ModelPartsKeys;
+            var modelPartsKeysCount = instancedModel.ModelPartsCount;
+            if (modelPartsKeys == null) return;
+
+            //var bonesCollection = instancedModel._bonesCollection; // 1/28/2010; was '_model'.
+            var useBakedTransforms = instancedModel.UseBakedTransforms;
+
+            // 2/3/2010: Updated to now check if the 'InstanceData' struct is restricted to one model-part.
+            // Iterate through the _modelParts, creating ChangeRequestItem's for each ModelPart!
+            for (var i = 0; i < modelPartsKeysCount; i++)
+            {
+                var modelPartIndex = modelPartsKeys[i];
+                var modelPart = (instancedModel._modelParts)[modelPartIndex];
+
+                // Only Calc if NOT using BakedTransforms
+                var transformResult = changeRequestItem.Transform;
+                if (!useBakedTransforms)
+                {
+                    CopyAbsoluteBoneTranformsTo(instancedModel, changeRequestItem.ItemInstanceKey);
+
+                    // Optimize by removing Matrix Overload operations, which are slow on XBOX!                        
+                    var tmpTransform = changeRequestItem.Transform;
+                    // 6/17/2010 - was cast to (IDictionary<int, InstancedItemTransform[]>)
+                    Matrix.Multiply(ref instancedModel._absoluteBoneTransforms[changeRequestItem.ItemInstanceKey][((IList<InstancedModelPart>)instancedModel._modelParts)[modelPartIndex].BoneOffsetIndex].AbsoluteTransform,
+                        ref tmpTransform, out transformResult); // was 'out tmpTransformsToDraw[i]
+                }
+                            
+                //bufferRequestItem.Transform = transformResult;
+                modelPart.StoreBufferRequestTransform(changeRequestItem.ItemInstanceKey, ref transformResult); // 10/17/2012
+
+                // Create new ChangeRequestItem
+                var bufferRequestItem = new BufferRequestItem
+                {
+                    BufferRequest = BufferRequest.AddOrUpdateInstancedModelPart,
+                    PlayerNumber = (short)changeRequestItem.PlayerNumber,
+                };
+
+                // 10/14/2012
+                InstancedModelPart.InstancedModelBufferRequests.UpdateGivenTransformList(modelPart, changeRequestItem.ItemInstanceKey, ref bufferRequestItem);
+
+            } // End Loop ModelPartKeys 
         }
 
         // 1/17/2011
@@ -1941,7 +2063,6 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             SetAdjustingBoneTransform(this, boneName, itemInstanceKey, ref adjustingTransform);
 
             // 1/17/2011 - Save ref to current explosion boneName.
-            _currentExplosionBoneName = boneName;
 
             // 7/24/2009 - Update the InstanceTransform for this instance.
             UpdateInstanceTransforms(itemInstanceKey);
@@ -2359,31 +2480,31 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
         // 2/3/2010
         /// <summary>
-        /// Retrieves an <see cref="InstancedDataCommunication"/> node, using the given <paramref name="itemInstanceKey"/>, from
-        /// internal <see cref="InstanceWorldTransforms"/> dictionary.  If one does not exist, an empty
-        /// <see cref="InstancedDataCommunication"/> node will be created and added to the dictionary.
+        /// Retrieves an <see cref="ChangeRequestItem"/> node, using the given <paramref name="itemInstanceKey"/>, from
+        /// internal <see cref="ChangeRequestItemsTransforms"/> dictionary.  If one does not exist, an empty
+        /// <see cref="ChangeRequestItem"/> node will be created and added to the dictionary.
         /// </summary>
         /// <param name="itemInstanceKey"><see cref="SceneItem"/> owner's InstanceKey</param>
-        /// <param name="instancedDataCommunication">(OUT) <see cref="instancedDataCommunication"/> structure</param>
+        /// <param name="changeRequestItem">(OUT) <see cref="changeRequestItem"/> structure</param>
         /// <returns>True/False of result</returns>
-        public bool GetInstanceDataNode(int itemInstanceKey, out InstancedDataCommunication instancedDataCommunication)
+        public bool GetInstanceDataNode(int itemInstanceKey, out ChangeRequestItem changeRequestItem)
         {
             // 4/20/2010 - Cache and check if null.
-            var instanceWorldTransforms = InstanceWorldTransforms;
-            if (instanceWorldTransforms == null)
+            var changeRequestItemsTransforms = ChangeRequestItemsTransforms;
+            if (changeRequestItemsTransforms == null)
             {
-                instancedDataCommunication = default(InstancedDataCommunication);
+                changeRequestItem = default(ChangeRequestItem);
                 return false;
             }
 
             // Check Dictionary if already exist?
-            if (instanceWorldTransforms.TryGetValue(itemInstanceKey, out instancedDataCommunication))
+            if (changeRequestItemsTransforms.TryGetValue(itemInstanceKey, out changeRequestItem))
             {
                 return true;
             }
 
             // no, so add new InstanceData node
-            var node = new InstancedDataCommunication
+            var node = new ChangeRequestItem
                            {
                                InCameraView = true,
                                ItemInstanceKey = itemInstanceKey,
@@ -2392,34 +2513,34 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                                ShowFlashWhite = false, // 10/12/2009
                            };
 
-            instanceWorldTransforms.Add(itemInstanceKey, node);
+            changeRequestItemsTransforms.Add(itemInstanceKey, node);
 
             return false;
         }
 
         // 2/3/2010
         /// <summary>
-        /// Updates an <see cref="InstancedDataCommunication"/> node, using the given <paramref name="itemInstanceKey"/>, to the
-        /// internal <see cref="InstanceWorldTransforms"/> dictionary.
+        /// Updates an <see cref="ChangeRequestItem"/> node, using the given <paramref name="itemInstanceKey"/>, to the
+        /// internal <see cref="ChangeRequestItemsTransforms"/> dictionary.
         /// </summary>
         /// <param name="itemInstanceKey"><see cref="SceneItem"/> owner's InstanceKey</param>
-        /// <param name="instancedDataCommunication">Updated <see cref="instancedDataCommunication"/> node</param>
+        /// <param name="changeRequestItem">Updated <see cref="ChangeRequestItem"/> node</param>
         /// <returns>True/False of result</returns>
-        public bool UpdateInstanceDataNode(int itemInstanceKey, ref InstancedDataCommunication instancedDataCommunication)
+        public bool UpdateInstanceDataNode(int itemInstanceKey, ref ChangeRequestItem changeRequestItem)
         {
             // 4/20/2010 - Cache and check if null.
-            var instanceWorldTransforms = InstanceWorldTransforms;
-            if (instanceWorldTransforms == null)
+            var changeRequestItemsTransforms = ChangeRequestItemsTransforms;
+            if (changeRequestItemsTransforms == null)
             {
-                instancedDataCommunication = default(InstancedDataCommunication);
+                changeRequestItem = default(ChangeRequestItem);
                 return false;
             }
 
             // Check Dictionary if already exist?
-            if (instanceWorldTransforms.ContainsKey(itemInstanceKey))
+            if (changeRequestItemsTransforms.ContainsKey(itemInstanceKey))
             {
                 // yes, so save new updated node.
-                instanceWorldTransforms[itemInstanceKey] = instancedDataCommunication;
+                changeRequestItemsTransforms[itemInstanceKey] = changeRequestItem;
                 return true;
             }
 
@@ -2428,12 +2549,12 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
         // 2/3/2010
         /// <summary>
-        /// Retrieves an <see cref="InstancedDataCommunication"/> node, using the given <paramref name="itemInstanceKey"/>, from
-        /// internal <see cref="InstanceWorldTransforms"/> dictionary; then updates the node's choosen
-        /// parameter, and saves the result back to the <see cref="InstanceWorldTransforms"/> dictionary.
+        /// Retrieves an <see cref="ChangeRequestItem"/> node, using the given <paramref name="itemInstanceKey"/>, from
+        /// internal <see cref="ChangeRequestItemsTransforms"/> dictionary; then updates the node's choosen
+        /// parameter, and saves the result back to the <see cref="ChangeRequestItemsTransforms"/> dictionary.
         /// </summary>
         /// <remarks>
-        /// If one does not exist, an empty <see cref="InstancedDataCommunication"/> node will be created and added to the dictionary.
+        /// If one does not exist, an empty <see cref="ChangeRequestItem"/> node will be created and added to the dictionary.
         /// </remarks>
         /// <typeparam name="T">Some Valuetype to update; like bool or int.</typeparam>
         /// <param name="itemInstanceKey"><see cref="SceneItem"/> owner's InstanceKey</param>
@@ -2442,45 +2563,45 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         public void UpdateInstanceDataNodeSpecificParameter<T>(int itemInstanceKey, InstanceDataParam instanceDataParam, T newValue) where T : struct
         {
             // 1st - Get Node out of dictionary.
-            InstancedDataCommunication instanceData;
-            GetInstanceDataNode(itemInstanceKey, out instanceData);
+            ChangeRequestItem changeRequestItem;
+            GetInstanceDataNode(itemInstanceKey, out changeRequestItem);
 
             // 2nd - Update the requested internal var.
             switch (instanceDataParam)
             {
                 case InstanceDataParam.IsPicked:
-                    instanceData.IsPicked = Convert.ToBoolean(newValue);
+                    changeRequestItem.IsPicked = Convert.ToBoolean(newValue);
                     break;
                 case InstanceDataParam.InCameraView:
-                    instanceData.InCameraView = Convert.ToBoolean(newValue);
+                    changeRequestItem.InCameraView = Convert.ToBoolean(newValue);
                     break;
                 case InstanceDataParam.ProceduralMaterialId:
-                    instanceData.ProceduralMaterialId = Convert.ToInt32(newValue);
+                    changeRequestItem.ProceduralMaterialId = Convert.ToInt32(newValue);
                     break;
                 case InstanceDataParam.DrawWithExplodePieces:
-                    instanceData.DrawWithExplodePieces = Convert.ToBoolean(newValue);
+                    changeRequestItem.DrawWithExplodePieces = Convert.ToBoolean(newValue);
                     break;
                 case InstanceDataParam.ModelPartIndexKey:
-                    instanceData.ModelPartIndexKey = Convert.ToInt32(newValue);
+                    changeRequestItem.ModelPartIndexKey = Convert.ToInt32(newValue);
                     break;
                 case InstanceDataParam.ItemInstanceKey:
-                    instanceData.ItemInstanceKey = Convert.ToInt32(newValue);
+                    changeRequestItem.ItemInstanceKey = Convert.ToInt32(newValue);
                     break;
                 case InstanceDataParam.PlayerNumber:
-                    instanceData.PlayerNumber = Convert.ToInt32(newValue);
+                    changeRequestItem.PlayerNumber = Convert.ToInt32(newValue);
                     break;
                 case InstanceDataParam.IsSceneryItem:
-                    instanceData.IsSceneryItem = Convert.ToBoolean(newValue);
+                    changeRequestItem.IsSceneryItem = Convert.ToBoolean(newValue);
                     break;
                 case InstanceDataParam.ShowFlashWhite:
-                    instanceData.ShowFlashWhite = Convert.ToBoolean(newValue);
+                    changeRequestItem.ShowFlashWhite = Convert.ToBoolean(newValue);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("instanceDataParam");
             }
 
             // 3rd - Save the Node back into dictionary.
-            UpdateInstanceDataNode(itemInstanceKey, ref instanceData);
+            UpdateInstanceDataNode(itemInstanceKey, ref changeRequestItem);
             
         }
 
@@ -2684,8 +2805,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             }
 
             // Clear All Worlds Trans for this model
-            if (InstanceWorldTransforms != null)
-                InstanceWorldTransforms.Clear();
+            if (ChangeRequestItemsTransforms != null)
+                ChangeRequestItemsTransforms.Clear();
         }
         /// <summary>
         ///  Disposes of unmanaged resources.
@@ -2717,8 +2838,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             InstancedModelChangeRequestManager.Dispose();
 
             // 9/12/2008
-            if (InstanceWorldTransforms != null)
-                InstanceWorldTransforms.Clear();
+            if (ChangeRequestItemsTransforms != null)
+                ChangeRequestItemsTransforms.Clear();
 
             // 3/18/2011
             if (_instanceVertexBuffer != null)
@@ -2739,11 +2860,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         }
 
         #endregion
-
-       
     }
 
 // End InstanceModel class
-
-
 }
