@@ -38,6 +38,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using DrawMode = ImageNexus.BenScharbach.TWEngine.Terrain.Enums.DrawMode;
+using System.Diagnostics;
 #if !XBOX360
 using TWEngine.TerrainTools;
 using System.Windows.Forms;
@@ -1435,11 +1436,8 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             }
             catch (Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("Draw method in TerrainShape class threw the exception " + ex.Message ?? "No Message");
-#endif
             }
-
         }
 
         // 5/26/2012

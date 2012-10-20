@@ -689,10 +689,6 @@ namespace ImageNexus.BenScharbach.TWEngine.Shadows
             // 7/5/2009 - Update in Terrain Effect
             _terrainShape.SetShadowMapSettings(isVisible, ref _lightView, ref _lightProj, ref _lightViewStatic, ref _lightProjStatic);
 
-            // 6/11/2010 - Moved from Draw call to here, to eliminate the flashing purple and stalls.
-            CreateShadowMap(Game.GraphicsDevice, gameTime);
-            
-
             base.Update(gameTime);
         }
 
@@ -708,6 +704,8 @@ namespace ImageNexus.BenScharbach.TWEngine.Shadows
 #if DEBUG
             StopWatchTimers.StartStopWatchInstance(StopWatchName.GameDrawLoop_Main_ShadowDraw);//"ShadowDraw"
 #endif
+            // 10/18/2012 - Moved from Update call to here, to eliminate major stalls when playing from a seperate scripted game project.
+            CreateShadowMap(Game.GraphicsDevice, gameTime);
             
             // 1/6/2009 - If True, then ShadowMap needs to keep trying to set effect Settings.
             if (_requiresSetShadowMapSettings)
