@@ -13,6 +13,7 @@ using ImageNexus.BenScharbach.TWEngine.SceneItems;
 
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// <see cref="ItemGroupType"/> Enum, used to determine
     /// the group <see cref="SceneItem"/> can belong to, or
@@ -20,7 +21,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
     ///</summary>
     /// <remarks>This Enum is decorated with the <see cref="FlagsAttribute"/>, allowing for combinations.</remarks>
     [Flags]
-    public enum ItemGroupType
+    public enum ItemGroupType : short
     {
         ///<summary>
         /// Represents items which can be built, like the <see cref="BuildingScene"/>.

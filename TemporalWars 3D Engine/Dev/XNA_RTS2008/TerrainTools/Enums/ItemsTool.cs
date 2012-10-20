@@ -2,11 +2,12 @@ using ImageNexus.BenScharbach.TWEngine.SceneItems;
 
 namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="ItemsTool"/> Enum is used when 
     /// placing <see cref="SceneItem"/> on the <see cref="Terrain"/>.
     ///</summary>
-    public enum ItemsTool
+    public enum ItemsTool : short
     {
         ///<summary>
         /// Set to 'Select' some <see cref="SceneItem"/>.

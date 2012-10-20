@@ -18,11 +18,12 @@ namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums
     class NamespaceDoc
     {
     }
-    
+
+    // 10/16/2012: Updated enum to inherit from short value.
     /// <summary>
     /// The <see cref="ScreenState"/> Enum describes the screen transition state.
     /// </summary>
-    public enum ScreenState
+    public enum ScreenState : short
     {
         ///<summary>
         /// The <see cref="GameScreen"/> is starting.

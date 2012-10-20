@@ -1,10 +1,11 @@
 namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="HeightTool"/> Enum identifies what action to use
     /// when deforming the <see cref="Terrain"/>.
     ///</summary>
-    public enum HeightTool
+    public enum HeightTool : short
     {
         ///<summary>
         /// Tool is in select mode.

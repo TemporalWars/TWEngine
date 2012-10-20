@@ -17,11 +17,12 @@ namespace ImageNexus.BenScharbach.TWEngine.Common.Enums
     class NamespaceDoc
     {
     }
-    
+
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// Enumeration of Blur Technique to use.
     ///</summary>
-    public enum BlurTechnique
+    public enum BlurTechnique : short
     {
         ///<summary>
         /// plain color

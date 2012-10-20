@@ -8,6 +8,7 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Audio.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 6/10/2012 - Updated Enum with number ranges.
     /// <summary>
     /// The <see cref="Sounds"/> Enum contains all the sounds for the game.
@@ -17,7 +18,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Audio.Enums
     /// This eliminates the need to have the user call the AudioManager with a 'SoundBank', and removes errors which can occur from
     /// calling the AudioManager with a wrong 'SoundBank' to 'Sound' combination.
     /// </remarks>
-    public enum Sounds
+    public enum Sounds : short
     {
 // ReSharper disable InconsistentNaming
 #pragma warning disable 1591

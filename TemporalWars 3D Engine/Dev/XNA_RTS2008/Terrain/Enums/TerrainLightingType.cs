@@ -8,12 +8,13 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 12/12/2009
     /// <summary>
     /// The <see cref="TerrainLightingType"/> Enum Controls the material LightingType to use during rendering, 
     /// specifically for the <see cref="TWEngine.Terrain"/>.
     /// </summary>
-    public enum TerrainLightingType
+    public enum TerrainLightingType : short
     {
         ///<summary>
         /// Applies the plastic material lighting type.

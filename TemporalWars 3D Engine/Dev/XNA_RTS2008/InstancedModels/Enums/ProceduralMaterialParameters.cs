@@ -8,6 +8,7 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 2/4/2010
     /// <summary>
     /// The ProceduralMaterial's optional shared parameters, used
@@ -18,7 +19,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
     /// Depending on the material used, each parameter represents
     /// different functionality.
     /// </remarks>
-    public enum ProceduralMaterialParameters
+    public enum ProceduralMaterialParameters : short
     {
         ///<summary>
         /// Diffuse color parameter

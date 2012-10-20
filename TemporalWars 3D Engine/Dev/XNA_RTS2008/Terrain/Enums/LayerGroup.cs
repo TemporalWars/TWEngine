@@ -8,10 +8,11 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// Texture layer to use.
     ///</summary>
-    public enum LayerGroup
+    public enum LayerGroup : short
     {
         ///<summary>
         /// Layer group 1

@@ -9,13 +9,14 @@
 
 namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// <see cref="IFDSubGroupPosition"/> Enum, used in the <see cref="IFDTileSubGroupControl"/> class, to
     /// specifiy the location for each sub-group of some <see cref="IFDGroupControlType"/> tile, created by 
     /// the user during game play.
     ///</summary>
     /// <remarks>Currently, only 5 positions specified in engine.</remarks>
-    public enum IFDSubGroupPosition
+    public enum IFDSubGroupPosition : short
     {
         ///<summary>
         /// Position 1;

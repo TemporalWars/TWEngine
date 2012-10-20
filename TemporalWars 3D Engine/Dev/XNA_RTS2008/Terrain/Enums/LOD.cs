@@ -8,10 +8,11 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// Level of detail or <see cref="LOD"/>.
     ///</summary>
-    public enum LOD
+    public enum LOD : short
     {
         ///<summary>
         /// Lowest detail - divide by 16.

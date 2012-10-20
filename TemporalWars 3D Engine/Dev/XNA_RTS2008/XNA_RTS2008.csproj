@@ -16,7 +16,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetZone>LocalIntranet</TargetZone>
     <XnaCrossPlatformGroupID>c7e3f442-a737-472d-905b-4ad664501b2a</XnaCrossPlatformGroupID>
-    <StartupObject>ImageNexus.BenScharbach.TWEngine.BeginGame.Program</StartupObject>
+    <StartupObject>
+    </StartupObject>
     <XnaUpgrade>1</XnaUpgrade>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
@@ -88,6 +89,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>0References\DeployLX.Licensing.v4.dll</HintPath>
     </Reference>
+    <Reference Include="In.BenS.TwEngine.HeightDataLoader, Version=1.1.0.0, Culture=neutral, PublicKeyToken=fcdd27e9ffd63cdb, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWEngine.InstancedMLoader, Version=1.1.0.1, Culture=neutral, PublicKeyToken=c3429a937cfbc308, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TwEngine.ScenaryDataLoader, Version=1.1.0.4, Culture=neutral, PublicKeyToken=dedd9b1975f4500f, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -103,9 +107,7 @@
     <Reference Include="In.BenS.TWLate.StatusBarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5764133d0623b6d1, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
-    <Reference Include="In.BenS.TWScripting.Interfaces, Version=1.12.0.0, Culture=neutral, PublicKeyToken=4be498e0408458af, processorArchitecture=x86">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="In.BenS.TWScripting.Interfaces, Version=1.12.1.0, Culture=neutral, PublicKeyToken=4be498e0408458af, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWTools.MemoryPool, Version=1.9.4.0, Culture=neutral, PublicKeyToken=8016b5272d8c8076, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -222,15 +224,18 @@
   <ItemGroup>
     <Compile Include="AI\AIManager.cs" />
     <Compile Include="DeployLXKeys.cs" />
+    <Compile Include="InstancedModels\Enums\ChangeRequestEnum.cs" />
+    <Compile Include="InstancedModels\InstancedModelBufferRequests.cs" />
+    <Compile Include="InstancedModels\InstancedModelPartExtra.cs" />
     <Compile Include="Interfaces\IScriptingActionChangeRequest.cs" />
     <Compile Include="MemoryPool\PoolItems\BuildingScenePoolItem.cs" />
     <Compile Include="MemoryPool\PoolItems\DefenseScenePoolItem.cs" />
     <Compile Include="MemoryPool\PoolItems\SciFiAircraftScenePoolItem.cs" />
     <Compile Include="MemoryPool\PoolItems\SciFiTankScenePoolItem.cs" />
     <Compile Include="SceneItems\Enums\RotationAxisEnum.cs" />
-    <Compile Include="SceneItems\ScenaryDataReaderV2.cs" />
     <Compile Include="SceneItems\Structs\ScenaryItemDataAudio.cs" />
     <Compile Include="SkyDomes\Enums\SkyDomeTextureEnum.cs" />
+    <Compile Include="Terrain\Structs\ScenaryItemTypesQuadContainer.cs" />
     <Compile Include="Terrain\TerrainDirectionalIconManager.cs" />
     <Compile Include="Utilities\AccelerationValueBehavior.cs" />
     <Compile Include="Utilities\DebugShapeRenderer.cs" />
@@ -6000,11 +6005,7 @@
     <Compile Include="IFDTiles\Delegates\SceneItemPlacedEventHandler.cs" />
     <Compile Include="IFDTiles\Delegates\ItemCreateRequestEventHandler.cs" />
     <Compile Include="IFDTiles\IFDTile_Manager.cs" />
-    <Compile Include="InstancedModels\InstancedModelPartExtraReader.cs" />
-    <Compile Include="InstancedModels\InstancedModelPartExtra.cs" />
-    <Compile Include="InstancedModels\InstancedModelTexturesReader.cs" />
     <Compile Include="InstancedModels\InstancedModelTextures.cs" />
-    <Compile Include="InstancedModels\InstancedModelExtraReader.cs" />
     <Compile Include="InstancedModels\InstancedModelExtra.cs" />
     <Compile Include="Interfaces\IIFDTileManager.cs" />
     <Compile Include="InstancedModels\Enums\InstanceDataParam.cs" />
@@ -6039,7 +6040,7 @@
     <Compile Include="Explosions\ExplosionsManager.cs" />
     <Compile Include="GameCamera\CameraCinematics.cs" />
     <Compile Include="HandleGameInput\HandleInput.cs" />
-    <None Include="ParallelTasks\InstancedModelParallelFor.cs" />
+    <Compile Include="ParallelTasks\InstancedModelParallelFor.cs" />
     <Compile Include="InstancedModels\Enums\ProceduralMaterialParameters.cs" />
     <Compile Include="InstancedModels\InstancedItemCulling.cs" />
     <Compile Include="InstancedModels\InstancedItemLoader.cs" />
@@ -6051,17 +6052,15 @@
     <Compile Include="InstancedModels\Structs\MaterialSpinnerDef.cs" />
     <Compile Include="InstancedModels\Structs\InstancedDataForDraw.cs" />
     <Compile Include="InstancedModels\InstancedModelChangeRequests.cs" />
-    <Compile Include="InstancedModels\Structs\ChangeRequestItem.cs" />
-    <Compile Include="InstancedModels\Enums\ChangeRequest.cs" />
+    <Compile Include="InstancedModels\Structs\BufferRequestItem.cs" />
+    <Compile Include="InstancedModels\Enums\BufferRequest.cs" />
     <Compile Include="InstancedModels\Enums\DrawTransformsType.cs" />
     <Compile Include="InstancedModels\Enums\ItemGroupType.cs" />
     <Compile Include="InstancedModels\Enums\ItemType.cs" />
     <Compile Include="InstancedModels\Enums\InstancingTechnique.cs" />
-    <Compile Include="InstancedModels\Enums\PartType.cs" />
-    <Compile Include="InstancedModels\Structs\PackedVector3.cs" />
     <Compile Include="InstancedModels\Structs\InstancedModelAttsData.cs" />
     <Compile Include="InstancedModels\Structs\InstancedItemTransform.cs" />
-    <Compile Include="InstancedModels\Structs\InstancedDataCommunication.cs" />
+    <Compile Include="InstancedModels\Structs\ChangeRequestItem.cs" />
     <Compile Include="IFDTiles\Enums\IFDGroupControlType.cs" />
     <Compile Include="IFDTiles\Enums\TileState.cs" />
     <Compile Include="IFDTiles\Enums\IFDMessageType.cs" />
@@ -6121,8 +6120,6 @@
     <Compile Include="PostProcessEffects\BloomEffect\BloomCombine.cs" />
     <Compile Include="PostProcessEffects\PostProcessEffect.cs" />
     <Compile Include="PostProcessEffects\Quadrangle.cs" />
-    <Compile Include="InstancedModels\InstancedModelPackedVector3Reader.cs" />
-    <Compile Include="InstancedModels\InstancedModelAttsDataReader.cs" />
     <Compile Include="InstancedModels\InstancedItem.cs" />
     <Compile Include="InstancedModels\Structs\InstancedItemData.cs" />
     <None Include="InstancedModels\InstancedModelAnimation.cs" />
@@ -6138,7 +6135,6 @@
     <Compile Include="Common\Framerate.cs" />
     <Compile Include="InstancedModels\InstancedModel.cs" />
     <Compile Include="InstancedModels\InstancedModelPart.cs" />
-    <None Include="InstancedModels\InstancedModelReader.cs" />
     <Compile Include="Console\GameConsole.cs" />
     <Compile Include="Console\KeyBindings.cs" />
     <Compile Include="Console\PythonConsole.cs" />
@@ -6187,7 +6183,6 @@
     <Compile Include="SceneItems\KillSceneItemManager.cs" />
     <Compile Include="SceneItems\Structs\KillSceneItemStruct.cs" />
     <Compile Include="SceneItems\Structs\ItemMoveState.cs" />
-    <Compile Include="SceneItems\ScenaryDataReader.cs" />
     <Compile Include="SceneItems\Structs\ScenaryItemData.cs" />
     <Compile Include="SceneItems\SciFiAircraftScene.cs" />
     <Compile Include="SceneItems\DefenseScene.cs" />
@@ -6362,8 +6357,7 @@
     <Compile Include="Terrain\Enums\PickRayScale.cs" />
     <Compile Include="Terrain\Enums\GraphicsLevel.cs" />
     <Compile Include="Terrain\Enums\QuadAdjacent.cs" />
-    <Compile Include="Terrain\HeightDataReader.cs" />
-    <None Include="Terrain\HeightMapInfoReader.cs" />
+    <None Include="Terrain\Obsolete\HeightMapInfoReader.cs" />
     <Compile Include="Terrain\Enums\LayerGroup.cs" />
     <Compile Include="Terrain\Structs\pickTriangles.cs" />
     <Compile Include="Terrain\Structs\PerlinNoiseData.cs" />
@@ -6371,7 +6365,6 @@
     <Compile Include="Terrain\TerrainAlphaMaps.cs" />
     <Compile Include="Terrain\TerrainAreaSelect.cs" />
     <Compile Include="Terrain\TerrainData.cs" />
-    <Compile Include="Terrain\TerrainHeightData.cs" />
     <Compile Include="Terrain\Enums\TerrainIsIn.cs" />
     <Compile Include="Terrain\TerrainPickingRoutines.cs" />
     <Compile Include="Terrain\TerrainScene.cs" />
@@ -6474,7 +6467,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Audio\AudioManager.cs" />
     <Compile Include="BeginGame\TemporalWars3DEngine.cs" />
-    <None Include="Terrain\HeightMapInfo.cs" />
+    <None Include="Terrain\Obsolete\HeightMapInfo.cs" />
     <Compile Include="Terrain\TerrainQuadTree.cs" />
     <Compile Include="Terrain\TerrainShape.cs" />
     <Compile Include="Terrain\Structs\TerrainQuadPatch.cs" />
@@ -6712,7 +6705,8 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy  "$(TargetDir)In.BenS.TwEngine.dll" "C:\Program Files (x86)\Image-Nexus\TW3DEngine\x86\" /F /Y
+xcopy  "$(TargetDir)In.BenS.TwEngine.exe" "C:\Program Files (x86)\Image-Nexus\TW3DEngine\x86\" /F /Y
+xcopy  "$(TargetDir)In.BenS.TwEngine.pdb" "C:\Program Files (x86)\Image-Nexus\TW3DEngine\x86\" /F /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>

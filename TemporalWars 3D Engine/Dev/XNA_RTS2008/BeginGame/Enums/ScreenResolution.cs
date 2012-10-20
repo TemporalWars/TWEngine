@@ -8,11 +8,12 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.BeginGame.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="ScreenResolution"/> Enum is used to set different
     /// game screen resolutions.
     ///</summary>
-    public enum ScreenResolution
+    public enum ScreenResolution : short
     {
         ///<summary>
         /// Set 1024x768 resolution.

@@ -19,14 +19,15 @@ namespace ImageNexus.BenScharbach.TWEngine.Particles.Enums
     class NamespaceDoc
     {
     }
-    
+
+    // 10/16/2012: Updated enum to inherit from short value.
     // 7/7/2009 - Particles Enum list
     // Count = 18.
     /// <summary>
     /// The <see cref="ParticleSystemTypes"/> Enum is used to specify the type
     /// of <see cref="ParticleSystem"/> to generate.
     /// </summary>
-    public enum ParticleSystemTypes
+    public enum ParticleSystemTypes : short
     {
         ///<summary>
         /// Creates the fiery part of the explosions.

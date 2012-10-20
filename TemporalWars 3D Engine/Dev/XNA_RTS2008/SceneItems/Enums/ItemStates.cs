@@ -9,11 +9,12 @@
 
 namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="ItemStates"/> of some <see cref="SceneItem"/>; for example, item is in 'Resting' state
     /// or 'Moving' state.
     ///</summary>
-    public enum ItemStates
+    public enum ItemStates : short
     {
         ///<summary>
         /// <see cref="SceneItem"/> is sitting still in one spot.

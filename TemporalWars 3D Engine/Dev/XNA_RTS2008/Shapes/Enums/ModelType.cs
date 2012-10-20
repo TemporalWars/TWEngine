@@ -17,11 +17,12 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes.Enums
     class NamespaceDoc
     {
     }
-    
+
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="ModelType"/> enumeration is used to define the model drawing method.
     ///</summary>
-    public enum ModelType
+    public enum ModelType : short
     {
         ///<summary>
         /// Standard XNA Model.

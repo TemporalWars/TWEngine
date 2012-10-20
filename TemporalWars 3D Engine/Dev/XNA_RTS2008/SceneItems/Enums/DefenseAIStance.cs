@@ -9,11 +9,12 @@
 
 namespace ImageNexus.BenScharbach.TWEngine.SceneItems.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 6/1/2009 - Defense AI Stances
     ///<summary>
     /// The <see cref="SceneItem"/> defensive AI stance.
     ///</summary>
-    public enum DefenseAIStance
+    public enum DefenseAIStance : short
     {
         ///<summary>
         /// In aggressive stance, the <see cref="SceneItem"/> will continuously to pursue

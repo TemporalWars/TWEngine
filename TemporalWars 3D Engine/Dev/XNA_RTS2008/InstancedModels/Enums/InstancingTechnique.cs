@@ -8,6 +8,7 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     // 9/19/2008 - Add the new 'ShaderInstancingTwoPass' Alpha draw mode.
     // 10/28/2008 - Add Enum Numbers, which correspond to the Effect.Techniques 
     //              Position in the Array, which are determine by the order in
@@ -17,7 +18,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
     /// <see cref="InstancingTechnique"/> Enum describes the various possible techniques
     /// that can be chosen to implement instancing.
     /// </summary>
-    public enum InstancingTechnique
+    public enum InstancingTechnique : short
     {
 // ReSharper disable InconsistentNaming
         ///<summary>

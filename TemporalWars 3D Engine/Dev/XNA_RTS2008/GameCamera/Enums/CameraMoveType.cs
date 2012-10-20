@@ -8,10 +8,11 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.GameCamera.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// Enumeration for camera's movement type.
     ///</summary>
-    public enum CameraMoveType
+    public enum CameraMoveType : short
     {
         ///<summary>
         /// Move Position of the camera

@@ -8,10 +8,11 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="PickRayScale"/> Enum specifies how to divide the picked ground location's return value.
     ///</summary>
-    public enum PickRayScale
+    public enum PickRayScale : short
     {
         ///<summary>
         /// Returns the exact value at picked position.

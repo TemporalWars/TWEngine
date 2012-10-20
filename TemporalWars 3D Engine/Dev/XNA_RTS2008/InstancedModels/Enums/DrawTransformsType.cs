@@ -7,16 +7,19 @@
 //-----------------------------------------------------------------------------
 #endregion
 
+using System;
 using ImageNexus.BenScharbach.TWEngine.Explosions.Structs;
 
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
+    // 10/15/2012: Set to Obsolete.
     ///<summary>
     /// <see cref="DrawTransformsType"/>  enumeration, which
     /// <see cref="InstancedModelPart"/> class uses during each
     /// draw cycle, to determine the batch instances to use for
     /// the given cycle.
     ///</summary>
+    [Obsolete]
     public enum DrawTransformsType
     {
 // ReSharper disable InconsistentNaming

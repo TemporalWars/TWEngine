@@ -8,10 +8,11 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="GraphicsLevel"/> Enum.
     ///</summary>
-    public enum GraphicsLevel
+    public enum GraphicsLevel : short
     {
         ///<summary>
         /// Apply low quality type graphics.

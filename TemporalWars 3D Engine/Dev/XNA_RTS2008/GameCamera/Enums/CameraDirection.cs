@@ -21,13 +21,14 @@ namespace ImageNexus.BenScharbach.TWEngine.GameCamera.Enums
     {
     }
 
+    // 10/16/2012: Updated enum to inherit from short value.
     // 6/28/2012 - Updated to include 'Flags' attribute
     ///<summary>
     /// Enumeration for direction the <see cref="Camera"/>
     /// can move in.
     ///</summary>
     [Flags]
-    public enum CameraDirectionEnum
+    public enum CameraDirectionEnum : short
     {
         // 6/15/2012 - Add new 'None' state.
         /// <summary>

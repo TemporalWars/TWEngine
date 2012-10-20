@@ -11,6 +11,7 @@ using ImageNexus.BenScharbach.TWEngine.ItemTypeAttributes;
 
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums
 {
+    // Note: 10/11/2012 - This ENUM list MUST MATCH the list in the ScenaryDataLoader.
     ///<summary>
     /// <see cref="ItemType"/> Enum, which represents all usable artwork for the game engine.  Using
     /// the <see cref="ItemTypeAtts"/>, the given artwork name is then coupled with the proper artwork file, 

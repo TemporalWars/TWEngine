@@ -8,10 +8,11 @@
 #endregion
 namespace ImageNexus.BenScharbach.TWEngine.Terrain.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// The <see cref="VertexBufferComponent"/> Enum is used to determine the vertex type to affect or use.
     ///</summary>
-    public enum VertexBufferComponent
+    public enum VertexBufferComponent : short
     {
         ///<summary>
         /// Affect position attribute.

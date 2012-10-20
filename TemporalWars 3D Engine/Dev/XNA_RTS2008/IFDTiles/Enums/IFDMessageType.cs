@@ -9,11 +9,12 @@
 
 namespace ImageNexus.BenScharbach.TWEngine.IFDTiles.Enums
 {
+    // 10/16/2012: Updated enum to inherit from short value.
     ///<summary>
     /// <see cref="IFDTileMessage"/> Enum for type of message
     /// to draw to the screen. 
     ///</summary>
-    public enum IFDMessageType
+    public enum IFDMessageType : short
     {
         ///<summary>
         /// Draws the simple 1 line message type to screen
