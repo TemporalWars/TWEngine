@@ -18,20 +18,20 @@ using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
 using ImageNexus.BenScharbach.TWEngine.Players;
 using ImageNexus.BenScharbach.TWEngine.Shadows;
 using ImageNexus.BenScharbach.TWEngine.Terrain;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
-    
-
     /// <summary>
     /// The <see cref="InstancedModelPart"/> class is just a collection of
     /// model parts, each one of which can have a different material. These model
     /// parts are responsible for all the heavy lifting of drawing themselves
     /// using the various different instancing techniques.
     /// </summary>
-    internal sealed class InstancedModelPart : IDisposable
+    internal sealed partial class InstancedModelPart : IDisposable
     {
         #region Constants
        
@@ -73,13 +73,25 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         //internal PhysX.PhysXSoftBody PhysXSoftBody;       
 #endif
 
+        // 7/21/2009;  Updated to 50 intial array, to avoid calling Array.Resize as much!
+        private static int[] _keys = new int[50];
+
+        // 3/27/2011 - XNA 4.0 Updates
+        private static VertexBufferBinding _vertexBufferBindingA;
+        private static VertexBufferBinding _vertexBufferBindingB;
+
+        // 10/15/2012 - Deleted the obsolete explosions array.
         // 8/28/2009 - Updated the Value type, in the Dictionaries below, to be the 'InstancedDataStruct', rather than Matrix.
         // 8/19/2009 - Updated to use the new 'SpeedCollection', rather than Dictionary!    
         // 4/20/2009 - Matrix items to draw; 7/21/2009 - Updated to Dictionary, where Key = InstancedItemKey.
         internal readonly Dictionary<int, InstancedDataForDraw> TransformsToDrawList = new Dictionary<int, InstancedDataForDraw>(MaxShaderMatrices); // Culled List
-        internal readonly Dictionary<int, InstancedDataForDraw> TransformsToDrawExpList = new Dictionary<int, InstancedDataForDraw>(MaxShaderMatrices); // Culled Explosions List
-        internal readonly Dictionary<int, InstancedDataForDraw> TransformsToDrawAllList = new Dictionary<int, InstancedDataForDraw>(MaxShaderMatrices);  // All List
-       
+
+        // 10/15/2012 - Optimization: Updated to use the simple array in the UpdateTransformsStream method call.
+        // XNA 4.0 Updates.
+        private InstancedDataForDraw[] _instanceTransformsForDraw = new InstancedDataForDraw[1];
+
+        // 10/17/2012 - Stores the next batch of BufferRequest transforms, which eliminates need to store the transforms in the BufferRequestItems.
+        private readonly Dictionary<int, Matrix> _instanceTransformsInBufferRequests = new Dictionary<int, Matrix>();
         
         // 8/25/2009 - Updated to be an Array of Dictionaries, rather than a Dictionary with Dictionary.
         // 7/21/2009 - Change Buffers - Outer Dictionary will hold the reference to two buffers; 0 & 1.  While the inner
@@ -87,10 +99,9 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         //             into the List<> DrawLists.
         /// <summary>
         /// The <see cref="ChangeBuffers"/> collection is used for the double-buffering techinique.  
-        /// Each buffer contains a <see cref="ChangeRequestItem"/> structure.
+        /// Each buffer contains a <see cref="BufferRequestItem"/> structure.
         /// </summary>
-        public readonly Dictionary<int, ChangeRequestItem>[] ChangeBuffers = new Dictionary<int, ChangeRequestItem>[2];
-        //public readonly Dictionary<int, Dictionary<int, ChangeRequestItem>> ChangeBuffers = new Dictionary<int, Dictionary<int, ChangeRequestItem>>(2);
+        public readonly Dictionary<int, BufferRequestItem>[] ChangeBuffers = new Dictionary<int, BufferRequestItem>[2];
 
         // 6/1/2010 - DoubleBuffer
         /// <summary>
@@ -240,8 +251,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             Camera.CameraUpdated += CameraUpdated;
 
             // 7/21/2009 - Init the ChangeBuffer dictionaries
-            ChangeBuffers[0] = new Dictionary<int, ChangeRequestItem>(55);
-            ChangeBuffers[1] = new Dictionary<int, ChangeRequestItem>(55);
+            ChangeBuffers[0] = new Dictionary<int, BufferRequestItem>(55);
+            ChangeBuffers[1] = new Dictionary<int, BufferRequestItem>(55);
         }
 
         #region oldConstructor
@@ -441,8 +452,47 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
         #endregion
         
+        // 10/17/2012
+        /// <summary>
+        /// Updates the current BufferRequest dictionary with the new <paramref name="transform"/>.
+        /// </summary>
+        /// <param name="instanceIndexKey"><see cref="ItemType"/> instance index key.</param>
+        /// <param name="transform">New transform to store into dictionary.</param>
+        internal void StoreBufferRequestTransform(int instanceIndexKey, ref Matrix transform)
+        {
+            if (_instanceTransformsInBufferRequests.ContainsKey(instanceIndexKey))
+            {
+                _instanceTransformsInBufferRequests[instanceIndexKey] = transform;
+            }
+            else
+            {
+                _instanceTransformsInBufferRequests.Add(instanceIndexKey, transform);
+            }
+        }
 
-       
+        // 10/17/2012
+        /// <summary>
+        /// Gets the updated transform from the buffer dictionay, using the 
+        /// given <paramref name="instanceIndexKey"/>.
+        /// </summary>
+        /// <param name="instanceIndexKey"><see cref="ItemType"/> instance index key.</param>
+        /// <returns>Updated transform</returns>
+        internal Matrix GetBufferRequestTransform(int instanceIndexKey)
+        {
+            return !_instanceTransformsInBufferRequests.ContainsKey(instanceIndexKey)
+                       ? Matrix.Identity
+                       : _instanceTransformsInBufferRequests[instanceIndexKey];
+        }
+
+        // 10/18/2012
+        /// <summary>
+        /// Removes the BufferRequest transform using the given <paramref name="instanceIndexKey"/>.
+        /// </summary>
+        /// <param name="instanceIndexKey"><see cref="ItemType"/> instance index key.</param>
+        internal void RemoveBufferRequestTransform(int instanceIndexKey)
+        {
+            _instanceTransformsInBufferRequests.Remove(instanceIndexKey);
+        }
 
         // 5/24/2010: Updated to be STATIC method.
         // 5/19/2009: Removed the params 'View', 'Projection', & 'LightPos' since these are avaible as STATIC variables!
@@ -642,68 +692,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
  
 
         // 8/17/2009
-        /// <summary>
-        /// Processes the double buffers, by iterating through the 'Current' double buffer, and processing
-        /// all 'ChangeRequests' given.
-        /// </summary>
-        /// <param name="instancedModelPart"><see cref="instancedModelPart"/> to process</param>
-        internal static void ProcessDoubleBuffers(InstancedModelPart instancedModelPart)
-        {
-            var changeBuffers = instancedModelPart.ChangeBuffers;
 
-            // 6/1/2010 - Updated to use the 'PriorUpdateBuffer', since old way was causing high CPI of 17.0 in V-Tune!
-            //var currentUpdateBuffer = InstancedModel.CurrentUpdateBuffer; // 4/20/2010 - Cache
-            //var useDoubleBuffer = (currentUpdateBuffer == 0) ? 1 : 0;
-            var useDoubleBuffer = PriorUpdateBuffer;
-
-            // Get Keys to Dictionary
-            var changeRequestItems = changeBuffers[useDoubleBuffer]; // 6/1/2010 - Cache
-            var changeBuffersCount = changeRequestItems.Keys.Count;
-
-            // 6/4/2010 - Track 'Dirty' flag - to know when changes take place per draw cycle.
-            instancedModelPart._isDirty = false; // reset
-
-            // don't waste time processing anything if empty changeBuffer!
-            if (changeBuffersCount <= 0) return;
-
-            // 6/4/2010 - There are changes, so set to 'Dirty'.
-            instancedModelPart._isDirty = true;
-
-            if (_keys.Length < changeBuffersCount)
-                Array.Resize(ref _keys, changeBuffersCount);
-            changeRequestItems.Keys.CopyTo(_keys, 0);
-
-            // 6/1/2010 - Cache
-            var keys = _keys;
-
-            // Iterate through changeBuffer & update drawList
-            for (var i = 0; i < changeBuffersCount; i++)
-            {
-                // Cache key 
-                var indexKey = keys[i];
-
-                // 2/24/2011
-                try
-                {
-                    // Retrieve ChangeRequestItem from internal Queue
-                    var changeRequestItem = changeRequestItems[indexKey];
-
-                    // Update TransformsLists (Culled/All).
-                    InstancedModelChangeRequests.UpdateTransformsBasedOnChangeRequestItem(instancedModelPart, indexKey, ref changeRequestItem);
-
-                }
-                catch (KeyNotFoundException)
-                {
-                    // Skip
-                }
-
-            } // End For Loop
-
-            // 7/21/2009 - Clear Current Buffers
-            changeRequestItems.Clear();
-
-
-        }
+        // 10/15/2012
 
         // 7/10/2009; // 5/24/2010: Updated to be a STATIC method.
         /// <summary>
@@ -711,9 +701,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// </summary>
         /// <param name="instancedModelPart">this instance of <see cref="InstancedModelPart"/></param>
         /// <param name="instancingTechnique"><see cref="InstancingTechnique"/> to use</param>
-        /// <param name="drawTransformsType"><see cref="DrawTransformsType"/> to draw</param>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
-        public static void Draw(InstancedModelPart instancedModelPart, InstancingTechnique instancingTechnique, DrawTransformsType drawTransformsType, GameTime gameTime)
+        public static void Draw(InstancedModelPart instancedModelPart, InstancingTechnique instancingTechnique, GameTime gameTime)
         {
 #if DEBUG
             // 4/21/2010 - Debug Purposes           
@@ -751,31 +740,13 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
             }
 
+            // 10/15/2012 - Updated to simple array
             // 2/15/2010 - Fixed: Brought back the check of the TransformsType.
-            IDictionary<int, InstancedDataForDraw> toDrawList;
-            switch (drawTransformsType)
-            {
-                case DrawTransformsType.NormalTransforms_All:
-                    var transformsToDrawAllList = instancedModelPart.TransformsToDrawAllList; // 4/20/2010
-                    toDrawList = transformsToDrawAllList;
-                    break;
-                case DrawTransformsType.NormalTransforms_Culled:
-                    var transformsToDrawList = instancedModelPart.TransformsToDrawList; // 4/20/2010
-                    toDrawList = transformsToDrawList;
-
-                    break;
-                case DrawTransformsType.ExplosionTransforms_Culled:
-                    var transformsToDrawExpList = instancedModelPart.TransformsToDrawExpList; // 4/20/2010
-                    toDrawList = transformsToDrawExpList;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("drawTransformsType");
-            }
+            //IDictionary<int, InstancedDataForDraw> toDrawList;
+            var toDrawList = instancedModelPart._instanceTransformsForDraw; // 10/15/2012
 
             // Now Draw, passing in regular 'Effect'.
-            Draw(instancedModelPart,
-                instancingTechnique,
-                gameTime, effect, toDrawList);
+            Draw(instancedModelPart, instancingTechnique, gameTime, effect, ref toDrawList);
 #if DEBUG
             // 4/21/2010 - Debug Purposes
             StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.IMPDraw);
@@ -789,10 +760,9 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// </summary>
         /// <param name="instancedModelPart"></param>
         /// <param name="instancingTechnique"><see cref="InstancingTechnique"/> to use</param>
-        /// <param name="drawTransformsType"><see cref="DrawTransformsType"/> to draw</param>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
         /// <param name="isStaticShadows">Is Draw call for Static shadow maps?</param>
-        public static void DrawShadows(InstancedModelPart instancedModelPart, InstancingTechnique instancingTechnique, DrawTransformsType drawTransformsType, GameTime gameTime, bool isStaticShadows)
+        public static void DrawShadows(InstancedModelPart instancedModelPart, InstancingTechnique instancingTechnique, GameTime gameTime, bool isStaticShadows)
         {
             SetRenderStates(instancedModelPart, true);
 
@@ -814,47 +784,25 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                     instancedModelPart.Effect.CurrentTechnique = instancedModelPart.InstancedModelPartExtra.ShadowMapTechnique;
                     _graphicsDevice.BlendState = BlendState.Opaque;
                     break;
-
             }
 
             var shadowEffect = instancedModelPart.Effect; // 4/20/2010
 
-            // 2/15/2010 - Fixed: Brought back the check of the TransformsType.
-            IDictionary<int, InstancedDataForDraw> toDrawList;
-            switch (drawTransformsType)
-            {
-                case DrawTransformsType.NormalTransforms_All:
-                    var transformsToDrawAllList = instancedModelPart.TransformsToDrawAllList; // 4/20/2010
-                    toDrawList = transformsToDrawAllList;
-                    break;
-                case DrawTransformsType.NormalTransforms_Culled:
-                    var transformsToDrawList = instancedModelPart.TransformsToDrawList; // 4/20/2010
-                    toDrawList = transformsToDrawList;
-                    break;
-                case DrawTransformsType.ExplosionTransforms_Culled:
-                    var transformsToDrawExpList = instancedModelPart.TransformsToDrawExpList; // 4/20/2010
-                    toDrawList = transformsToDrawExpList;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("drawTransformsType");
-            }
+            // 10/15/2012 - Upated to use simple array.
+            // 2/15/2010 - Fixed: Brought back the check of the TransformsType. 
+            //IDictionary<int, InstancedDataForDraw> toDrawList;
+            var toDrawList = instancedModelPart._instanceTransformsForDraw; // 10/15/2012
 
             // 6/14/2010 - To avoid Shadow anomalies, which occur if current 'Transforms' are not updated to GPU, the
             //             'isStaticShadows' flag is set.
             instancedModelPart._isStaticShadows = isStaticShadows;
 
-
+            // 10/15/2012 - Updated to pass simple array
             // Now Draw, passing in shadow 'Effect'.
-            Draw(instancedModelPart, instancingTechnique, gameTime, shadowEffect, toDrawList);
+            Draw(instancedModelPart, instancingTechnique, gameTime, shadowEffect, ref toDrawList);
         }
 
-        // 7/21/2009;  Updated to 50 intial array, to avoid calling Array.Resize as much!
-        private static int[] _keys = new int[50];
-
-        // 3/27/2011 - XNA 4.0 Updates
-        private static VertexBufferBinding _vertexBufferBindingA;
-        private static VertexBufferBinding _vertexBufferBindingB;
-
+        // 10/15/2012: Updated to pass - ref InstancedDataForDraw[] transformsToDrawArray
         // 5/19/2009: Removed the params 'View', 'Projection', & 'LightPos' since these are available as STATIC variables!       
         /// <summary>
         /// Draws a batch of <see cref="InstancedModelPart"/> geometry, using the collection of <see cref="InstancedDataForDraw"/>.
@@ -863,18 +811,22 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// <param name="instancingTechnique"><see cref="InstancingTechnique"/> to use</param>
         /// <param name="gameTime"><see cref="GameTime"/> instance for animations</param>
         /// <param name="effect"><see cref="Effect"/> shader file to use</param>
-        /// <param name="transformsToDrawList">Collection of <see cref="InstancedDataForDraw"/> to draw</param>
-        private static void Draw(InstancedModelPart instancedModelPart, InstancingTechnique instancingTechnique, GameTime gameTime, 
-                                Effect effect, IDictionary<int, InstancedDataForDraw> transformsToDrawList)
+        /// <param name="transformsToDrawArray">Collection of <see cref="InstancedDataForDraw"/> to draw</param>
+        private static void Draw(InstancedModelPart instancedModelPart, InstancingTechnique instancingTechnique, GameTime gameTime,
+                                Effect effect, ref InstancedDataForDraw[] transformsToDrawArray)
         {
 
             try // 7/6/2010
             {
                 // 2/11/2010 - Skip if Null
-                if (transformsToDrawList == null)
+                if (transformsToDrawArray == null)
                     return;
                 // 2/11/2010 - Skip if Count is zero.
-                if (transformsToDrawList.Count == 0)
+                if (transformsToDrawArray.Length == 0)
+                    return;
+                // 10/18/2012 - skip if TransformsToDrawList is zero
+                var instanceCount = instancedModelPart.TransformsToDrawList.Count;
+                if (instanceCount == 0)
                     return;
 
                 // cache
@@ -904,8 +856,10 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                 // Begin the effect, then loop over all the effect passes.
                 //effect.Begin();
 
+                // 10/15/2012 - Updated to pass simple array
                 // XNA 4.0 Updates
-                UpdateTransformsStream(instancedModelPart, instancedModelPart.TransformsToDrawList);
+                //UpdateTransformsStream(instancedModelPart, instancedModelPart.TransformsToDrawList);
+                UpdateTransformsStream(instancedModelPart, ref transformsToDrawArray, instanceCount);
 
                 // 3/27/2011 - Allocate VertexBufferBinding to reduce GC
                 _vertexBufferBindingA = new VertexBufferBinding(instancedModelPart.XnaModelMeshPart.VertexBuffer,
@@ -932,13 +886,13 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
                     // XNA 4.0 updates - Begin() and End() obsolete.
                     effectPass.Apply();
-
+                   
                     // Draw instanced geometry using the specified technique.
                     switch (instancingTechnique)
                     {
                         case InstancingTechnique.HardwareInstancing:
                         case InstancingTechnique.HardwareInstancingAlphaDraw:
-                            DrawHardwareInstancing(instancedModelPart, transformsToDrawList.Count);
+                            DrawHardwareInstancing(instancedModelPart, instanceCount);
                             break;
                         default:
                             break;
@@ -994,7 +948,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
                 // 10/9/2012
                 if (_graphicsDevice == null) return;
-
+             
                 // XNA 4.0 Update - Replaced with new 'DrawInstancedPrimitives' method call.
                 // Draw all the instances in a single batch.
                 //graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertexCount, 0, indexCount / 3);
@@ -1018,41 +972,31 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                 //Debugger.Break();
                
             }
-            
-            
         }
 
-        // XNA 4.0 Updates.
-        InstancedDataForDraw[] _instanceTransformsForDraw = new InstancedDataForDraw[1];
-
-        // 3/18/2011
+        // 3/18/2011; 10/15/2012 - ref InstancedDataForDraw[] transformsToDrawArray
         /// <summary>
         ///  Updates the vertices stream with the new 'Transforms' to draw at.
         /// </summary>
         /// <param name="instancedModelPart"><see cref="InstancedModelPart"/> instance to draw batch for</param> 
-        /// <param name="transformsToDrawList">Collection of <see cref="InstancedDataForDraw"/> to draw</param>  
-        internal static void UpdateTransformsStream(InstancedModelPart instancedModelPart, IDictionary<int, InstancedDataForDraw> transformsToDrawList)
+        /// <param name="transformsToDrawArray">Collection of <see cref="InstancedDataForDraw"/> to draw</param>
+        /// <param name="instanceCount">The instance count to use</param>  
+        //internal static void UpdateTransformsStream(InstancedModelPart instancedModelPart, IDictionary<int, InstancedDataForDraw> transformsToDrawList)
+        internal static void UpdateTransformsStream(InstancedModelPart instancedModelPart, ref InstancedDataForDraw[] transformsToDrawArray, int instanceCount)
         {
+            // 10/18/2012: Fix: The 'Count' MUST come from the 'TransformToDrawList' dictionary, since the simple array 'TransformstoDrawArray'
+            //                  can have a count greater than what needs to be drawn! - Ben :)
             // cache.
-            var transformsCount = transformsToDrawList.Count;
+            //var transformsCount = transformsToDrawArray.Length; // instancedModelPart.TransformsToDrawList
 
             // 7/20/2009 - Saftey Check; if Count zero, then return.
-            if (transformsCount == 0) return;
+            if (instanceCount == 0) return;
 
             // 3/25/2011 - XNA 4.0 Updates - Removed check of 'IsDirty'; otherwise trees do not resolve the absolute transforms correctly.
             // 6/14/2010 - Updates also if this is a 'StaticShadow' draw call.
             // 6/4/2010 - Update ONLY if changes made since last draw cycle!
             // 7/22/2009 - Updates the 'Transforms' data.
             //if (!instancedModelPart._isDirty && !instancedModelPart._isStaticShadows) return;
-
-            // NOTE: Do NOT try to cache the 'instancedModelPart._instanceTransforms', because will actually slow down the Pc, since causes HEAP garbage!
-            // 4/21/2009; 5/14/2009: Updated to only Grow array, and not shrink.
-            // Resize array, if necessary
-            if (instancedModelPart._instanceTransformsForDraw.Length < transformsCount)
-                Array.Resize(ref instancedModelPart._instanceTransformsForDraw, transformsCount);
-
-            //inTransformsToDrawList.CopyTo(_instanceTransforms);
-            transformsToDrawList.Values.CopyTo(instancedModelPart._instanceTransformsForDraw, 0);
 
             // XNA 4.0 Updates - Not required anymore.
             // Make sure our instance data vertex buffer is big enough.                
@@ -1063,7 +1007,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
             var instanceVertexBuffer = instancedModel._instanceVertexBuffer;
             if ((instanceVertexBuffer == null) ||
-                (transformsCount > instanceVertexBuffer.VertexCount)) // transformsCount
+                (instanceCount > instanceVertexBuffer.VertexCount)) // transformsCount
             {
                 if (instanceVertexBuffer != null)
                     instanceVertexBuffer.Dispose();
@@ -1071,17 +1015,16 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                 // XNA 4.0 Updates
                 //instancedModelPart._instanceDataStream = new DynamicVertexBuffer(graphicsDevice, instanceDataSize, BufferUsage.WriteOnly);
                 instancedModel._instanceVertexBuffer = new DynamicVertexBuffer(_graphicsDevice, instancedModel.InstanceVertexDeclaration,
-                                                                               transformsCount, BufferUsage.WriteOnly); // transformsCount
+                                                                               instanceCount, BufferUsage.WriteOnly); // transformsCount
 
                 instanceVertexBuffer = instancedModel._instanceVertexBuffer; // 4/20/2010
             }
 
             // Upload Transform matrices to the instance data vertex buffer.
-            instanceVertexBuffer.SetData(instancedModelPart._instanceTransformsForDraw, 0, transformsCount, SetDataOptions.Discard);
+            instanceVertexBuffer.SetData(instancedModelPart._instanceTransformsForDraw, 0, instanceCount, SetDataOptions.Discard);
 
             instancedModelPart._isStaticShadows = false;
         }
-
 
         #endregion
 
@@ -1093,10 +1036,10 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         {
             if (TransformsToDrawList != null)
                 TransformsToDrawList.Clear();
-            if (TransformsToDrawAllList != null)
-                TransformsToDrawAllList.Clear();
-            if (TransformsToDrawExpList != null)
-                TransformsToDrawExpList.Clear();
+
+            // 10/15/2012 - Removed ALL list.
+            //if (TransformsToDrawAllList != null)
+              //  TransformsToDrawAllList.Clear();
            
             if (_keys != null) Array.Clear(_keys, 0, _keys.Length);
             //if (_instanceTransforms != null) Array.Clear(_instanceTransforms, 0, _instanceTransforms.Length);
