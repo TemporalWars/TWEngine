@@ -586,17 +586,17 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
         /// </summary>
         /// <param name="sceneItemOwner"><see cref="SceneItemWithPick"/> owner of this shape</param>
         /// <param name="elapsedTime"><see cref="TimeSpan"/> structure as elapsed time</param>
+        [Obsolete]
         public override void StartExplosion(SceneItemWithPick sceneItemOwner, ref TimeSpan elapsedTime)
         {
             // 1/30/2010
             // NOTE: MUST set at least one ExplosionItem to have the 'SceneItemOwner' reference below; but ONLY one, otherwise multiply calls will occur.
-
-            if (ExplodeAnimStarted) return;
+            /*if (ExplodeAnimStarted) return;
 
             // 5/20/2010 - Refactored out core code to new STATIC method.
             DoStartExplosion(this, sceneItemOwner);
 
-            ExplodeAnimStarted = true;
+            ExplodeAnimStarted = true;*/
         }
 
         // 5/20/2010
@@ -605,11 +605,12 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
         /// </summary>
         /// <param name="buildingShape">this instance of <see cref="buildingShape"/></param>
         /// <param name="sceneItemOwner"><see cref="SceneItemWithPick"/> owner of this shape</param>
+        [Obsolete]
         private static void DoStartExplosion(BuildingShape buildingShape, SceneItemWithPick sceneItemOwner)
         {
             // 5/20/2010 - Const amount of velocity applied to Y access; 0-100%.
             // 1/18/2011 - Velocity Y Height has default 30x in shader.
-            const float velocityYPower = 5 * 30 * 0.50f; // Height
+            /*const float velocityYPower = 5 * 30 * 0.50f; // Height
             const float velocityXPower = 0.10f; // 1/17/2011
             const float velocityZPower = 0.10f; // 1/17/2011
 
@@ -631,7 +632,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
                 // Create new ExplosionItem instance for each piece needed.                   
                 var explosionItemPiece = new ExplosionItem(sceneItemOwner, "Piece1", ref itemPiece1Velocity, ref tmpOrientation, ref buildingShape.World, ref ((Shape)buildingShape).InstancedItemData)
                                              {
-                                                 RotAngle = Vector3.Up /* y-axis*/,
+                                                 RotAngle = Vector3.Up ,
                                                  RotSpeed = 1
                                              };
                 // Add to ExplosionManager
@@ -650,7 +651,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
                 // Create new ExplosionItem instance for each piece needed.                   
                 var explosionItemPiece = new ExplosionItem(null, "Piece2", ref itemPiece2Velocity, ref tmpOrientation, ref buildingShape.World, ref ((Shape)buildingShape).InstancedItemData)
                                              {
-                                                 RotAngle = Vector3.Backward /* z-axis*/,
+                                                 RotAngle = Vector3.Backward ,
                                                  RotSpeed = 2
                                              };
                 // Add to ExplosionManager
@@ -669,7 +670,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
                 // Create new ExplosionItem instance for each piece needed.                  
                 var explosionItemPiece = new ExplosionItem(null, "Piece3", ref itemPiece3Velocity, ref tmpOrientation, ref buildingShape.World, ref ((Shape)buildingShape).InstancedItemData)
                                              {
-                                                 RotAngle = Vector3.Right /* x-axis*/,
+                                                 RotAngle = Vector3.Right ,
                                                  RotSpeed = 1
                                              };
                 // Add to ExplosionManager
@@ -688,7 +689,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
                 // Create new ExplosionItem instance for each piece needed.                   
                 var explosionItemPiece = new ExplosionItem(null, "Piece4", ref itemPiece4Velocity, ref tmpOrientation, ref buildingShape.World, ref ((Shape)buildingShape).InstancedItemData)
                                              {
-                                                 RotAngle = Vector3.Right /* x-axis*/,
+                                                 RotAngle = Vector3.Right ,
                                                  RotSpeed = 1.5f
                                              };
                 // Add to ExplosionManager
@@ -698,7 +699,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
             // 4/5/2009 - Show Particle Explosion Effects! 
             var currentPosition = buildingShape.World.Translation;
             var lastProjectileVelocity = buildingShape.LastProjectileVelocity;
-            ExplosionsManager.DoParticles_LargeExplosion(ref currentPosition, ref lastProjectileVelocity);
+            ExplosionsManager.DoParticles_LargeExplosion(ref currentPosition, ref lastProjectileVelocity);*/
         }
 
         #region IShadowItem Methods

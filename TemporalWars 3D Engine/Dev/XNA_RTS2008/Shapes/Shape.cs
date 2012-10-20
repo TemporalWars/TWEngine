@@ -42,7 +42,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
         /// <summary>
         /// The current World <see cref="Matrix"/> used to render this shape
         /// </summary>
-        protected Matrix World;
+        protected internal Matrix World;
         private Vector3 _position;  
     
         // 11/14/2008 - Explode SceneItemOwner
@@ -257,6 +257,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
         /// </summary>
         /// <param name="sceneItemOwner"><see cref="SceneItemWithPick"/> owner of this shape</param>
         /// <param name="elapsedTime"><see cref="TimeSpan"/> structure as elapsed time</param>
+        [Obsolete]
         public virtual void StartExplosion(SceneItemWithPick sceneItemOwner, ref TimeSpan elapsedTime)
         {
             // 1/30/2010

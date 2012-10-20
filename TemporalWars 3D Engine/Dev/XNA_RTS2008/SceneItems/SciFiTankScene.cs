@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using ImageNexus.BenScharbach.TWEngine.AI;
 using ImageNexus.BenScharbach.TWEngine.Audio;
@@ -319,8 +320,7 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             scale.X = scale.Y = scale.Z = useScale;
             
             // 12/9/2008 - Apply Default Rotation values to affect the Display only of tanks!
-            InstancedItem.ApplyRotationValuesToRootTranform(ref instancedItemData);        
-           
+            InstancedItem.ApplyRotationValuesToRootTranform(ref instancedItemData);
 
             // 2/23/2009 - Reset flags correctly
             IsAlive = true;
@@ -328,8 +328,9 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             sciFiTankShape.ExplodeAnimStarted = false;
             ThePickSelected = false; // 7/12/2009
 
+            // 10/13/2012 - Obsolete.
             // 3/28/2009 - Tell InstanceModel to draw using Normal pieces, and not explosion pieces!
-            InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref instancedItemData, PlayerNumber, false);
+            //InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref instancedItemData, PlayerNumber, false);
 
             // Speed turret can turn at
             _turretAtts.TurretTurnSpeed = PlayableItemAtts.TurretTurnSpeed;            
@@ -583,15 +584,14 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             AStarItem.RemoveOccupiedByAtOldPosition(AStarItemI);
 #endif
 
-            
+            // 10/13/2012 - Obsolete.
             // 3/28/2009 - Tell InstanceModel to draw using Explosion Pieces!
-            InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData, PlayerNumber, true);
-           
+            //InstancedItem.UpdateInstanceModelToDrawExplosionPieces(ref ((Shape) ShapeItem).InstancedItemData, PlayerNumber, true);
 
-            // 3/1/2010 -  Have Thread sleep a few ms.
-            Thread.Sleep(1);
-
-            
+            // 10/13/2012 - Draw Explosion smoke
+            var currentPosition = ShapeItem.World.Translation;
+            var lastProjectileVelocity = ShapeItem.LastProjectileVelocity;
+            ParticlesManager.DoParticles_MediumExplosion(ref currentPosition, ref lastProjectileVelocity);
         }
 
         // 2/24/2009

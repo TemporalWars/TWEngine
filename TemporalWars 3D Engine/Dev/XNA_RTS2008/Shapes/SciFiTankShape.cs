@@ -428,30 +428,32 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
         /// </summary>
         /// <param name="sceneItemOwner"><see cref="SceneItemWithPick"/> owner of this shape</param>
         /// <param name="elapsedTime"><see cref="TimeSpan"/> structure as elapsed time</param>
+        [Obsolete]
         public override void StartExplosion(SceneItemWithPick sceneItemOwner, ref TimeSpan elapsedTime)
         {
             // 1/30/2010
             // NOTE: MUST set at least one ExplosionItem to have the 'SceneItemOwner' reference below; but ONLY one, otherwise multiply calls will occur.
-
-            if (ExplodeAnimStarted) return;
+            /*if (ExplodeAnimStarted) return;
 
             // 5/20/2010 - Refactored out core code to new STATIC method.
             DoStartExplosion(this, sceneItemOwner);
 
-            ExplodeAnimStarted = true;
+            ExplodeAnimStarted = true;*/
         }
 
+        // 10/13/2012 - Obsolete
         // 5/20/2010
         /// <summary>
         /// Method helper, which adds the <see cref="ExplosionItem"/> part with random velocity to the <see cref="ExplosionsManager"/>.
         /// </summary>
         /// <param name="scifiTankShape">this instance of <see cref="SciFiTankShape"/></param>
         /// <param name="sceneItemOwner"><see cref="SceneItemWithPick"/> owner of this shape</param>
+        [Obsolete]
         private static void DoStartExplosion(SciFiTankShape scifiTankShape, SceneItemWithPick sceneItemOwner)
         {
             // 5/20/2010 - Const amount of velocity applied to Y access; 0-100%.
             // 1/18/2011 - Velocity Y Height has default 30x in shader.
-            const float velocityYPower = 6 * 30 * 0.50f; // Height
+            /*const float velocityYPower = 6 * 30 * 0.50f; // Height
             const float velocityXPower = 0.10f; // 1/17/2011
             const float velocityZPower = 0.10f; // 1/17/2011
 
@@ -532,7 +534,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
             // 4/7/2009
             var currentPosition = scifiTankShape.World.Translation;
             var lastProjectileVelocity = scifiTankShape.LastProjectileVelocity;
-            ExplosionsManager.DoParticles_MediumExplosion(ref currentPosition, ref lastProjectileVelocity);
+            ExplosionsManager.DoParticles_MediumExplosion(ref currentPosition, ref lastProjectileVelocity);*/
         }
 
 

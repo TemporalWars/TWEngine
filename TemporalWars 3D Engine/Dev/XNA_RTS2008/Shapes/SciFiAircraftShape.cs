@@ -358,6 +358,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
                 : InstancedItem.IsMeshPicked(ref ((Shape)this).InstancedItemData, out intersectionDistance);
         }
 
+        // 10/13/2012 - Obsolete
         // 1/30/2010 - Updated to include the 'SceneItem' owner param.
         // 2/6/2009 - Updated to use the new ExplosionManager.
         // 11/14/2008 - ExplodeItem
@@ -370,30 +371,32 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
         /// </summary>
         /// <param name="sceneItemOwner"><see cref="SceneItemWithPick"/> owner of this shape</param>
         /// <param name="elapsedTime"><see cref="TimeSpan"/> structure as elapsed time</param>
+        [Obsolete]
         public override void StartExplosion(SceneItemWithPick sceneItemOwner, ref TimeSpan elapsedTime)
         {
             // 1/30/2010
             // NOTE: MUST set at least one ExplosionItem to have the 'SceneItemOwner' reference below; but ONLY one, otherwise multiply calls will occur.
-           
-            if (ExplodeAnimStarted) return;
+            /*if (ExplodeAnimStarted) return;
 
             // 5/20/2010 - Refactored out core code to new STATIC method.
             DoStartExplosion(this, sceneItemOwner);
 
-            ExplodeAnimStarted = true;
+            ExplodeAnimStarted = true;*/
         }
 
+        // 10/13/2012 - Obsolete
         // 5/20/2010
         /// <summary>
         /// Method helper, which adds the <see cref="ExplosionItem"/> part with random velocity to the <see cref="ExplosionsManager"/>.
         /// </summary>
         /// <param name="scifiAircraftShape">this instance of <see cref="SciFiAircraftShape"/></param>
         /// <param name="sceneItemOwner"><see cref="SceneItemWithPick"/> owner of this shape</param>
+        [Obsolete]
         private static void DoStartExplosion(SciFiAircraftShape scifiAircraftShape, SceneItemWithPick sceneItemOwner)
         {
             // 5/20/2010 - Const amount of velocity applied to Y access; 0-100%.
             // 1/18/2011 - Velocity Y Height has default 30x in shader.
-            const float velocityYPower = 2 * 30 * 0.50f; // Height // Height
+            /*const float velocityYPower = 2 * 30 * 0.50f; // Height // Height
             const float velocityXPower = 0.10f; // 1/17/2011
             const float velocityZPower = 0.10f; // 1/17/2011
 
@@ -493,7 +496,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Shapes
             // 4/10/2009
             var currentPosition = scifiAircraftShape.World.Translation;
             var lastProjectileVelocity = scifiAircraftShape.LastProjectileVelocity;
-            ExplosionsManager.DoParticles_MediumExplosion(ref currentPosition, ref lastProjectileVelocity);
+            ExplosionsManager.DoParticles_MediumExplosion(ref currentPosition, ref lastProjectileVelocity);*/
         }
 
 

@@ -182,14 +182,19 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         private Matrix _oldOrientation = Matrix.Identity;
         private Quaternion _oldRotation;
         private Vector3 _oldPosition, _oldScale;
-        
 
+        // 10/18/2012 - Updated with volatile
         // 11/15/2009 - KillSceneItem is called check.
         /// <summary>
         /// The <see cref="KillSceneItemCalled"/> check is used to make sure code is not executed twice, since during MP games
         /// the Server will make sure client kills the unit by calling this, too.
         /// </summary>
-        protected bool KillSceneItemCalled;
+        protected volatile bool KillSceneItemCalled;
+
+        // 10/18/2012 - Updated with volatile
+        // 10/13/2012 - Used in then new DoFinishKillSceneItemCheck method.
+        private volatile float _killSceneItemElapsedTime;
+        private const float MaxKillSceneItemElapsedTime = 1000;
 
         // 5/31/2012
         protected readonly Color BoundingSphereDefaultColor = Color.Magenta;
@@ -205,6 +210,9 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         /// <see cref="AudioListener"/> instance
         /// </summary>
         protected AudioListener AudioListenerI;
+
+        // 10/18/2012 - Updated with volatile
+        private volatile bool _delete;
 
         #region Properties 
 
@@ -254,7 +262,7 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
                 _name = value;
 
                 // 1/14/2011 - Set into Player's named dictionary
-                if (!string.IsNullOrEmpty(value))
+                if (!String.IsNullOrEmpty(value))
                     // Store new 'Name' into Player Dictionary
                     Player.AddSceneItemToNamesDictionary(value, this);
             }
@@ -284,7 +292,11 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         /// <summary>
         /// Should this <see cref="SceneItem"/> be deleted?
         /// </summary>
-        public virtual bool Delete { get; set; }
+        public virtual bool Delete
+        {
+            get { return _delete; }
+            set { _delete = value; }
+        }
 
         /// <summary>
         /// Collision radius for this <see cref="SceneItem"/>
@@ -746,7 +758,6 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
 
             // 10/12/2009 - Check if item is Flashing White! (Scripting Purposes)
             DoFlashingWhiteCheck(ref elapsedTime);
-            
 
             //If this SceneItemOwner has something to draw then update it
             var shapeItem = ShapeItem; // 4/27/2010 - Cache
@@ -1149,6 +1160,11 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         /// <param name="attackerPlayerNumber">Attacker's <see cref="Player"/> number</param>
         public virtual void StartKillSceneItem(ref TimeSpan elapsedTime, int attackerPlayerNumber)
         {
+            // 10/13/2012 - Return if already called.
+            if (KillSceneItemCalled) return;
+
+            Debug.WriteLine("Start KillSceneItem called for {0} ", _uniqueKey);
+
             IsAlive = false;
             KillSceneItemCalled = true; // 11/15/09
             _attackSceneItem = null; // 11/16/09
@@ -1166,15 +1182,35 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             if (statusBar != null) statusBar.RemoveStatusBarItem(ref StatusBarItem);
 
             // 11/16/2009 - Remove 'Name' from Players Dictionary.
-            if (!string.IsNullOrEmpty(Name)) 
+            if (!String.IsNullOrEmpty(Name)) 
                 if (!Name.Equals("$E")) Player.SceneItemsByName.Remove(Name);
         }
 
-       
+        // 10/13/2012
+        /// <summary>
+        /// Checks if the the it time to start the 'Kill' or remove sceneItem
+        /// countdown.  Once the time has elapsed, the item is removed from the game.
+        /// </summary>
+        /// <param name="elapsedTime"></param>
+        protected internal bool DoFinishKillSceneItemCheck(ref TimeSpan elapsedTime)
+        {
+            var elapsedGameTime = elapsedTime.Milliseconds;
+            _killSceneItemElapsedTime += elapsedGameTime;
+            if (!(_killSceneItemElapsedTime >= MaxKillSceneItemElapsedTime)) return false;
+
+            Debug.WriteLine("Do FinishKillSceneItem time elapsed at {0} for {1}", _killSceneItemElapsedTime, _uniqueKey);
+
+            // clear all adjusting bone transforms.
+            //InstancedItem.ResetAdjustingBoneTransform(ref explosionItem.InstancedItemData, explosionItem.ItemPieceBoneName);
+            FinishKillSceneItem(ref elapsedTime, PlayerNumber);
+            _killSceneItemElapsedTime = 0;
+
+            return true;
+        }
 
         // 11/13/2008; 1/30/2010 - Updated to now be called 'FinishKillSceneITem'.
         /// <summary>
-        /// When an item is fully dead, the <see cref="ExplosionsManager"/> will call this
+        /// When an item is fully dead, the <see cref="DoFinishKillSceneItemCheck"/> will call this
         /// method. In turn, this is where the item is removed from the game world,
         /// and its <see cref="HealthState"/> is set to be 'Dead'.
         /// </summary>
@@ -1582,13 +1618,13 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
         protected virtual void UpdateAudioEmitters()
         {
             // 5/24/2009 - Verify NaN is not present.
-            if (float.IsNaN(position.X))
+            if (Single.IsNaN(position.X))
                 position.X = 0;
 
-            if (float.IsNaN(position.Y))
+            if (Single.IsNaN(position.Y))
                 position.Y = 0;
 
-            if (float.IsNaN(position.Z))
+            if (Single.IsNaN(position.Z))
                 position.Z = 0;
 
             // skip null items

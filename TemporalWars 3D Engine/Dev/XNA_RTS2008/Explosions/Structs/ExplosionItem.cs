@@ -19,17 +19,19 @@ namespace ImageNexus.BenScharbach.TWEngine.Explosions.Structs
     // 3/10/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
     /// The <see cref="TWEngine.Explosions"/> namespace contains the common classes
-    /// which make up the entire <see cref="ExplosionsManager"/> component.
+    /// which make up the entire ExplosionsManager component.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc
     {
     }
 
+    // 10/13/12012 - Obsolete
     ///<summary>
     /// <see cref="ExplosionItem"/> class, which holds the data to
     /// animating a single <see cref="SceneItem"/> bone during an explosion.
     ///</summary>
+    [Obsolete]
     public struct ExplosionItem
     {
         internal bool Delete;
