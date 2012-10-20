@@ -542,8 +542,9 @@ namespace ImageNexus.BenScharbach.TWEngine.GameCamera
                 _updatePositionNextCycle = false;
             }
 
-            // 6/15/2012
-            DoCameraCalculations(gameTime, ref vectorToAdd);
+            // 6/15/2012; // 10/16/2012 - Fixed by adding check if '_doRotationCheck' or '_doMoveCheck'.
+            if (_doRotationCheck || _doMoveCheck) 
+                DoCameraCalculations(gameTime, ref vectorToAdd);
 
             // 6/15/2012 - Reset values each tick.
             _doMoveCheck = false;
