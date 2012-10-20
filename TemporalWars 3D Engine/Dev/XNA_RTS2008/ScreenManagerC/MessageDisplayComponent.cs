@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.Interfaces;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Globalization;

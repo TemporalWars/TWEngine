@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.GameCamera;
@@ -22,6 +23,8 @@ using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
 using ImageNexus.BenScharbach.TWEngine.TerrainTools;
 using ImageNexus.BenScharbach.TWEngine.Utilities;
 using ImageNexus.BenScharbach.TWEngine.Utilities.Enums;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -1271,9 +1274,8 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
                                                 String.Format(@"{0}\{1}\{2}\",TemporalWars3DEngine.ContentMapsLoc, mapType, mapName),
                                                 StorageLocation.TitleStorage))
             {
-#if DEBUG
                 Debug.WriteLine("LoadTriggerAreas method, of TerrainTriggerAreas, failed to load 'tdTriggerAreas.ttd' file.");
-#endif
+
                 return; // TriggerAreas are not required, so just return with failed.
             }
 

@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -183,9 +184,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
             }
             catch (Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("InitPaintToolSettings method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
         }
 

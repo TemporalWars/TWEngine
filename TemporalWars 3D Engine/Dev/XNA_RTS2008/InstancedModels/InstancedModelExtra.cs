@@ -7,7 +7,7 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-using Microsoft.Xna.Framework.Content;
+using ImageNexus.BenScharbach.TWEngine.InstancedModelLoader.Loaders;
 
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
@@ -32,25 +32,21 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         // 3/14/2011 - XNA 4.0
         internal bool HasSpawnBulletMarkers; // 2/10/2009 - SpawnBullet Marker Positions extracted
         internal bool IsFbxFormat; // 5/27/2009 - IsFBXFormat?
-
+       
         ///<summary>
         /// Constructor
         ///</summary>
         ///<param name="input"></param>
-        public InstancedModelExtra(ContentReader input)
+        public InstancedModelExtra(InstancedModelExtraLoader input)
         {
-            RotX = input.ReadSingle();
-            RotY = input.ReadSingle();
-            RotZ = input.ReadSingle();
-            Scale = input.ReadSingle();
-            UseBakeTransforms = input.ReadBoolean();
-            IsStaticItem = input.ReadBoolean();
-            HasSpawnBulletMarkers = input.ReadBoolean();
-            IsFbxFormat = input.ReadBoolean();
-            
+            RotX = input.RotX;
+            RotY = input.RotY;
+            RotZ = input.RotZ;
+            Scale = input.Scale;
+            UseBakeTransforms = input.UseBakeTransforms;
+            IsStaticItem = input.IsStaticItem;
+            HasSpawnBulletMarkers = input.HasSpawnBulletMarkers;
+            IsFbxFormat = input.IsFbxFormat;
         }
-
     }
-   
-   
 }

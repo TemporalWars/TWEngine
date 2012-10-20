@@ -9,8 +9,8 @@
 
 using System;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
+using ImageNexus.BenScharbach.TWEngine.InstancedModelLoader.Loaders;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
-using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
 using ImageNexus.BenScharbach.TWEngine.Shadows;
 using ImageNexus.BenScharbach.TWEngine.Terrain;
 using Microsoft.Xna.Framework;
@@ -135,40 +135,26 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// Constructor
         ///</summary>
         ///<param name="input">Instance of <see cref="ContentReader"/></param>
-        internal InstancedModelPartExtra(ContentReader input)
+        internal InstancedModelPartExtra(InstancedModelPartExtraLoader input)
         {
             // Read Textures
-            InstancedModelTextures = new InstancedModelTextures(input);
+            InstancedModelTextures = new InstancedModelTextures(input.InstancedModelTexturesLoader);
 
             // Read in the "ProceduralMaterial' ID, used for material lighting type.
-            var proceduralMaterialId = input.ReadInt32();
+            var proceduralMaterialId = input.ProceduralMaterialId;
             _proceduralMaterialId = (proceduralMaterialId != -1) ? proceduralMaterialId : 2;
 
             // Read the BoneAnimationAtts
             {
-                var boneRotates1 = input.ReadBoolean();
-                if (boneRotates1) // BoneAtts-1
-                {
-                    var packedVector = input.ReadObject<PackedVector3>();
-                    packedVector.UnPackVector3(out BoneRotationData);
-                }
-
-                var boneRotates2 = input.ReadBoolean();
-                if (boneRotates2) // BoneAtts-2
-                {
-                    var packedVector = input.ReadObject<PackedVector3>();
-                    packedVector.UnPackVector3(out BoneRotationData);
-                }
-
-                if (boneRotates1 || boneRotates2)
-                    BoneRotates = true;
+                BoneRotationData = input.BoneRotationData;
+                BoneRotates = input.BoneRotates;
             }     
 
             // Store AssetName
             AssetName = input.AssetName;
 
-            // Read Effect
-            input.ReadSharedResource<Effect>(InitializeEffectAndEffectParams);
+            // Populate Effect parameters
+            InitializeEffectAndEffectParams(input.MpEffect);
         }
 
         // 6/14/2010
@@ -178,17 +164,16 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// for this specific <see cref="InstancedModelPart"/>.  Finally, all <see cref="EffectParameter"/>
         /// references are set here.
         /// </summary>
-        /// <param name="effect"><see cref="MpEffect"/> instance</param>
         internal void InitializeEffectAndEffectParams(Effect effect)
         {
             // 1/17/2010 - Note: Updated to clone the effect, so atts changes don't stomp on the other models effect instances!
-            MpEffect = effect.Clone();
+            MpEffect = effect;
 
             // 6/18/2010 - Initizalies the STATIC render states.
             MpEffect.Parameters["xWorld"].SetValue(Matrix.Identity); // 1/16/2009 
             InstancedModelPart.ViewParam = MpEffect.Parameters["View"];
             InstancedModelPart.ProjectionParam = MpEffect.Parameters["Projection"];
-           
+
             // 3/19/2011 - Iterate InstancedTextures collection and apply 'Texture'.
             Texture textureToApply;
             if (InstancedModelTextures.TexturesDictionary.TryGetValue("Texture", out textureToApply))
@@ -211,11 +196,9 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                 {
                     Storage.SaveTexture(((Texture2D)textureToApply), ImageFileFormat.Jpeg, string.Format(@"C:\Downloads\{0}", _assetName));
                 }*/
-               
+
                 //MpEffect.Parameters["Texture"].SetValue(textureToApply);
             }
-
-      
 
             // Regular
             HwTechnique = MpEffect.Techniques["HardwareInstancing"];
@@ -244,7 +227,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             LightViewProjStaticEp = MpEffect.Parameters["xLightViewProjection_Static"];
 
             //if (_assetName.StartsWith("plantsNewWeeds"))
-              //  Debugger.Break();
+            //  Debugger.Break();
 
             UseIllumMap = MpEffect.Parameters["oUseIllumMap"].GetValueBoolean(); // 1/25/2010
             UseNormalMap = MpEffect.Parameters["oUseNormalMap"].GetValueBoolean(); // 3/20/2011

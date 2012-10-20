@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.Terrain;
@@ -234,9 +235,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
             }
             catch (Exception ex)
             {
-#if  DEBUG
                 Debug.WriteLine("TerrainToolsGeneratePerlinNoise method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
         }
 

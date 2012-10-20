@@ -36,6 +36,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TWEngine;
+using System.Diagnostics;
 
 namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 {
@@ -81,8 +82,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
         // 7/9/2009; 6/1/2010 - Updated to 100 intial array, to avoid calling Array.Resize as much!
         private static int[] _keys = new int[100];
-        private static int[] _itemKeyValues = new int[100]; // 6/7/2012
-        private static readonly List<int> ItemKeyValuesList = new List<int>(100);
+        private static int[] _itemTypeInstancesCache = new int[100]; // 6/7/2012
+        private static readonly List<int> ItemTypeInstancesList = new List<int>(100);
 
         // 2/8/2010 - InstancedItem Culling Thread.
 // ReSharper disable UnaccessedField.Local
@@ -595,14 +596,16 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             if (instancedModel == null) return;
 
             // 6/13/2010 - Process the DoubleBuffers for this itemType.
-            InstancedModel.ProcessDoubleBuffers(instancedModel);
+            InstancedModelPart.InstancedModelBufferRequests.ProcessDoubleBuffers(instancedModel);
 
             // 5/27/2012 - Draw Debug Collision Spheres
             /*var sphere = new BoundingSphere(new Vector3(3461, 0, 967), 60.0f);
             DebugShapeRenderer.AddBoundingSphere(sphere, Color.Red);
             DebugShapeRenderer.Draw(gameTime);*/
 
+            // 10/14/2012: TODO: Testing ALL call.
             InstancedModel.DrawCulledInstances(instancedModel, gameTime);
+            //InstancedModel.DrawAllInstances(instancedModel, gameTime);
         }
 
         // 7/10/2009: Updated to have the 'culledItems' param.
@@ -648,10 +651,10 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                     if (instancedModel.ModelParts[0].TransformsToDrawList.Count == 0)
                         continue;
 
-                    InstancedModel.DrawCulledInstances(instancedModel, ref lightView, ref lightProj, gameTime);
+                    InstancedModel.DrawShadowCulledInstances(instancedModel, ref lightView, ref lightProj, gameTime);
                 }
                 else
-                    InstancedModel.DrawAllInstances(instancedModel, ref lightView, ref lightProj, gameTime, false);
+                    InstancedModel.DrawShadowAllInstances(instancedModel, ref lightView, ref lightProj, gameTime, false);
 
                 if (_instanceShadowModelsDrawn != null)
                     _instanceShadowModelsDrawn[index] = true;
@@ -695,7 +698,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                 if (instancedModel.ModelParts[0].TransformsToDrawList.Count == 0)
                     continue;
 
-                InstancedModel.DrawCulledInstances(instancedModel, ref lightView, ref lightProj, gameTime);
+                InstancedModel.DrawShadowCulledInstances(instancedModel, ref lightView, ref lightProj, gameTime);
 
                 _instanceShadowModelsDrawn[index] = true;
             }
@@ -736,7 +739,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                 // 12/1/2008 - If NOT FALSE, then skip. (FALSE for 'STATIC' items)
                 if (instancedModel.AlwaysDrawShadow) continue;
 
-                InstancedModel.DrawAllInstances(instancedModel, ref lightView, ref lightProj, gameTime, true);
+                InstancedModel.DrawShadowAllInstances(instancedModel, ref lightView, ref lightProj, gameTime, true);
 
                 _instanceShadowModelsDrawn[index] = true;
             }
@@ -755,7 +758,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             // Check if Batch already Drawn                       
             if (_instanceShadowModelsDrawn[(int) instancedItemData.ItemType]) return;
 
-            InstancedModel.DrawCulledInstances(InstanceModels[(int) instancedItemData.ItemType], ref lightView, ref lightProj, null);
+            InstancedModel.DrawShadowCulledInstances(InstanceModels[(int) instancedItemData.ItemType], ref lightView, ref lightProj, null);
 
             _instanceShadowModelsDrawn[(int) instancedItemData.ItemType] = true;
         }
@@ -798,7 +801,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             specificModelType.SetSpecificEffectParam(effectParamName, valueToSet);
         }
 
-        // 7/9/2009
+        // 7/9/2009; 10/15/2012 - Optimized by using ScenaryItemTypesQuadContainer.
         /// <summary>
         /// This method is called directly from the <see cref="TerrainQuadTree"/> draw method, during each draw
         /// cycle.  The <see cref="TerrainQuadTree"/> then passes the internal Dictionary of scenary <see cref="ItemType"/> which are
@@ -807,7 +810,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// to the <see cref="InstancedModel"/> class, to create the proper 'Culled' list for the next draw call.
         /// </summary>
         /// <param name="itemTypes">Collection of <see cref="ItemType"/></param>
-        public static void CreateSceneryInstancesCulledList(Dictionary<int, Dictionary<int, int>> itemTypes)
+        public static void CreateSceneryInstancesCulledList(Dictionary<int, ScenaryItemTypesQuadContainer> itemTypes)
         {
             if (itemTypes == null) return;
             if (itemTypes.Count == 0) return;
@@ -835,24 +838,26 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             for (var i = 0; i < itemTypesKeysCount; i++)
             {
                 // 4/20/2010 - Cache
-                var index0 = keys[i]; // 6/7/2012
-                var instancedModel = instancedModels[index0];
+                var itemTypeIndexKey = keys[i]; // 6/7/2012
+                var instancedModel = instancedModels[itemTypeIndexKey];
                 if (instancedModel == null) continue;
 
+                // 10/15/2012 - Updated to retrieve structure container.
                 // 6/7/2012 - Retrieve itemkeys from internal dictionary values.
-                var valueCollection = itemTypes[index0].Values;
-                var valuesCount = valueCollection.Count;
+                var scenaryItemTypesQuadContainer = itemTypes[itemTypeIndexKey];
+                //var itemTypeInstancesCount = itemTypeInstances.Count;
 
+                // 10/15/2012: Note: This work is now done in the TerrainQuadTree's ConnectScenaryItemToGivenQuad/DisconnectScenaryItemFromGivenQuad
                 // 6/7/2012 - Resize array and copy to List<int>
-                if (_itemKeyValues.Length < valuesCount)
-                    Array.Resize(ref _itemKeyValues, valuesCount);
-                valueCollection.CopyTo(_itemKeyValues, 0);
+                /*if (_itemTypeInstancesCache.Length < itemTypeInstancesCount)
+                    Array.Resize(ref _itemTypeInstancesCache, itemTypeInstancesCount);
+                itemTypeInstances.CopyTo(_itemTypeInstancesCache, 0);
 
-                ItemKeyValuesList.Clear();
-                ItemKeyValuesList.AddRange(_itemKeyValues);
+                ItemTypeInstancesList.Clear();
+                ItemTypeInstancesList.AddRange(_itemTypeInstancesCache);*/
 
                 // _keys[] are the ItemType cast as an 'int'.
-                instancedModel.CreateScenaryInstancesCulledList(ItemKeyValuesList);
+                instancedModel.CreateScenaryInstancesCulledList(ref scenaryItemTypesQuadContainer.ItemKeysArray);
             }
 
 #if DEBUG
@@ -868,21 +873,29 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// </summary>
         public static void ClearSceneryInstancesCulledList()
         {
-            // 8/13/2009 - Cache
-            var sceneryItemsInstanceModelsKeys = _sceneryItemsInstanceModelsKeys;
-            var count = sceneryItemsInstanceModelsKeys.Count;
-
-            // iterate using the 'SceneryItemsKey' list.
-            var instancedModels = InstanceModels; // 4/20/2010
-            for (var item = 0; item < count; item++)
+            try
             {
-                var itemKey = sceneryItemsInstanceModelsKeys[item];
-
                 // 8/13/2009 - Cache
-                var instancedModel = instancedModels[itemKey];
-                if (instancedModel == null) continue;
+                var sceneryItemsInstanceModelsKeys = _sceneryItemsInstanceModelsKeys;
+                var count = sceneryItemsInstanceModelsKeys.Count;
 
-                instancedModel.ClearScenaryInstancesCulledList();
+                // iterate using the 'SceneryItemsKey' list.
+                var instancedModels = InstanceModels; // 4/20/2010
+                for (var item = 0; item < count; item++)
+                {
+                    var itemTypeKey = sceneryItemsInstanceModelsKeys[item];
+
+                    // 8/13/2009 - Cache
+                    var instancedModel = instancedModels[itemTypeKey];
+                    if (instancedModel == null) continue;
+                    
+                    // Call clear scenary instances for given instancedModel artwork.
+                    instancedModel.CreateBufferRequestToClearScenaryInstancesCulledList();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("ClearSceneryInstancesCulledList method threw the '{0}' error.", e.Message);
             }
         }
 
@@ -968,7 +981,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
                     if (instancedModel == null) continue;
 
-                    instancedModel.InstanceWorldTransforms.Clear();
+                    instancedModel.ChangeRequestItemsTransforms.Clear();
                     Array.Clear(instancedModel.InstanceWorldTransformKeys, 0,
                                 instancedModel.InstanceWorldTransformKeys.Length);
                 }
@@ -1034,7 +1047,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
                 // 12/18/2008 - Get Keys for Dictionary
                 var keys = new int[1];
-                var instanceWorldTransforms = instancedModel.InstanceWorldTransforms; // 8/13/2009
+                var instanceWorldTransforms = instancedModel.ChangeRequestItemsTransforms; // 8/13/2009
                 var keyCollection = instanceWorldTransforms.Keys;
 
                 if (keys.Length != keyCollection.Count)
@@ -1084,7 +1097,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         // 9/23/2008 - Updates an InstanceItem Transform.
         // 11/19/2008 - Updated to not use the 'HasItemInstanceKey' predicate, since this causes additional garbage!       
         ///<summary>
-        /// Used to create the <see cref="InstancedDataCommunication"/> structure, which is populated with the
+        /// Used to create the <see cref="ChangeRequestItem"/> structure, which is populated with the
         /// given attributes, and updated into the <see cref="InstancedModelChangeRequests"/> class.
         ///</summary>
         /// <remarks>When initially called, and of <see cref="ScenaryItemScene"/> type, the item will be 
@@ -1108,7 +1121,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             if (instancedModel == null) return;
 
             // 2/3/2010 - Updated to use the new refactored methods for 'InstanceData' node from the InstancedModel class.
-            InstancedDataCommunication existingNode;
+            ChangeRequestItem existingNode;
             if (instancedModel.GetInstanceDataNode(instancedItemData.ItemInstanceKey, out existingNode))
             {
                 existingNode.ShapeItem = shapeItemOwner; // 8/27/2009
@@ -1136,7 +1149,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
         // 3/29/2011
         ///<summary>
-        /// Used to create the <see cref="InstancedDataCommunication"/> structure, which is populated with the
+        /// Used to create the <see cref="ChangeRequestItem"/> structure, which is populated with the
         /// given attributes, and updated into the <see cref="InstancedModelChangeRequests"/> class.
         ///</summary>
         /// <remarks>When initially called, and of <see cref="ScenaryItemScene"/> type, the item will be 
@@ -1162,7 +1175,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             if (instancedModel == null) return;
 
             // 2/3/2010 - Updated to use the new refactored methods for 'InstanceData' node from the InstancedModel class.
-            InstancedDataCommunication existingNode;
+            ChangeRequestItem existingNode;
             if (instancedModel.GetInstanceDataNode(instancedItemData.ItemInstanceKey, out existingNode))
             {
                 existingNode.ShapeItem = shapeItemOwner; // 8/27/2009
@@ -1260,7 +1273,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         // 1/14/2009 - Updates the FOW IsFOWVisible flag.       
         ///<summary>
         /// Specifically used to communicate <see cref="IFogOfWar"/> updates for a given <see cref="SceneItem"/>.  This method
-        /// will then create an <see cref="InstancedDataCommunication"/> structure, and add it to the <see cref="InstancedModelChangeRequests"/> class
+        /// will then create an <see cref="ChangeRequestItem"/> structure, and add it to the <see cref="InstancedModelChangeRequests"/> class
         /// for processing.
         ///</summary>
         ///<param name="instancedItemData"><see cref="InstancedItemData"/> structure</param>
@@ -1282,12 +1295,12 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             if (instancedModel == null) return;
 
             // 2/3/2010 - Updated to use the new refactored methods for 'InstanceData' node from the InstancedModel class.
-            InstancedDataCommunication existingNode;
+            ChangeRequestItem existingNode;
             instancedModel.GetInstanceDataNode(instancedItemData.ItemInstanceKey, out existingNode);
             
             // 8/28/2009: Updated to use the new 'AddChangeRequest' method, to batch entries.
-            InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode,
-                                                                 ChangeRequest.AddUpdatePart_InstanceItem, instancedModel);
+            existingNode.ChangeRequest = ChangeRequestEnum.AddOrUpdateTransform; // 10/16/2012
+            InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode, instancedModel);
            
             
         }
@@ -1295,18 +1308,19 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         // 2/3/2010 - Updated to use the new refactored methods for 'InstanceData' node from the InstancedModel class.
         // 3/28/2009 - Updates the InstaceModel to Draw using the EXPLOSION Pieces!
         ///<summary>
-        /// Specifically used to communicate <see cref="ExplosionItem"/> updates for a given <see cref="SceneItem"/>.  This method
-        /// will then create an <see cref="InstancedDataCommunication"/> structure, and add it to the <see cref="InstancedModelChangeRequests"/> class
+        /// Specifically used to communicate ExplosionItem updates for a given <see cref="SceneItem"/>.  This method
+        /// will then create an <see cref="ChangeRequestItem"/> structure, and add it to the <see cref="InstancedModelChangeRequests"/> class
         /// for processing.
         ///</summary>
         ///<param name="instancedItemData"><see cref="InstancedItemData"/> structure</param>
         ///<param name="playerNumber"><see cref="Player"/>'s number.</param>
-        ///<param name="drawPieces">Start/Stop drawing pieces for <see cref="ExplosionItem"/>.</param>
+        ///<param name="drawPieces">Start/Stop drawing pieces for ExplosionItem.</param>
+        [Obsolete]
         public static void UpdateInstanceModelToDrawExplosionPieces(ref InstancedItemData instancedItemData,
                                                                     int playerNumber, bool drawPieces)
         {
             // 7/24/2009 - Cache ItemType index, so done only cast once!
-            var itemIndex = (int) instancedItemData.ItemType;
+            /*var itemIndex = (int) instancedItemData.ItemType;
 
             // 4/20/2010 - Cache
             var instancedModels = InstanceModels;
@@ -1319,7 +1333,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             if (instancedModel == null) return;
            
             // 2/3/2010 - Updated to use the new refactored methods for 'InstanceData' node from the InstancedModel class.
-            InstancedDataCommunication existingNode;
+            ChangeRequestItem existingNode;
             if (!instancedModel.GetInstanceDataNode(instancedItemData.ItemInstanceKey, out existingNode)) return;
 
             // update 'PlayerNumber'
@@ -1332,20 +1346,20 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
             // 7/24/2009: Delete All Normal Culled Parts, since now drawing exploding parts.
             InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode,
-                                                                               ChangeRequest.DeleteAllCulledParts_InstanceItem, instancedModel);
+                                                                               ChangeRequest.RemovesASingleInstancedModelPart, instancedModel);
 
             // 2/15/2010 - Sets to allow drawing of Explosion pieces too.
             instancedModels[(int)instancedItemData.ItemType].SetDrawExplosionPiecesFlag();
 
             // Update InstanceTransforms, since Explosion value changed.
-            UpdateInstanceTransforms(ref instancedItemData);
+            UpdateInstanceTransforms(ref instancedItemData);*/
         }
 
         // 2/3/2010 - Updated to use the new refactored methods for 'InstanceData' node from the InstancedModel class.
         // 10/12/2009
         /// <summary>
         /// Specifically used to communicate 'Flash' white updates for a given <see cref="SceneItem"/>. (Scripting Purposes) 
-        /// This method will then create an <see cref="InstancedDataCommunication"/> structure, and add it to the <see cref="InstancedModelChangeRequests"/> class
+        /// This method will then create an <see cref="ChangeRequestItem"/> structure, and add it to the <see cref="InstancedModelChangeRequests"/> class
         /// for processing.
         /// </summary>
         ///<param name="instancedItemData"><see cref="InstancedItemData"/> structure</param>
@@ -1369,7 +1383,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             if (instancedModel == null) return;
 
             // 2/3/2010 - Updated to use the new refactored methods for 'InstanceData' node from the InstancedModel class.
-            InstancedDataCommunication existingNode;
+            ChangeRequestItem existingNode;
             instancedModel.GetInstanceDataNode(instancedItemData.ItemInstanceKey, out existingNode);
 
             // update 'PlayerNumber'
@@ -1382,12 +1396,10 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
             // Save back into Dictionary
             instancedModel.UpdateInstanceDataNode(instancedItemData.ItemInstanceKey, ref existingNode);
-            
 
             // Updated to use the new 'AddChangeRequest' method, to batch entries.
-            InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode,
-                                                                               ChangeRequest.AddUpdatePart_InstanceItem, instancedModel);
-           
+            existingNode.ChangeRequest = ChangeRequestEnum.AddOrUpdateFlashWhite; // 10/16/2012
+            InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode, instancedModel);
         }
 
         // 5/22/2009
@@ -1624,15 +1636,16 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             if (instancedModel == null) return;
 
             // 7/21/2009 - TODO: WHY does this get called twice? 
-            InstancedDataCommunication existingNode;
-            var instanceWorldTransforms = instancedModel.InstanceWorldTransforms; // 8/13/2009
-            if (!instanceWorldTransforms.TryGetValue(instancedItemData.ItemInstanceKey, out existingNode)) return;
-          
-            // 7/21/2009: Updated to use the new 'AddChangeRequest' method, to batch entries.
-            InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode, 
-                ChangeRequest.DeleteAllParts_InstanceItem, instancedModel);
-
+            ChangeRequestItem changeRequestItem;
+            var instanceWorldTransforms = instancedModel.ChangeRequestItemsTransforms; // 8/13/2009
+            if (!instanceWorldTransforms.TryGetValue(instancedItemData.ItemInstanceKey, out changeRequestItem)) return;
             
+            // 10/18/2012 - Updated to call 'RemoveTransform'
+            // Updated to use the new 'AddChangeRequest' method, to batch entries.
+            changeRequestItem.ChangeRequest = ChangeRequestEnum.RemoveTransform;
+            InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType,
+                                                                               ref changeRequestItem,
+                                                                               instancedModel);
 
             // 12/18/2008 - Remove Node.      
             instanceWorldTransforms.Remove(instancedItemData.ItemInstanceKey);
@@ -1667,8 +1680,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             if (instancedModel == null) return;
 
             // 12/22/2008 Make sure InstanceKey exist, otherwise exit method.
-            InstancedDataCommunication existingNode;
-            var instanceWorldTransforms = instancedModel.InstanceWorldTransforms; // 8/13/2009
+            ChangeRequestItem existingNode;
+            var instanceWorldTransforms = instancedModel.ChangeRequestItemsTransforms; // 8/13/2009
             if (!instanceWorldTransforms.TryGetValue(instancedItemData.ItemInstanceKey, out existingNode)) return;
 
             // 5/6/2009 - Updated to use the new CollisionRadius BoundingSphere.
@@ -1691,8 +1704,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             //if (isInFrustrum)
             {
                 // 7/21/2009: Updated to use the new 'AddChangeRequest' method, to batch entries.
-                InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode,
-                                                                     ChangeRequest.AddUpdatePart_InstanceItem, instancedModel);
+                existingNode.ChangeRequest = ChangeRequestEnum.AddOrUpdateTransform; // 10/16/2012
+                InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode, instancedModel);
                
             }
             /*else  // 8/27/2009: Delete All Normal Culled Parts, since item out of camera view.
@@ -1722,8 +1735,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
             // 5/25/2009
             if (instancedModel == null) return false;
 
-            InstancedDataCommunication tmpInstanceData;
-            if (instancedModel.InstanceWorldTransforms.TryGetValue(instancedItemData.ItemInstanceKey, out tmpInstanceData))
+            ChangeRequestItem tmpInstanceData;
+            if (instancedModel.ChangeRequestItemsTransforms.TryGetValue(instancedItemData.ItemInstanceKey, out tmpInstanceData))
             {
                 if (tmpInstanceData.InCameraView)
                     return true;
@@ -2026,12 +2039,12 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
         // 7/13/2009
         /// <summary>
-        /// Retrieves the internal <see cref="InstancedDataCommunication"/> structure, for the given <see cref="InstancedModel"/> Type.
+        /// Retrieves the internal <see cref="ChangeRequestItem"/> structure, for the given <see cref="InstancedModel"/> Type.
         /// </summary>
         /// <param name="instancedItemData"><see cref="InstancedItemData"/> structure</param>
-        /// <param name="instanceDataCommunication">(OUT) <see cref="InstancedDataCommunication"/> structure</param>
+        /// <param name="instanceDataCommunication">(OUT) <see cref="ChangeRequestItem"/> structure</param>
         public static void GetInstancedModel_InstanceDataNode(ref InstancedItemData instancedItemData,
-                                                              out InstancedDataCommunication? instanceDataCommunication)
+                                                              out ChangeRequestItem? instanceDataCommunication)
         {
             instanceDataCommunication = null;
 
@@ -2044,7 +2057,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
             if (instancedModel == null) return;
 
-            instanceDataCommunication =instancedModel.InstanceWorldTransforms[instancedItemData.ItemInstanceKey];
+            instanceDataCommunication =instancedModel.ChangeRequestItemsTransforms[instancedItemData.ItemInstanceKey];
         }
 
        
@@ -2123,7 +2136,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
             if (instancedModel == null) return false;
 
-            var instanceWorldTransforms = instancedModel.InstanceWorldTransforms; // 8/13/2009
+            var instanceWorldTransforms = instancedModel.ChangeRequestItemsTransforms; // 8/13/2009
             if (instanceWorldTransforms.ContainsKey(instancedItemData.ItemInstanceKey))
             {
                 var instanceDataItem = instanceWorldTransforms[instancedItemData.ItemInstanceKey];
@@ -2146,7 +2159,7 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                             //instanceWorldTransforms[instancedItemData.ItemInstanceKey] = instanceDataItem;
                             
                             // 2/3/2010 - Update the specific modelpart to be Red material.
-                            InstancedDataCommunication existingNode;
+                            ChangeRequestItem existingNode;
                             instancedModel.GetInstanceDataNode(instancedItemData.ItemInstanceKey, out existingNode);
                             
                             // Update the 'ProceduralMaterialId' param to be 5 for 'Red' matieral.
@@ -2158,8 +2171,8 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
                                                                                    InstanceDataParam.ModelPartIndexKey, closestModelPartIndex);
 
                             // Add to ChangeRequests.
-                            InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode,
-                                                                                            ChangeRequest.AddUpdatePart_InstanceItem, instancedModel);
+                            existingNode.ChangeRequest = ChangeRequestEnum.AddOrUpdateProcedureId; // 10/16/2012
+                            InstancedModelChangeRequests.AddChangeRequestForInstanceTransforms(instancedItemData.ItemType, ref existingNode, instancedModel);
                         }
 #endif
 
@@ -2186,11 +2199,11 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         /// <param name="ray">The ray to perform the intersection check with</param>
         /// <param name="model">The <see cref="InstancedModel"/> to perform the intersection check with;
         /// the model's <see cref="BoundingSphere"/> will be used.</param>
-        /// <param name="instanceDataCommunication"><see cref="InstancedDataCommunication"/> structure</param>
+        /// <param name="instanceDataCommunication"><see cref="ChangeRequestItem"/> structure</param>
         /// <param name="closestModelPartIndex">(OUT) index of the closest model part hit</param>
         /// <returns>True/False of result</returns>
         private static float? RayIntersectsModel(ref Ray ray, InstancedModel model,
-                                               ref InstancedDataCommunication instanceDataCommunication, out int closestModelPartIndex)
+                                               ref ChangeRequestItem instanceDataCommunication, out int closestModelPartIndex)
         {
 
             var worldTransform = instanceDataCommunication.ShapeItem.WorldP; // 2/3/2010

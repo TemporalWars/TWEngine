@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Enums;
 using ImageNexus.BenScharbach.TWEngine.InstancedModels.Structs;
 
@@ -31,9 +32,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Structs
             }
             catch (System.Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("AddMaterialControlsGroup method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
         }
 

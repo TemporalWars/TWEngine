@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ImageNexus.BenScharbach.TWEngine.Audio.Enums;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.Common;
@@ -74,9 +75,7 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
                 }
                 catch (Exception ex)
                 {
-#if DEBUG
                     Debug.WriteLine("SpawnByScriptingAction property in ScenaryItemScene class threw the exception " + ex.Message);
-#endif
                     return false;
                 }
             }

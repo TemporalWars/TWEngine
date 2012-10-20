@@ -8,6 +8,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
@@ -339,40 +340,28 @@ namespace ImageNexus.BenScharbach.TWEngine.IFDTiles
 
                             IFDTileManager.ContentResourceManager.Load<Texture2D>(tileName.ToString()); //8/30/2009
                             Thread.Sleep(10);
-#if DEBUG
-                            Debug.WriteLine(String.Format("Preload IFDTile Texture Loaded: {0}", tileName));
-                            
-#endif
-                        }
 
-                       
+                            Debug.WriteLine("Preload IFDTile Texture Loaded: {0}", tileName);
+                        }
 
                     } // End While
                 } // End Thread Lock
             }
             catch (ContentLoadException)
             {
-#if DEBUG
                 // Empty
                 Debug.WriteLine("Unable to Load Content in PreLoad IFD Tiles Thread");
-#endif
             }
             catch (InvalidOperationException)
             {
-#if DEBUG
                 // Empty
                 Debug.WriteLine("Unable to Load Content in PreLoad IFD Tiles Thread");
-#endif
             }
             catch(Exception ex) // 3/26/2011
             {
-#if DEBUG
                 // Empty
                 Debug.WriteLine(string.Format("Unable to Load Content in PreLoad IFD Tiles Thread with exception {0}", ex.Message));
-#endif
             }
         }
-
-       
     }
 }

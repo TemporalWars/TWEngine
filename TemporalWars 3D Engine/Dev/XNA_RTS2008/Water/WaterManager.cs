@@ -8,6 +8,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.Interfaces;
 using ImageNexus.BenScharbach.TWEngine.Viewports;
@@ -688,10 +689,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Water
             }
             catch (NullReferenceException)
             {
-#if DEBUG
-                Debug.WriteLine(
-                    @"Update method, in 'WaterManager', threw the NullRef exception; however, fixed by calling the 'CreateWaterType'.");
-#endif
+                Debug.WriteLine(@"Update method, in 'WaterManager', threw the NullRef exception; however, fixed by calling the 'CreateWaterType'.");
 
                 // If null, then need to create given waterType.
                 CreateWaterType(WaterTypeToUse, 100.0f);

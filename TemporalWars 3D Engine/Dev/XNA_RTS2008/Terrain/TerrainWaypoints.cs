@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.GameCamera;
@@ -19,6 +20,8 @@ using ImageNexus.BenScharbach.TWEngine.Terrain.Structs;
 using ImageNexus.BenScharbach.TWEngine.TerrainTools;
 using ImageNexus.BenScharbach.TWEngine.Utilities;
 using ImageNexus.BenScharbach.TWEngine.Utilities.Enums;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -931,9 +934,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             if (!storageTool.StartLoadOperation(out tmpWaypointSaveStruct, "tdWaypoints.twd", String.Format(@"{0}\{1}\{2}\", TemporalWars3DEngine.ContentMapsLoc, mapType, mapName),
                                                 StorageLocation.TitleStorage))
             {
-#if DEBUG
                 Debug.WriteLine("LoadWaypoints method, of TerrainWaypoints, failed to load 'tdWaypoints.twd' file.");
-#endif
                 return; // Waypoints are not required, so just return if failed.
             }
 

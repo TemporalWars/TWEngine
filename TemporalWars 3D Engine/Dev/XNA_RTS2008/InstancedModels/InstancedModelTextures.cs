@@ -8,6 +8,7 @@
 #endregion
 
 using System.Collections.Generic;
+using ImageNexus.BenScharbach.TWEngine.InstancedModelLoader.Loaders;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -32,29 +33,20 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
         }
 
         #endregion
-
+        
         ///<summary>
         /// Constructor
         ///</summary>
         ///<param name="input"></param>
-        public InstancedModelTextures(ContentReader input)
+        public InstancedModelTextures(InstancedModelTexturesLoader input)
         {
-            // Read Count value
-            var count = input.ReadInt32();
-
             // Create Dictionary
-            _texturesDictionary = new Dictionary<string, Texture>(count);
+            _texturesDictionary = new Dictionary<string, Texture>(input.TexturesDictionary.Count);
 
-            // Iterate using count
-            for (var i = 0; i < count; i++)
+            foreach (var texture in input.TexturesDictionary)
             {
-                var textureName = input.ReadString();
-                var texture = input.ReadExternalReference<Texture>();
-
-                TexturesDictionary.Add(textureName, texture);
+                TexturesDictionary.Add(texture.Key, texture.Value);
             }
         }
-
-       
     }
 }

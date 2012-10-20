@@ -15,6 +15,8 @@ using ImageNexus.BenScharbach.TWEngine.Audio.Structs;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework.Audio;
 using System.Threading;
 using Microsoft.Xna.Framework;

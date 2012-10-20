@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
@@ -186,9 +187,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
             }
             catch (Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("PopulateContentSearchLocations method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
         }
 

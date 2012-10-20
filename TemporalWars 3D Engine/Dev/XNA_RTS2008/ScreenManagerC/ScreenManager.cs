@@ -23,6 +23,8 @@ using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect;
 using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GlowEffect;
 using ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums;
 using ImageNexus.BenScharbach.TWEngine.SkyDomes;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.GamerServices;

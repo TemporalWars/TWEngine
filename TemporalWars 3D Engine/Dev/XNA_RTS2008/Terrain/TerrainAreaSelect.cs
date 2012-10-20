@@ -11,6 +11,8 @@ using ImageNexus.BenScharbach.TWEngine.BeginGame;
 using ImageNexus.BenScharbach.TWEngine.SceneItems;
 using ImageNexus.BenScharbach.TWEngine.Terrain.Enums;
 using ImageNexus.BenScharbach.TWEngine.TerrainTools;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

@@ -445,6 +445,10 @@ namespace ImageNexus.BenScharbach.TWEngine.InstancedModels
 
                             // 2/15/2010 - Set to transforms to draw.
                             instancedModel.SetDrawExplosionPiecesFlag();
+
+                            // 10/14/2012
+                            // TODO: Possible call location to setup the DrawAll items of the current model
+                            instancedModel.UpdateInstanceTransformsFromLoader();
                         }
                     }
                 }

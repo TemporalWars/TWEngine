@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Structs
@@ -47,9 +48,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools.Structs
             }
             catch (System.Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("AddSpinnerControl method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
         }
     }

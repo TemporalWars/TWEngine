@@ -305,7 +305,7 @@ namespace TWEngine.TerrainTools
                 tbGoalPosition.Text = (aStarItem != null) ? aStarItem.GoalPosition.ToString() : "None";
 
                 // 7/13/2009
-                InstancedDataCommunication? instanceDataNode;
+                ChangeRequestItem? instanceDataNode;
                 InstancedItem.GetInstancedModel_InstanceDataNode(ref sceneItemWithPick.ShapeItem.InstancedItemData,
                                                                  out instanceDataNode);
                 tbM44Channel.Text = (instanceDataNode != null)

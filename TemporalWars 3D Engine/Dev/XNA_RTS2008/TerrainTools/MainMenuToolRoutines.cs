@@ -8,6 +8,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using ImageNexus.BenScharbach.TWEngine.BeginGame;
@@ -200,9 +201,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
             }
             catch (Exception ex)
             {
-#if DEBUG
                 Debug.WriteLine("MainMenuWindowI_StartPropertiesTool method threw the exception " + ex.Message ?? "No Message");
-#endif
             }
         }
 

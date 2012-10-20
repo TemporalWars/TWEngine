@@ -62,20 +62,24 @@ namespace ImageNexus.BenScharbach.TWEngine.SceneItems
             try
             {
                 // Iterate List, and call the 'KillSceneItem' method for each item.
-                //var count = toProcess.Count; // 11/11/09
-                //for (var i = 0; i < count; i++)
                 KillSceneItemStruct killSceneItem;
                 while (LocklessQueue.TryDequeue(out killSceneItem))
                 {
-                    // Dequeue item
-                    //var killSceneItem = toProcess.Dequeue();
-
                     // 11/11/09 - Cache
                     var itemToKill = killSceneItem.ItemToKill;
 
+                    if (itemToKill == null)
+                        continue;
+
                     // Call 'KillSceneITem' method on item
-                    if (itemToKill != null)
-                        itemToKill.StartKillSceneItem(ref ElapsedGameTime, killSceneItem.AttackerPlayerNumber);
+                    itemToKill.StartKillSceneItem(ref ElapsedGameTime, killSceneItem.AttackerPlayerNumber);
+
+                    // 10/13/2012
+                    if (!itemToKill.DoFinishKillSceneItemCheck(ref ElapsedGameTime))
+                        LocklessQueue.Enqueue(killSceneItem);
+
+                    // 10/13/2012 - clear instance
+                    ElapsedGameTime = TimeSpanZero;
 
                     // Have Thread sleep a few ms.
                     Thread.Sleep(1);

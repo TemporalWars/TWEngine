@@ -8,6 +8,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using ImageNexus.BenScharbach.TWEngine.AI.Enums;
 using ImageNexus.BenScharbach.TWEngine.Common;
 using ImageNexus.BenScharbach.TWEngine.SceneItems;
@@ -294,10 +295,7 @@ namespace ImageNexus.BenScharbach.TWEngine.AI.FSMStates
             }
             catch (NullReferenceException err)
             {
-#if DEBUG
                 Debug.WriteLine("AttackSceneItemSceneItemDestroyed method threw NullRefExp.");
-#endif
-
             }
 
 #if DEBUG
