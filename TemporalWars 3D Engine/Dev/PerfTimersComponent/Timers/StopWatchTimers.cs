@@ -8,13 +8,13 @@ using Microsoft.Xna.Framework;
 
 namespace ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers
 {
-
+    // 10/20/2012 - Removed inheritance from GameComponent, since the PerfTimersManager calls the 'Update' directly.
     /// <summary>
     /// The <see cref="StopWatchTimers"/> class is used to measure elapsed <see cref="GameTime"/> within the game engine for debug purposes.  Internally, the
     /// component uses the system's <see cref="Stopwatch"/> class, but then averages the times into an array and draws to screen for user convenience.  This is especially 
     /// important for the XBox-360, since few (if any) commerical products exist to measure performance on this system.
     /// </summary>
-    public sealed class StopWatchTimers : GameComponent
+    public static class StopWatchTimers
     {
         // 11/07/2008 - Dictionary of StopWatch Timers
         private static SpeedCollection<Stopwatch> _stopWatches; 
@@ -72,7 +72,7 @@ namespace ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers
         ///<summary>
         /// Display the <see cref="Stopwatch"/> timers on screen?
         ///</summary>
-        public bool IsVisible
+        public static bool IsVisible
         {
             get
             {
@@ -105,9 +105,7 @@ namespace ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers
         /// the required internal collections, and populates the 'Names' collection
         /// with all <see cref="StopWatchName"/> Enums, as string names.
         ///</summary>
-        ///<param name="game"><see cref="Game"/> instance</param>
-        public StopWatchTimers(Game game)
-            : base(game)
+        static StopWatchTimers()
         {
             _stringNames = new SpeedCollection<string>(StopWatchNamesCount); // 8/24/2009
             _stopWatches = new SpeedCollection<Stopwatch>(StopWatchNamesCount);
@@ -129,14 +127,12 @@ namespace ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers
         /// method <see cref="UpdateStopWatchAverages"/>.
         /// </summary>
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>
-        public override void Update(GameTime gameTime)
+        internal static void Update(GameTime gameTime)
         {
             if (!_visible)
                 return;
 
             UpdateStopWatchAverages(gameTime);
-        
-            base.Update(gameTime);
         }
 
         // 4/21/2010
@@ -508,39 +504,35 @@ namespace ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers
         /// Disposes of unmanaged resources.
         /// </summary>
         /// <param name="disposing">Is this final dispose?</param>
-        protected override void Dispose(bool disposing)
+        internal static void Dispose(bool disposing)
         {
-            if (disposing)
+            if (!disposing) return;
+
+            // 8/24/2009 - Clear Names Dictionary
+            if (_stringNames != null)
+                _stringNames.Clear();
+            // clear StopWatches Dictionary
+            if (_stopWatches != null)
+                _stopWatches.Clear();
+            // clear Averages Dictionary
+            if (_averageTimes != null)
+                _averageTimes.Clear();
+            // dispose of ScreenTextItems
+            if (_screenTextItems != null)
             {
-                // 8/24/2009 - Clear Names Dictionary
-                if (_stringNames != null)
-                    _stringNames.Clear();
-                // clear StopWatches Dictionary
-                if (_stopWatches != null)
-                    _stopWatches.Clear();
-                // clear Averages Dictionary
-                if (_averageTimes != null)
-                    _averageTimes.Clear();
-                // dispose of ScreenTextItems
-                if (_screenTextItems != null)
+                var count = _screenTextItems.Count;
+                for (var i = 0; i < count; i++)
                 {
-                    var count = _screenTextItems.Count;
-                    for (var i = 0; i < count; i++)
-                    {
-                        _screenTextItems[i].Dispose();
-                    }
-                    _screenTextItems.Clear();
+                    _screenTextItems[i].Dispose();
                 }
-
-                // Null Regs
-                _stringNames = null; // 8/24/2009
-                _stopWatches = null;
-                _averageTimes = null;
-                _screenTextItems = null;
-
+                _screenTextItems.Clear();
             }
 
-            base.Dispose(disposing);
+            // Null Regs
+            _stringNames = null; // 8/24/2009
+            _stopWatches = null;
+            _averageTimes = null;
+            _screenTextItems = null;
         }
     }
 }

@@ -23,6 +23,7 @@ using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GBlurEffect;
 using ImageNexus.BenScharbach.TWEngine.PostProcessEffects.GlowEffect;
 using ImageNexus.BenScharbach.TWEngine.ScreenManagerC.Enums;
 using ImageNexus.BenScharbach.TWEngine.SkyDomes;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Counters;
 using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
 using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
@@ -62,7 +63,7 @@ namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
         /// </summary>
         public static readonly List<GameScreen> MainMenuScreens = new List<GameScreen>();
 
-        private readonly InputState _input = new InputState();
+        //private readonly InputState _input = new InputState(); // 10/19/2012 - GameComponent now.
         private Texture2D _blankTexture;
 
         // 2/18/2009
@@ -102,6 +103,11 @@ namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
         private static DepthStencilState _depthStencilStateForBackground;
         private static BlendState _blendState1;
         private static BlendState _blendStateForBackground;
+
+#if DEBUG
+        // 10/20/2012 - Stores the PerformanceCounter's UniqueId.
+        private Guid _counterId;
+#endif
 
         #endregion
 
@@ -195,13 +201,19 @@ namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
         /// </summary>
         public bool TraceEnabled { get; set; }
 
-        // 4/23/2011
+        // 4/23/2011; 10/19/2012
         /// <summary>
         /// Gets a reference to the <see cref="InputState"/> component.
         /// </summary>
         public InputState Input
         {
-            get { return _input; }
+            get
+            {
+                if (Game == null || Game.Services == null) return null;
+                var input = (InputState)Game.Services.GetService(typeof(InputState));
+
+                return input;
+            }
         }
 
         #endregion
@@ -266,6 +278,13 @@ namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
                 AlphaDestinationBlend = Blend.Zero,
                 AlphaBlendFunction = BlendFunction.Add
             };
+
+#if DEBUG
+            // Create PerformanceCounter for debug purposes
+            //_counterId = PerformanceCounters.CreateCounter();
+            //_counterId = PerformanceCounters.CreateCounter(3000);
+            _counterId = PerformanceCounters.CreateCounter(1500, "ScreenManager Update()");
+#endif
             
         }       
 
@@ -408,21 +427,14 @@ namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>  
         public sealed override void Update(GameTime gameTime)
         {
-            // 8/31/2008 - Add Pumping of the GamerDispatchService Manually for Networking
-            try
-            {
-                var isXnaLiveReady = TemporalWars3DEngine.IsXnaLiveReady; // 4/20/2010
-                if (isXnaLiveReady)
-                    GamerServicesDispatcher.Update();
-            }
-            catch
-            {
-                Debug.WriteLine("Method error in Update method for GamerServicesDispatcher.Update() call.");
-            }
+#if DEBUG
+            // 10/20/2012 - TESTING new PerformanceCounter
+            PerformanceCounters.DoCount(_counterId);
+#endif
 
             // Read the keyboard and gamepad.
             var inputState = Input; // 4/20/2010 - Cache
-            inputState.Update(gameTime);
+            //inputState.Update(gameTime); // 10/19/2012 - GameComponent now.
 
             // 4/28/2010 - Refactored out main code into new STATIC method.
             UpdateGameScreens(inputState, gameTime, !Game.IsActive);
@@ -436,10 +448,21 @@ namespace ImageNexus.BenScharbach.TWEngine.ScreenManagerC
             if (RenderingType == RenderingType.DeferredRendering && _deferredRendering != null)
                 _deferredRendering.HandleInputForDebugging(inputState); // 4/28/2010
 
-
             // Print debug trace?
             if (TraceEnabled)
                 TraceScreens();
+
+            // 8/31/2008 - Add Pumping of the GamerDispatchService Manually for Networking
+            try
+            {
+                var isXnaLiveReady = TemporalWars3DEngine.IsXnaLiveReady; // 4/20/2010
+                if (isXnaLiveReady)
+                    GamerServicesDispatcher.Update();
+            }
+            catch
+            {
+                Debug.WriteLine("Method error in Update method for GamerServicesDispatcher.Update() call.");
+            }
         }
 
         // 4/28/2010

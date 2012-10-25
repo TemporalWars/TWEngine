@@ -1,7 +1,7 @@
 ﻿using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
 using Microsoft.Xna.Framework;
 
-namespace TWEngine.FOW
+namespace ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary.FOW.Structs
 {
     /// <summary>
     /// The <see cref="Visited"/> structure is used to store when a visiting <see cref="IFOWSceneItem"/> has
