@@ -61,8 +61,6 @@ namespace ImageNexus.BenScharbach.TWEngine.Console
         private TerrainPickingRoutines _picking;  
         // 9/14/2008 - NetworkGameComponent
         private NetworkGameComponent _networkGameComponent;
-        // 11/13/2008 - StopWatchTimers Performance Reference
-        private StopWatchTimers _timers;    
         // 2/19/2009 - Screen Mananger Reference
         private ScreenManager _screenManager;
         // 7/6/2009 - GameViewPort Component
@@ -275,21 +273,6 @@ namespace ImageNexus.BenScharbach.TWEngine.Console
                 return _picking; 
             }
             
-        }
-
-        /// <summary>
-        /// Returns Ref to <see cref="StopWatchTimers"/> Class via script
-        /// </summary>
-        public StopWatchTimers Timers
-        {
-            get 
-            {
-                if (_timers == null)
-                    GetTimersInterfaceRef();
-
-                return _timers; 
-            }
-           
         }
 
         // 7/6/2009 - GameViewPort
@@ -528,14 +511,6 @@ namespace ImageNexus.BenScharbach.TWEngine.Console
         private void GetNetworkGameComponentInterfaceRef()
         {
             _networkGameComponent = (NetworkGameComponent)Game.Services.GetService(typeof(NetworkGameComponent));
-        }
-
-        /// <summary>
-        /// Get a Reference to <see cref="StopWatchTimers"/> Class using GameServices.
-        /// </summary>
-        private void GetTimersInterfaceRef()
-        {
-            _timers = (StopWatchTimers)Game.Services.GetService(typeof(StopWatchTimers));
         }
 
         /// <summary>

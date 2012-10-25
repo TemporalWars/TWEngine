@@ -2320,8 +2320,9 @@ namespace ImageNexus.BenScharbach.TWEngine.IFDTiles
         {
             try
             {
+                // 10/21/2012 - Fixed error by setting check to negate.
                 // 5/25/2012 -Skips section when the ScriptingAction is using the scoreboard.
-                if (_displayScoreboardForScripting)
+                if (!_displayScoreboardForScripting)
                 {
                     return;
                 }
@@ -2390,8 +2391,9 @@ namespace ImageNexus.BenScharbach.TWEngine.IFDTiles
         {
             try
             {
+                // 10/21/2012 - Fixed error by setting check to negate.
                 // 5/25/2012 -Skips section when the ScriptingAction is using the scoreboard.
-                if (_displayScoreboardForScripting)
+                if (!_displayScoreboardForScripting)
                 {
                     return;
                 }
