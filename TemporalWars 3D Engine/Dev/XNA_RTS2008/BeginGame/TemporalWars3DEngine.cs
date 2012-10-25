@@ -48,6 +48,7 @@ using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm;
 using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
 using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent;
 using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
 using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using ImageNexus.BenScharbach.TWTools.ScreenTextDisplayer.ScreenText;
@@ -131,6 +132,9 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
         // 1/15/2010 - GameLevelManager 
         protected IGameLevelManager GameLevelManager;
 
+        // 10/19/2012
+        private InputState _inputState;
+
         // 8/13/2008 Ben: ScreenManager Class
         private ScreenManager _screenManager;        
     
@@ -139,8 +143,8 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
         // 9/9/2008 - MessageDisplayComponent
         private MessageDisplayComponent _messageDisplayComponent;
 
-        // 11/7/2008 - StopWatchTimers for performance debugging
-        private StopWatchTimers _timers;
+        // 10/20/2012 - PerfTimersComponent for performance debugging
+        private PerfTimersManager _perfTimersManager;
 
         // 10/31/2008 - Services
         private Camera _camera;
@@ -858,7 +862,10 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
             // 10/15/2008 - Create ScreenTextManager Component
             Components.Add(new ScreenTextManager(this, ContentMiscLoc + @"\Fonts\Arial8"));
 
-            // 2/18/2010 - Add MyThreadPool
+            // 10/19/2012 - Create InputState Component
+            _inputState = new InputState(this);
+            Components.Add(_inputState);
+            Services.AddService(typeof(InputState), _inputState);
 
             // 10/27/2009 - Add SkyDome            
             _skyDome = new SkyDome(this);
@@ -895,11 +902,12 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
             DebugShapeRenderer.Initialize(_graphicsDeviceMng.GraphicsDevice);
 #endif
 
-            // 11/7/2008 - Add StopWatchTimeres Component, used for debuging performance.
-            _timers = new StopWatchTimers(this);
-            Components.Add(_timers);
-            Services.AddService(typeof(StopWatchTimers), _timers);
-            _timers.IsVisible = false;
+            // 10/20/2012 - Add PerfTimersManager Component, used for debuging performance.
+            _perfTimersManager = new PerfTimersManager(this);
+            Components.Add(_perfTimersManager);
+            Services.AddService(typeof(PerfTimersManager), _perfTimersManager);
+            // 10/20/2012
+            StopWatchTimers.IsVisible = false;
 
             // game initialization code here
             const float fieldOfView = MathHelper.PiOver4;
@@ -1514,13 +1522,21 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
                 }
 #endif
 
+                // 10/19/2012
+                // Remove InputState Component
+                if (_inputState != null)
+                {
+                    Components.Remove(_inputState);
+                    _inputState.Dispose();
+                    _inputState = null;
+                }
+
                 // Remove ScreenManager Component
                 if (_screenManager != null)
                 {
                     Components.Remove(_screenManager);
                     _screenManager.Dispose();
                     _screenManager = null;
-
                 }
                 
                 // Remove MessageDisplay Component
@@ -1648,12 +1664,12 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
                 }
 
                 // 11/7/2008 - Remove StopWatchTimers Component
-                if (_timers != null)
+                if (_perfTimersManager != null)
                 {
-                    Components.Remove(_timers);
+                    Components.Remove(_perfTimersManager);
                     Services.RemoveService(typeof(StopWatchTimers));
-                    _timers.Dispose();
-                    _timers = null;
+                    _perfTimersManager.Dispose();
+                    _perfTimersManager = null;
                 }
 
                 // 2/21/2009 - Remove NetworkGame Component

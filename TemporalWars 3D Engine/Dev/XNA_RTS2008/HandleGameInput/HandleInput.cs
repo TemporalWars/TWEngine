@@ -340,16 +340,18 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
                         ifdTile.TileSelected();
 
                     } // End If TileSelected
+
                     // If TileSelected (Pressed) AND NOT Buildings/Defense itemtype.    
-                    else if (InputState.IFDTileSelectedWhenPressed &&
+                    if (InputState.IFDTileSelectedWhenPressed &&
                              (tilePlacement.BuildingType != ItemGroupType.Buildings && tilePlacement.BuildingType != ItemGroupType.Shields))
                     {
                         // Call 'TileClicked' method.
                         ifdTile.TileSelected();
 
                     } // End If TileSelected
+
                     // If Right-Mouse Clicked, then call TileRightClicked.                         
-                    else if (InputState.IFDTileCanceled)
+                     if (InputState.IFDTileCanceled)
                     {
                         // Call 'TileRightClicked' method
                         ifdTile.TileCanceled();
@@ -656,8 +658,7 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
             // 8/10/2009 - If 'T' for Timers; // 4/12/2010 - Updated to make combo with 'Left-Control'.
             if (InputState.IsKeyPress(Keys.T) && InputState.IsKeyPress(Keys.LeftControl))
             {
-                var timers = (StopWatchTimers) TemporalWars3DEngine.GameInstance.Services.GetService(typeof (StopWatchTimers));
-                timers.IsVisible = !timers.IsVisible;
+                StopWatchTimers.IsVisible = !StopWatchTimers.IsVisible; // 10/20/2012
             }
 
             // 7/30/2008 - Test Enabling BumpMap in Shader
@@ -698,11 +699,8 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
                                 (IShadowMap) TemporalWars3DEngine.GameInstance.Services.GetService(typeof (IShadowMap));
                         break;
                     case 2:
-                        // StopWatchTimers                       
-                        var timers =
-                            (StopWatchTimers) TemporalWars3DEngine.GameInstance.Services.GetService(typeof (StopWatchTimers));
-                        timers.IsVisible = !timers.IsVisible;
-
+                        // StopWatchTimers                        
+                        StopWatchTimers.IsVisible = !StopWatchTimers.IsVisible;
                         break;
                     case 3: // 1/20/2011 - Show Wireframe
                         TerrainShape.DrawMode = TerrainShape.DrawMode == DrawMode.Solid ? DrawMode.WireFrame : DrawMode.Solid;

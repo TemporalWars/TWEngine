@@ -146,7 +146,7 @@ namespace ImageNexus.BenScharbach.TWEngine.GameCamera
         private static float _currentRoll;
 
         // 6/15/2012
-        private static AccelerationValueBehavior _accelerationValueBehavior; 
+        private static AccelerationValueBehavior _accelerationValueBehavior;
 
         #region Properties
 
@@ -544,7 +544,7 @@ namespace ImageNexus.BenScharbach.TWEngine.GameCamera
 
             // 6/15/2012; // 10/16/2012 - Fixed by adding check if '_doRotationCheck' or '_doMoveCheck'.
             if (_doRotationCheck || _doMoveCheck) 
-                DoCameraCalculations(gameTime, ref vectorToAdd);
+                DoCameraCalculations(ref vectorToAdd);
 
             // 6/15/2012 - Reset values each tick.
             _doMoveCheck = false;
@@ -662,9 +662,7 @@ namespace ImageNexus.BenScharbach.TWEngine.GameCamera
         /// <summary>
         /// Updates the camera rotation and position values.
         /// </summary>
-        /// <param name="gameTime"></param>
-        /// <param name="vectorToAdd"></param>
-        private static void DoCameraCalculations(GameTime gameTime, ref Vector3 vectorToAdd)
+        private static void DoCameraCalculations(ref Vector3 vectorToAdd)
         {
             // 6/15/2012 - Check if Lock set (Scripting Purposes)
             if (LockScroll)

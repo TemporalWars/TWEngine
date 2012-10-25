@@ -8,8 +8,12 @@
 #endregion
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using ImageNexus.BenScharbach.TWEngine.Shadows;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Counters;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Regulators;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Regulators.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Input;
@@ -17,13 +21,15 @@ using System;
 
 namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
 {
+    // 10/20/2012 - Updated to inherit from GameComponentRegulator
+    // 10/19/2012 - Updated to inherit from GameComponent
     /// <summary>
     /// The <see cref="InputState"/> class, is a helper for reading input from keyboard and gamepad. This class tracks both
     /// the current and previous state of both input devices, and implements query
     /// properties for high level input actions such as "move up through the menu"
     /// or "pause the game".
     /// </summary>
-    public class InputState
+    public class InputState : GameComponentRegulator
     {
         #region Fields
 
@@ -59,14 +65,20 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
         // 10/5/2012 - Stores the current PlayerIndex of the last controller used.  Useful for calls like ShowMarkplace.Guide(), which requires the playerindex.
         private PlayerIndex _currentPlayerIndex;
 
+#if DEBUG
+        // 10/20/2012 - Stores the PerformanceCounter's UniqueId.
+        private readonly Guid _counterId;
+#endif
+
         #endregion       
 
         #region Initialization
 
+        // 10/19/2012 - Updated signature to match the GameComponent.
         /// <summary>
         /// Constructs a new <see cref="InputState"/>.
         /// </summary>
-        public InputState()
+        public InputState(Game game) :base(RegulatorEnum.ByFrequency, 1, game)
         {
             _currentKeyboardStates = new KeyboardState[MaxInputs];
             _currentGamepadStates = new GamePadState[MaxInputs];
@@ -75,7 +87,13 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
             _lastKeyboardStates = new KeyboardState[MaxInputs];
             _lastGamepadStates = new GamePadState[MaxInputs];
             _lastMouseState = new MouseState(); // 4/28/2009
-            
+
+#if DEBUG
+            // Create PerformanceCounter for debug purposes
+            //_counterId = PerformanceCounters.CreateCounter();
+            //_counterId = PerformanceCounters.CreateCounter(3000);
+            _counterId = PerformanceCounters.CreateCounter(1000, "InputState Update()");
+#endif
         }
 
 
@@ -149,20 +167,26 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
         }
 
         // 4/3/2011
+        /// <summary>
+        /// Returns if the mouse scrolled right.
+        /// </summary>
         public bool MouseScrollRight
         {
             get
             {
-                return (_currentMouseState.X > _lastMouseState.X ? true : false);
+                return (_currentMouseState.X > _lastMouseState.X);
             }
         }
 
         // 4/3/2011
+        /// <summary>
+        /// Returns if the mouse scrolled left.
+        /// </summary>
         public bool MouseScrollLeft
         {
             get
             {
-                return (_currentMouseState.X < _lastMouseState.X ? true : false);
+                return (_currentMouseState.X < _lastMouseState.X);
             }
         }
 
@@ -745,8 +769,8 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
         {
             get
             {
-                return _currentMouseState.LeftButton == ButtonState.Pressed &&
-                    _lastMouseState.LeftButton == ButtonState.Released;
+                return _currentMouseState.LeftButton == ButtonState.Pressed 
+                    && _lastMouseState.LeftButton == ButtonState.Released;
             }
         }
 
@@ -1404,13 +1428,20 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
 
         #region Methods
 
-
+        // 10/20/2012 - Updated to call the new UpdateRegulator method.
         /// <summary>
-        /// Reads the latest state of the keyboard and gamepad.
+        /// Called when the GameComponent needs to be updated, which is regulated by the frequency or elapsedTime
+        /// constraints set.
         /// </summary>
-        /// <param name="gameTime"><see cref="GameTime"/> instance</param>
-        public void Update(GameTime gameTime)
+        /// <param name="gameTime">Time elapsed since the last call to Update</param>
+        public override void UpdateRegulator(GameTime gameTime)
         {
+
+#if DEBUG
+            // 10/20/2012 - TESTING new PerformanceCounter
+            PerformanceCounters.DoCount(_counterId);
+#endif
+
             // 11/6/2009 - Store Gametime
             _gameTime = gameTime;
 
@@ -1424,10 +1455,10 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
             for (var i = 0; i < maxInputs; i++)
             {
                 _lastKeyboardStates[i] = _currentKeyboardStates[i];
-                _lastGamepadStates[i] = _currentGamepadStates[i];                
+                _lastGamepadStates[i] = _currentGamepadStates[i];
 
                 _currentKeyboardStates[i] = Keyboard.GetState((PlayerIndex)i);
-                _currentGamepadStates[i] = GamePad.GetState((PlayerIndex)i);                
+                _currentGamepadStates[i] = GamePad.GetState((PlayerIndex)i);
             }
 
             // 5/2/2009 - Select Button held down for some ElapsedTime; will be used
@@ -1445,7 +1476,6 @@ namespace ImageNexus.BenScharbach.TWEngine.HandleGameInput
                 // Reset Time
                 _areaSelectElapsedTime = TimeSpan.Zero;
             }
-
         }
 
         /// <summary>
