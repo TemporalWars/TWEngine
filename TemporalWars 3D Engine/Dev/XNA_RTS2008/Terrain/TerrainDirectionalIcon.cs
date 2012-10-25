@@ -8,6 +8,7 @@
 #endregion
 
 using System;
+using ImageNexus.BenScharbach.TWEngine.GameCamera;
 using ImageNexus.BenScharbach.TWEngine.Utilities;
 using Microsoft.Xna.Framework;
 
@@ -44,6 +45,9 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
         private float _timeMaxRotation;
         private int _timeElapsedRotation;
         private float _deltaMagnitudeRotation = 50.0f;
+
+        // 10/24/2012
+        private bool _applyCameraRotation;
 
         // movement attributes
         private MovementDirection _movementDirection = MovementDirection.Still;
@@ -122,6 +126,20 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             }
         }
 
+        // 10/24/2012
+        /// <summary>
+        /// Gets or sets to apply the camera rotation to the current Icon's position.
+        /// </summary>
+        public bool ApplyCameraRotation
+        {
+            get { return _applyCameraRotation; }
+            set
+            {
+                _applyCameraRotation = value;
+                TerrainDirectionalIconManager.ApplyCameraRotation[_index] = value;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -143,11 +161,17 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
         /// </summary>
         public void Update(GameTime gameTime)
         {
+            // Update Camera's target Position                       
+            var vectorToAdd = Vector3.Zero;
+
             // check for rotation updates.
             DoAnimatedRotationCheck(gameTime);
   
             // check for movement requests.
-            DoMovementCheck(gameTime);
+            DoMovementCheck(gameTime, ref vectorToAdd);
+
+            // 10/24/2012 - check for applying camera rotation. (Scripting Purposes)
+            DoRotationCalculations(ref vectorToAdd);
         }
 
         // 6/6/2012
@@ -243,11 +267,11 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             }
         }
 
-        // 6/6/2012
+        // 6/6/2012; 10/24/2012 - Add 2nd param which carries the new delta change to add to the final position.
         /// <summary>
         /// Checks for movement requests and updates the position as needed.
         /// </summary>
-        private void DoMovementCheck(GameTime gameTime)
+        private void DoMovementCheck(GameTime gameTime, ref Vector3 vectorToAdd)
         {
             // check movement direction
             switch (_movementDirection)
@@ -259,22 +283,26 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
                 case MovementDirection.Right:
                     // 6/15/2012
                     _accelerationValueBehavior.IsStartState = true;
-                    _directionalIconPosition.X += _accelerationValueBehavior.GetDelta(gameTime); //  (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
+                    //_directionalIconPosition.X += _accelerationValueBehavior.GetDelta(gameTime); //  (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
+                    vectorToAdd.X += _accelerationValueBehavior.GetDelta(gameTime); //  (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
                     break;
                 case MovementDirection.Left:
                     // 6/15/2012
                     _accelerationValueBehavior.IsStartState = true;
-                    _directionalIconPosition.X -=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
+                    //_directionalIconPosition.X -=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
+                    vectorToAdd.X -=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
                     break;
                 case MovementDirection.Up:
                     // 6/15/2012
                     _accelerationValueBehavior.IsStartState = true;
-                    _directionalIconPosition.Z -=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
+                    //_directionalIconPosition.Z -=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
+                    vectorToAdd.Z -=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
                     break;
                 case MovementDirection.Down:
                     // 6/15/2012
                     _accelerationValueBehavior.IsStartState = true;
-                    _directionalIconPosition.Z +=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
+                    //_directionalIconPosition.Z +=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
+                    vectorToAdd.Z +=  _accelerationValueBehavior.GetDelta(gameTime); // (int)(_deltaMagnitudeMovement * gameTime.ElapsedGameTime.TotalSeconds);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -284,6 +312,40 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             DirectionalIconPosition = _directionalIconPosition;
             // Reset movement to still
             _movementDirection = MovementDirection.Still;
+        }
+
+        // 10/24/2012
+        /// <summary>
+        /// Calculates a rotation vector, using the current Camera's position and target locations.
+        /// This rotation vector is then applied to this <see cref="TerrainDirectionalIcon"/> position vector.
+        /// </summary>
+        private void DoRotationCalculations(ref Vector3 vectorToAdd)
+        {
+            if (!_applyCameraRotation)
+                return;
+
+            // #1 - Calculate the Camera's directional vector
+            var cameraTarget = Camera.CameraTarget;
+            var cameraPosition = Camera.CameraPosition;
+            Vector3 directionalVector;
+            Vector3.Subtract(ref cameraTarget, ref cameraPosition, out directionalVector);
+
+            // #2 - Retrieve the angle using the calculated directional vector.
+            const float degrees90ToRadians = 90 * (MathHelper.Pi / 180);
+            var desiredAngle = (float)Math.Atan2(-directionalVector.Z, directionalVector.X) + degrees90ToRadians;
+
+            // #3 - Create the required rotation matrix, using the calculated desiredAngle.
+            Matrix rotationMatrix;
+            Matrix.CreateRotationY(desiredAngle, out rotationMatrix);
+            Matrix.Multiply(ref rotationMatrix, -1, out rotationMatrix);
+
+            // #4 - Apply the rototationMatrix to the new delta Vector change for this cycle.
+            Vector3 rotatedVector;
+            Vector3.Transform(ref vectorToAdd, ref rotationMatrix, out rotatedVector);
+
+            // #5 - Finally, apply the rotatedVector to the Icon's position vector.
+            Vector3.Add(ref _directionalIconPosition, ref rotatedVector, out _directionalIconPosition);
+            DirectionalIconPosition = _directionalIconPosition;
         }
 
         // 6/6/2012
@@ -297,5 +359,6 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             _maxBound.X = TerrainData.MapWidth;
             _maxBound.Z = TerrainData.MapHeight;
         }
+        
     }
 }

@@ -4,12 +4,14 @@ using System.IO;
 using ImageNexus.BenScharbach.TWEngine.TemporalWarInterfaces.Interfaces;
 using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
 using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using ImageNexus.BenScharbach.TWTools.SimpleQuadDrawer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 #if !XBOX360
 using System.Windows.Forms;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
 #endif
 
 

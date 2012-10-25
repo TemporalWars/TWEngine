@@ -5,7 +5,7 @@
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ImageNexus.BenScharbach.TWEngine</RootNamespace>
     <AssemblyName>In.BenS.TwEngine</AssemblyName>
@@ -2365,13 +2365,13 @@
     <Compile Include="IFDTiles\InterFaceRoundMeter.cs" />
     <Compile Include="IFDTiles\ItemCreatedArgs.cs" />
     <Compile Include="IFDTiles\Structs\SubQueueKey.cs" />
-    <Compile Include="InstancedModels\Enums\ChangeRequest.cs" />
+    <Compile Include="InstancedModels\Enums\BufferRequest.cs" />
+    <Compile Include="InstancedModels\Enums\ChangeRequestEnum.cs" />
     <Compile Include="InstancedModels\Enums\DrawTransformsType.cs" />
     <Compile Include="InstancedModels\Enums\InstanceDataParam.cs" />
     <Compile Include="InstancedModels\Enums\InstancingTechnique.cs" />
     <Compile Include="InstancedModels\Enums\ItemGroupType.cs" />
     <Compile Include="InstancedModels\Enums\ItemType.cs" />
-    <Compile Include="InstancedModels\Enums\PartType.cs" />
     <Compile Include="InstancedModels\Enums\ProceduralMaterialParameters.cs" />
     <Compile Include="InstancedModels\Enums\RotationAxis.cs" />
     <Compile Include="InstancedModels\Enums\ShaderToUseEnum.cs" />
@@ -2380,26 +2380,20 @@
     <Compile Include="InstancedModels\InstancedItemLoader.cs" />
     <Compile Include="InstancedModels\InstancedModel.cs" />
     <None Include="InstancedModels\InstancedModelAnimation.cs" />
-    <Compile Include="InstancedModels\InstancedModelAttsDataReader.cs" />
     <Compile Include="InstancedModels\InstancedModelBone.cs" />
     <Compile Include="InstancedModels\InstancedModelBoneCollection.cs" />
+    <Compile Include="InstancedModels\InstancedModelBufferRequests.cs" />
     <Compile Include="InstancedModels\InstancedModelChangeRequests.cs" />
     <Compile Include="InstancedModels\InstancedModelExtra.cs" />
-    <Compile Include="InstancedModels\InstancedModelExtraReader.cs" />
-    <Compile Include="InstancedModels\InstancedModelPackedVector3Reader.cs" />
     <Compile Include="InstancedModels\InstancedModelPart.cs" />
     <Compile Include="InstancedModels\InstancedModelPartExtra.cs" />
-    <Compile Include="InstancedModels\InstancedModelPartExtraReader.cs" />
-    <Compile Include="InstancedModels\InstancedModelReader.cs" />
     <Compile Include="InstancedModels\InstancedModelTextures.cs" />
-    <Compile Include="InstancedModels\InstancedModelTexturesReader.cs" />
+    <Compile Include="InstancedModels\Structs\BufferRequestItem.cs" />
     <Compile Include="InstancedModels\Structs\ChangeRequestItem.cs" />
-    <Compile Include="InstancedModels\Structs\InstancedDataCommunication.cs" />
     <Compile Include="InstancedModels\Structs\InstancedDataForDraw.cs" />
     <Compile Include="InstancedModels\Structs\InstancedItemData.cs" />
     <Compile Include="InstancedModels\Structs\InstancedItemTransform.cs" />
     <Compile Include="InstancedModels\Structs\InstancedModelAttsData.cs" />
-    <Compile Include="InstancedModels\Structs\PackedVector3.cs" />
     <None Include="1ContentAudio\Xbox360\AmbientSoundBank.xsb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -2854,10 +2848,6 @@
     <Compile Include="SceneItems\KillSceneItemManager.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SceneItems\ScenaryDataReader.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SceneItems\ScenaryDataReaderV2.cs" />
     <Compile Include="SceneItems\ScenaryItemScene.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -2939,14 +2929,15 @@
     <Compile Include="Terrain\Enums\TessellateLevel.cs" />
     <Compile Include="Terrain\Enums\ToolType.cs" />
     <Compile Include="Terrain\Enums\VertexBufferComponent.cs" />
-    <Compile Include="Terrain\HeightDataReader.cs" />
-    <None Include="Terrain\HeightMapInfoReader.cs" />
+    <None Include="Terrain\Obsolete\HeightMapInfo.cs" />
+    <None Include="Terrain\Obsolete\HeightMapInfoReader.cs" />
     <Compile Include="Terrain\PopulatePathNodesParallelFor.cs" />
     <Compile Include="Terrain\Structs\blueTexCube.cs" />
     <Compile Include="Terrain\Structs\MapMarkerPositions.cs" />
     <Compile Include="Terrain\Structs\PerlinNoiseData.cs" />
     <Compile Include="Terrain\Structs\pickTriangles.cs" />
     <Compile Include="Terrain\Structs\QuadToRayIntersection.cs" />
+    <Compile Include="Terrain\Structs\ScenaryItemTypesQuadContainer.cs" />
     <Compile Include="Terrain\Structs\TerrainQuadPatch.cs" />
     <Compile Include="Terrain\Structs\TexturesAtlasData.cs" />
     <Compile Include="Terrain\Structs\TexturesGroupData.cs" />
@@ -2965,7 +2956,6 @@
     <Compile Include="Terrain\TerrainData.cs" />
     <Compile Include="Terrain\TerrainDirectionalIcon.cs" />
     <Compile Include="Terrain\TerrainDirectionalIconManager.cs" />
-    <Compile Include="Terrain\TerrainHeightData.cs" />
     <Compile Include="Terrain\TerrainPerlinClouds.cs" />
     <Compile Include="Terrain\TerrainPickingRoutines.cs" />
     <Compile Include="Terrain\TerrainQuadTessellater.cs" />
@@ -3062,7 +3052,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Shapes\Shape.cs" />
-    <None Include="Terrain\HeightMapInfo.cs" />
     <Compile Include="Terrain\TerrainQuadTree.cs" />
     <Compile Include="Terrain\TerrainShape.cs" />
     <Compile Include="Terrain\TerrainStorageRoutines.cs" />
@@ -3179,6 +3168,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="In.BenS.TwEngine.HeightDataLoader, Version=1.1.0.0, Culture=neutral, PublicKeyToken=fcdd27e9ffd63cdb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TWEngine.InstancedMLoader, Version=1.1.0.1, Culture=neutral, PublicKeyToken=c3429a937cfbc308, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="In.BenS.TwEngine.ScenaryDataLoader, Version=1.1.0.4, Culture=neutral, PublicKeyToken=dedd9b1975f4500f, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86">
       <Private>True</Private>
     </Reference>
@@ -3195,7 +3193,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="In.BenS.TWLate.Xbox360Generics, Version=2.1.0.0, Culture=neutral, PublicKeyToken=7979e0108265eb74, processorArchitecture=MSIL" />
-    <Reference Include="In.BenS.TWScripting.Interfaces, Version=1.12.0.0, Culture=neutral, PublicKeyToken=4be498e0408458af, processorArchitecture=MSIL">
+    <Reference Include="In.BenS.TWScripting.Interfaces, Version=1.12.1.0, Culture=neutral, PublicKeyToken=4be498e0408458af, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="In.BenS.TWTools.MemoryPool, Version=1.9.4.0, Culture=neutral, PublicKeyToken=8016b5272d8c8076, processorArchitecture=MSIL">
@@ -3207,9 +3205,7 @@
     <Reference Include="In.BenS.TWTools.Particles3D, Version=1.9.4.0, Culture=neutral, PublicKeyToken=09c0cc67248582a1, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.0, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.3, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWTools.ScreenTextDisplayer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=ba8d5641a0a65aa7, processorArchitecture=x86">
       <Private>True</Private>
     </Reference>
@@ -3292,6 +3288,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" Condition="" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy  "$(TargetDir)In.BenS.TwEngine.dll" "C:\Program Files (x86)\Image-Nexus\TW3DEngine\xbox360\" /F /Y
+xcopy  "$(TargetDir)In.BenS.TwEngine.exe" "C:\Program Files (x86)\Image-Nexus\TW3DEngine\xbox360\" /F /Y
+xcopy  "$(TargetDir)In.BenS.TwEngine.pdb" "C:\Program Files (x86)\Image-Nexus\TW3DEngine\xbox360\" /F /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

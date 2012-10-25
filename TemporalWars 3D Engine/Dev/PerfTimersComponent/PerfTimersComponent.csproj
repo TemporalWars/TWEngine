@@ -126,7 +126,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Counters\PerformanceCounters.cs" />
+    <Compile Include="Counters\Structs\Counter.cs" />
+    <Compile Include="PerfTimersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regulators\GameComponentRegulator.cs" />
+    <Compile Include="Regulators\DrawableGameComponentRegulator.cs" />
+    <Compile Include="Regulators\Enums\RegulatorEnum.cs" />
+    <Compile Include="Regulators\RegulatorBase.cs" />
     <Compile Include="Timers\Enums\StopWatchName.cs" />
     <Compile Include="Timers\StopWatchTimers.cs" />
   </ItemGroup>
@@ -181,8 +188,13 @@
   <ItemGroup>
     <None Include="PerfTimersComponentSn.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy  "$(TargetDir)In.BenS.TWTools.PerfTimers.dll" "C:\Program Files (x86)\Image-Nexus\TW3DEngine\x86\" /F /Y
+xcopy  "$(TargetDir)In.BenS.TWTools.PerfTimers.pdb" "C:\Program Files (x86)\Image-Nexus\TW3DEngine\x86\" /F /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

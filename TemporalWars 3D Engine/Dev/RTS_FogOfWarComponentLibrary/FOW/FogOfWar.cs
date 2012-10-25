@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary.FOW.Structs;
 using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
 using ImageNexus.BenScharbach.TWTools.ParallelTasksComponent.LocklessDictionary;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
+using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Threading;
 
-
-namespace TWEngine.FOW
+namespace ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary.FOW
 {
     // 7/3/2010: NOTE: In order to give the namespace the XML doc, must do it this way;
     /// <summary>
-    /// The <see cref="TWEngine.FOW"/> namespace contains the classes
+    /// The <see cref="ImageNexus.BenScharbach.TWLate.RTS_FogOfWarComponentLibrary.FOW"/> namespace contains the classes
     /// which make up the entire <see cref="FogOfWar"/>.
     /// </summary>
     [System.Runtime.CompilerServices.CompilerGenerated]

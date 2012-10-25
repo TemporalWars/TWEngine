@@ -127,7 +127,7 @@
     <Reference Include="In.BenS.TWEngine.TWInterfaces, Version=2.5.1.1, Culture=neutral, PublicKeyToken=1d8bddd11d76e12c, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWLate.FogOfWarInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=2b67964fb36d8042, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWLate.MinimapInterfaces, Version=2.1.0.0, Culture=neutral, PublicKeyToken=4c85968ce1bdd107, processorArchitecture=x86" />
-    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.0, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86" />
+    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.3, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWTools.ScreenTextDisplayer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=ba8d5641a0a65aa7, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWTools.SimpleQuadDrawer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=061ec4462646e261, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWTools.SpeedCollection, Version=1.9.4.0, Culture=neutral, PublicKeyToken=2621d214a7a8510c, processorArchitecture=x86" />

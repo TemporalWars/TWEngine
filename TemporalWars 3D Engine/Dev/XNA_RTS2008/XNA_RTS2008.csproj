@@ -117,9 +117,7 @@
     <Reference Include="In.BenS.TWTools.Particles3D, Version=1.9.4.0, Culture=neutral, PublicKeyToken=09c0cc67248582a1, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
-    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.0, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="In.BenS.TWTools.PerfTimers, Version=1.9.4.3, Culture=neutral, PublicKeyToken=c7a266e1d04c4868, processorArchitecture=x86" />
     <Reference Include="In.BenS.TWTools.ScreenTextDisplayer, Version=1.9.4.0, Culture=neutral, PublicKeyToken=ba8d5641a0a65aa7, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>

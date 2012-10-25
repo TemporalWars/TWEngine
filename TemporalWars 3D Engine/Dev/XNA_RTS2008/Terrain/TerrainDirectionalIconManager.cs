@@ -50,6 +50,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
         internal static readonly float[] IconRotations = new float[MaxIcons];
         internal static readonly bool[] IconVisibles = new bool[MaxIcons];
         internal static readonly Vector4[] IconColors = new Vector4[MaxIcons] { Color.White.ToVector4(), Color.White.ToVector4() };
+        internal static readonly bool[] ApplyCameraRotation = new bool[MaxIcons]; // 10/24/2012
 
         /// <summary>
         /// Constructor
