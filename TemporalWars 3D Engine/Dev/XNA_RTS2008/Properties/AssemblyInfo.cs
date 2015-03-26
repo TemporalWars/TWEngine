@@ -31,7 +31,7 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.3.1.0")]
+[assembly: AssemblyVersion("2.3.3.1")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 
 //[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("TestProject1")]

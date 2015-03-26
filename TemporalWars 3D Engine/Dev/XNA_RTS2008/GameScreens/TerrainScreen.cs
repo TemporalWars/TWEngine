@@ -179,6 +179,9 @@ namespace ImageNexus.BenScharbach.TWEngine.GameScreens
 
         #endregion
 
+        // 12/2/2013 - Add backing field.
+        private static RenderingType _renderingType;
+
         #region Events
 
         // 1/6/2010 - 
@@ -207,14 +210,31 @@ namespace ImageNexus.BenScharbach.TWEngine.GameScreens
 
         #region TerrainScreen Properties
 
-        // 5/23/2010
+        // 12/2/2013 - AppSetting Override..
+        /// <summary>
+        /// Gets or sets the use of the <see cref="RenderingType"/> on the terrain, which overrides the 'RenderingType' setting; this is set
+        /// from the App.Config xml file.
+        /// </summary>
+        public static RenderingType? AppSettingRenderingType { get; set; }
+
+        // 5/23/2010; 12/2/2013 - Updated to set the ScreenManager.RenderingType / Updated to check the AppSettingRenderType override.
         /// <summary>
         /// The <see cref="RenderingType"/> Enum to use as default
         /// for <see cref="TerrainScreen"/>. (Ex: Normal, NormalPP, or Deferred)
         /// </summary>
-        public static RenderingType RenderingType { set; get; }
-        
-        
+        public static RenderingType RenderingType
+        {
+            get { return (AppSettingRenderingType != null) ? AppSettingRenderingType.Value : _renderingType; }
+            set
+            {
+                _renderingType = value;
+
+                // 12/2/2013 - Set what Rendering Style the TerrainScreen should use.
+                ScreenManager.RenderingType = (AppSettingRenderingType != null) ? AppSettingRenderingType.Value : value; 
+            }
+        }
+
+
         // 11/19/2009 - 
         ///<summary>
         /// Set when <see cref="Player"/> starts MP game by themselves!  This allows skipping the
@@ -1168,6 +1188,80 @@ namespace ImageNexus.BenScharbach.TWEngine.GameScreens
         /// <param name="gameTime"><see cref="GameTime"/> instance</param>    
         public override void Draw3D(GameTime gameTime)
         {
+            // 12/2/2013 - Check RenderType here.
+            switch (RenderingType)
+            {
+                case RenderingType.DeferredRendering:
+                case RenderingType.NormalRendering:
+                    DoDraw3D(gameTime);
+                    break;
+                case RenderingType.NormalRenderingWithPostProcessEffects:
+                    // 12/2/2013 - Draws in 2 passes to include the PostProcessing Effects.
+                    DoDraw3DWithPostProcessingEffects(gameTime);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        // 12/2/2013
+        /// <summary>
+        /// Draws the <see cref="TWEngine.Terrain"/> using 1-pass without the Post-Processing Effects.
+        /// </summary>
+        /// <param name="gameTime"><see cref="GameTime"/> instance</param>
+        private void DoDraw3D(GameTime gameTime)
+        {
+            // XNA 4.0 updates - Set for regular 'Solid' draw mode.
+            var graphicsDevice = TemporalWars3DEngine.GameInstance.GraphicsDevice;
+            graphicsDevice.BlendState = BlendState.Opaque;
+            graphicsDevice.DepthStencilState = DepthStencilState.Default;
+            graphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+
+#if DEBUG
+            StopWatchTimers.StartStopWatchInstance(StopWatchName.TerrainDraw);
+#endif
+
+            // Set RenderTarget for SkyBox
+            graphicsDevice.SetRenderTarget(_terrainDrawRt);
+
+            // The following CLEAR command is a MUST; otherwise, the renderTarget color will be Purple!
+            graphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.White, 1.0f, 0); // 
+
+            // 3/13/2009 - Draw Terrain
+            TerrainShape.Render(gameTime, false);
+
+            // 5/16/2012 - Draw SkyBox
+            if (UseSkyBox) DrawSkyBox();
+
+            // Draw Other Items into 1st RT.
+            Draw3DSelectables(gameTime);
+            Draw3DSceneryItems(gameTime); // 8/1/2009
+            Draw3DAlpha(gameTime); // 3/19/2009 - Draw AlphaItems Now, like Trees for example.
+
+#if !XBOX360
+            // 5/28/2012 - Render Collision spheres for debug purposes
+            RenderDebugArtworkScenaryItems(gameTime);
+            RenderDebugArtworkPlayableItems(gameTime);
+#endif
+            // Resolve texture
+            graphicsDevice.SetRenderTargets(null);
+            ScreenManager.DrawRenderTargetTexture(graphicsDevice, _terrainDrawRt, 1.0f, true, BlendState.Opaque);
+
+            graphicsDevice.DepthStencilState = DepthStencilState.Default;
+            graphicsDevice.BlendState = BlendState.Opaque;
+
+#if DEBUG
+            StopWatchTimers.StopAndUpdateAverageMaxTimes(StopWatchName.TerrainDraw);
+#endif
+        }
+
+        // 12/2/2013
+        /// <summary>
+        /// Draws the <see cref="TWEngine.Terrain"/> using 2-passes to include the Post-Processing Effects pass.
+        /// </summary>
+        /// <param name="gameTime"><see cref="GameTime"/> instance</param>
+        private void DoDraw3DWithPostProcessingEffects(GameTime gameTime)
+        {
             // XNA 4.0 updates - Set for regular 'Solid' draw mode.
             var graphicsDevice = TemporalWars3DEngine.GameInstance.GraphicsDevice;
             graphicsDevice.BlendState = BlendState.Opaque;
@@ -1196,7 +1290,7 @@ namespace ImageNexus.BenScharbach.TWEngine.GameScreens
             graphicsDevice.Clear(Color.Black);
 
             // 5/16/2012 - Draw SkyBox
-            if (UseSkyBox) DrawSkyBox(); 
+            if (UseSkyBox) DrawSkyBox();
 
             // 3/13/2009 - Draw Terrain with additional effects on.
             TerrainShape.Render(gameTime, true);
@@ -1204,18 +1298,19 @@ namespace ImageNexus.BenScharbach.TWEngine.GameScreens
             // Resolve texture
             graphicsDevice.SetRenderTargets(null);
 
-             // Set RenderTargets
+            // Set RenderTargets
             graphicsDevice.SetRenderTargets(_terrainDraw3Rt);
 
             // The following CLEAR command is a MUST; otherwise, the renderTarget color will be Purple!
             graphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0); // 
 
             // Note: This useless Render call is required for the XBOX-360!  Otherwise, it will throw a SetData error.
-            TerrainShape.Render(gameTime, false); 
+            TerrainShape.Render(gameTime, false);
 
             // Draw Textures
             // Draw the combine texture to screen
-            ScreenManager.DrawRenderTargetTexture(graphicsDevice, _terrainDrawRt, 1.0f, false, BlendState.Opaque); // 9/22/2010 - XNA 4.0 Updates - Pass in blendState.
+            ScreenManager.DrawRenderTargetTexture(graphicsDevice, _terrainDrawRt, 1.0f, false, BlendState.Opaque);
+                // 9/22/2010 - XNA 4.0 Updates - Pass in blendState.
 
             //BlurManager.RenderScreenQuad(graphicsDevice, BlurTechnique.ColorTexture, _terrainDraw2Rt, new Vector4(1.0f));
             ScreenManager.DrawRenderTargetTexture(graphicsDevice, _terrainDraw2Rt, 1.0f, true, BlendStateMultiply);
@@ -1233,7 +1328,8 @@ namespace ImageNexus.BenScharbach.TWEngine.GameScreens
 
             // Resolve texture
             graphicsDevice.SetRenderTargets(null);
-            ScreenManager.DrawRenderTargetTexture(graphicsDevice, _terrainDraw3Rt, 1.0f, true, BlendState.Opaque); // _terrainDraw3Rt
+            ScreenManager.DrawRenderTargetTexture(graphicsDevice, _terrainDraw3Rt, 1.0f, true, BlendState.Opaque);
+                // _terrainDraw3Rt
 
             graphicsDevice.DepthStencilState = DepthStencilState.Default;
             graphicsDevice.BlendState = BlendState.Opaque;

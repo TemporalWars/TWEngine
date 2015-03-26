@@ -35,14 +35,25 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
         private static Texture2D _gradTexture4D;
 
         #region Properities
-        
+
+        // 12/2/2013 - AppSetting Override..
+        /// <summary>
+        /// Gets or sets to turn OFF the use of the PerlinNoise clouds on the terrain, which overrides the 'EnableClouds' setting; this is set
+        /// from the App.Config xml file.
+        /// </summary>
+        public static bool AppSettingTurnOffClouds { get; set; }
+
         // 1/10/2011
         ///<summary>
         /// Gets or Sets to enable the use of the PerlinNoise clouds on the terrain.
         ///</summary>
         public static bool EnableClouds
         {
-            get { return _enableClouds; }
+            get
+            {
+                // 12/2/2013 - Check for AppSetting Override.
+                return !AppSettingTurnOffClouds && _enableClouds;
+            }
             set
             {
                 _enableClouds = value;
@@ -100,6 +111,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
                 if (_multiTerrainEffect != null) _multiTerrainEffect.Parameters["gradTexture4d"].SetValue(GradTexture4D);
             }
         }
+      
 
         #endregion
 
