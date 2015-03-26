@@ -995,7 +995,7 @@ namespace TWEngine.TerrainTools
         {
             try // 6/22/2010
             {
-                SetLightingType(TerrainShape.LightingType);
+                //SetLightingType(TerrainShape.LightingType);
             }
             catch (Exception ex)
             {
@@ -1013,8 +1013,8 @@ namespace TWEngine.TerrainTools
         {
             try // 6/22/2010
             {
-                TerrainShape.LightingType = TerrainLightingType.Plastic;
-                SetLightingType(TerrainLightingType.Plastic);
+                //TerrainShape.LightingType = TerrainLightingType.Plastic;
+                //SetLightingType(TerrainLightingType.Plastic);
             }
             catch (Exception ex)
             {
@@ -1032,8 +1032,8 @@ namespace TWEngine.TerrainTools
         {
             try // 6/22/2010
             {
-                TerrainShape.LightingType = TerrainLightingType.Metal;
-                SetLightingType(TerrainLightingType.Metal);
+                //TerrainShape.LightingType = TerrainLightingType.Metal;
+                //SetLightingType(TerrainLightingType.Metal);
             }
             catch (Exception ex)
             {
@@ -1051,8 +1051,8 @@ namespace TWEngine.TerrainTools
         {
             try // 6/22/2010
             {
-                TerrainShape.LightingType = TerrainLightingType.Blinn;
-                SetLightingType(TerrainLightingType.Blinn);
+                //TerrainShape.LightingType = TerrainLightingType.Blinn;
+                //SetLightingType(TerrainLightingType.Blinn);
             }
             catch (Exception ex)
             {
@@ -1070,8 +1070,8 @@ namespace TWEngine.TerrainTools
         {
             try // 6/22/2010
             {
-                TerrainShape.LightingType = TerrainLightingType.Glossy;
-                SetLightingType(TerrainLightingType.Glossy);
+                //TerrainShape.LightingType = TerrainLightingType.Glossy;
+                //SetLightingType(TerrainLightingType.Glossy);
             }
             catch (Exception ex)
             {

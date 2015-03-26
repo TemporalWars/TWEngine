@@ -982,7 +982,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
         {
             try
             {
-                SetLightingType(TerrainShape.LightingType);
+                //SetLightingType(TerrainShape.LightingType);
             }
             catch (Exception ex)
             {
@@ -1042,7 +1042,7 @@ namespace ImageNexus.BenScharbach.TWEngine.TerrainTools
         {
             try // 6/22/2010
             {
-                TerrainShape.LightingType = (TerrainLightingType) MainMenuWindowI.LightingType;
+                //TerrainShape.LightingType = (TerrainLightingType) MainMenuWindowI.LightingType;
             }
             catch (Exception ex)
             {
