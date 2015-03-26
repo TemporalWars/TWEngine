@@ -7,6 +7,7 @@
 //-----------------------------------------------------------------------------
 #endregion
 
+using System.Configuration;
 using System.Diagnostics;
 using System;
 using System.IO;
@@ -48,6 +49,7 @@ using ImageNexus.BenScharbach.TWLate.AStarInterfaces.AStarAlgorithm;
 using ImageNexus.BenScharbach.TWLate.RTS_FogOfWarInterfaces.FOW;
 using ImageNexus.BenScharbach.TWLate.RTS_MinimapInterfaces.Minimap;
 using ImageNexus.BenScharbach.TWLate.RTS_StatusBarInterfaces.StatusBar;
+using ImageNexus.BenScharbach.TWTools.Particles3DComponentLibrary.Interfaces;
 using ImageNexus.BenScharbach.TWTools.PerfTimersComponent;
 using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers;
 using ImageNexus.BenScharbach.TWTools.PerfTimersComponent.Timers.Enums;
@@ -85,7 +87,7 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class TemporalWars3DEngine : Game, IFOWEngineRef, IMinimapEngineRef, IStatusBarEngineRef
+    public class TemporalWars3DEngine : Game, IFOWEngineRef, IMinimapEngineRef, IStatusBarEngineRef, IGamePaused
     {
         // 10/7/2012 - Names of the possible Late-Bind assemblies - Ben
         private const string AstarLateBindAssembly = "In.BenS.TWLate.AStar.dll";
@@ -216,6 +218,9 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
         private static int _trialModeCheckCounter;
         // 2/26/2011
         protected internal static Texture2D IfdTileMiniMapWrapper;
+
+        // 12/1/2013
+        protected bool UseWindowMode; 
         
 
         #region Properties 
@@ -234,6 +239,12 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
         /// Gets when the game is paused.
         /// </summary>
         public static bool GamePaused { get; set; }
+
+        // 10/26/2012
+        /// <summary>
+        /// Gets if the game is currently paused.
+        /// </summary>
+        public bool IsGamePaused { get { return GamePaused; }}
 
         // 1/19/2011 - Is Purchased Game?
         public static bool IsPurchasedGame { get; private set; }
@@ -661,7 +672,6 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
             // XBOX can not use 'DeferredRendering'; only Normal.
             ScreenManager.RenderingType = RenderingType.NormalRendering;
             TerrainScreen.RenderingType = RenderingType.NormalRenderingWithPostProcessEffects; // 5/23/2010 - Set default for 'TerrainScreen'.
-            TerrainShape.LightingType = TerrainLightingType.Blinn; // 1/10/2011
             TerrainShape.EnableNormalMap = true; // 1/10/2011
             ScreenResolution = ScreenResolution.Type1280X720;
             TerrainTexturesQuality = TerrainTextures.Tex256X;
@@ -671,7 +681,6 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
 #else
             ScreenManager.RenderingType = RenderingType.NormalRendering;
             TerrainScreen.RenderingType = RenderingType.NormalRenderingWithPostProcessEffects; // 5/23/2010 - Set default for 'TerrainScreen'.
-            TerrainShape.LightingType = TerrainLightingType.Blinn; // 1/10/2011
             TerrainShape.EnableNormalMap = true; // 1/10/2011
             ScreenResolution = ScreenResolution.Type1280X720;
             TerrainTexturesQuality = TerrainTextures.Tex256X;
@@ -713,6 +722,136 @@ namespace ImageNexus.BenScharbach.TWEngine.BeginGame
             FastBuildTimes = true;
 #endif
         }
+
+#if !XBOX360
+
+        // 12/2/2013
+        /// <summary>
+        /// Use to set the Game's settings for changeable types; for example, ShadowQualtiy set to HIGH.
+        /// </summary>
+        /// <param name="nameValueCollection">Instance of a ConfigurationManager.AppSettings collection.</param>
+        protected void SetGameSettings(System.Collections.Specialized.NameValueCollection nameValueCollection)
+        {
+            if (nameValueCollection == null)
+                throw new ArgumentNullException("nameValueCollection");
+
+            try
+            {
+                // 12/1/2013 - PC ONLY: Read APP.Config application settings. - ConfigurationManager.AppSettings["WindowMode"]
+                // Note: http://www.codeproject.com/Articles/14744/Read-Write-App-Config-File-with-NET-2-0
+                var screenResolutionSetting = nameValueCollection["ScreenResolution"];
+                var windowsModeSetting = nameValueCollection["WindowMode"];
+                var shadowQualitySetting = nameValueCollection["ShadowQuality"];
+                var terrainTexturesQualitySetting = nameValueCollection["TerrainTexturesQuality"];
+                var turnOffNormalMapSetting = nameValueCollection["TurnOffNormalMap"];
+                var turnOffCloudShadowsSetting = nameValueCollection["TurnOffCloudShadows"];
+                var turnOffPPEffectsSetting = nameValueCollection["TurnOffPPEffects"];
+
+                // 12/1/2013 - Sets the Application setting using the App.Config contain in the mini-game sitting on-top of this engine.
+                DoSetGameSetting(SetGameSettingTypeEnum.ScreenResolution, screenResolutionSetting);
+                DoSetGameSetting(SetGameSettingTypeEnum.WindowMode, windowsModeSetting);
+                DoSetGameSetting(SetGameSettingTypeEnum.ShadowQuality, shadowQualitySetting);
+                DoSetGameSetting(SetGameSettingTypeEnum.TerrainTexturesQuality, terrainTexturesQualitySetting);
+                DoSetGameSetting(SetGameSettingTypeEnum.TurnOffNormalMap, turnOffNormalMapSetting);
+                DoSetGameSetting(SetGameSettingTypeEnum.TurnOffCloudShadows, turnOffCloudShadowsSetting);
+                DoSetGameSetting(SetGameSettingTypeEnum.TurnOffPPEffects, turnOffPPEffectsSetting);
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e);
+            }
+        }
+
+        // 12/1/2013
+        /// <summary>
+        /// Does the work of setting the Game's settings for changeable types; for example, ShadowQualtiy set to HIGH.
+        /// </summary>
+        private void DoSetGameSetting(SetGameSettingTypeEnum gameSettingType, string appSetting)
+        {
+            switch (gameSettingType)
+            {
+                // ScreenResolution
+                case SetGameSettingTypeEnum.ScreenResolution:
+                    switch (appSetting)
+                    {
+                        case "1024X768":
+                            ScreenResolution = ScreenResolution.Type1024X768;
+                            break;
+                        case "1280X720":
+                            ScreenResolution = ScreenResolution.Type1280X720;
+                            break;
+                        case "1280X1024":
+                            ScreenResolution = ScreenResolution.Type1280X1024;
+                            break;
+                        case "1440X900":
+                            ScreenResolution = ScreenResolution.Type1440X900;
+                            break;
+                        default:
+                            ScreenResolution = ScreenResolution.Type1024X768;
+                            break;
+                    }
+                    break;
+                // WindowMode
+                case SetGameSettingTypeEnum.WindowMode:
+                    UseWindowMode = (appSetting == "ON");
+                    break;
+                // ShadowQuality
+                case SetGameSettingTypeEnum.ShadowQuality:
+                    switch (appSetting)
+                    {
+                        case "LOW":
+                            ShadowMap.ShadowQuality = ShadowQuality.Low;
+                            break;
+                        case "MED":
+                            ShadowMap.ShadowQuality = ShadowQuality.Medium;
+                            break;
+                        case "HIGH":
+                            ShadowMap.ShadowQuality = ShadowQuality.High;
+                            break;
+                        default:
+                            ShadowMap.ShadowQuality = ShadowQuality.Medium;
+                            break;
+                    }
+                    break;
+                // TODO: 12/1/2013: Textures settings of 128x caused crash in testing. - Ben
+                // TerrainTexturesQuality
+                case SetGameSettingTypeEnum.TerrainTexturesQuality:
+                    switch (appSetting)
+                    {
+                        default:
+                            TerrainTexturesQuality = TerrainTextures.Tex256X;
+                            break;
+                    }
+                    break;
+                // NormalMap
+                case SetGameSettingTypeEnum.TurnOffNormalMap:
+                    TerrainShape.AppSettingTurnOffNormalMap = (appSetting == "TRUE");
+                    break;
+                // CloudShadows
+                case SetGameSettingTypeEnum.TurnOffCloudShadows:
+                    TerrainPerlinClouds.AppSettingTurnOffClouds = (appSetting == "TRUE");
+                    break;
+                // PPEffects
+                case SetGameSettingTypeEnum.TurnOffPPEffects:
+                    switch (appSetting)
+                    {
+                        case "TRUE":
+                            TerrainScreen.AppSettingRenderingType = RenderingType.NormalRendering;
+                            break;
+                        case "FALSE":
+                            TerrainScreen.AppSettingRenderingType = RenderingType.NormalRenderingWithPostProcessEffects;
+                            break;
+                        default:
+                            TerrainScreen.AppSettingRenderingType = RenderingType.NormalRenderingWithPostProcessEffects;
+                            break;
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+#endif
 
         // 2/7/2011
         /// <summary>

@@ -205,12 +205,8 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
         private static EffectParameter _lightViewProjection; // 6/14/2010
         private static EffectParameter _lightViewProjectionStatic; // 6/14/2010
 
-
         // 1/23/2009 -Add FOW EffectParams
         private static EffectParameter _fowTextureEParam;
-
-        // 12/12/2009 - Terrain's LightingType to use during rendering.
-        private static TerrainLightingType _lightingType = TerrainLightingType.Blinn;
 
         // XNA 4.0 Updates - RenderState replaced with 4 new states; BlendState, RasterizerState, DepthStencilState, or SampleState.
         private static RasterizerState _rasterizerState1;
@@ -222,20 +218,27 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
 
         #region Properties
 
+        // 12/2/2013 - AppSetting Override..
+        /// <summary>
+        /// Gets or sets to turn OFF the use of the NormalMap on the terrain, which overrides the 'EnableNormalMap' setting; this is set
+        /// from the App.Config xml file.
+        /// </summary>
+        public static bool AppSettingTurnOffNormalMap { get; set; }
+
         // 4/28/2009; 1/10/2011 - Rename from EnableBumpMap.
         ///<summary>
         /// Gets or Sets the use of the Normal-Mapping effect.
         ///</summary>
         public static bool EnableNormalMap
         {
-            get { return _enableNormalMap; }
+            get { return !AppSettingTurnOffNormalMap && _enableNormalMap; }
             set
             {
                 _enableNormalMap = value;
 
                 // Set PS via ShaderIndex
                 if (_shaderIndexEParam != null)
-                    _shaderIndexEParam.SetValue((value) ? 2 : 1);
+                    _shaderIndexEParam.SetValue((!AppSettingTurnOffNormalMap && value) ? 2 : 1);
 
                 // Enable NormalMap
                 //if (_multiTerrainEffect != null) 
@@ -649,21 +652,21 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
         /// </summary>
         public static TerrainIsIn TerrainIsIn { get; internal set; }
 
-        // 12/12/2009
-        /// <summary>
-        /// Get or set the <see cref="TerrainLightingType"/> Enum to use for rendering.
-        /// </summary>
-        public static TerrainLightingType LightingType
-        {
-            get { return _lightingType; }
-            set
-            {
-                _lightingType = value;
+        // 12/12/2009; 12/2/2013 - Removed, since no longer used in the shader! - Ben.
+        ///// <summary>
+        ///// Get or set the <see cref="TerrainLightingType"/> Enum to use for rendering.
+        ///// </summary>
+        //public static TerrainLightingType LightingType
+        //{
+        //    get { return _lightingType; }
+        //    set
+        //    {
+        //        _lightingType = value;
+        //        if (_multiTerrainEffect == null) return;
 
-                if (_multiTerrainEffect != null)
-                    _multiTerrainEffect.Parameters["xLightingType"].SetValue((int)value);
-            }
-        }
+        //        _multiTerrainEffect.Parameters["xLightingType"].SetValue((int)value);
+        //    }
+        //}
 
         #endregion
         
@@ -778,7 +781,7 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             //ScriptingActions.DisplayDirectionalIcon("DebugDirectionIcon", true, new Vector3(314.5f, 0, 56.8f), 50, 90f, Color.Blue);
 
             // 8/29/2008 - Enable BumpMapping for Terrain
-            //_enableNormalMap = true;
+            _enableNormalMap = true;
             _multiTerrainEffect.Parameters["xEnableBumpMapping"].SetValue(_enableNormalMap);
 
             // 8/13/2008 - Add IGameConsole Interface
@@ -822,10 +825,9 @@ namespace ImageNexus.BenScharbach.TWEngine.Terrain
             _lightPositionEParam.SetValue(LightPosition);
             _worldEParam.SetValue(Matrix.Identity);
             _multiTerrainEffect.Parameters["xWorldI"].SetValue(MatrixIdenitityInvert); // 1/19/2010
-       
-            // 12/12/2009 - Set LightingType for Terrain to use during rendering.
-            _multiTerrainEffect.Parameters["xLightingType"].SetValue((int) _lightingType);
-                     
+            
+            // 12/2/2013 - Set EnableBumpMap flag to ShaderIndex, which captures the setting set before the '_shaderIndexEParam' was created. - Ben
+            _shaderIndexEParam.SetValue((!AppSettingTurnOffNormalMap && _enableNormalMap) ? 2 : 1);       
 
             // 1/23/2009 - FOW EffectParams
             _fowTextureEParam = _multiTerrainEffect.Parameters["TextureFog"];
